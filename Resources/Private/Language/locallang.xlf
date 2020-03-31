@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-12-28T17:40:31Z" product-name="ns_backup">
+		<header/>
+		<body>
+			<trans-unit id="global.errorvalidation">
+				<source>Please configure below configuration of "Global Settings" or your "Server Configuration"</source>
+			</trans-unit>
+			<trans-unit id="global.errorvalidation.message">
+				<source>Make sure all configuration has been setup before you start your backup</source>
+			</trans-unit>
+			<trans-unit id="global.error.phpversion">
+				<source>Your PHP version should be "7.0 or later"</source>
+			</trans-unit>
+			<trans-unit id="global.error.curl">
+				<source>"curl" extension of PHP is disabled at your server</source>
+			</trans-unit>
+			<trans-unit id="global.error.dom">
+				<source>"dom" extension of PHP is disabled at your server</source>
+			</trans-unit>
+			<trans-unit id="global.error.json">
+				<source>"json" extension of PHP is disabled at your server</source>
+			</trans-unit>
+			<trans-unit id="global.error.spl">
+				<source>"spl" extension of PHP is disabled at your server</source>
+			</trans-unit>
+			<trans-unit id="global.error.exec">
+				<source>PHP exec() function is disabled</source>
+			</trans-unit>
+
+			<trans-unit id="global.error.emails">
+				<source>Missing Email Notification</source>
+			</trans-unit>
+			<trans-unit id="global.error.emailSubject">
+				<source>Missing Email Subject</source>
+			</trans-unit>
+			<trans-unit id="global.error.compress">
+				<source>Configure Backup File Compression</source>
+			</trans-unit>
+			<trans-unit id="global.error.php">
+				<source>Missing Installed PHP Path</source>
+			</trans-unit>
+			<trans-unit id="global.error.root">
+				<source>Configure Your TYPO3 Installed Path</source>
+			</trans-unit>
+			<trans-unit id="global.error.siteurl">
+				<source>Configure Your TYPO3 Site URL</source>
+			</trans-unit>
+			<trans-unit id="global.error.cleanup">
+				<source>Missing Backup Cleanup Settings</source>
+			</trans-unit>
+			<trans-unit id="global.error.cleanupQuantity">
+				<source>Missing Backup Cleanup Quantity Settings</source>
+			</trans-unit>
+			<trans-unit id="top.quicksetup">
+				<source>Quick Setup</source>
+			</trans-unit>
+			<trans-unit id="top.documentaiton">
+				<source>Documentaiton</source>
+			</trans-unit>
+			<trans-unit id="top.help">
+				<source>Help &amp; Support</source>
+			</trans-unit>
+			<trans-unit id="top.donate">
+				<source>Donate</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal">
+				<source>Nsbackupglobal</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.emails">
+				<source>Emails (Multiple emails using comma ,)</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_notification_on_error">
+				<source>Email Notification On Error</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_notification_on_success">
+				<source>Email Notification On Success</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.password_restore">
+				<source>Password Restore</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.backup_validation">
+				<source>Backup Validation</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.encryption">
+				<source>Encryption</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_local_name">
+				<source>Cleanup Local Name</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_local_value">
+				<source>Cleanup Local Value</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_server_name">
+				<source>Cleanup Server Name</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_server_value">
+				<source>Cleanup Server Value</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.quick_setup_wizard">
+				<source>Quick Setup Wizard</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_servers">
+				<source>Servers</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_servers.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_servers.path">
+				<source>Path</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_servers.server_type">
+				<source>Server Type</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_servers.settings">
+				<source>Settings</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_schedule">
+				<source>Schedule</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_schedule.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_schedule.database_type">
+				<source>Database Type</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_schedule.database_username">
+				<source>Database Username</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_schedule.database_password">
+				<source>Database Password</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_schedule.backup_folder_settings">
+				<source>Backup Folder Settings</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_schedule.custom_folder_path">
+				<source>Custom Folder Path</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_schedule.select_schedule_type">
+				<source>Select Schedule Type</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_schedule.select_schedulle_settings">
+				<source>Select Schedulle Settings</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_schedule.backup_destination">
+				<source>Backup Server/Cloud</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_schedule.servers">
+				<source>Servers</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_schedule.backup_data">
+				<source>Backup Data</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata">
+				<source>Backup Data</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.start_datetime">
+				<source>Start Datetime</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.end_datetime">
+				<source>End Datetime</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.backup_type">
+				<source>Backup Type</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.download_url">
+				<source>Download Url</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.schedule_uid">
+				<source>Schedule Uid</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.server_uid">
+				<source>Server Uid</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.logs_uid">
+				<source>Logs Uid</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.local_backup_path">
+				<source>Local Backup Path</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.servers_backup_path">
+				<source>Servers Backup Path</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.filenames">
+				<source>Filenames</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.size">
+				<source>Size</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.logs">
+				<source>Logs</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.date">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupdata.status">
+				<source>Status</source>
+			</trans-unit>
+
+			<trans-unit id="nsbackup">
+				<source>NS Backup</source>
+			</trans-unit>
+
+			<trans-unit id="menu.dashboard">
+				<source>Dashboard</source>
+			</trans-unit>
+			<trans-unit id="menu.backupsrestore">
+				<source>Backup History</source>
+			</trans-unit>
+			<trans-unit id="menu.schedulebackups">
+				<source>Schedule Backup</source>
+			</trans-unit>
+			<trans-unit id="menu.serverclouds">
+				<source>Server/Clouds</source>
+			</trans-unit>
+			<trans-unit id="menu.globalsettings">
+				<source>Global Settings</source>
+			</trans-unit>
+			<trans-unit id="menu.premiumextension">
+				<source>Premium Extension</source>
+			</trans-unit>
+
+			<trans-unit id="globalsettings.title">
+				<source>Global Settings</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.emails">
+				<source>Emails</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.emails.desc">
+				<source>Multiple emails using comma separated</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.email_subject">
+				<source>Email Subject</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.email_subject.desc">
+				<source>Enter the email's subject</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.notification">
+				<source>Notification Settings</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.emailNotificationOnSuccess">
+				<source>Send email only at success backup</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.emailNotificationOnError">
+				<source>Send email only at failure of backup</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.defaultServer">
+				<source>Default Server/Cloud</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.defaultServer.desc">
+				<source>Choose your default backup server, You can manage it from Servers/Cloud</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.backupValidation">
+				<source>Backup Validation</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.encryption">
+				<source>Encryption Secure</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.cleanup">
+				<source>Clean-up Type</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.cleanup.desc">
+				<source>Choose clean-up or delete backup type</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.cleanup_quantity">
+				<source>Clean-up Quantity</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.cleanup_quantity.desc">
+				<source>Enter at how many backups clean or remove backups at your web-server and remote servers/cloud too</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.servercleanup">
+				<source>Server Cleanups?</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.yes">
+				<source>Yes</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.compress">
+				<source>Backup Compression File</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.compress.desc">
+				<source>Select compression technique, Only select the one which is installed on your server</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.savesettings">
+				<source>Save Settings</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.cleanupLocalName">
+				<source>Cleanup Local Name</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.cleanupLocalValue">
+				<source>Cleanup Local Path</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.cleanupServerName">
+				<source>Cleanup Server Name</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.cleanupServerValue">
+				<source>Cleanup Server Path</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.email-error">
+				<source>Please enter valid email address</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.no_data_server_error">
+				<source>Please configure settings from Server/Cloud.</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.create">
+				<source>Global settings created successfully.</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.update">
+				<source>Global settings updated successfully.</source>
+			</trans-unit>
+			<trans-unit id="servercloud.title">
+				<source>Servers/Clouds</source>
+			</trans-unit>
+			<trans-unit id="servercloud.new">
+				<source>Configure New Server/Clouds</source>
+			</trans-unit>
+			<trans-unit id="servercloud.newform.title">
+				<source>Configure New Server/Cloud</source>
+			</trans-unit>
+			<trans-unit id="servercloud.editform.title">
+				<source>Edit Server/Cloud</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.servername">
+				<source>Server Name</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.selectservercloud">
+				<source>Select Server/Cloud</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.submit">
+				<source>Save Sever Settings</source>
+			</trans-unit>
+			<trans-unit id="servercloud.nodata">
+				<source>Please add valid-data in this field</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.key">
+				<source>Key</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.secret">
+				<source>Secret</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.bucket">
+				<source>Bucket</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.region">
+				<source>Region</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.path">
+				<source>Path</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.parentId">
+				<source>Parent ID</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.host">
+				<source>Host</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.port">
+				<source>Port</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.password">
+				<source>Password</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.passive">
+				<source>Passive</source>
+			</trans-unit>
+			<trans-unit id="servercloud.form.token">
+				<source>Token</source>
+			</trans-unit>
+			<trans-unit id="servercloud.content.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="servercloud.content.type">
+				<source>Path</source>
+			</trans-unit>
+			<trans-unit id="servercloud.content.settings">
+				<source>Settings</source>
+			</trans-unit>
+			<trans-unit id="servercloud.content.actions">
+				<source>Actions</source>
+			</trans-unit>
+			<trans-unit id="servercloud.content.run">
+				<source>Start Backup</source>
+			</trans-unit>
+			<trans-unit id="servercloud.content.edit">
+				<source>Edit</source>
+			</trans-unit>
+			<trans-unit id="servercloud.content.delete">
+				<source>Delete</source>
+			</trans-unit>
+			<trans-unit id="servercloud.content.cancel">
+				<source>Cancel</source>
+			</trans-unit>
+			<trans-unit id="servercloud.content.deleterecord">
+				<source>Are you sure you want to delete this record?</source>
+			</trans-unit>
+			<trans-unit id="servercloud.content.deleteselected">
+				<source>Are you sure you want to delete selected records?</source>
+			</trans-unit>
+			<trans-unit id="servercloud.content.deleteservercloud">
+				<source>Delete Servers/Clouds</source>
+			</trans-unit>
+			<trans-unit id="servercloud.content.selected">
+				<source>Selected</source>
+			</trans-unit>
+			<trans-unit id="update-server-cloud">
+				<source>Server/Cloud configuration updated successfully.</source>
+			</trans-unit>
+			<trans-unit id="delete-server-cloud">
+				<source>Server/Cloud deleted successfully.</source>
+			</trans-unit>
+			<trans-unit id="create-server-cloud">
+				<source>New Server/Cloud configuration created successfully.</source>
+			</trans-unit>
+
+			<trans-unit id="schedule.content.schedulebackup">
+				<source>Schedule Backup</source>
+			</trans-unit>
+			<trans-unit id="schedule.content.createschedulebackup">
+				<source>Schedule Backup</source>
+			</trans-unit>
+			<trans-unit id="schedule.form.backupname">
+				<source>Backup Name</source>
+			</trans-unit>
+			<trans-unit id="schedule.form.startrun">
+				<source>Start Date/Time</source>
+			</trans-unit>
+			<trans-unit id="schedule.form.endrun">
+				<source>End Date/Time</source>
+			</trans-unit>
+			<trans-unit id="schedule.form.backuptypelabel">
+				<source>What do you want to Backup?</source>
+			</trans-unit>
+			<trans-unit id="schedule.form.selectschedule">
+				<source>Select Schedule</source>
+			</trans-unit>
+			<trans-unit id="schedule.form.selectdestination">
+				<source>Choose Server/Cloud</source>
+			</trans-unit>
+			<trans-unit id="schedule.form.schedulebackup.submit">
+				<source>Submit Schedule Backup</source>
+			</trans-unit>
+			<trans-unit id="schedule.backuptype.error">
+				<source>Please select at least one checkbox.</source>
+			</trans-unit>
+			<trans-unit id="schedule.backup.create">
+				<source>New schedule backup created successfully.</source>
+			</trans-unit>
+			<trans-unit id="schedule.table.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="schedule.table.time">
+				<source>Schedule/Cron</source>
+			</trans-unit>
+			<trans-unit id="schedule.table.nexttime">
+				<source>Start At</source>
+			</trans-unit>
+			<trans-unit id="schedule.table.lasttime">
+				<source>End At</source>
+			</trans-unit>
+			<trans-unit id="schedule.table.nextexecution">
+				<source>Next Execution</source>
+			</trans-unit>
+			<trans-unit id="schedule.table.lastexecution">
+				<source>Last Executed</source>
+			</trans-unit>
+			<trans-unit id="schedule.table.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="schedule.table.server">
+				<source>Server</source>
+			</trans-unit>
+			<trans-unit id="schedule.table.next-run">
+				<source>End At</source>
+			</trans-unit>
+			<trans-unit id="schedule.table.last-run">
+				<source>Last Run</source>
+			</trans-unit>
+			<trans-unit id="schedule.table.actions">
+				<source>Actions</source>
+			</trans-unit>
+			<trans-unit id="schedule.table.deleteall">
+				<source>Delete Schedule Backup</source>
+			</trans-unit>
+			<trans-unit id="manualbackup.success">
+				<source>Manual backup taken successfully.</source>
+			</trans-unit>
+			<trans-unit id="manualbackup.error">
+				<source>Manual backup failed.</source>
+			</trans-unit>
+			<trans-unit id="backup.downloaded">
+				<source>Backup downloaded at </source>
+			</trans-unit>
+			<trans-unit id="logs">
+				<source>Backup Logs</source>
+			</trans-unit>
+			<trans-unit id="download.backup.now">
+				<source>Download Backup Now!</source>
+			</trans-unit>
+			<trans-unit id="download.backup">
+				<source>Download Backup</source>
+			</trans-unit>
+			<trans-unit id="start.one.click.backup">
+				<source>Start One-click Backup</source>
+			</trans-unit>
+			<trans-unit id="backup.date">
+				<source>Backup Date</source>
+			</trans-unit>
+			<trans-unit id="backup.type">
+				<source>Backup Type</source>
+			</trans-unit>
+			<trans-unit id="server.cloud">
+				<source>Backup Server/Cloud</source>
+			</trans-unit>
+			<trans-unit id="size_mb">
+				<source>Size</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.php">
+				<source>PHP Installed Path</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.php.desc">
+				<source>Please enter your PHP installed path eg., /usr/bin/php</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.root">
+				<source>TYPO3 Installed Path</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.root.desc">
+				<source>Please enter full physical path of your TYPO3 installation eg., /var/www/html</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.siteurl">
+				<source>Your Site URL</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.siteurl.desc">
+				<source>Please enter your site's URL like https://yoursitename.com</source>
+			</trans-unit>
+			<trans-unit id="delete.backup.data">
+				<source>Backup data deleted successfully.</source>
+			</trans-unit>
+			<trans-unit id="delete.backup.message">
+				<source>Removed backup file </source>
+			</trans-unit>
+			<trans-unit id="quicksetup.email">
+				<source>Enter your e-mail address to get backup success and failuer notification</source>
+			</trans-unit>
+			<trans-unit id="quicksetup.server">
+				<source>Choose your backup server/cloud</source>
+			</trans-unit>
+			<trans-unit id="quicksetup.skip">
+				<source>Skip Setup Wizard For Now</source>
+			</trans-unit>
+			<trans-unit id="schedule.create.success">
+				<source>Schedule backup created successfully.</source>
+			</trans-unit>
+			<trans-unit id="schedule.update.success">
+				<source>Schedule backup updated successfully.</source>
+			</trans-unit>
+			<trans-unit id="backup.now">
+				<source>Backup Now!</source>
+			</trans-unit>
+			<trans-unit id="backup.now.description1">
+				<source>Click on below button to start backup now all configurable options.</source>
+			</trans-unit>
+			<trans-unit id="backup.now.description2">
+				<source>You will need to choose backup type, backup name and server destination.</source>
+			</trans-unit>
+			<trans-unit id="next.scheduled.backups">
+				<source>Scheduled Backups</source>
+			</trans-unit>
+			<trans-unit id="more.logs">
+				<source>See More Logs</source>
+			</trans-unit>
+			<trans-unit id="more.schedule.backups">
+				<source>Checkout Schedule Backups</source>
+			</trans-unit>
+			<trans-unit id="schedule.add.scheduler.header">
+				<source>Please Configure TYPO3's Scheduler</source>
+			</trans-unit>
+			<trans-unit id="schedule.add.scheduler.message">
+				<source>Go to System > Scheduler > Add New "Execute console commands > ns_backup". Name should be "NS Backup".</source>
+			</trans-unit>
+			<trans-unit id="no.data.found">
+				<source>No data found.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-12-28T17:40:31Z" product-name="ns_backup">
+		<header/>
+		<body>
+			<trans-unit id="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="path.description">
+				<source>path</source>
+			</trans-unit>
+			<trans-unit id="server_type.description">
+				<source>serverType</source>
+			</trans-unit>
+			<trans-unit id="settings.description">
+				<source>settings</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

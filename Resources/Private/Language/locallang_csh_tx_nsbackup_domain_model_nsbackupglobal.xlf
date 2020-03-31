@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-12-28T17:40:31Z" product-name="ns_backup">
+		<header/>
+		<body>
+			<trans-unit id="emails.description">
+				<source>emails</source>
+			</trans-unit>
+			<trans-unit id="email_notification_on_error.description">
+				<source>emailNotificationOnError</source>
+			</trans-unit>
+			<trans-unit id="email_notification_on_success.description">
+				<source>emailNotificationOnSuccess</source>
+			</trans-unit>
+			<trans-unit id="password_restore.description">
+				<source>passwordRestore</source>
+			</trans-unit>
+			<trans-unit id="backup_validation.description">
+				<source>backupValidation</source>
+			</trans-unit>
+			<trans-unit id="encryption.description">
+				<source>encryption</source>
+			</trans-unit>
+			<trans-unit id="cleanup_local_name.description">
+				<source>cleanupLocalName</source>
+			</trans-unit>
+			<trans-unit id="cleanup_local_value.description">
+				<source>cleanupLocalValue</source>
+			</trans-unit>
+			<trans-unit id="cleanup_server_name.description">
+				<source>cleanupServerName</source>
+			</trans-unit>
+			<trans-unit id="cleanup_server_value.description">
+				<source>cleanupServerValue</source>
+			</trans-unit>
+			<trans-unit id="quick_setup_wizard.description">
+				<source>quickSetupWizard</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

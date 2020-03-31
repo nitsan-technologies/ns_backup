@@ -1,0 +1,26 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:layout name="Default" />
+
+	<f:section name="content">
+        <f:flashMessages />
+        <div class="ns-backup-general-setting-wrap">
+			<div class="card" data-mh="ns-backup-dashboard-block">
+				<div class="card-header">
+					<h4><f:translate key="globalsettings.title" /></h4>
+				</div>
+				<div class="card-body">
+					<div class="backupewizard-form-wrap">
+						<div class="row">
+							<div class="col-md-8 col-lg-8">
+								<f:form action="{f:if(condition: '{backupglobal}', then: 'update', else: 'create')}" controller="Backupglobal" name="backupglobal" enctype="multipart/form-data" object="{backupglobal}">
+									<f:render partial="GlobalSetting/Globalform" arguments="{_all}"/>
+								</f:form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</f:section>
+
+</html>

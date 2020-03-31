@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-12-28T17:40:31Z" product-name="ns_backup">
+		<header/>
+		<body>
+			<trans-unit id="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="category.description">
+				<source>category</source>
+			</trans-unit>
+			<trans-unit id="start_datetime.description">
+				<source>startDatetime</source>
+			</trans-unit>
+			<trans-unit id="end_datetime.description">
+				<source>endDatetime</source>
+			</trans-unit>
+			<trans-unit id="backup_type.description">
+				<source>backupType</source>
+			</trans-unit>
+			<trans-unit id="download_url.description">
+				<source>downloadUrl</source>
+			</trans-unit>
+			<trans-unit id="schedule_uid.description">
+				<source>scheduleUid</source>
+			</trans-unit>
+			<trans-unit id="server_uid.description">
+				<source>serverUid</source>
+			</trans-unit>
+			<trans-unit id="logs_uid.description">
+				<source>logsUid</source>
+			</trans-unit>
+			<trans-unit id="local_backup_path.description">
+				<source>localBackupPath</source>
+			</trans-unit>
+			<trans-unit id="servers_backup_path.description">
+				<source>serversBackupPath</source>
+			</trans-unit>
+			<trans-unit id="filenames.description">
+				<source>filenames</source>
+			</trans-unit>
+			<trans-unit id="size.description">
+				<source>size</source>
+			</trans-unit>
+			<trans-unit id="logs.description">
+				<source>logs</source>
+			</trans-unit>
+			<trans-unit id="date.description">
+				<source>date</source>
+			</trans-unit>
+			<trans-unit id="status.description">
+				<source>status</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

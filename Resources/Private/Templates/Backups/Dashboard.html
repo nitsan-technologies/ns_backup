@@ -1,0 +1,60 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+    <f:flashMessages />
+
+	<div class="ns-backup-dashboard-blocks">
+		<div class="row">
+            <div class="col-md-6">
+				<div class="ns-backup-last-logs">
+					<div class="card" data-mh="ns-backup-dashboard-block">
+						<div class="card-header">
+							<f:translate key="logs" />
+						</div>
+						<div class="card-body">
+							<ul class="list-unstyled">
+                                <f:if condition="{arrBackupData}">
+                                    <f:then>
+                                        <f:for each="{arrBackupData}" as="backup" iteration="i">
+                                            <li>
+                                                {backup.title}:
+                                                <f:for each="{backuptype}" as="whichbackup" iteration="i">
+                                                    <f:if condition="{whichbackup.value} == {backup.backup_type}">
+                                                        {whichbackup.key}
+                                                    </f:if>
+                                                </f:for>
+                                                at <f:format.date format="d-m-Y H:i">{backup.start_datetime}</f:format.date>
+                                            </li>
+                                        </f:for>
+                                        <f:link.action action="backuprestore" controller="Backups" class="btn btn-secondary"><em class="fa fa-file-text-o" aria-hidden="true"></em> <f:translate key="more.logs" /></f:link.action>
+                                    </f:then>
+                                    <f:else>
+                                        <f:translate key="no.data.found" />
+                                    </f:else>
+                                </f:if>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="ns-backup-backupnow">
+					<div class="card bg-dark text-white" data-mh="ns-backup-dashboard-block">
+						<div class="card-body">
+							<h4><f:translate key="backup.now" /></h4>
+							<p>
+                                <f:translate key="backup.now.description1" />
+                                <f:translate key="backup.now.description2" />
+                            </p>
+							<a href="javascript:;" class="btn btn-primary" data-toggle="modal"
+                                data-target="#backupNowModal"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="start.one.click.backup" /></a>
+                            <p>&nbsp;</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</f:section>
+</html>

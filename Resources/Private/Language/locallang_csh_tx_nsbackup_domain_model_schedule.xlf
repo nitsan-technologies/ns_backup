@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-12-28T17:40:31Z" product-name="ns_backup">
+		<header/>
+		<body>
+			<trans-unit id="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="database_type.description">
+				<source>databaseType</source>
+			</trans-unit>
+			<trans-unit id="database_username.description">
+				<source>databaseUsername</source>
+			</trans-unit>
+			<trans-unit id="database_password.description">
+				<source>databasePassword</source>
+			</trans-unit>
+			<trans-unit id="backup_folder_settings.description">
+				<source>backupFolderSettings</source>
+			</trans-unit>
+			<trans-unit id="custom_folder_path.description">
+				<source>customFolderPath</source>
+			</trans-unit>
+			<trans-unit id="select_schedule_type.description">
+				<source>selectScheduleType</source>
+			</trans-unit>
+			<trans-unit id="select_schedulle_settings.description">
+				<source>selectSchedulleSettings</source>
+			</trans-unit>
+			<trans-unit id="backup_destination.description">
+				<source>backupDestination</source>
+			</trans-unit>
+			<trans-unit id="servers.description">
+				<source>servers</source>
+			</trans-unit>
+			<trans-unit id="backup_data.description">
+				<source>backupData</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
