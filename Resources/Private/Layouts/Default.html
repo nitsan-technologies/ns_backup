@@ -1,12 +1,14 @@
 <html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-<f:be.container pageTitle="{f:translate(key: 'pagetitle')}" includeCssFiles="{
-			0: '{f:uri.resource(path:\'Vendor/bootstrap4.3.1.min.css\')}',
-            1: '{f:uri.resource(path:\'Css/main.css\')}',
-            2: '{f:uri.resource(path:\'Css/highlight/default.css\')}'
-		}" includeRequireJsModules="{
+<f:be.container pageTitle="{f:translate(key: 'pagetitle')}" includeRequireJsModules="{
             0:'TYPO3/CMS/NsBackup/Highlight',
             1:'TYPO3/CMS/NsBackup/Main'
-		}">
+        }">
+
+    <!-- Due to css-order rendering issue ignoring "includeCssFiles" -->
+    <link rel="stylesheet" type="text/css" href="/typo3conf/ext/ns_backup/Resources/Public/Vendor/bootstrap4.3.1.min.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/typo3conf/ext/ns_backup/Resources/Public/Css/main.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/typo3conf/ext/ns_backup/Resources/Public/Css/highlight/default.css" media="all">
+    
 	<div class="typo3-fullDoc">
 		<div id="typo3-docheader">
 			<div class="typo3-docheader-functions">
