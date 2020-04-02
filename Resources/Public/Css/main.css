@@ -450,3 +450,11 @@ label {
 .modal-body {
     max-height: 650px;
 }
+
+/* TYPO3 v10 Patch */
+.module-loading-indicator, .module-docheader.t3js-module-docheader {
+    display: none !important;
+}
+.module-docheader+.module-body {
+    padding: 0px !important;
+}
