@@ -4,10 +4,10 @@
             1:'TYPO3/CMS/NsBackup/Main'
         }">
 
-    <!-- Due to css-order rendering issue ignoring "includeCssFiles" -->
-    <link rel="stylesheet" type="text/css" href="/typo3conf/ext/ns_backup/Resources/Public/Vendor/bootstrap4.3.1.min.css" media="all">
-    <link rel="stylesheet" type="text/css" href="/typo3conf/ext/ns_backup/Resources/Public/Css/main.css" media="all">
-    <link rel="stylesheet" type="text/css" href="/typo3conf/ext/ns_backup/Resources/Public/Css/highlight/default.css" media="all">
+    <!-- Due to css-order rendering issue in TYPO3-v10 ignoring "includeCssFiles" -->
+    <link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Vendor/bootstrap4.3.1.min.css', extensionName: 'ns_backup')}" media="all">
+    <link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Css/main.css', extensionName: 'ns_backup')}" media="all">
+    <link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Css/highlight/default.css', extensionName: 'ns_backup')}" media="all">
     
 	<div class="typo3-fullDoc">
 		<div id="typo3-docheader">
