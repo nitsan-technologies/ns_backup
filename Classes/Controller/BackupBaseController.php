@@ -411,28 +411,38 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
             // PATCH If compress=bzip2
             $compressTechnique = $this->globalSettingsData[0]->compress;
             if($compressTechnique == 'bzip2' || empty($compressTechnique)) {
-                $compressTechnique = 'bz2';
+                $compressTechnique = '.bz2';
             }
+            else if($compressTechnique == 'zip') {
+                $compressTechnique = '';
+            }
+            else if($compressTechnique == 'gzip') {
+                $compressTechnique = '.gz';
+            }
+            else if($compressTechnique == 'xz') {
+                $compressTechnique = '.xz';
+            }
+            //echo $compressTechnique;exit;
 
             $this->backupFilePath = $this->localStoragePath.$backupType;
             $this->backupFileName = $backupFileName.$backupExtFile;
 
             // Physical file
-            $this->backupFile = $this->backupFilePath.'/'.$backupFileName.$backupExtFile.'.'.$compressTechnique;
+            $this->backupFile = $this->backupFilePath.'/'.$backupFileName.$backupExtFile.$compressTechnique;
 
             // Download file
             $this->backupDownloadPath =
                 $this->baseURL.
                 $backupType.'/'.
-                $backupFileName.$backupExtFile.'.'.$compressTechnique;
+                $backupFileName.$backupExtFile.$compressTechnique;
 
             // If Backup Type = ALL then, Let's consider mysql as special-case
             if ($backupType == 'mysqldump') {
-                $this->backupFileMySQL = $this->backupFilePath . '/' . $backupFileName . $backupExtFile . '.' . $compressTechnique;
+                $this->backupFileMySQL = $this->backupFilePath . '/' . $backupFileName . $backupExtFile.$compressTechnique;
                 $this->backupDownloadPathMySQL =
                     $this->baseURL .
                     $backupType . '/' .
-                    $backupFileName . $backupExtFile . '.' . $compressTechnique;
+                    $backupFileName . $backupExtFile.$compressTechnique;
             }
 
             $json .= '
