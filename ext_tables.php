@@ -33,14 +33,20 @@ define(
 call_user_func(
     function () {
         if (TYPO3_MODE === 'BE') {
+            $backupController = 'Backups';
+            $backupglobalController = 'Backupglobal';
+            if (version_compare(TYPO3_branch, '10.0', '>=')) {
+                $backupController = \NITSAN\NsBackup\Controller\BackupsController::class;
+                $backupglobalController = \NITSAN\NsBackup\Controller\BackupglobalController::class;
+            }
             \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
                 'NITSAN.NsBackup',
                 'tools', // Make module a submodule of 'tools'
                 'backup', // Submodule key
                 '', // Position
                 [
-                    'Backups' => 'dashboard, backuprestore, deletebackupbackup, globalsetting, premiumextension, manualbackup',
-                    'Backupglobal' => 'globalsetting, create, update',
+                    $backupController => 'dashboard, backuprestore, deletebackupbackup, globalsetting, premiumextension, manualbackup',
+                    $backupglobalController => 'globalsetting, create, update',
                 ],
                 [
                     'access' => 'user,group',

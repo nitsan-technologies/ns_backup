@@ -18,8 +18,8 @@
 			<div class="card-header">
 				<div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
                     <h5><f:translate key="menu.backupsrestore" /></h5>
-                    <a href="javascript:;" class="btn btn-warning text-white" data-toggle="modal"
-						data-target="#backupNowModal"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="start.one.click.backup" /></a>
+                    <a href="javascript:;" class="btn btn-warning text-white" {modalAttr}toggle="modal"
+						{modalAttr}target="#backupNowModal"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="start.one.click.backup" /></a>
 				</div>
 			</div>
 			<div class="card-body">
@@ -75,10 +75,10 @@
 										<a target="_blank" href="{backup.download_url}" class="btn btn-primary"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="download.backup" /></a>
 										<!-- <a href="javascript:;" class="btn btn-danger" data-toggle="modal"
 											data-target="#nsBackupDeleteRecordModal"><em class="fa fa-trash-o" aria-hidden="true"></em>Delete</a> -->
-										<a href="javascript:;" class="btn btn-success btn-log-show" data-toggle="modal"
-                                            data-target="#logBackup" data-id="{backup.uid}"><em class="fa fa-file-text-o" aria-hidden="true"></em>Logs</a>
-                                        <a href="javascript:;" class="btn btn-danger delete-backup" data-toggle="modal"
-                                            data-target="#nsBackupDeletebackupModal" data-title="{backup.title}" data-msg="<f:translate key='servercloud.content.deleterecord' />" data-id="{backup.uid}">
+										<a href="javascript:;" class="btn btn-success btn-log-show" {modalAttr}toggle="modal"
+                                            {modalAttr}target="#logBackup" data-id="{backup.uid}"><em class="fa fa-file-text-o" aria-hidden="true"></em>Logs</a>
+                                        <a href="javascript:;" class="btn btn-danger delete-backup" {modalAttr}toggle="modal"
+                                            {modalAttr}target="#nsBackupDeletebackupModal" data-title="{backup.title}" data-msg="<f:translate key='servercloud.content.deleterecord' />" data-id="{backup.uid}">
                                             <em class="fa fa-trash-o" aria-hidden="true"></em><f:translate key="servercloud.content.delete" />
                                         </a>
                                     </div>

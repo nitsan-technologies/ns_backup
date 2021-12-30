@@ -70,6 +70,11 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     {
         $globalSettingsData = $this->backupglobalRepository->findAll();
         $arrBackupData = $this->backupglobalRepository->findBackupDataAll(5);
+        if (version_compare(TYPO3_branch, '11', '>=')) {
+            $this->view->assign('modalAttr','data-bs-');
+        } else {
+            $this->view->assign('modalAttr','data-');
+        }
 
         $arrMultipleVars = [
             'cleanup' => constant('cleanup'),
@@ -92,7 +97,11 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     public function backuprestoreAction()
     {
         $globalSettingsData = $this->backupglobalRepository->findAll();
-
+        if (version_compare(TYPO3_branch, '11', '>=')) {
+            $this->view->assign('modalAttr','data-bs-');
+        } else {
+            $this->view->assign('modalAttr','data-');
+        }
         $arrMultipleVars = [
             'cleanup' => constant('cleanup'),
             'backuptype' => constant('backuptype'),
@@ -145,7 +154,9 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $objBackupData = $this->backupglobalRepository->findBackupDataAll();
         foreach ($objBackupData as $keyBackup => $valueBackup) {
             // Formate Log
-            $objBackupData[$keyBackup]['logs'] = '<pre class="pre-scrollable"><code class="json">' . json_encode(json_decode($objBackupData[$keyBackup]['logs']), JSON_PRETTY_PRINT) . '</code></pre>';
+            if ($objBackupData[$keyBackup]['logs']) {
+                $objBackupData[$keyBackup]['logs'] = '<pre class="pre-scrollable"><code class="json">' . json_encode(json_decode($objBackupData[$keyBackup]['logs']), JSON_PRETTY_PRINT) . '</code></pre>';
+            }
         }
         $arrMultipleVars['arrBackupData'] = $objBackupData;
 

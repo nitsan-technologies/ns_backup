@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Vendor/bootstrap4.3.1.min.css', extensionName: 'ns_backup')}" media="all">
     <link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Css/main.css', extensionName: 'ns_backup')}" media="all">
     <link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Css/highlight/default.css', extensionName: 'ns_backup')}" media="all">
-    
 	<div class="typo3-fullDoc">
 		<div id="typo3-docheader">
 			<div class="typo3-docheader-functions">
@@ -29,11 +28,11 @@
 			</div>
 		</div>
 		<div id="typo3-docbody">
-			<div id="typo3-inner-docbody">
+			<div id="typo3-inner-docbody" style="padding: 24px;margin-top: 0;transition: border .2s ease;">
 				<div class="ns-backup-navigation">
 					<nav class="navbar navbar-expand-lg">
 						<a class="navbar-brand" href="javascript:;"><f:translate key="nsbackup" /></a>
-						<button class="navbar-toggler" type="button" data-toggle="collapse"
+						<button class="navbar-toggler" type="button" {modalAttr}toggle="collapse"
 							data-target="#nsbackupNavbar" aria-controls="nsbackupNavbar" aria-expanded="false"
 							aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
@@ -94,7 +93,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title"><f:translate key="servercloud.content.delete" /> <span class="backup-title"></span></h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
@@ -105,7 +104,7 @@
 						<f:form.hidden name="id" value="" class="delete-backup-id"/>
 						<f:form.hidden name="deletetype" class="deletetype" value="single" />
 						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal"><em class="fa fa-close"
+							<button type="button" class="btn btn-secondary" {modalAttr}dismiss="modal"><em class="fa fa-close"
 								aria-hidden="true"></em><f:translate key="servercloud.content.cancel" /></button>
 							<button type="submit" class="btn btn-danger delete-backup-backup-del" disabled><em class="fa fa-trash-o"
 								aria-hidden="true" ></em><f:translate key="servercloud.content.delete" /></button>
@@ -122,7 +121,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title">NS Backup Quick Setup Wizard</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
@@ -162,7 +161,7 @@
 								<div class="form-group">
 									<button type="submit" class="btn btn-danger btn-global-submit"><em class="fa fa-save"
 											aria-hidden="true"></em><f:translate key="globalsettings.form.savesettings" /></button>
-									<button type="button" class="btn btn-secondary" data-dismiss="modal"><em class="fa fa-close"
+									<button type="button" class="btn btn-secondary" {modalAttr}dismiss="modal"><em class="fa fa-close"
 											aria-hidden="true"></em><f:translate key="quicksetup.skip" /></button>
 								</div>
 							</f:form>
@@ -179,7 +178,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title">Manual Backup</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
@@ -256,7 +255,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title">Delete Backup</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
@@ -264,7 +263,7 @@
 						<p>Are you want to sure Delete <span>backup?</span></p>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal"><em class="fa fa-close"
+						<button type="button" class="btn btn-secondary" {modalAttr}dismiss="modal"><em class="fa fa-close"
 								aria-hidden="true"></em>Cancel</button>
 						<button type="button" class="btn btn-danger"><em class="fa fa-trash-o"
 								aria-hidden="true"></em>Delete</button>
@@ -279,7 +278,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title">Run Backup</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
@@ -301,7 +300,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal"><em class="fa fa-close"
+						<button type="button" class="btn btn-secondary" {modalAttr}dismiss="modal"><em class="fa fa-close"
 								aria-hidden="true" ></em>Cancel</button>
 					</div>
 				</div>
@@ -315,7 +314,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title"><f:translate key="logs" /></h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
