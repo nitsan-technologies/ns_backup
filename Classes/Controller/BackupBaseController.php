@@ -398,8 +398,10 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
                 $sourcePath = $this->rootPath.'/'.$targetPath;
 
                 // In composer-mode, let's figure out vendor folder
-                if(($backupType == 'vendor') && (strlen($this->composerRootPath) > 0)) {
-                    $sourcePath = $this->composerRootPath.'/'.$targetPath;
+                if(($backupType == 'vendor') && $this->composerRootPath) {
+                    if((strlen($this->composerRootPath) > 0)){
+                        $sourcePath = $this->composerRootPath.'/'.$targetPath;
+                    }
                 }
                 $ignoreUploads = isset($ignoreUploads) ? $ignoreUploads : '';
                 $json .= '
