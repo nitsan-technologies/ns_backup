@@ -324,7 +324,7 @@ define([
             url: deleteUrl,
             data:{uids:id},
             success:function () {
-                window.location.reload();
+                window.location = window.location.href;
             }
         });
         e.preventDefault();

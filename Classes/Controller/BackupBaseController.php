@@ -246,7 +246,9 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         // Let's create LOG file if not existis
         if (!file_exists($logFile)) {
             $fh = @fopen($logFile, 'a');
-            @fclose($fh);
+            if($fh != false){
+                @fclose($fh);
+            }
         }
 
         $json = '
@@ -360,6 +362,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      */
     protected function getPhpbuBackup($backupName, $backupType, $backupFileName)
     {
+        $json = isset($json) ? $json : '';
         $json .= '
             {
                 "name": "'.$backupName.'",';
@@ -395,10 +398,12 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
                 $sourcePath = $this->rootPath.'/'.$targetPath;
 
                 // In composer-mode, let's figure out vendor folder
-                if(($backupType == 'vendor') && (strlen($this->composerRootPath) > 0)) {
-                    $sourcePath = $this->composerRootPath.'/'.$targetPath;
+                if(($backupType == 'vendor') && $this->composerRootPath) {
+                    if((strlen($this->composerRootPath) > 0)){
+                        $sourcePath = $this->composerRootPath.'/'.$targetPath;
+                    }
                 }
-
+                $ignoreUploads = isset($ignoreUploads) ? $ignoreUploads : '';
                 $json .= '
                 "source": {
                     "type": "tar",

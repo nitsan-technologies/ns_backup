@@ -116,9 +116,10 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         ###########################
 
         $arrPost = $this->request->getArguments();
-        $schedulerId = $_REQUEST['schedulerId'];
+        $schedulerId = isset($_REQUEST['schedulerId']) ? $_REQUEST['schedulerId'] : '';
 
         // "RUN" Backup from "Manual Backup Module"
+        $arrPost['backuprestore'] = isset($arrPost['backuprestore']) ? $arrPost['backuprestore'] : '';
         $arrPost = $arrPost['backuprestore'];
 
         if(!empty($arrPost['backupFolderSettings'])) {
@@ -195,11 +196,14 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->backupglobalRepository->removeBackupData($uid);
 
         // Remove file from Physical location
-        unlink($arrBackup['filenames']);
+        if(file_exists($arrBackup['filenames'])){
+            unlink($arrBackup['filenames']);
+        }
 
         $headerMsg = transalte::translate('delete.backup.data','ns_backup');
         $msg = transalte::translate('delete.backup.message','ns_backup').$arrBackup['filenames'];
         $this->addFlashMessage($msg, $headerMsg, \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+        return $msg;
         //$this->redirect('backuprestore');
     }
 }
