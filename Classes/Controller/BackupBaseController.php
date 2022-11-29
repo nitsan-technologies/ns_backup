@@ -220,6 +220,9 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
         // Get Database Configuration
         $this->arrDatabase = $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default'];
+        if(empty($this->arrDatabase['port'])) {
+            $this->arrDatabase['port'] = '3306';
+        }
 
         // Get Current Date time
         $permitted_chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
