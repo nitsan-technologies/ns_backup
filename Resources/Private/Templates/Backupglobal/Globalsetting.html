@@ -12,7 +12,7 @@
 					<div class="backupewizard-form-wrap">
 						<div class="row">
 							<div class="col-md-8 col-lg-8">
-								<f:form action="{f:if(condition: '{backupglobal}', then: 'update', else: 'create')}" controller="Backupglobal" name="backupglobal" enctype="multipart/form-data" object="{backupglobal}">
+								<f:form action="{f:if(condition: '{backupglobal}', then: 'update', else: 'create')}" class="ns-ext-form" controller="Backupglobal" name="backupglobal" enctype="multipart/form-data" object="{backupglobal}">
 									<f:render partial="GlobalSetting/Globalform" arguments="{_all}"/>
 								</f:form>
 							</div>

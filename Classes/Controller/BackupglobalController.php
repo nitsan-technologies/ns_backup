@@ -74,6 +74,11 @@ class BackupglobalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
             'action' => 'globalsetting',
             'errorValidation' => $this->errorValidation
         ]);
+        if (version_compare(TYPO3_branch, '11', '>=')) {
+            $this->view->assign('modalAttr','data-bs-');
+        } else {
+            $this->view->assign('modalAttr','data-');
+        }
     }
 
     /**
