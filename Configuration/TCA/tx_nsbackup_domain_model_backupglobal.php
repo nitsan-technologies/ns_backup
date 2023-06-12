@@ -1,4 +1,5 @@
 <?php
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal',
@@ -9,7 +10,6 @@ return [
         'sortby' => 'sorting',
         'versioningWS' => true,
         'languageField' => 'sys_language_uid',
-        'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
         'delete' => 'deleted',
         'enablecolumns' => [
@@ -18,45 +18,20 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'emails,email_notification_on_error,email_notification_on_success,default_server,password_restore,backup_validation,encryption,cleanup_local_name,cleanup_local_value,cleanup_server_name,cleanup_server_value,quick_setup_wizard,cleanup,compress,php,root,siteurl',
-        'iconfile' => 'EXT:ns_backup/Resources/Public/Icons/tx_nsbackup_domain_model_backupglobal.gif'
-    ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, emails, email_notification_on_error, email_notification_on_success, default_server, password_restore, backup_validation, encryption, cleanup_local_name, cleanup_local_value, cleanup_server_name, cleanup_server_value, quick_setup_wizard, cleanup, compress,php,root,siteurl',
+        'iconfile' => 'EXT:ns_backup/Resources/Public/Icons/tx_nsbackup_domain_model_backupglobal.gif',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, emails, email_notification_on_error, email_notification_on_success, default_server, password_restore, backup_validation, encryption, cleanup_local_name, cleanup_local_value, cleanup_server_name, cleanup_server_value, quick_setup_wizard, cleanup, compress,php,root,siteurl, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_diffsource, hidden, emails, email_notification_on_error, email_notification_on_success, default_server, password_restore, backup_validation, encryption, cleanup_local_name, cleanup_local_value, cleanup_server_name, cleanup_server_value, quick_setup_wizard, cleanup, compress,php,root,siteurl, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ]
-                ],
-                'default' => 0,
-            ],
-        ],
-        'l10n_parent' => [
-            'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => true,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'default' => 0,
-                'items' => [
-                    ['', 0],
-                ],
-                'foreign_table' => 'tx_nsbackup_domain_model_backupglobal',
-                'foreign_table_where' => 'AND tx_nsbackup_domain_model_backupglobal.pid=###CURRENT_PID### AND tx_nsbackup_domain_model_backupglobal.sys_language_uid IN (-1,0)',
+                'type' => 'language',
             ],
         ],
         'l10n_diffsource' => [
@@ -78,8 +53,10 @@ return [
             'config' => [
                 'type' => 'check',
                 'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:labels.enabled'
+                    'label' => '1',
+                    'value' => [
+                        'label'=> 0,
+                        'value' => 'LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:labels.enabled'
                     ]
                 ],
             ],
@@ -92,7 +69,7 @@ return [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'renderType' => 'datetime',
                 'size' => 13,
                 'eval' => 'datetime',
                 'default' => 0,
@@ -106,7 +83,7 @@ return [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'renderType' => 'datetime',
                 'size' => 13,
                 'eval' => 'datetime',
                 'default' => 0,
@@ -140,7 +117,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 4,
-                'eval' => 'int'
+                'eval' => 'number'
             ]
         ],
         'email_notification_on_success' => [
@@ -149,7 +126,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 4,
-                'eval' => 'int'
+                'eval' => 'number'
             ]
         ],
         'default_server' => [
@@ -230,7 +207,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 4,
-                'eval' => 'int'
+                'eval' => 'number'
             ]
         ],
         'cleanup' => [
@@ -248,7 +225,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 4,
-                'eval' => 'int'
+                'eval' => 'number'
             ],
         ],
         'compress' => [

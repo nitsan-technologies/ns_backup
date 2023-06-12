@@ -1,4 +1,5 @@
 <?php
+
 namespace NITSAN\NsBackup\Domain\Model;
 
 /***

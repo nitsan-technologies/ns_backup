@@ -1,4 +1,5 @@
 <?php
+
 namespace NITSAN\NsBackup\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -23,7 +24,7 @@ use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     /**
-     * @var array
+     * @var array<non-empty-string, 'ASC'|'DESC'>
      */
     protected $defaultOrderings = [
         'uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
@@ -32,7 +33,8 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * findBackupDataAll
      */
-    public function findBackupDataAll($limit = 0) {
+    public function findBackupDataAll($limit = 0)
+    {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_nsbackup_domain_model_backupdata');
 
         if($limit > 0) {
@@ -41,19 +43,18 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 ->from('tx_nsbackup_domain_model_backupdata')
                 ->orderBy('uid', 'DESC')
                 ->setMaxResults($limit)
-                ->execute();
-        }
-        else {
+                ->executeQuery();
+        } else {
             $statement = $queryBuilder
                 ->select('*')
                 ->from('tx_nsbackup_domain_model_backupdata')
                 ->orderBy('uid', 'DESC')
-                ->execute();
+                ->executeQuery();
         }
 
         $arrReturn = array();
 
-        while ($row = $statement->fetch()) {
+        while ($row = $statement->fetchAssociative()) {
             $arrReturn[] = $row;
         }
 
@@ -63,7 +64,8 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * addBackupData
      */
-    public function addBackupData($arrData) {
+    public function addBackupData($arrData)
+    {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_nsbackup_domain_model_backupdata');
         $queryBuilder
             ->insert(
@@ -74,7 +76,6 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                     'backup_type' => $arrData['backupFolderSettings'],
                     'download_url' => $arrData['download_url'],
                     'filenames' => $arrData['filenames'],
-                    //'server_uid' => $arrData['servers'],
                     'logs' => $arrData['log'],
                     'size' => $arrData['size'],
                     'jsonfile' => $arrData['jsonfile'],
@@ -85,15 +86,16 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * findBackupByUid
      */
-    public function findBackupByUid($arrUid) {
+    public function findBackupByUid($arrUid)
+    {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_nsbackup_domain_model_backupdata');
         $statement = $queryBuilder
             ->select('*')
             ->from('tx_nsbackup_domain_model_backupdata')
             ->where('uid', $arrUid[0])
-            ->execute();
+            ->executeQuery();
 
-        $row = $statement->fetch();
+        $row = $statement->fetchAssociative();
 
         return $row;
     }
@@ -101,7 +103,8 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * removeBackupData
      */
-    public function removeBackupData($arrUid) {
+    public function removeBackupData($arrUid)
+    {
         GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_nsbackup_domain_model_backupdata')
         ->delete(
             'tx_nsbackup_domain_model_backupdata', // from

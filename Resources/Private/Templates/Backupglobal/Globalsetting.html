@@ -2,11 +2,18 @@
 	<f:layout name="Default" />
 
 	<f:section name="content">
+		<f:be.pageRenderer
+			includeRequireJsModules="{
+				0:'TYPO3/CMS/NsBackup/jquery',
+				1:'TYPO3/CMS/NsBackup/Highlight',
+				2:'TYPO3/CMS/NsBackup/Main'
+			}"
+		/>
         <f:flashMessages />
         <div class="ns-backup-general-setting-wrap">
 			<div class="card" data-mh="ns-backup-dashboard-block">
 				<div class="card-header">
-					<h4><f:translate key="globalsettings.title" /></h4>
+					<h4><f:translate key="globalsettings.title" extensionName = "NsBackup" /></h4>
 				</div>
 				<div class="card-body">
 					<div class="backupewizard-form-wrap">
