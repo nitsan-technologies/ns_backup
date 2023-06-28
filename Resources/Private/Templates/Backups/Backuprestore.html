@@ -43,7 +43,6 @@
 								<th scope="col"><f:translate key="servercloud.content.name" extensionName = "NsBackup" /></th>
 								<th scope="col"><f:translate key="backup.date" extensionName = "NsBackup" /></th>
 								<th scope="col"><f:translate key="backup.type" extensionName = "NsBackup" /></th>
-								<th scope="col"><f:translate key="server.cloud" extensionName = "NsBackup" /></th>
 								<th scope="col"><f:translate key="size_mb" extensionName = "NsBackup" /></th>
 								<th scope="col"><f:translate key="servercloud.content.actions" extensionName = "NsBackup" /></th>
 							</tr>
@@ -66,13 +65,6 @@
                                     <f:for each="{backuptype}" as="whichbackup" iteration="i">
                                         <f:if condition="{whichbackup.value} == {backup.backup_type}">
                                             {whichbackup.key}
-                                        </f:if>
-                                    </f:for>
-                                </td>
-								<td>
-                                    <f:for each="{serverData}" as="whichserver" iteration="i">
-                                        <f:if condition="{whichserver.uid} == {backup.server_uid}">
-                                            {whichserver.title}
                                         </f:if>
                                     </f:for>
                                 </td>
