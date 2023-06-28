@@ -2,14 +2,21 @@
 <f:layout name="Default" />
 
 <f:section name="content">
+	<f:be.pageRenderer
+		includeRequireJsModules="{
+			0:'TYPO3/CMS/NsBackup/jquery',
+			1:'TYPO3/CMS/NsBackup/Highlight',
+			2:'TYPO3/CMS/NsBackup/Main'
+		}"
+	/>
     <f:flashMessages />
 
     <f:if condition="{isManualBackup} == '1'">
-        <a href="{download_url}" target="_blank" class="btn btn-success btn-backupnow"><em class="fa fa-download" aria-hidden="true"></em><f:translate key="download.backup.now" /></a>
+        <a href="{download_url}" target="_blank" class="btn btn-success btn-backupnow"><em class="fa fa-download" aria-hidden="true"></em><f:translate key="download.backup.now" extensionName = "NsBackup" /></a>
         <p>&nbsp;</p>
         <div class="alert alert-secondary">
-            <p><strong><f:translate key="logs" />:</strong></p>
-            <f:format.html><p>{log}</p></f:format.html>
+            <p><strong><f:translate key="logs" extensionName = "NsBackup" />:</strong></p>
+            <f:format.raw><p>{log}</p></f:format.raw>
         </div>
     </f:if>
 
@@ -17,9 +24,9 @@
 		<div class="card">
 			<div class="card-header">
 				<div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
-                    <h5><f:translate key="menu.backupsrestore" /></h5>
+                    <h5><f:translate key="menu.backupsrestore" extensionName = "NsBackup" /></h5>
                     <a href="javascript:;" class="btn btn-warning text-white" {modalAttr}toggle="modal"
-						{modalAttr}target="#backupNowModal"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="start.one.click.backup" /></a>
+						{modalAttr}target="#backupNowModal"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="start.one.click.backup" extensionName = "NsBackup" /></a>
 				</div>
 			</div>
 			<div class="card-body">
@@ -33,12 +40,11 @@
 										<label class="form-check-label" for="typo3ext"></label>
 									</div>
 								</th>
-								<th scope="col"><f:translate key="servercloud.content.name" /></th>
-								<th scope="col"><f:translate key="backup.date" /></th>
-								<th scope="col"><f:translate key="backup.type" /></th>
-								<th scope="col"><f:translate key="server.cloud" /></th>
-								<th scope="col"><f:translate key="size_mb" /></th>
-								<th scope="col"><f:translate key="servercloud.content.actions" /></th>
+								<th scope="col"><f:translate key="servercloud.content.name" extensionName = "NsBackup" /></th>
+								<th scope="col"><f:translate key="backup.date" extensionName = "NsBackup" /></th>
+								<th scope="col"><f:translate key="backup.type" extensionName = "NsBackup" /></th>
+								<th scope="col"><f:translate key="size_mb" extensionName = "NsBackup" /></th>
+								<th scope="col"><f:translate key="servercloud.content.actions" extensionName = "NsBackup" /></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -62,35 +68,25 @@
                                         </f:if>
                                     </f:for>
                                 </td>
-								<td>
-                                    <f:for each="{serverData}" as="whichserver" iteration="i">
-                                        <f:if condition="{whichserver.uid} == {backup.server_uid}">
-                                            {whichserver.title}
-                                        </f:if>
-                                    </f:for>
-                                </td>
 								<td>{backup.size}</td>
 								<td>
 									<div class="button-group ns-backup-actions-wrap">
-										<a target="_blank" href="{backup.download_url}" class="btn btn-primary"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="download.backup" /></a>
-										<!-- <a href="javascript:;" class="btn btn-danger" data-toggle="modal"
-											data-target="#nsBackupDeleteRecordModal"><em class="fa fa-trash-o" aria-hidden="true"></em>Delete</a> -->
+										<a target="_blank" href="{backup.download_url}" class="btn btn-primary"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="download.backup" extensionName = "NsBackup" /></a>
 										<a href="javascript:;" class="btn btn-success btn-log-show" {modalAttr}toggle="modal"
                                             {modalAttr}target="#logBackup" data-id="{backup.uid}"><em class="fa fa-file-text-o" aria-hidden="true"></em>Logs</a>
                                         <a href="javascript:;" class="btn btn-danger delete-backup" {modalAttr}toggle="modal"
-                                            {modalAttr}target="#nsBackupDeletebackupModal" data-title="{backup.title}" data-msg="<f:translate key='servercloud.content.deleterecord' />" data-id="{backup.uid}">
-                                            <em class="fa fa-trash-o" aria-hidden="true"></em><f:translate key="servercloud.content.delete" />
+                                            {modalAttr}target="#nsBackupDeletebackupModal" data-title="{backup.title}" data-msg="<f:translate key='servercloud.content.deleterecord' extensionName = 'NsBackup' />" data-id="{backup.uid}">
+                                            <em class="fa fa-trash-o" aria-hidden="true"></em><f:translate key="servercloud.content.delete" extensionName = "NsBackup" />
                                         </a>
                                     </div>
                                     <div style="display: none;" id="logDiv_{backup.uid}">
-                                        <f:format.html>{backup.logs}</f:format.html>
+                                        <f:format.raw>{backup.logs}</f:format.raw>
                                     </div>
 								</td>
                             </tr>
                             </f:for>
 						</tbody>
 					</table>
-                    <!-- <a href="javasctipt:;" class="btn btn-danger btn-delete-record"><em class="fa fa-trash-o" aria-hidden="true"></em>Delete Selected Backups</a> -->
 				</div>
 			</div>
 		</div>

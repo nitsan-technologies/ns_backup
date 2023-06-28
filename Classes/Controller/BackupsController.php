@@ -1,13 +1,14 @@
 <?php
+
 namespace NITSAN\NsBackup\Controller;
 
-use TYPO3\CMS\Extbase\Object\ObjectManager;
-use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
-
-use NITSAN\NsBackup\Controller\BackupBaseController;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Backend\Template\ModuleTemplate;
+use NITSAN\NsBackup\Controller\BackupBaseController;
+use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
+use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility as debug;
 
 /***
  *
@@ -31,12 +32,19 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     protected $backupglobalRepository;
 
     /**
-     * Inject the BackupglobalRepository repository
-     *
-     * @param \NITSAN\NsBackup\Domain\Repository\BackupglobalRepository $backupglobalRepository
+     * backupBaseController
      */
-    public function injectProductRepository(BackupglobalRepository $backupglobalRepository)
-    {
+    protected $backupBaseController;
+
+    /**
+     * errorValidation
+     */
+    protected $errorValidation;
+
+    public function __construct(
+        protected readonly ModuleTemplateFactory $moduleTemplateFactory,
+        BackupglobalRepository $backupglobalRepository
+    ) {
         $this->backupglobalRepository = $backupglobalRepository;
     }
 
@@ -45,36 +53,30 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * Override this method to solve assign variables common for all actions
      * or prepare the view in another way before the action is called.
      *
-     * @param \TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view The view to be initialized
      */
-    public function initializeView(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view)
+    public function initializeView()
     {
         // Global error check
-        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $this->backupBaseController = $this->objectManager->get(BackupBaseController::class);
+        $this->backupBaseController = GeneralUtility::makeInstance(BackupBaseController::class);
 
         $this->errorValidation = $this->backupBaseController->globalErrorValidation();
         if(!empty($this->errorValidation)) {
-            $header = transalte::translate('global.errorvalidation','ns_backup');
-            $message = transalte::translate('global.errorvalidation.message','ns_backup');
-            $this->addFlashMessage($message, $header, \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+            $header = transalte::translate('global.errorvalidation', 'ns_backup');
+            $message = transalte::translate('global.errorvalidation.message', 'ns_backup');
+            $this->addFlashMessage($message, $header, \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR);
         }
     }
 
     /**
      * action dashboard
      *
-     * @return void
      */
     public function dashboardAction()
     {
+        $view = $this->initializeModuleTemplate($this->request);
         $globalSettingsData = $this->backupglobalRepository->findAll();
         $arrBackupData = $this->backupglobalRepository->findBackupDataAll(5);
-        if (version_compare(TYPO3_branch, '11', '>=')) {
-            $this->view->assign('modalAttr','data-bs-');
-        } else {
-            $this->view->assign('modalAttr','data-');
-        }
+        $view->assign('modalAttr', 'data-bs-');
 
         $arrMultipleVars = [
             'cleanup' => constant('cleanup'),
@@ -86,22 +88,20 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'errorValidation' => $this->errorValidation
         ];
 
-        $this->view->assignMultiple($arrMultipleVars);
+        $view->assignMultiple($arrMultipleVars);
+
+        return $view->renderResponse();
     }
 
     /**
      * action backuprestore
      *
-     * @return void
      */
     public function backuprestoreAction()
     {
+        $view = $this->initializeModuleTemplate($this->request);
         $globalSettingsData = $this->backupglobalRepository->findAll();
-        if (version_compare(TYPO3_branch, '11', '>=')) {
-            $this->view->assign('modalAttr','data-bs-');
-        } else {
-            $this->view->assign('modalAttr','data-');
-        }
+        $view->assign('modalAttr', 'data-bs-');
         $arrMultipleVars = [
             'cleanup' => constant('cleanup'),
             'backuptype' => constant('backuptype'),
@@ -125,30 +125,25 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if(!empty($arrPost['backupFolderSettings'])) {
 
             // Create json and take backup
-            //$arrResponse = BackupBaseController::generateBackup($arrPost);
-            $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-            $this->backupBaseController = $this->objectManager->get(BackupBaseController::class);
+            $this->backupBaseController = GeneralUtility::makeInstance(BackupBaseController::class);
             $arrResponse = $this->backupBaseController->generateBackup($arrPost);
 
             if($arrResponse['log'] == 'error') {
                 // Error Flash-Message
-                $mesHeader = transalte::translate('manualbackup.error','ns_backup');
+                $mesHeader = transalte::translate('manualbackup.error', 'ns_backup');
                 $backup_file = $arrResponse['backup_file'];
-                $this->addFlashMessage($backup_file, $mesHeader, \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-            }
-            else {
+                $this->addFlashMessage($backup_file, $mesHeader, \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR);
+            } else {
                 // Success Flash-Message
-                $mesHeader = transalte::translate('manualbackup.success','ns_backup');
-                $backup_file = transalte::translate('backup.downloaded','ns_backup').' '.$arrResponse['backup_file'];
-                $this->addFlashMessage($backup_file, $mesHeader, \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+                $mesHeader = transalte::translate('manualbackup.success', 'ns_backup');
+                $backup_file = transalte::translate('backup.downloaded', 'ns_backup').' '.$arrResponse['backup_file'];
+                $this->addFlashMessage($backup_file, $mesHeader, \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::OK);
 
                 // Pass to Fluid
                 $arrMultipleVars['isManualBackup'] = '1';
                 $arrMultipleVars['log'] = '<pre class="pre-scrollable"><code class="json">'. json_encode(json_decode($arrResponse['log']), JSON_PRETTY_PRINT) .'</code></pre>';
                 $arrMultipleVars['download_url'] = $arrResponse['download_url'];
             }
-
-            //$this->redirect('backuprestore');
         }
 
         // List Backup History
@@ -161,49 +156,44 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         }
         $arrMultipleVars['arrBackupData'] = $objBackupData;
 
-        //session_start();
-        //echo "<pre>";print_r($_SESSION);exit;
+        $view->assignMultiple($arrMultipleVars);
 
-        $this->view->assignMultiple($arrMultipleVars);
-    }
-
-    /**
-     * action premiumextension
-     *
-     * @return void
-     */
-    public function premiumextensionAction()
-    {
-        $arrMultipleVars = [
-            'action' => 'premiumextension',
-            'errorValidation' => $this->errorValidation
-        ];
-
-        $this->view->assignMultiple($arrMultipleVars);
+        return $view->renderResponse();
     }
 
     /**
      * action deletebackupbackup
      *
-     * @return void
      */
     public function deletebackupbackupAction()
     {
-        $uid = GeneralUtility::_GP('uids');
+        $getData = $this->request->getQueryParams();
+        $postData = $this->request->getParsedBody();
+        $request = array_merge((array)$getData, (array)$postData);
+        $uid = $request['uids'];
         $arrBackup = $this->backupglobalRepository->findBackupByUid($uid);
 
         // Let's delete it
         $this->backupglobalRepository->removeBackupData($uid);
 
         // Remove file from Physical location
-        if(file_exists($arrBackup['filenames'])){
+        if(file_exists($arrBackup['filenames'])) {
             unlink($arrBackup['filenames']);
         }
 
-        $headerMsg = transalte::translate('delete.backup.data','ns_backup');
-        $msg = transalte::translate('delete.backup.message','ns_backup').$arrBackup['filenames'];
-        $this->addFlashMessage($msg, $headerMsg, \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
-        return $msg;
-        //$this->redirect('backuprestore');
+        $headerMsg = transalte::translate('delete.backup.data', 'ns_backup');
+        $msg = transalte::translate('delete.backup.message', 'ns_backup').$arrBackup['filenames'];
+        $this->addFlashMessage($msg, $headerMsg, \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::OK);
+
+        return $this->redirect('backuprestore');
+    }
+
+    /**
+     * Initialize Module Template
+     */
+    protected function initializeModuleTemplate(
+        ServerRequestInterface $request
+    ): ModuleTemplate {
+        return $this->moduleTemplateFactory->create($request);
     }
 }

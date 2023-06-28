@@ -1,13 +1,15 @@
 <?php
+
 namespace NITSAN\NsBackup\Controller;
 
-use TYPO3\CMS\Extbase\Object\ObjectManager;
-use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
-
-use NITSAN\NsBackup\Controller\BackupBaseController;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Backend\Template\ModuleTemplate;
+use NITSAN\NsBackup\Controller\BackupBaseController;
+use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
+use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility as debug;
+
 /***
  *
  * This file is part of the "[NITSAN] Backup" Extension for TYPO3 CMS.
@@ -30,12 +32,19 @@ class BackupglobalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     protected $backupglobalRepository;
 
     /**
-     * Inject the BackupglobalRepository repository
-     *
-     * @param \NITSAN\NsBackup\Domain\Repository\BackupglobalRepository $backupglobalRepository
+     * backupBaseController
      */
-    public function injectProductRepository(BackupglobalRepository $backupglobalRepository)
-    {
+    protected $backupBaseController;
+
+    /**
+     * errorValidation
+     */
+    protected $errorValidation;
+
+    public function __construct(
+        protected readonly ModuleTemplateFactory $moduleTemplateFactory,
+        BackupglobalRepository $backupglobalRepository
+    ) {
         $this->backupglobalRepository = $backupglobalRepository;
     }
 
@@ -43,64 +52,72 @@ class BackupglobalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
      * Initializes the view before invoking an action method.
      * Override this method to solve assign variables common for all actions
      * or prepare the view in another way before the action is called.
-     *
-     * @param \TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view The view to be initialized
      */
-    public function initializeView(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view)
+    public function initializeView()
     {
         // Global error check
-        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $this->backupBaseController = $this->objectManager->get(BackupBaseController::class);
+        $this->backupBaseController = GeneralUtility::makeInstance(BackupBaseController::class);
         $this->errorValidation = $this->backupBaseController->globalErrorValidation();
         if(!empty($this->errorValidation)) {
-            $header = transalte::translate('global.errorvalidation','ns_backup');
-            $message = transalte::translate('global.errorvalidation.message','ns_backup');
-            $this->addFlashMessage($message, $header, \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+            $header = transalte::translate('global.errorvalidation', 'ns_backup');
+            $message = transalte::translate('global.errorvalidation.message', 'ns_backup');
+            $this->addFlashMessage($message, $header, \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR);
         }
     }
 
     /**
      * action globalsetting
      *
-     * @return void
      */
     public function globalsettingAction()
     {
+        $view = $this->initializeModuleTemplate($this->request);
         $globalSettingsData = $this->backupglobalRepository->findAll();
-        $this->view->assignMultiple([
+        $view->assignMultiple([
             'cleanup' => constant('cleanup'),
             'backupglobal' => $globalSettingsData[0],
             'compress' => constant('compress'),
             'action' => 'globalsetting',
-            'errorValidation' => $this->errorValidation
+            'errorValidation' => $this->errorValidation,
+            'modalAttr' => 'data-bs-'
         ]);
+        return $view->renderResponse();
     }
 
     /**
      * action create
      *
      * @param \NITSAN\NsBackup\Domain\Model\Backupglobal $backupglobal
-     * @return void
      */
     public function createAction(\NITSAN\NsBackup\Domain\Model\Backupglobal $backupglobal)
     {
-        $msg = transalte::translate('globalsettings.create','ns_backup');
-        $this->addFlashMessage('', $msg, \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+        $msg = transalte::translate('globalsettings.create', 'ns_backup');
+        $this->addFlashMessage('', $msg, \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::OK);
         $this->backupglobalRepository->add($backupglobal);
-        $this->redirect('globalsetting');
+
+        return $this->redirect('globalsetting');
     }
 
     /**
      * action update
      *
      * @param \NITSAN\NsBackup\Domain\Model\Backupglobal $backupglobal
-     * @return void
      */
     public function updateAction(\NITSAN\NsBackup\Domain\Model\Backupglobal $backupglobal)
     {
-        $msg = transalte::translate('globalsettings.update','ns_backup');
-        $this->addFlashMessage('', $msg, \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+        $msg = transalte::translate('globalsettings.update', 'ns_backup');
+        $this->addFlashMessage('', $msg, \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::OK);
         $this->backupglobalRepository->update($backupglobal);
-        $this->redirect('globalsetting');
+
+        return $this->redirect('globalsetting');
+    }
+
+    /**
+     * Initialize Module Template
+     */
+    protected function initializeModuleTemplate(
+        ServerRequestInterface $request
+    ): ModuleTemplate {
+        return $this->moduleTemplateFactory->create($request);
     }
 }
