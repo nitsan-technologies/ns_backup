@@ -29,6 +29,8 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * backupglobalRepository
      */
     protected $backupglobalRepository;
+    protected $backupBaseController = null;
+    protected $errorValidation = null;
 
     /**
      * Inject the BackupglobalRepository repository
@@ -183,9 +185,8 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     }
 
     /**
-     * action deletebackupbackup
-     *
-     * @return void
+     * deletebackupbackupAction
+     * @return string
      */
     public function deletebackupbackupAction()
     {

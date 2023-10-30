@@ -30,6 +30,16 @@ class BackupglobalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     protected $backupglobalRepository;
 
     /**
+     * backupBaseController
+     */
+    protected $backupBaseController;
+
+    /**
+     * errorValidation
+     */
+    protected $errorValidation;
+
+    /**
      * Inject the BackupglobalRepository repository
      *
      * @param \NITSAN\NsBackup\Domain\Repository\BackupglobalRepository $backupglobalRepository

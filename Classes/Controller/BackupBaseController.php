@@ -2,13 +2,7 @@
 namespace NITSAN\NsBackup\Controller;
 
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
-
-use TYPO3\CMS\Extbase\Object\ObjectManager;
-use NITSAN\NsBackup\Controller\BackupBaseController;
-
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility as debug;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 
@@ -89,6 +83,37 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     public $backupFile = null;
 
     /**
+     * backupglobalRepository
+     */
+    protected $backupglobalRepository = null;
+
+    /**
+     * globalSettingsData
+     */
+    protected $globalSettingsData = null;
+
+    /**
+     * prefixFileName
+     */
+    protected $prefixFileName = null;
+
+    /**
+     * backupFileMySQL
+     */
+    protected $backupFileMySQL = null;
+
+    /**
+     * backupDownloadPathMySQL
+     */
+    protected $backupDownloadPathMySQL = null;
+
+    /**
+     * typo3Version
+     * @var 
+     */
+    protected $typo3Version = null;
+
+    /**
      * Inject the BackupglobalRepository repository
      *
      * @param \NITSAN\NsBackup\Domain\Repository\BackupglobalRepository $backupglobalRepository
@@ -104,9 +129,8 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     }
 
     /**
-     * action globalErrorValidation
-     *
-     * @return void
+     * globalErrorValidation
+     * @return string
      */
     public function globalErrorValidation()
     {
@@ -158,9 +182,9 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     }
 
     /**
-     * action generateBackup
-     *
-     * @return void
+     *  generateBackup
+     * @param mixed $arrPost
+     * @return array
      */
     public function generateBackup($arrPost)
     {
@@ -180,7 +204,12 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
         // Get TYPO3 Path
         if(!empty($this->globalSettingsData[0]->root)) {
+            
             $this->rootPath = $this->globalSettingsData[0]->root;
+            if(Environment::isComposerMode()) {
+                $this->rootPath = Environment::getPublicPath();
+                $this->composerRootPath = Environment::getProjectPath();
+            }
         }
         else {
             $this->typo3Version = VersionNumberUtility::getNumericTypo3Version();
@@ -310,12 +339,6 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         // Validate If SSH command success
         if (count($log) > 0) {
             $log = file_get_contents($logFile);
-
-            // Remove phpbu unnecessary lines
-            //unset($log[0]);
-            //unset($log[1]);
-            //unset($log[2]);
-            //$strLog = implode("\n", $log);
 
             // Get ready to insert to Backup History
             $arrPost['jsonfile'] = $jsonFile;
