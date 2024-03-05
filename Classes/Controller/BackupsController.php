@@ -5,8 +5,10 @@ namespace NITSAN\NsBackup\Controller;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use NITSAN\NsBackup\Controller\BackupBaseController;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
 
@@ -24,7 +26,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
 /**
  * BackupsController
  */
-class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class BackupsController extends ActionController
 {
     /**
      * backupglobalRepository
@@ -63,7 +65,7 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if(!empty($this->errorValidation)) {
             $header = transalte::translate('global.errorvalidation', 'ns_backup');
             $message = transalte::translate('global.errorvalidation.message', 'ns_backup');
-            $this->addFlashMessage($message, $header, \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR);
+            $this->addFlashMessage($message, $header, ContextualFeedbackSeverity::ERROR);
         }
     }
 
@@ -132,12 +134,12 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 // Error Flash-Message
                 $mesHeader = transalte::translate('manualbackup.error', 'ns_backup');
                 $backup_file = $arrResponse['backup_file'];
-                $this->addFlashMessage($backup_file, $mesHeader, \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR);
+                $this->addFlashMessage($backup_file, $mesHeader, ContextualFeedbackSeverity::ERROR);
             } else {
                 // Success Flash-Message
                 $mesHeader = transalte::translate('manualbackup.success', 'ns_backup');
                 $backup_file = transalte::translate('backup.downloaded', 'ns_backup').' '.$arrResponse['backup_file'];
-                $this->addFlashMessage($backup_file, $mesHeader, \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::OK);
+                $this->addFlashMessage($backup_file, $mesHeader, ContextualFeedbackSeverity::OK);
 
                 // Pass to Fluid
                 $arrMultipleVars['isManualBackup'] = '1';
@@ -183,7 +185,7 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
         $headerMsg = transalte::translate('delete.backup.data', 'ns_backup');
         $msg = transalte::translate('delete.backup.message', 'ns_backup').$arrBackup['filenames'];
-        $this->addFlashMessage($msg, $headerMsg, \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::OK);
+        $this->addFlashMessage($msg, $headerMsg, ContextualFeedbackSeverity::OK);
 
         return $this->redirect('backuprestore');
     }

@@ -3,9 +3,9 @@
 namespace NITSAN\NsBackup\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
+use TYPO3\CMS\Extbase\Persistence\Repository;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 
 /***
  *
@@ -21,13 +21,13 @@ use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 /**
  * The repository for Tests
  */
-class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class BackupglobalRepository extends Repository
 {
     /**
      * @var array<non-empty-string, 'ASC'|'DESC'>
      */
     protected $defaultOrderings = [
-        'uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
+        'uid' => QueryInterface::ORDER_DESCENDING
     ];
 
     /**

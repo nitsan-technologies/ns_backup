@@ -3,6 +3,8 @@
 namespace NITSAN\NsBackup\Controller;
 
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
 
@@ -20,7 +22,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
 /**
  * BackupBaseController
  */
-class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class BackupBaseController extends ActionController
 {
     /**
      * phpPath
@@ -136,6 +138,10 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      */
     protected $backupglobalRepository;
 
+    /**
+     * __construct
+     * @param BackupglobalRepository $backupglobalRepository
+     */
     public function __construct(
         BackupglobalRepository $backupglobalRepository
     ) {
@@ -163,7 +169,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
             'cleanup' => transalte::translate('global.error.cleanup', 'ns_backup'),
             'cleanupQuantity' => transalte::translate('global.error.cleanupQuantity', 'ns_backup')
         ];
-        foreach ($arrValidation as $key=>$value) {
+        foreach ($arrValidation as $key => $value) {
             if(empty($this->globalSettingsData[0]->$key)) {
                 $errorValidation .= '<li>'.$value.'</li>';
             }
@@ -192,7 +198,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     /**
      * action generateBackup
      *
-     * @return Array
+     * @return array
      */
     public function generateBackup($arrPost)
     {
@@ -218,7 +224,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         }
 
         // Let's change root path to /public in Composer-based installation
-        if(\TYPO3\CMS\Core\Core\Environment::isComposerMode()) {
+        if(Environment::isComposerMode()) {
             $this->rootPath = Environment::getPublicPath();
             $this->composerRootPath = Environment::getComposerRootPath();
         }
@@ -237,7 +243,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         $this->baseURL = $this->siteUrl.'/uploads/tx_nsbackup/';
 
         // Get PHPHBU Path
-        if(\TYPO3\CMS\Core\Core\Environment::isComposerMode()) {
+        if(Environment::isComposerMode()) {
             $this->phpbuPath = $this->composerRootPath.'/vendor/nitsan/ns-backup/phpbu.phar';
         } else {
             $this->phpbuPath = $this->rootPath.'/typo3conf/ext/ns_backup/phpbu.phar';
@@ -250,9 +256,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         }
 
         // Get Current Date time
-        $permitted_chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $randomString = substr(str_shuffle($permitted_chars), 0, 24);
-        $this->prefixFileName = date('dmY_Hi').'_'.$randomString;
+        $this->prefixFileName = date('dmY_Hi');
 
         $backupName = $arrPost['backupName'];
         $backupNameOriginal = $arrPost['backupName'];
@@ -260,15 +264,15 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         $backupType = $arrPost['backupFolderSettings'];
 
         // Prepare backup filename
-        $backupFileName = strtolower($backupName);
+        $backupFileName = strtolower(trim($backupName));
         $backupFileName = str_replace(' ', '_', $backupFileName);
         $backupFileName = str_replace('-', '_', $backupFileName);
         $backupFileName = preg_replace('/[^A-Za-z0-9]/', '_', $backupFileName);
         $backupFileName = preg_replace('/_+/', '_', $backupFileName);
 
         $jsonFolder = $this->rootPath.'/uploads/tx_nsbackup/json/';
-        $jsonFile = $backupFileName.'_'.$backupType.'_configuration.json';
-        $logFile = $jsonFolder.$backupFileName.'_'.$backupType.'_log.json';
+        $jsonFile = GeneralUtility::trimExplode('_', $backupFileName, true, 3)[2] . '_' . $backupType . '_configuration.json';
+        $logFile = $jsonFolder . GeneralUtility::trimExplode('_', $backupFileName, true, 3)[2] . '_' . $backupType . '_log.json';
         $jsonPath = $jsonFolder.$jsonFile;
 
         // Let's create LOG file if not existis
@@ -377,10 +381,10 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         return $arrReturn;
     }
 
-   /**
-     * Generate PHP BU action getPhpbuBackupJSON
-     *
-     */
+    /**
+      * Generate PHP BU action getPhpbuBackupJSON
+      *
+      */
     protected function getPhpbuBackup($backupName, $backupType, $backupFileName)
     {
         $json = '';
@@ -449,24 +453,27 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
         $this->backupFilePath = $this->localStoragePath.$backupType;
         $this->backupFileName = $backupFileName.$backupExtFile;
-
         // Physical file
-        $this->backupFile = $this->backupFilePath.'/'.$backupFileName.$backupExtFile.$compressTechnique;
+        $this->backupFile = $this->backupFilePath . '/' . $backupType.'-'.date('Ymd-Hi') . $backupExtFile . $compressTechnique;
 
         // Download file
         $this->backupDownloadPath =
-            $this->baseURL.
-            $backupType.'/'.
-            $backupFileName.$backupExtFile.$compressTechnique;
+            $this->baseURL .
+            $backupType . '/' .
+            $backupType.'-'.date('Ymd-Hi') . $backupExtFile . $compressTechnique;
 
         // If Backup Type = ALL then, Let's consider mysql as special-case
         if ($backupType == 'mysqldump') {
-            $this->backupFileMySQL = $this->backupFilePath . '/' . $backupFileName . $backupExtFile.$compressTechnique;
+            if($this->globalSettingsData[0]->compress == 'zip'){
+                $compressTechnique = '';
+            }
+            $this->backupFileMySQL = $this->backupFilePath . '/' . 'mysqldump' .'-'.date('Ymd-Hi') . $backupExtFile . $compressTechnique;
             $this->backupDownloadPathMySQL =
-                $this->baseURL .
+                $this->baseURL . $this->backupFileMySQL =
                 $backupType . '/' .
-                $backupFileName . $backupExtFile.$compressTechnique;
+                $backupFileName . $backupExtFile . $compressTechnique;
         }
+        $this->backupFileName =  $backupType.'-%Y%m%d-%H%i' . $backupExtFile;
 
         $json .= '
                 "target": {

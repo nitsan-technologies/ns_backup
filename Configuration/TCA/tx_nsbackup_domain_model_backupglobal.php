@@ -55,7 +55,7 @@ return [
                 'items' => [
                     'label' => '1',
                     'value' => [
-                        'label'=> 0,
+                        'label' => 0,
                         'value' => 'LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:labels.enabled'
                     ]
                 ],

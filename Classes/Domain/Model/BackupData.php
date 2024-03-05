@@ -2,6 +2,8 @@
 
 namespace NITSAN\NsBackup\Domain\Model;
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
 /***
  *
  * This file is part of the "[NITSAN] Backup" Extension for TYPO3 CMS.
@@ -16,7 +18,7 @@ namespace NITSAN\NsBackup\Domain\Model;
 /**
  * BackupData
  */
-class BackupData extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class BackupData extends AbstractEntity
 {
     /**
      * title

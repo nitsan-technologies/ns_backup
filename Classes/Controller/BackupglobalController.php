@@ -4,9 +4,12 @@ namespace NITSAN\NsBackup\Controller;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Psr\Http\Message\ServerRequestInterface;
+use NITSAN\NsBackup\Domain\Model\Backupglobal;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use NITSAN\NsBackup\Controller\BackupBaseController;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
 
@@ -24,7 +27,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
 /**
  * BackupglobalController
  */
-class BackupglobalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class BackupglobalController extends ActionController
 {
     /**
      * backupglobalRepository
@@ -61,7 +64,7 @@ class BackupglobalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
         if(!empty($this->errorValidation)) {
             $header = transalte::translate('global.errorvalidation', 'ns_backup');
             $message = transalte::translate('global.errorvalidation.message', 'ns_backup');
-            $this->addFlashMessage($message, $header, \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR);
+            $this->addFlashMessage($message, $header, ContextualFeedbackSeverity::ERROR);
         }
     }
 
@@ -87,12 +90,12 @@ class BackupglobalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     /**
      * action create
      *
-     * @param \NITSAN\NsBackup\Domain\Model\Backupglobal $backupglobal
+     * @param Backupglobal $backupglobal
      */
-    public function createAction(\NITSAN\NsBackup\Domain\Model\Backupglobal $backupglobal)
+    public function createAction(Backupglobal $backupglobal)
     {
         $msg = transalte::translate('globalsettings.create', 'ns_backup');
-        $this->addFlashMessage('', $msg, \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::OK);
+        $this->addFlashMessage('', $msg, ContextualFeedbackSeverity::OK);
         $this->backupglobalRepository->add($backupglobal);
 
         return $this->redirect('globalsetting');
@@ -101,12 +104,12 @@ class BackupglobalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     /**
      * action update
      *
-     * @param \NITSAN\NsBackup\Domain\Model\Backupglobal $backupglobal
+     * @param Backupglobal $backupglobal
      */
-    public function updateAction(\NITSAN\NsBackup\Domain\Model\Backupglobal $backupglobal)
+    public function updateAction(Backupglobal $backupglobal)
     {
         $msg = transalte::translate('globalsettings.update', 'ns_backup');
-        $this->addFlashMessage('', $msg, \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::OK);
+        $this->addFlashMessage('', $msg, ContextualFeedbackSeverity::OK);
         $this->backupglobalRepository->update($backupglobal);
 
         return $this->redirect('globalsetting');
