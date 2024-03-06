@@ -4,14 +4,5 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3') || die();
 
-call_user_func(function () {
-
-    /**
-     * Add default TypoScript (constants and setup)
-     */
-    ExtensionManagementUtility::addStaticFile(
-        'ns_backup',
-        'Configuration/TypoScript',
-        '[NITSAN] Backup'
-    );
-});
+$GLOBALS['TCA']['tx_nsbackup_domain_model_backupdata']['ctrl']['hideTable'] = 1;
+$GLOBALS['TCA']['tx_nsbackup_domain_model_backupglobal']['ctrl']['hideTable'] = 1;
