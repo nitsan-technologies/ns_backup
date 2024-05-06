@@ -9,9 +9,6 @@
 			<trans-unit id="path.description">
 				<source>path</source>
 			</trans-unit>
-			<trans-unit id="server_type.description">
-				<source>serverType</source>
-			</trans-unit>
 			<trans-unit id="settings.description">
 				<source>settings</source>
 			</trans-unit>

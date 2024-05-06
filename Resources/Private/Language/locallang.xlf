@@ -73,36 +73,6 @@
 			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_notification_on_error">
 				<source>Email Notification On Error</source>
 			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_notification_on_success">
-				<source>Email Notification On Success</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.password_restore">
-				<source>Password Restore</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.backup_validation">
-				<source>Backup Validation</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.encryption">
-				<source>Encryption</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_local_name">
-				<source>Cleanup Local Name</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_local_value">
-				<source>Cleanup Local Value</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_server_name">
-				<source>Cleanup Server Name</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_server_value">
-				<source>Cleanup Server Value</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.quick_setup_wizard">
-				<source>Quick Setup Wizard</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_servers">
-				<source>Servers</source>
-			</trans-unit>
 			<trans-unit id="tx_nsbackup_domain_model_servers.title">
 				<source>Title</source>
 			</trans-unit>
@@ -115,17 +85,6 @@
 			<trans-unit id="tx_nsbackup_domain_model_servers.settings">
 				<source>Settings</source>
 			</trans-unit>
-
-
-
-
-
-
-
-
-
-
-
 			<trans-unit id="tx_nsbackup_domain_model_backupdata">
 				<source>Backup Data</source>
 			</trans-unit>
@@ -147,15 +106,8 @@
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.download_url">
 				<source>Download Url</source>
 			</trans-unit>
-
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.server_uid">
 				<source>Server Uid</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_backupdata.logs_uid">
-				<source>Logs Uid</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_backupdata.local_backup_path">
-				<source>Local Backup Path</source>
 			</trans-unit>
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.servers_backup_path">
 				<source>Servers Backup Path</source>
@@ -175,18 +127,15 @@
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.status">
 				<source>Status</source>
 			</trans-unit>
-
 			<trans-unit id="nsbackup">
 				<source>NS Backup</source>
 			</trans-unit>
-
 			<trans-unit id="menu.dashboard">
 				<source>Dashboard</source>
 			</trans-unit>
 			<trans-unit id="menu.backupsrestore">
 				<source>Backup History</source>
 			</trans-unit>
-
 			<trans-unit id="menu.serverclouds">
 				<source>Server/Clouds</source>
 			</trans-unit>
@@ -196,7 +145,6 @@
 			<trans-unit id="menu.premiumextension">
 				<source>Premium Extension</source>
 			</trans-unit>
-
 			<trans-unit id="globalsettings.title">
 				<source>Global Settings</source>
 			</trans-unit>
@@ -215,9 +163,6 @@
 			<trans-unit id="globalsettings.form.notification">
 				<source>Notification Settings</source>
 			</trans-unit>
-			<trans-unit id="globalsettings.form.emailNotificationOnSuccess">
-				<source>Send email only at success backup</source>
-			</trans-unit>
 			<trans-unit id="globalsettings.form.emailNotificationOnError">
 				<source>Send email only at failure of backup</source>
 			</trans-unit>
@@ -226,12 +171,6 @@
 			</trans-unit>
 			<trans-unit id="globalsettings.form.defaultServer.desc">
 				<source>Choose your default backup server, You can manage it from Servers/Cloud</source>
-			</trans-unit>
-			<trans-unit id="globalsettings.form.backupValidation">
-				<source>Backup Validation</source>
-			</trans-unit>
-			<trans-unit id="globalsettings.form.encryption">
-				<source>Encryption Secure</source>
 			</trans-unit>
 			<trans-unit id="globalsettings.form.cleanup">
 				<source>Clean-up Type</source>
@@ -259,18 +198,6 @@
 			</trans-unit>
 			<trans-unit id="globalsettings.form.savesettings">
 				<source>Save Settings</source>
-			</trans-unit>
-			<trans-unit id="globalsettings.form.cleanupLocalName">
-				<source>Cleanup Local Name</source>
-			</trans-unit>
-			<trans-unit id="globalsettings.form.cleanupLocalValue">
-				<source>Cleanup Local Path</source>
-			</trans-unit>
-			<trans-unit id="globalsettings.form.cleanupServerName">
-				<source>Cleanup Server Name</source>
-			</trans-unit>
-			<trans-unit id="globalsettings.form.cleanupServerValue">
-				<source>Cleanup Server Path</source>
 			</trans-unit>
 			<trans-unit id="globalsettings.form.email-error">
 				<source>Please enter valid email address</source>
@@ -467,15 +394,20 @@
 			<trans-unit id="backup.now.description2">
 				<source>You will need to choose backup type, backup name and server destination.</source>
 			</trans-unit>
-
 			<trans-unit id="more.logs">
 				<source>See More Logs</source>
 			</trans-unit>
-
-
-
 			<trans-unit id="no.data.found">
 				<source>No data found.</source>
+			</trans-unit>
+			<trans-unit id="server_time_text1">
+				<source>All dates and times in the Backup are measured according to the server's time, as the Backup is run purely on the server-side.</source>
+			</trans-unit>
+			<trans-unit id="server_time_text2">
+				<source>Current server time is</source>
+			</trans-unit>
+			<trans-unit id="server_time">
+				<source>Server time</source>
 			</trans-unit>
 		</body>
 	</file>

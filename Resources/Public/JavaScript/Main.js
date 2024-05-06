@@ -41,7 +41,6 @@ define([
     $('.ns-backup-table-wrap .dataTables_length select,\
     .ns-backup-table-wrap .dataTables_filter input').addClass('form-control');
 
-
     $('.btn-global-submit').on('click', function () {
         isError = 0;
         if (!$('#emails').val()) {
@@ -99,11 +98,6 @@ define([
         }
     });
 
-
-
-
-
-
     // Remove Backup Data
     $('.delete-backup').on('click', function () {
         var title = $(this).data('title');
@@ -140,8 +134,6 @@ define([
     // Code Highlight
     hljs.initHighlightingOnLoad();
 });
-
-
 
 // Validate Email field
 function validateEmail($email) {

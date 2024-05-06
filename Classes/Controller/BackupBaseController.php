@@ -193,7 +193,6 @@ class BackupBaseController extends ActionController
     {
         // Get global configuration
         $this->globalSettingsData = $this->backupglobalRepository->findAll();
-
         // Get PHP Path
         $this->phpPath = !empty($this->globalSettingsData[0]->php)
             ? $this->globalSettingsData[0]->php
@@ -222,7 +221,6 @@ class BackupBaseController extends ActionController
         $this->phpbuPath = Environment::isComposerMode()
             ? $this->composerRootPath.'/vendor/nitsan/ns-backup/phpbu.phar'
             : $this->rootPath.'/typo3conf/ext/ns_backup/phpbu.phar';
-
 
         // Get Database Configuration
         $this->arrDatabase = $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default'];
@@ -305,7 +303,7 @@ class BackupBaseController extends ActionController
         $command = $this->phpPath. ' '. $this->phpbuPath.' --configuration='.$jsonPath.' --verbose';
 
         // Execute Backup SSH Command
-        exec($command, $log, $return_var);
+        exec($command, $log);
 
         // Validate If SSH command success
         if (count($log) > 0) {
@@ -318,12 +316,9 @@ class BackupBaseController extends ActionController
             if ($backupType == 'all') {
                 $arrPost['backup_type'] = 'mysqldump';
                 $arrPost['download_url'] = $this->backupDownloadPathMySQL;
-
                 $fileSize = $this->convertFilesize(filesize($this->backupFileMySQL));
                 $arrPost['size'] = $fileSize;
-
                 $arrPost['filenames'] = $this->backupFileMySQL;
-
                 $this->backupglobalRepository->addBackupData($arrPost);
             }
 

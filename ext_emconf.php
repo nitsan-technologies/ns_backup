@@ -6,7 +6,7 @@ $EM_CONF['ns_backup'] = [
 
     *** Live Demo: https://demo.t3planet.com/t3-extensions/backup *** Premium Version, Documentation & Free Support: https://t3planet.com/typo3-backup-extension',
     'category' => 'module',
-    'author' => 'T3: Rohan Parmar, Divya Goklani, Nilesh Malankiya, QA: Gautam Kunjadiya',
+    'author' => 'T3: Rohan Parmar, T3: Divya Goklani, T3: Nilesh Malankiya, QA: Gautam Kunjadiya',
     'author_email' => 'sanjay@nitsan.in',
     'author_company' => 'T3Planet // NITSAN',
     'state' => 'stable',

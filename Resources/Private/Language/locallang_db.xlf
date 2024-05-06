@@ -15,33 +15,6 @@
 			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_notification_on_error">
 				<source>Email Notification On Error</source>
 			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_notification_on_success">
-				<source>Email Notification On Success</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.password_restore">
-				<source>Password Restore</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.backup_validation">
-				<source>Backup Validation</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.encryption">
-				<source>Encryption</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_local_name">
-				<source>Cleanup Local Name</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_local_value">
-				<source>Cleanup Local Value</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_server_name">
-				<source>Cleanup Server Name</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_server_value">
-				<source>Cleanup Server Value</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.quick_setup_wizard">
-				<source>Quick Setup Wizard</source>
-			</trans-unit>
 			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup">
 				<source>Cleanup Type</source>
 			</trans-unit>
@@ -60,12 +33,6 @@
 			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.siteurl">
 				<source>Your Site URL</source>
 			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_servers">
-				<source>Servers</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_servers.title">
-				<source>Title</source>
-			</trans-unit>
 			<trans-unit id="tx_nsbackup_domain_model_servers.path">
 				<source>Path</source>
 			</trans-unit>
@@ -82,9 +49,6 @@
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.title">
 				<source>Title</source>
 			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_backupdata.category">
-				<source>Category</source>
-			</trans-unit>
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.start_datetime">
 				<source>Start Datetime</source>
 			</trans-unit>
@@ -97,17 +61,8 @@
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.download_url">
 				<source>Download Url</source>
 			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_backupdata.schedule_uid">
-				<source>Schedule Uid</source>
-			</trans-unit>
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.server_uid">
 				<source>Server Uid</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_backupdata.logs_uid">
-				<source>Logs Uid</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_backupdata.local_backup_path">
-				<source>Local Backup Path</source>
 			</trans-unit>
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.servers_backup_path">
 				<source>Servers Backup Path</source>

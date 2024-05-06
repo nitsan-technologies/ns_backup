@@ -29,7 +29,7 @@
 		</div>
 		<div class="col-md-6">
 			<div class="form-check">
-				<f:form.checkbox  name="emailNotificationOnError" property="emailNotificationOnError" value="{backupglobal.emailNotificationOnError}" class="form-check-input check" checked="{f:if(condition: '{backupglobal.emailNotificationOnError}==1', then: 'checked')}" id="emailNotificationOnError" />
+				<f:form.checkbox  name="emailNotificationOnError" property="emailNotificationOnError" value="1" class="form-check-input check" checked="{f:if(condition: '{backupglobal.emailNotificationOnError}==1', then: 'checked')}" id="emailNotificationOnError" />
 				<label class="form-check-label" for="emailNotificationOnError">
 					<f:translate key="globalsettings.form.emailNotificationOnError" />
 				</label>
@@ -116,22 +116,3 @@
 		</div>
 	</div>
 </div>
-
-<f:comment>
-	<div class="form-group">
-		<div class="row">
-			<div class="col-md-3">
-				<label for="server-cleanups"><f:translate key="globalsettings.form.servercleanup" /></label>
-			</div>
-			<div class="col-md-6">
-				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value=""
-						id="server-cleanups" checked>
-					<label class="form-check-label" for="sendemailsuccess">
-						Yes
-					</label>
-				</div>
-			</div>
-		</div>
-	</div>
-</f:comment>

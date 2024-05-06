@@ -45,7 +45,6 @@
 					</nav>
                 </div>
 				</div>
-
                 <!-- Validation for global settings -->
                 <f:flashMessages />
                 <f:if condition="{errorValidation}">
@@ -53,13 +52,10 @@
                         <f:format.raw>{errorValidation}</f:format.raw>
                     </div>
                 </f:if>
-
                 <f:render section="content" />
-
                 <div class="footer">
-                    <div class="callout callout-info"><div class="media"><div class="media-left"><span class="fa-stack fa-lg callout-icon"><i class="fa fa-circle fa-stack-2x" style="color: #6daae0;"></i><i class="fa fa-info fa-stack-1x" style="color: #fff;"></i></span></div><div class="media-body"><h4 class="callout-title">Server time</h4><div class="callout-body">
-                        <p>All dates and times in the Backup are measured according to the server's time, as the Backup is run purely on the server-side.</p>
-                        <p>Current server time is <f:format.date date="now" format="d-m-y H:s e" />.</p>
+                    <div class="callout callout-info"><div class="media"><div class="media-left"><span class="fa-stack fa-lg callout-icon"><i class="fa fa-circle fa-stack-2x" style="color: #6daae0;"></i><i class="fa fa-info fa-stack-1x" style="color: #fff;"></i></span></div><div class="media-body"><h4 class="callout-title"><f:translate key="server_time" /></h4><div class="callout-body">
+                       <p><f:translate key="server_time_text1"/></p><p><f:translate key="server_time_text2"/> <f:format.date date="now" format="d-m-y H:s e" />.</p></p>
                     </div></div></div></div>
                 </div>
 			</div>
@@ -154,64 +150,6 @@
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-        </div>
-
-		<div class="modal fade" id="nsBackupDeleteRecordModal" role="dialog"
-			aria-labelledby="nsBackupDeleteRecordModal" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Delete Backup</h5>
-						<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<p>Are you want to sure Delete <span>backup?</span></p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" {modalAttr}dismiss="modal"><em class="fa fa-close"
-								aria-hidden="true"></em>Cancel</button>
-						<button type="button" class="btn btn-danger"><em class="fa fa-trash-o"
-								aria-hidden="true"></em>Delete</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="modal fade nsbackup-run-modal" id="nsBackupRundModal" role="dialog"
-			aria-labelledby="nsBackupRundModal" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Run Backup</h5>
-						<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<p>Backup is Ready click on Following Button!!</p>
-						<div class="ns-backup-download-wrap">
-							<a href="javascript:;" class="btn btn-primary btn-start-backup"><em class="fa fa-refresh"
-									aria-hidden="true"></em>Start Backup
-								Now!</a>
-							<div class="ns-backup-progressbar-wrap">
-								<div class="progress">
-									<div class="progress-bar bg-success" role="progressbar" style="width: 0%;"
-										aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-								</div>
-							</div>
-							<a href="javascript:;" class="btn btn-outline-success btn-backupnow disabled"><em
-									class="fa fa-download" aria-hidden="true"></em>Download
-								Backup Now!</a>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" {modalAttr}dismiss="modal"><em class="fa fa-close"
-								aria-hidden="true" ></em>Cancel</button>
 					</div>
 				</div>
 			</div>

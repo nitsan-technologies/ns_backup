@@ -28,13 +28,6 @@ class BackupData extends AbstractEntity
     protected string $title = '';
 
     /**
-     * category
-     *
-     * @var string
-     */
-    protected string $category = '';
-
-    /**
      * startDatetime
      *
      * @var string
@@ -62,34 +55,6 @@ class BackupData extends AbstractEntity
      */
     protected string $downloadUrl = '';
 
-
-    /**
-     * serverUid
-     *
-     * @var string
-     */
-    protected string $serverUid = '';
-
-    /**
-     * logsUid
-     *
-     * @var string
-     */
-    protected string $logsUid = '';
-
-    /**
-     * localBackupPath
-     *
-     * @var string
-     */
-    protected string $localBackupPath = '';
-
-    /**
-     * serversBackupPath
-     *
-     * @var string
-     */
-    protected string $serversBackupPath = '';
 
     /**
      * filenames
@@ -145,27 +110,6 @@ class BackupData extends AbstractEntity
     public function setTitle(string $title): void
     {
         $this->title = $title;
-    }
-
-    /**
-     * Returns the category
-     *
-     * @return string $category
-     */
-    public function getCategory(): string
-    {
-        return $this->category;
-    }
-
-    /**
-     * Sets the category
-     *
-     * @param string $category
-     * @return void
-     */
-    public function setCategory(string $category): void
-    {
-        $this->category = $category;
     }
 
     /**
@@ -250,90 +194,6 @@ class BackupData extends AbstractEntity
     public function setDownloadUrl(string $downloadUrl): void
     {
         $this->downloadUrl = $downloadUrl;
-    }
-
-    /**
-     * Returns the serverUid
-     *
-     * @return string $serverUid
-     */
-    public function getServerUid(): string
-    {
-        return $this->serverUid;
-    }
-
-    /**
-     * Sets the serverUid
-     *
-     * @param string $serverUid
-     * @return void
-     */
-    public function setServerUid(string $serverUid): void
-    {
-        $this->serverUid = $serverUid;
-    }
-
-    /**
-     * Returns the logsUid
-     *
-     * @return string $logsUid
-     */
-    public function getLogsUid(): string
-    {
-        return $this->logsUid;
-    }
-
-    /**
-     * Sets the logsUid
-     *
-     * @param string $logsUid
-     * @return void
-     */
-    public function setLogsUid(string $logsUid): void
-    {
-        $this->logsUid = $logsUid;
-    }
-
-    /**
-     * Returns the localBackupPath
-     *
-     * @return string $localBackupPath
-     */
-    public function getLocalBackupPath(): string
-    {
-        return $this->localBackupPath;
-    }
-
-    /**
-     * Sets the localBackupPath
-     *
-     * @param string $localBackupPath
-     * @return void
-     */
-    public function setLocalBackupPath(string $localBackupPath): void
-    {
-        $this->localBackupPath = $localBackupPath;
-    }
-
-    /**
-     * Returns the serversBackupPath
-     *
-     * @return string $serversBackupPath
-     */
-    public function getServersBackupPath(): string
-    {
-        return $this->serversBackupPath;
-    }
-
-    /**
-     * Sets the serversBackupPath
-     *
-     * @param string $serversBackupPath
-     * @return void
-     */
-    public function setServersBackupPath(string $serversBackupPath): void
-    {
-        $this->serversBackupPath = $serversBackupPath;
     }
 
     /**
