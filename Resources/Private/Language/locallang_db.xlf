@@ -75,42 +75,7 @@
 			<trans-unit id="tx_nsbackup_domain_model_servers.settings">
 				<source>Settings</source>
 			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule">
-				<source>Schedule</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.database_type">
-				<source>Database Type</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.database_username">
-				<source>Database Username</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.database_password">
-				<source>Database Password</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.backup_folder_settings">
-				<source>Backup Folder Settings</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.custom_folder_path">
-				<source>Custom Folder Path</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.select_schedule_type">
-				<source>Select Schedule Type</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.select_schedulle_settings">
-				<source>Select Schedulle Settings</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.backup_destination">
-				<source>Backup Server/Cloud</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.servers">
-				<source>Servers</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.backup_data">
-				<source>Backup Data</source>
-			</trans-unit>
+
 			<trans-unit id="tx_nsbackup_domain_model_backupdata">
 				<source>Backup Data</source>
 			</trans-unit>

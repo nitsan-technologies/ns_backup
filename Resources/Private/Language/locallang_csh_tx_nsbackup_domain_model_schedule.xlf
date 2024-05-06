@@ -21,9 +21,7 @@
 			<trans-unit id="custom_folder_path.description">
 				<source>customFolderPath</source>
 			</trans-unit>
-			<trans-unit id="select_schedule_type.description">
-				<source>selectScheduleType</source>
-			</trans-unit>
+
 			<trans-unit id="select_schedulle_settings.description">
 				<source>selectSchedulleSettings</source>
 			</trans-unit>

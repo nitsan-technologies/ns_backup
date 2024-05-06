@@ -17,14 +17,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,category,start_datetime,end_datetime,backup_type,download_url,schedule_uid,server_uid,logs_uid,local_backup_path,servers_backup_path,filenames,size,logs,date,status',
+        'searchFields' => 'title,category,start_datetime,end_datetime,backup_type,download_url,server_uid,logs_uid,local_backup_path,servers_backup_path,filenames,size,logs,date,status',
         'iconfile' => 'EXT:ns_backup/Resources/Public/Icons/tx_nsbackup_domain_model_backupdata.gif',
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_diffsource, hidden, title, category, start_datetime, end_datetime, backup_type, download_url, schedule_uid, server_uid, logs_uid, local_backup_path, servers_backup_path, filenames, size, logs, date, status, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_diffsource, hidden, title, category, start_datetime, end_datetime, backup_type, download_url, server_uid, logs_uid, local_backup_path, servers_backup_path, filenames, size, logs, date, status, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -159,15 +159,6 @@ return [
         'download_url' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupdata.download_url',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'schedule_uid' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupdata.schedule_uid',
             'config' => [
                 'type' => 'input',
                 'size' => 30,

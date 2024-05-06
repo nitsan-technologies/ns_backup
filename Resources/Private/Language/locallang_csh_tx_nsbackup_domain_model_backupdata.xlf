@@ -21,9 +21,7 @@
 			<trans-unit id="download_url.description">
 				<source>downloadUrl</source>
 			</trans-unit>
-			<trans-unit id="schedule_uid.description">
-				<source>scheduleUid</source>
-			</trans-unit>
+
 			<trans-unit id="server_uid.description">
 				<source>serverUid</source>
 			</trans-unit>

@@ -2,15 +2,17 @@
 
 namespace NITSAN\NsBackup\Controller;
 
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Psr\Http\Message\ServerRequestInterface;
 use NITSAN\NsBackup\Domain\Model\Backupglobal;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
-use NITSAN\NsBackup\Controller\BackupBaseController;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
+use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
+use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
 
 /***
@@ -32,7 +34,7 @@ class BackupglobalController extends ActionController
     /**
      * backupglobalRepository
      */
-    protected $backupglobalRepository;
+    protected BackupglobalRepository $backupglobalRepository;
 
     /**
      * backupBaseController
@@ -43,11 +45,13 @@ class BackupglobalController extends ActionController
      * errorValidation
      */
     protected $errorValidation;
+    protected ModuleTemplateFactory $moduleTemplateFactory;
 
     public function __construct(
-        protected readonly ModuleTemplateFactory $moduleTemplateFactory,
+        ModuleTemplateFactory $moduleTemplateFactory,
         BackupglobalRepository $backupglobalRepository
     ) {
+        $this->moduleTemplateFactory = $moduleTemplateFactory;
         $this->backupglobalRepository = $backupglobalRepository;
     }
 
@@ -56,7 +60,7 @@ class BackupglobalController extends ActionController
      * Override this method to solve assign variables common for all actions
      * or prepare the view in another way before the action is called.
      */
-    public function initializeView()
+    public function initializeView(): void
     {
         // Global error check
         $this->backupBaseController = GeneralUtility::makeInstance(BackupBaseController::class);
@@ -70,9 +74,9 @@ class BackupglobalController extends ActionController
 
     /**
      * action globalsetting
-     *
+     * @return ResponseInterface
      */
-    public function globalsettingAction()
+    public function globalsettingAction(): ResponseInterface
     {
         $view = $this->initializeModuleTemplate($this->request);
         $globalSettingsData = $this->backupglobalRepository->findAll();
@@ -91,11 +95,13 @@ class BackupglobalController extends ActionController
      * action create
      *
      * @param Backupglobal $backupglobal
+     * @return ResponseInterface
+     * @throws IllegalObjectTypeException
      */
-    public function createAction(Backupglobal $backupglobal)
+    public function createAction(Backupglobal $backupglobal): ResponseInterface
     {
         $msg = transalte::translate('globalsettings.create', 'ns_backup');
-        $this->addFlashMessage('', $msg, ContextualFeedbackSeverity::OK);
+        $this->addFlashMessage('', $msg);
         $this->backupglobalRepository->add($backupglobal);
 
         return $this->redirect('globalsetting');
@@ -105,11 +111,14 @@ class BackupglobalController extends ActionController
      * action update
      *
      * @param Backupglobal $backupglobal
+     * @return ResponseInterface
+     * @throws IllegalObjectTypeException
+     * @throws UnknownObjectException
      */
-    public function updateAction(Backupglobal $backupglobal)
+    public function updateAction(Backupglobal $backupglobal): ResponseInterface
     {
         $msg = transalte::translate('globalsettings.update', 'ns_backup');
-        $this->addFlashMessage('', $msg, ContextualFeedbackSeverity::OK);
+        $this->addFlashMessage('', $msg);
         $this->backupglobalRepository->update($backupglobal);
 
         return $this->redirect('globalsetting');

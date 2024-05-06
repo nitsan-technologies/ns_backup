@@ -2,6 +2,7 @@
 
 namespace NITSAN\NsBackup\Domain\Repository;
 
+use Doctrine\DBAL\Exception;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Extbase\Persistence\Repository;
@@ -32,39 +33,34 @@ class BackupglobalRepository extends Repository
 
     /**
      * findBackupDataAll
+     * @param int $limit
+     * @return array
+     * @throws Exception
      */
-    public function findBackupDataAll($limit = 0)
+    public function findBackupDataAll(int $limit = 0): array
     {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_nsbackup_domain_model_backupdata');
-
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_nsbackup_domain_model_backupdata');
+        $queryBuilder
+            ->select('*')
+            ->from('tx_nsbackup_domain_model_backupdata')
+            ->orderBy('uid', 'DESC');
         if($limit > 0) {
-            $statement = $queryBuilder
-                ->select('*')
-                ->from('tx_nsbackup_domain_model_backupdata')
-                ->orderBy('uid', 'DESC')
-                ->setMaxResults($limit)
-                ->executeQuery();
-        } else {
-            $statement = $queryBuilder
-                ->select('*')
-                ->from('tx_nsbackup_domain_model_backupdata')
-                ->orderBy('uid', 'DESC')
-                ->executeQuery();
+            $queryBuilder->setMaxResults($limit);
         }
-
+        $statement = $queryBuilder->executeQuery();
         $arrReturn = array();
-
         while ($row = $statement->fetchAssociative()) {
             $arrReturn[] = $row;
         }
-
         return $arrReturn;
     }
 
     /**
      * addBackupData
+     * @param array $arrData
      */
-    public function addBackupData($arrData)
+    public function addBackupData(array $arrData): void
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_nsbackup_domain_model_backupdata');
         $queryBuilder
@@ -85,30 +81,33 @@ class BackupglobalRepository extends Repository
 
     /**
      * findBackupByUid
+     * @param int $uid
+     * @return false|mixed[]
+     * @throws Exception
      */
-    public function findBackupByUid($arrUid)
+    public function findBackupByUid(int $uid): array|bool
     {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_nsbackup_domain_model_backupdata');
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_nsbackup_domain_model_backupdata');
         $statement = $queryBuilder
             ->select('*')
             ->from('tx_nsbackup_domain_model_backupdata')
-            ->where('uid', $arrUid[0])
+            ->where('uid', $uid)
             ->executeQuery();
 
-        $row = $statement->fetchAssociative();
-
-        return $row;
+        return $statement->fetchAssociative();
     }
 
     /**
      * removeBackupData
+     * @param int $uid
      */
-    public function removeBackupData($arrUid)
+    public function removeBackupData(int $uid): void
     {
         GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_nsbackup_domain_model_backupdata')
         ->delete(
             'tx_nsbackup_domain_model_backupdata', // from
-            [ 'uid' => $arrUid[0] ] // where
+            [ 'uid' => $uid ] // where
         );
     }
 }

@@ -62,7 +62,6 @@ CREATE TABLE tx_nsbackup_domain_model_backupdata (
 	end_datetime varchar(255) DEFAULT '' NOT NULL,
 	backup_type varchar(255) DEFAULT '' NOT NULL,
 	download_url varchar(255) DEFAULT '' NOT NULL,
-	schedule_uid varchar(255) DEFAULT '',
 	server_uid varchar(255) DEFAULT '',
 	logs_uid varchar(255) DEFAULT '' NOT NULL,
 	local_backup_path varchar(255) DEFAULT '' NOT NULL,

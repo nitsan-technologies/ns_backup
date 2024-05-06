@@ -115,42 +115,17 @@
 			<trans-unit id="tx_nsbackup_domain_model_servers.settings">
 				<source>Settings</source>
 			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule">
-				<source>Schedule</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.database_type">
-				<source>Database Type</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.database_username">
-				<source>Database Username</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.database_password">
-				<source>Database Password</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.backup_folder_settings">
-				<source>Backup Folder Settings</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.custom_folder_path">
-				<source>Custom Folder Path</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.select_schedule_type">
-				<source>Select Schedule Type</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.select_schedulle_settings">
-				<source>Select Schedulle Settings</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.backup_destination">
-				<source>Backup Server/Cloud</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.servers">
-				<source>Servers</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.backup_data">
-				<source>Backup Data</source>
-			</trans-unit>
+
+
+
+
+
+
+
+
+
+
+
 			<trans-unit id="tx_nsbackup_domain_model_backupdata">
 				<source>Backup Data</source>
 			</trans-unit>
@@ -172,9 +147,7 @@
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.download_url">
 				<source>Download Url</source>
 			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_backupdata.schedule_uid">
-				<source>Schedule Uid</source>
-			</trans-unit>
+
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.server_uid">
 				<source>Server Uid</source>
 			</trans-unit>
@@ -213,9 +186,7 @@
 			<trans-unit id="menu.backupsrestore">
 				<source>Backup History</source>
 			</trans-unit>
-			<trans-unit id="menu.schedulebackups">
-				<source>Schedule Backup</source>
-			</trans-unit>
+
 			<trans-unit id="menu.serverclouds">
 				<source>Server/Clouds</source>
 			</trans-unit>
@@ -421,76 +392,6 @@
 			<trans-unit id="create-server-cloud">
 				<source>New Server/Cloud configuration created successfully.</source>
 			</trans-unit>
-
-			<trans-unit id="schedule.content.schedulebackup">
-				<source>Schedule Backup</source>
-			</trans-unit>
-			<trans-unit id="schedule.content.createschedulebackup">
-				<source>Schedule Backup</source>
-			</trans-unit>
-			<trans-unit id="schedule.form.backupname">
-				<source>Backup Name</source>
-			</trans-unit>
-			<trans-unit id="schedule.form.startrun">
-				<source>Start Date/Time</source>
-			</trans-unit>
-			<trans-unit id="schedule.form.endrun">
-				<source>End Date/Time</source>
-			</trans-unit>
-			<trans-unit id="schedule.form.backuptypelabel">
-				<source>What do you want to Backup?</source>
-			</trans-unit>
-			<trans-unit id="schedule.form.selectschedule">
-				<source>Select Schedule</source>
-			</trans-unit>
-			<trans-unit id="schedule.form.selectdestination">
-				<source>Choose Server/Cloud</source>
-			</trans-unit>
-			<trans-unit id="schedule.form.schedulebackup.submit">
-				<source>Submit Schedule Backup</source>
-			</trans-unit>
-			<trans-unit id="schedule.backuptype.error">
-				<source>Please select at least one checkbox.</source>
-			</trans-unit>
-			<trans-unit id="schedule.backup.create">
-				<source>New schedule backup created successfully.</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.time">
-				<source>Schedule/Cron</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.nexttime">
-				<source>Start At</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.lasttime">
-				<source>End At</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.nextexecution">
-				<source>Next Execution</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.lastexecution">
-				<source>Last Executed</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.type">
-				<source>Type</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.server">
-				<source>Server</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.next-run">
-				<source>End At</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.last-run">
-				<source>Last Run</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.actions">
-				<source>Actions</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.deleteall">
-				<source>Delete Schedule Backup</source>
-			</trans-unit>
 			<trans-unit id="manualbackup.success">
 				<source>Manual backup taken successfully.</source>
 			</trans-unit>
@@ -557,12 +458,6 @@
 			<trans-unit id="quicksetup.skip">
 				<source>Skip Setup Wizard For Now</source>
 			</trans-unit>
-			<trans-unit id="schedule.create.success">
-				<source>Schedule backup created successfully.</source>
-			</trans-unit>
-			<trans-unit id="schedule.update.success">
-				<source>Schedule backup updated successfully.</source>
-			</trans-unit>
 			<trans-unit id="backup.now">
 				<source>Backup Now!</source>
 			</trans-unit>
@@ -572,21 +467,13 @@
 			<trans-unit id="backup.now.description2">
 				<source>You will need to choose backup type, backup name and server destination.</source>
 			</trans-unit>
-			<trans-unit id="next.scheduled.backups">
-				<source>Scheduled Backups</source>
-			</trans-unit>
+
 			<trans-unit id="more.logs">
 				<source>See More Logs</source>
 			</trans-unit>
-			<trans-unit id="more.schedule.backups">
-				<source>Checkout Schedule Backups</source>
-			</trans-unit>
-			<trans-unit id="schedule.add.scheduler.header">
-				<source>Please Configure TYPO3's Scheduler</source>
-			</trans-unit>
-			<trans-unit id="schedule.add.scheduler.message">
-				<source>Go to System > Scheduler > Add New "Execute console commands > ns_backup". Name should be "NS Backup".</source>
-			</trans-unit>
+
+
+
 			<trans-unit id="no.data.found">
 				<source>No data found.</source>
 			</trans-unit>

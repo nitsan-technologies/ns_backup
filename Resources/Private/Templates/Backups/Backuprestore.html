@@ -34,12 +34,6 @@
 					<table class="table ns-backup-datatable" id="myexample">
 						<thead class="thead-light">
 							<tr>
-								<th scope="col">
-									<div class="form-check ns-backup-select-all">
-										<input class="form-check-input" type="checkbox" value="" id="typo3ext">
-										<label class="form-check-label" for="typo3ext"></label>
-									</div>
-								</th>
 								<th scope="col"><f:translate key="servercloud.content.name" extensionName = "NsBackup" /></th>
 								<th scope="col"><f:translate key="backup.date" extensionName = "NsBackup" /></th>
 								<th scope="col"><f:translate key="backup.type" extensionName = "NsBackup" /></th>
@@ -50,15 +44,6 @@
 						<tbody>
                             <f:for each="{arrBackupData}" as="backup" iteration="i">
 							<tr>
-								<td>
-									<div class="ns-backup-checkmark-wrap">
-										<div class="form-check ">
-											<input class="form-check-input checkSingle" type="checkbox" value="{backup.uid}">
-												<label class="form-check-label" for=""></label>
-											<label class="form-check-label" for=""></label>
-										</div>
-									</div>
-								</td>
                                 <td>{backup.title}</td>
                                 <td><f:format.date format="d-m-Y H:i">{backup.start_datetime}</f:format.date></td>
 								<td>

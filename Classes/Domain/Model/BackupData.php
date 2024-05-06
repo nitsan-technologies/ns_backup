@@ -25,119 +25,113 @@ class BackupData extends AbstractEntity
      *
      * @var string
      */
-    protected $title = '';
+    protected string $title = '';
 
     /**
      * category
      *
      * @var string
      */
-    protected $category = '';
+    protected string $category = '';
 
     /**
      * startDatetime
      *
      * @var string
      */
-    protected $startDatetime = '';
+    protected string $startDatetime = '';
 
     /**
      * endDatetime
      *
      * @var string
      */
-    protected $endDatetime = '';
+    protected string $endDatetime = '';
 
     /**
      * backupType
      *
      * @var string
      */
-    protected $backupType = '';
+    protected string $backupType = '';
 
     /**
      * downloadUrl
      *
      * @var string
      */
-    protected $downloadUrl = '';
+    protected string $downloadUrl = '';
 
-    /**
-     * scheduleUid
-     *
-     * @var string
-     */
-    protected $scheduleUid = '';
 
     /**
      * serverUid
      *
      * @var string
      */
-    protected $serverUid = '';
+    protected string $serverUid = '';
 
     /**
      * logsUid
      *
      * @var string
      */
-    protected $logsUid = '';
+    protected string $logsUid = '';
 
     /**
      * localBackupPath
      *
      * @var string
      */
-    protected $localBackupPath = '';
+    protected string $localBackupPath = '';
 
     /**
      * serversBackupPath
      *
      * @var string
      */
-    protected $serversBackupPath = '';
+    protected string $serversBackupPath = '';
 
     /**
      * filenames
      *
      * @var string
      */
-    protected $filenames = '';
+    protected string $filenames = '';
 
     /**
      * size
      *
      * @var string
      */
-    protected $size = '';
+    protected string $size = '';
 
     /**
      * logs
      *
      * @var string
      */
-    protected $logs = '';
+    protected string $logs = '';
 
     /**
      * date
      *
      * @var string
      */
-    protected $date = '';
+    protected string $date = '';
 
     /**
      * status
      *
      * @var string
      */
-    protected $status = '';
+    protected string $status = '';
 
     /**
      * Returns the title
      *
      * @return string $title
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -148,7 +142,7 @@ class BackupData extends AbstractEntity
      * @param string $title
      * @return void
      */
-    public function setTitle($title)
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
@@ -158,7 +152,7 @@ class BackupData extends AbstractEntity
      *
      * @return string $category
      */
-    public function getCategory()
+    public function getCategory(): string
     {
         return $this->category;
     }
@@ -169,7 +163,7 @@ class BackupData extends AbstractEntity
      * @param string $category
      * @return void
      */
-    public function setCategory($category)
+    public function setCategory(string $category): void
     {
         $this->category = $category;
     }
@@ -179,7 +173,7 @@ class BackupData extends AbstractEntity
      *
      * @return string $startDatetime
      */
-    public function getStartDatetime()
+    public function getStartDatetime(): string
     {
         return $this->startDatetime;
     }
@@ -190,7 +184,7 @@ class BackupData extends AbstractEntity
      * @param string $startDatetime
      * @return void
      */
-    public function setStartDatetime($startDatetime)
+    public function setStartDatetime(string $startDatetime): void
     {
         $this->startDatetime = $startDatetime;
     }
@@ -200,7 +194,7 @@ class BackupData extends AbstractEntity
      *
      * @return string $endDatetime
      */
-    public function getEndDatetime()
+    public function getEndDatetime(): string
     {
         return $this->endDatetime;
     }
@@ -211,7 +205,7 @@ class BackupData extends AbstractEntity
      * @param string $endDatetime
      * @return void
      */
-    public function setEndDatetime($endDatetime)
+    public function setEndDatetime(string $endDatetime): void
     {
         $this->endDatetime = $endDatetime;
     }
@@ -221,7 +215,7 @@ class BackupData extends AbstractEntity
      *
      * @return string $backupType
      */
-    public function getBackupType()
+    public function getBackupType(): string
     {
         return $this->backupType;
     }
@@ -232,7 +226,7 @@ class BackupData extends AbstractEntity
      * @param string $backupType
      * @return void
      */
-    public function setBackupType($backupType)
+    public function setBackupType(string $backupType): void
     {
         $this->backupType = $backupType;
     }
@@ -242,7 +236,7 @@ class BackupData extends AbstractEntity
      *
      * @return string $downloadUrl
      */
-    public function getDownloadUrl()
+    public function getDownloadUrl(): string
     {
         return $this->downloadUrl;
     }
@@ -253,30 +247,9 @@ class BackupData extends AbstractEntity
      * @param string $downloadUrl
      * @return void
      */
-    public function setDownloadUrl($downloadUrl)
+    public function setDownloadUrl(string $downloadUrl): void
     {
         $this->downloadUrl = $downloadUrl;
-    }
-
-    /**
-     * Returns the scheduleUid
-     *
-     * @return string $scheduleUid
-     */
-    public function getScheduleUid()
-    {
-        return $this->scheduleUid;
-    }
-
-    /**
-     * Sets the scheduleUid
-     *
-     * @param string $scheduleUid
-     * @return void
-     */
-    public function setScheduleUid($scheduleUid)
-    {
-        $this->scheduleUid = $scheduleUid;
     }
 
     /**
@@ -284,7 +257,7 @@ class BackupData extends AbstractEntity
      *
      * @return string $serverUid
      */
-    public function getServerUid()
+    public function getServerUid(): string
     {
         return $this->serverUid;
     }
@@ -295,7 +268,7 @@ class BackupData extends AbstractEntity
      * @param string $serverUid
      * @return void
      */
-    public function setServerUid($serverUid)
+    public function setServerUid(string $serverUid): void
     {
         $this->serverUid = $serverUid;
     }
@@ -305,7 +278,7 @@ class BackupData extends AbstractEntity
      *
      * @return string $logsUid
      */
-    public function getLogsUid()
+    public function getLogsUid(): string
     {
         return $this->logsUid;
     }
@@ -316,7 +289,7 @@ class BackupData extends AbstractEntity
      * @param string $logsUid
      * @return void
      */
-    public function setLogsUid($logsUid)
+    public function setLogsUid(string $logsUid): void
     {
         $this->logsUid = $logsUid;
     }
@@ -326,7 +299,7 @@ class BackupData extends AbstractEntity
      *
      * @return string $localBackupPath
      */
-    public function getLocalBackupPath()
+    public function getLocalBackupPath(): string
     {
         return $this->localBackupPath;
     }
@@ -337,7 +310,7 @@ class BackupData extends AbstractEntity
      * @param string $localBackupPath
      * @return void
      */
-    public function setLocalBackupPath($localBackupPath)
+    public function setLocalBackupPath(string $localBackupPath): void
     {
         $this->localBackupPath = $localBackupPath;
     }
@@ -347,7 +320,7 @@ class BackupData extends AbstractEntity
      *
      * @return string $serversBackupPath
      */
-    public function getServersBackupPath()
+    public function getServersBackupPath(): string
     {
         return $this->serversBackupPath;
     }
@@ -358,7 +331,7 @@ class BackupData extends AbstractEntity
      * @param string $serversBackupPath
      * @return void
      */
-    public function setServersBackupPath($serversBackupPath)
+    public function setServersBackupPath(string $serversBackupPath): void
     {
         $this->serversBackupPath = $serversBackupPath;
     }
@@ -368,7 +341,7 @@ class BackupData extends AbstractEntity
      *
      * @return string $filenames
      */
-    public function getFilenames()
+    public function getFilenames(): string
     {
         return $this->filenames;
     }
@@ -379,7 +352,7 @@ class BackupData extends AbstractEntity
      * @param string $filenames
      * @return void
      */
-    public function setFilenames($filenames)
+    public function setFilenames(string $filenames): void
     {
         $this->filenames = $filenames;
     }
@@ -389,7 +362,7 @@ class BackupData extends AbstractEntity
      *
      * @return string $size
      */
-    public function getSize()
+    public function getSize(): string
     {
         return $this->size;
     }
@@ -400,7 +373,7 @@ class BackupData extends AbstractEntity
      * @param string $size
      * @return void
      */
-    public function setSize($size)
+    public function setSize(string $size): void
     {
         $this->size = $size;
     }
@@ -410,7 +383,7 @@ class BackupData extends AbstractEntity
      *
      * @return string $logs
      */
-    public function getLogs()
+    public function getLogs(): string
     {
         return $this->logs;
     }
@@ -421,7 +394,7 @@ class BackupData extends AbstractEntity
      * @param string $logs
      * @return void
      */
-    public function setLogs($logs)
+    public function setLogs(string $logs): void
     {
         $this->logs = $logs;
     }
@@ -431,7 +404,7 @@ class BackupData extends AbstractEntity
      *
      * @return string $date
      */
-    public function getDate()
+    public function getDate(): string
     {
         return $this->date;
     }
@@ -442,7 +415,7 @@ class BackupData extends AbstractEntity
      * @param string $date
      * @return void
      */
-    public function setDate($date)
+    public function setDate(string $date): void
     {
         $this->date = $date;
     }
@@ -452,7 +425,7 @@ class BackupData extends AbstractEntity
      *
      * @return string $status
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->status;
     }
@@ -463,7 +436,7 @@ class BackupData extends AbstractEntity
      * @param string $status
      * @return void
      */
-    public function setStatus($status)
+    public function setStatus(string $status): void
     {
         $this->status = $status;
     }

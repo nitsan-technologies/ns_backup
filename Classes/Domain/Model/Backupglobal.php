@@ -25,140 +25,140 @@ class Backupglobal extends AbstractEntity
      *
      * @var string
      */
-    public $emails = '';
+    public string $emails = '';
 
     /**
      * emailSubject
      *
      * @var string
      */
-    public $emailSubject = '';
+    public string $emailSubject = '';
 
     /**
      * emailNotificationOnError
      *
-     * @var int
+     * @var int|null
      */
-    public $emailNotificationOnError = 0;
+    public ?int $emailNotificationOnError = 0;
 
     /**
      * emailNotificationOnSuccess
      *
-     * @var int
+     * @var int|null
      */
-    public $emailNotificationOnSuccess = 0;
+    public ?int $emailNotificationOnSuccess = 0;
 
     /**
      * defaultServer
      *
      * @var string
      */
-    public $defaultServer = '';
+    public string $defaultServer = '';
 
     /**
      * passwordRestore
      *
      * @var string
      */
-    public $passwordRestore = '';
+    public string $passwordRestore = '';
 
     /**
      * backupValidation
      *
      * @var string
      */
-    public $backupValidation = '';
+    public string $backupValidation = '';
 
     /**
      * encryption
      *
      * @var string
      */
-    public $encryption = '';
+    public string $encryption = '';
 
     /**
      * compress
      *
      * @var string
      */
-    public $compress = '';
+    public string $compress = '';
 
     /**
      * php
      *
      * @var string
      */
-    public $php = '';
+    public string $php = '';
 
     /**
      * root
      *
      * @var string
      */
-    public $root = '';
+    public string $root = '';
 
     /**
      * siteurl
      *
      * @var string
      */
-    public $siteurl = '';
+    public string $siteurl = '';
 
     /**
      * cleanupLocalName
      *
      * @var string
      */
-    public $cleanupLocalName = '';
+    public string $cleanupLocalName = '';
 
     /**
      * cleanupLocalValue
      *
      * @var string
      */
-    public $cleanupLocalValue = '';
+    public string $cleanupLocalValue = '';
 
     /**
      * cleanupServerName
      *
      * @var string
      */
-    public $cleanupServerName = '';
+    public string $cleanupServerName = '';
 
     /**
      * cleanupServerValue
      *
      * @var string
      */
-    public $cleanupServerValue = '';
+    public string $cleanupServerValue = '';
 
     /**
      * quickSetupWizard
      *
      * @var int
      */
-    public $quickSetupWizard = 0;
+    public int $quickSetupWizard = 0;
 
     /**
      * cleanup
      *
      * @var string
      */
-    public $cleanup = '';
+    public string $cleanup = '';
 
     /**
      * cleanupQuantity
      *
      * @var int
      */
-    public $cleanupQuantity = 0;
+    public int $cleanupQuantity = 0;
 
     /**
      * Returns the emailSubject
      *
      * @return string emailSubject
      */
-    public function getEmailSubject()
+    public function getEmailSubject(): string
     {
         return $this->emailSubject;
     }
@@ -169,7 +169,7 @@ class Backupglobal extends AbstractEntity
      * @param string $emailSubject
      * @return void
      */
-    public function setEmailSubject($emailSubject)
+    public function setEmailSubject(string $emailSubject): void
     {
         $this->emailSubject = $emailSubject;
     }
@@ -179,7 +179,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return string emails
      */
-    public function getEmails()
+    public function getEmails(): string
     {
         return $this->emails;
     }
@@ -190,7 +190,7 @@ class Backupglobal extends AbstractEntity
      * @param string $emails
      * @return void
      */
-    public function setEmails($emails)
+    public function setEmails(string $emails): void
     {
         $this->emails = $emails;
     }
@@ -200,7 +200,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return int $emailNotificationOnError
      */
-    public function getEmailNotificationOnError()
+    public function getEmailNotificationOnError(): int
     {
         return $this->emailNotificationOnError;
     }
@@ -208,10 +208,10 @@ class Backupglobal extends AbstractEntity
     /**
      * Sets the emailNotificationOnError
      *
-     * @param int $emailNotificationOnError
+     * @param int|null $emailNotificationOnError
      * @return void
      */
-    public function setEmailNotificationOnError($emailNotificationOnError)
+    public function setEmailNotificationOnError(?int $emailNotificationOnError)
     {
         $this->emailNotificationOnError = $emailNotificationOnError;
     }
@@ -221,7 +221,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return int $emailNotificationOnSuccess
      */
-    public function getEmailNotificationOnSuccess()
+    public function getEmailNotificationOnSuccess(): int
     {
         return $this->emailNotificationOnSuccess;
     }
@@ -232,7 +232,7 @@ class Backupglobal extends AbstractEntity
      * @param int $emailNotificationOnSuccess
      * @return void
      */
-    public function setEmailNotificationOnSuccess($emailNotificationOnSuccess)
+    public function setEmailNotificationOnSuccess(int $emailNotificationOnSuccess): void
     {
         $this->emailNotificationOnSuccess = $emailNotificationOnSuccess;
     }
@@ -242,7 +242,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return string $passwordRestore
      */
-    public function getPasswordRestore()
+    public function getPasswordRestore(): string
     {
         return $this->passwordRestore;
     }
@@ -253,7 +253,7 @@ class Backupglobal extends AbstractEntity
      * @param string $passwordRestore
      * @return void
      */
-    public function setPasswordRestore($passwordRestore)
+    public function setPasswordRestore(string $passwordRestore): void
     {
         $this->passwordRestore = $passwordRestore;
     }
@@ -263,7 +263,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return string $backupValidation
      */
-    public function getBackupValidation()
+    public function getBackupValidation(): string
     {
         return $this->backupValidation;
     }
@@ -274,7 +274,7 @@ class Backupglobal extends AbstractEntity
      * @param string $backupValidation
      * @return void
      */
-    public function setBackupValidation($backupValidation)
+    public function setBackupValidation(string $backupValidation): void
     {
         $this->backupValidation = $backupValidation;
     }
@@ -284,7 +284,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return string $encryption
      */
-    public function getEncryption()
+    public function getEncryption(): string
     {
         return $this->encryption;
     }
@@ -295,7 +295,7 @@ class Backupglobal extends AbstractEntity
      * @param string $encryption
      * @return void
      */
-    public function setEncryption($encryption)
+    public function setEncryption(string $encryption): void
     {
         $this->encryption = $encryption;
     }
@@ -305,7 +305,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return string $compress
      */
-    public function getCompress()
+    public function getCompress(): string
     {
         return $this->compress;
     }
@@ -316,7 +316,7 @@ class Backupglobal extends AbstractEntity
      * @param string $compress
      * @return void
      */
-    public function setCompress($compress)
+    public function setCompress(string $compress): void
     {
         $this->compress = $compress;
     }
@@ -326,7 +326,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return string $php
      */
-    public function getPhp()
+    public function getPhp(): string
     {
         return $this->php;
     }
@@ -337,7 +337,7 @@ class Backupglobal extends AbstractEntity
      * @param string $php
      * @return void
      */
-    public function setPhp($php)
+    public function setPhp(string $php): void
     {
         $this->php = $php;
     }
@@ -347,7 +347,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return string $root
      */
-    public function getRoot()
+    public function getRoot(): string
     {
         return $this->root;
     }
@@ -358,7 +358,7 @@ class Backupglobal extends AbstractEntity
      * @param string $root
      * @return void
      */
-    public function setRoot($root)
+    public function setRoot(string $root): void
     {
         $this->root = $root;
     }
@@ -368,7 +368,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return string $siteurl
      */
-    public function getSiteurl()
+    public function getSiteurl(): string
     {
         return $this->siteurl;
     }
@@ -379,7 +379,7 @@ class Backupglobal extends AbstractEntity
      * @param string $siteurl
      * @return void
      */
-    public function setSiteurl($siteurl)
+    public function setSiteurl(string $siteurl): void
     {
         $this->siteurl = $siteurl;
     }
@@ -389,7 +389,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return int $cleanupQuantity
      */
-    public function getCleanupQuantity()
+    public function getCleanupQuantity(): int
     {
         return $this->cleanupQuantity;
     }
@@ -400,7 +400,7 @@ class Backupglobal extends AbstractEntity
      * @param int $cleanupQuantity
      * @return void
      */
-    public function setcleanupQuantity($cleanupQuantity)
+    public function setcleanupQuantity(int $cleanupQuantity): void
     {
         $this->cleanupQuantity = $cleanupQuantity;
     }
@@ -410,7 +410,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return string $cleanupLocalName
      */
-    public function getCleanupLocalName()
+    public function getCleanupLocalName(): string
     {
         return $this->cleanupLocalName;
     }
@@ -421,7 +421,7 @@ class Backupglobal extends AbstractEntity
      * @param string $cleanupLocalName
      * @return void
      */
-    public function setCleanupLocalName($cleanupLocalName)
+    public function setCleanupLocalName(string $cleanupLocalName): void
     {
         $this->cleanupLocalName = $cleanupLocalName;
     }
@@ -431,7 +431,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return string $cleanupLocalValue
      */
-    public function getCleanupLocalValue()
+    public function getCleanupLocalValue(): string
     {
         return $this->cleanupLocalValue;
     }
@@ -442,7 +442,7 @@ class Backupglobal extends AbstractEntity
      * @param string $cleanupLocalValue
      * @return void
      */
-    public function setCleanupLocalValue($cleanupLocalValue)
+    public function setCleanupLocalValue(string $cleanupLocalValue): void
     {
         $this->cleanupLocalValue = $cleanupLocalValue;
     }
@@ -452,7 +452,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return string $cleanupServerName
      */
-    public function getCleanupServerName()
+    public function getCleanupServerName(): string
     {
         return $this->cleanupServerName;
     }
@@ -463,7 +463,7 @@ class Backupglobal extends AbstractEntity
      * @param string $cleanupServerName
      * @return void
      */
-    public function setCleanupServerName($cleanupServerName)
+    public function setCleanupServerName(string $cleanupServerName): void
     {
         $this->cleanupServerName = $cleanupServerName;
     }
@@ -473,7 +473,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return string $cleanupServerValue
      */
-    public function getCleanupServerValue()
+    public function getCleanupServerValue(): string
     {
         return $this->cleanupServerValue;
     }
@@ -484,7 +484,7 @@ class Backupglobal extends AbstractEntity
      * @param string $cleanupServerValue
      * @return void
      */
-    public function setCleanupServerValue($cleanupServerValue)
+    public function setCleanupServerValue(string $cleanupServerValue): void
     {
         $this->cleanupServerValue = $cleanupServerValue;
     }
@@ -494,7 +494,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return int $quickSetupWizard
      */
-    public function getQuickSetupWizard()
+    public function getQuickSetupWizard(): int
     {
         return $this->quickSetupWizard;
     }
@@ -505,7 +505,7 @@ class Backupglobal extends AbstractEntity
      * @param int $quickSetupWizard
      * @return void
      */
-    public function setQuickSetupWizard($quickSetupWizard)
+    public function setQuickSetupWizard(int $quickSetupWizard): void
     {
         $this->quickSetupWizard = $quickSetupWizard;
     }
@@ -515,7 +515,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return string $defaultServer
      */
-    public function getDefaultServer()
+    public function getDefaultServer(): string
     {
         return $this->defaultServer;
     }
@@ -526,7 +526,7 @@ class Backupglobal extends AbstractEntity
      * @param string $defaultServer
      * @return void
      */
-    public function setDefaultServer($defaultServer)
+    public function setDefaultServer(string $defaultServer): void
     {
         $this->defaultServer = $defaultServer;
     }
@@ -536,7 +536,7 @@ class Backupglobal extends AbstractEntity
      *
      * @return string $cleanup
      */
-    public function getCleanup()
+    public function getCleanup(): string
     {
         return $this->cleanup;
     }
@@ -547,7 +547,7 @@ class Backupglobal extends AbstractEntity
      * @param string $cleanup
      * @return void
      */
-    public function setCleanup($cleanup)
+    public function setCleanup(string $cleanup): void
     {
         $this->cleanup = $cleanup;
     }
