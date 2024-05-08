@@ -10,7 +10,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility as debug;
 /***
  *
- * This file is part of the "[NITSAN] Backup" Extension for TYPO3 CMS.
+ * This file is part of the "Backup" Extension for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.

@@ -27,16 +27,9 @@
 					<table class="table ns-backup-datatable" id="myexample">
 						<thead class="thead-light">
 							<tr>
-								<th scope="col">
-									<div class="form-check ns-backup-select-all">
-										<input class="form-check-input" type="checkbox" value="" id="typo3ext">
-										<label class="form-check-label" for="typo3ext"></label>
-									</div>
-								</th>
 								<th scope="col"><f:translate key="servercloud.content.name" /></th>
 								<th scope="col"><f:translate key="backup.date" /></th>
 								<th scope="col"><f:translate key="backup.type" /></th>
-								<th scope="col"><f:translate key="server.cloud" /></th>
 								<th scope="col"><f:translate key="size_mb" /></th>
 								<th scope="col"><f:translate key="servercloud.content.actions" /></th>
 							</tr>
@@ -44,15 +37,6 @@
 						<tbody>
                             <f:for each="{arrBackupData}" as="backup" iteration="i">
 							<tr>
-								<td>
-									<div class="ns-backup-checkmark-wrap">
-										<div class="form-check ">
-											<input class="form-check-input checkSingle" type="checkbox" value="{backup.uid}">
-												<label class="form-check-label" for=""></label>
-											<label class="form-check-label" for=""></label>
-										</div>
-									</div>
-								</td>
                                 <td>{backup.title}</td>
                                 <td><f:format.date format="d-m-Y H:i">{backup.start_datetime}</f:format.date></td>
 								<td>
@@ -62,19 +46,10 @@
                                         </f:if>
                                     </f:for>
                                 </td>
-								<td>
-                                    <f:for each="{serverData}" as="whichserver" iteration="i">
-                                        <f:if condition="{whichserver.uid} == {backup.server_uid}">
-                                            {whichserver.title}
-                                        </f:if>
-                                    </f:for>
-                                </td>
 								<td>{backup.size}</td>
 								<td>
 									<div class="button-group ns-backup-actions-wrap">
 										<a target="_blank" href="{backup.download_url}" class="btn btn-primary"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="download.backup" /></a>
-										<!-- <a href="javascript:;" class="btn btn-danger" data-toggle="modal"
-											data-target="#nsBackupDeleteRecordModal"><em class="fa fa-trash-o" aria-hidden="true"></em>Delete</a> -->
 										<a href="javascript:;" class="btn btn-success btn-log-show" {modalAttr}toggle="modal"
                                             {modalAttr}target="#logBackup" data-id="{backup.uid}"><em class="fa fa-file-text-o" aria-hidden="true"></em>Logs</a>
                                         <a href="javascript:;" class="btn btn-danger delete-backup" {modalAttr}toggle="modal"
@@ -90,7 +65,6 @@
                             </f:for>
 						</tbody>
 					</table>
-                    <!-- <a href="javasctipt:;" class="btn btn-danger btn-delete-record"><em class="fa fa-trash-o" aria-hidden="true"></em>Delete Selected Backups</a> -->
 				</div>
 			</div>
 		</div>

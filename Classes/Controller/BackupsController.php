@@ -72,12 +72,6 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     {
         $globalSettingsData = $this->backupglobalRepository->findAll();
         $arrBackupData = $this->backupglobalRepository->findBackupDataAll(5);
-        if (version_compare(TYPO3_branch, '11', '>=')) {
-            $this->view->assign('modalAttr','data-bs-');
-        } else {
-            $this->view->assign('modalAttr','data-');
-        }
-
         $arrMultipleVars = [
             'cleanup' => constant('cleanup'),
             'backuptype' => constant('backuptype'),
@@ -87,7 +81,11 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'arrBackupData' => $arrBackupData,
             'errorValidation' => $this->errorValidation
         ];
-
+        if (version_compare(TYPO3_branch, '11', '>=')) {
+            $arrMultipleVars['modalAttr'] ='data-bs-';
+        } else {
+            $arrMultipleVars['modalAttr'] = 'data-';
+        }
         $this->view->assignMultiple($arrMultipleVars);
     }
 
@@ -113,25 +111,18 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'errorValidation' => $this->errorValidation
         ];
 
-        ###########################
-        ### Start Backup Module ###
-        ###########################
-
         $arrPost = $this->request->getArguments();
-        $schedulerId = isset($_REQUEST['schedulerId']) ? $_REQUEST['schedulerId'] : '';
 
         // "RUN" Backup from "Manual Backup Module"
-        $arrPost['backuprestore'] = isset($arrPost['backuprestore']) ? $arrPost['backuprestore'] : '';
+        $arrPost['backuprestore'] = $arrPost['backuprestore'] ?? '';
         $arrPost = $arrPost['backuprestore'];
-
-        if(!empty($arrPost['backupFolderSettings'])) {
+        if(!empty($arrPost['backupFolderSettings']) && empty($this->errorValidation)) {
 
             // Create json and take backup
             //$arrResponse = BackupBaseController::generateBackup($arrPost);
             $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
             $this->backupBaseController = $this->objectManager->get(BackupBaseController::class);
             $arrResponse = $this->backupBaseController->generateBackup($arrPost);
-
             if($arrResponse['log'] == 'error') {
                 // Error Flash-Message
                 $mesHeader = transalte::translate('manualbackup.error','ns_backup');
@@ -142,17 +133,14 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 // Success Flash-Message
                 $mesHeader = transalte::translate('manualbackup.success','ns_backup');
                 $backup_file = transalte::translate('backup.downloaded','ns_backup').' '.$arrResponse['backup_file'];
-                $this->addFlashMessage($backup_file, $mesHeader, \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+                $this->addFlashMessage($backup_file, $mesHeader);
 
                 // Pass to Fluid
                 $arrMultipleVars['isManualBackup'] = '1';
                 $arrMultipleVars['log'] = '<pre class="pre-scrollable"><code class="json">'. json_encode(json_decode($arrResponse['log']), JSON_PRETTY_PRINT) .'</code></pre>';
                 $arrMultipleVars['download_url'] = $arrResponse['download_url'];
             }
-
-            //$this->redirect('backuprestore');
         }
-
         // List Backup History
         $objBackupData = $this->backupglobalRepository->findBackupDataAll();
         foreach ($objBackupData as $keyBackup => $valueBackup) {
@@ -162,25 +150,6 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             }
         }
         $arrMultipleVars['arrBackupData'] = $objBackupData;
-
-        //session_start();
-        //echo "<pre>";print_r($_SESSION);exit;
-
-        $this->view->assignMultiple($arrMultipleVars);
-    }
-
-    /**
-     * action premiumextension
-     *
-     * @return void
-     */
-    public function premiumextensionAction()
-    {
-        $arrMultipleVars = [
-            'action' => 'premiumextension',
-            'errorValidation' => $this->errorValidation
-        ];
-
         $this->view->assignMultiple($arrMultipleVars);
     }
 
@@ -190,21 +159,17 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function deletebackupbackupAction()
     {
-        $uid = GeneralUtility::_GP('uids');
+        $uid = GeneralUtility::_GP('uid');
         $arrBackup = $this->backupglobalRepository->findBackupByUid($uid);
-
         // Let's delete it
         $this->backupglobalRepository->removeBackupData($uid);
-
         // Remove file from Physical location
         if(file_exists($arrBackup['filenames'])){
             unlink($arrBackup['filenames']);
         }
-
         $headerMsg = transalte::translate('delete.backup.data','ns_backup');
         $msg = transalte::translate('delete.backup.message','ns_backup').$arrBackup['filenames'];
         $this->addFlashMessage($msg, $headerMsg, \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
         return $msg;
-        //$this->redirect('backuprestore');
     }
 }

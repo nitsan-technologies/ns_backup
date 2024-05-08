@@ -25,13 +25,6 @@ class BackupData extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $title = '';
 
     /**
-     * category
-     *
-     * @var string
-     */
-    protected $category = '';
-
-    /**
      * startDatetime
      *
      * @var string
@@ -58,41 +51,6 @@ class BackupData extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $downloadUrl = '';
-
-    /**
-     * scheduleUid
-     *
-     * @var string
-     */
-    protected $scheduleUid = '';
-
-    /**
-     * serverUid
-     *
-     * @var string
-     */
-    protected $serverUid = '';
-
-    /**
-     * logsUid
-     *
-     * @var string
-     */
-    protected $logsUid = '';
-
-    /**
-     * localBackupPath
-     *
-     * @var string
-     */
-    protected $localBackupPath = '';
-
-    /**
-     * serversBackupPath
-     *
-     * @var string
-     */
-    protected $serversBackupPath = '';
 
     /**
      * filenames
@@ -148,27 +106,6 @@ class BackupData extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setTitle($title)
     {
         $this->title = $title;
-    }
-
-    /**
-     * Returns the category
-     *
-     * @return string $category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Sets the category
-     *
-     * @param string $category
-     * @return void
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
     }
 
     /**
@@ -253,111 +190,6 @@ class BackupData extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setDownloadUrl($downloadUrl)
     {
         $this->downloadUrl = $downloadUrl;
-    }
-
-    /**
-     * Returns the scheduleUid
-     *
-     * @return string $scheduleUid
-     */
-    public function getScheduleUid()
-    {
-        return $this->scheduleUid;
-    }
-
-    /**
-     * Sets the scheduleUid
-     *
-     * @param string $scheduleUid
-     * @return void
-     */
-    public function setScheduleUid($scheduleUid)
-    {
-        $this->scheduleUid = $scheduleUid;
-    }
-
-    /**
-     * Returns the serverUid
-     *
-     * @return string $serverUid
-     */
-    public function getServerUid()
-    {
-        return $this->serverUid;
-    }
-
-    /**
-     * Sets the serverUid
-     *
-     * @param string $serverUid
-     * @return void
-     */
-    public function setServerUid($serverUid)
-    {
-        $this->serverUid = $serverUid;
-    }
-
-    /**
-     * Returns the logsUid
-     *
-     * @return string $logsUid
-     */
-    public function getLogsUid()
-    {
-        return $this->logsUid;
-    }
-
-    /**
-     * Sets the logsUid
-     *
-     * @param string $logsUid
-     * @return void
-     */
-    public function setLogsUid($logsUid)
-    {
-        $this->logsUid = $logsUid;
-    }
-
-    /**
-     * Returns the localBackupPath
-     *
-     * @return string $localBackupPath
-     */
-    public function getLocalBackupPath()
-    {
-        return $this->localBackupPath;
-    }
-
-    /**
-     * Sets the localBackupPath
-     *
-     * @param string $localBackupPath
-     * @return void
-     */
-    public function setLocalBackupPath($localBackupPath)
-    {
-        $this->localBackupPath = $localBackupPath;
-    }
-
-    /**
-     * Returns the serversBackupPath
-     *
-     * @return string $serversBackupPath
-     */
-    public function getServersBackupPath()
-    {
-        return $this->serversBackupPath;
-    }
-
-    /**
-     * Sets the serversBackupPath
-     *
-     * @param string $serversBackupPath
-     * @return void
-     */
-    public function setServersBackupPath($serversBackupPath)
-    {
-        $this->serversBackupPath = $serversBackupPath;
     }
 
     /**

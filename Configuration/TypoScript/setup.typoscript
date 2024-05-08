@@ -1,8 +1,5 @@
 # Module configuration
 module.tx_nsbackup_tools_nsbackupbackup {
-    persistence {
-        storagePid = {$module.tx_nsbackup_backup.persistence.storagePid}
-    }
     view {
         templateRootPaths.0 = EXT:ns_backup/Resources/Private/Templates/
         templateRootPaths.1 = {$module.tx_nsbackup_backup.view.templateRootPath}
