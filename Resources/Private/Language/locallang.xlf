@@ -409,6 +409,27 @@
 			<trans-unit id="server_time">
 				<source>Server time</source>
 			</trans-unit>
+			<trans-unit id="manual_backup">
+				<source>Manual Backup</source>
+			</trans-unit>
+			<trans-unit id="manual_backup_name">
+				<source>Your Backup Name</source>
+			</trans-unit>
+			<trans-unit id="manual_backup_name_valid_message">
+				<source>Please enter valid name</source>
+			</trans-unit>
+			<trans-unit id="manual_backup_type">
+				<source>What you want to Backup?</source>
+			</trans-unit>
+			<trans-unit id="manual_backup_start">
+				<source>Start Backup Now!</source>
+			</trans-unit>
+			<trans-unit id="manual_backup_wait">
+				<source>Please wait...</source>
+			</trans-unit>
+			<trans-unit id="manual_backup_wait_text">
+				<source>Based on the size of your site, It may take time to backup, Please do not close the window.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

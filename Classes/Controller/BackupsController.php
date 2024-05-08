@@ -120,7 +120,7 @@ class BackupsController extends ActionController
         // "RUN" Backup from "Manual Backup Module"
         $arrPost = $arrPost['backuprestore'] ?? '';
 
-        if(!empty($arrPost['backupFolderSettings'])) {
+        if(!empty($arrPost['backupFolderSettings']) && empty($this->errorValidation)) {
 
             // Create json and take backup
             $this->backupBaseController = GeneralUtility::makeInstance(BackupBaseController::class);

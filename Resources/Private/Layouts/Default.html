@@ -95,7 +95,7 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">Manual Backup</h5>
+						<h5 class="modal-title"><f:translate key="manual_backup" /></h5>
 						<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -108,18 +108,18 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-lg-4">
-													<label for="backupName">Your Backup Name</label>
+													<label for="backupName"><f:translate key="manual_backup_name" /></label>
 												</div>
 												<div class="col-lg-8">
                                                     <f:form.textfield name="backupName" property="backupName" id="backupName" class="form-control" />
-                                                    <p class="backupName-error error" style="display: none;">Please enter valid name</p>
+                                                    <p class="backupName-error error" style="display: none;"><f:translate key="manual_backup_name_valid_message" /></p>
 												</div>
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="row">
 												<div class="col-lg-4">
-													<label>What you want to Backup?</label>
+													<label><f:translate key="manual_backup_type" /></label>
 												</div>
 												<div class="col-lg-8">
                                                     <f:for each="{backuptype}" as="backup" iteration="i">
@@ -139,9 +139,9 @@
 													<div class="ns-backup-download-wrap">
 														<button type="submit"
                                                             class="btn btn-primary btn-start-backup"><em class="fa fa-refresh" aria-hidden="true"></em>
-                                                            Start Backup Now!
+                                                            <f:translate key="manual_backup_start" />
                                                         </button>
-                                                        <p class="backup-Loading error" style="display: none;"><br><strong>Please wait...</strong><br> Based on the size of your site, It may take time to backup, Please do not close the window.</p>
+                                                        <p class="backup-Loading error" style="display: none;"><br><strong><f:translate key="manual_backup_wait" /></strong><br> <f:translate key="manual_backup_wait_text" /></p>
 													</div>
 												</div>
 											</div>
