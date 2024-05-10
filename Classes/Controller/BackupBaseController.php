@@ -2,7 +2,9 @@
 
 namespace NITSAN\NsBackup\Controller;
 
+use RuntimeException;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Exception;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
@@ -133,19 +135,17 @@ class BackupBaseController extends ActionController
      */
     protected $backupDownloadPathMySQL;
 
-    /**
-     * backupglobalRepository
-     */
-    protected BackupglobalRepository $backupglobalRepository;
+    public string $exceptionMessage = '';
 
     /**
      * __construct
      * @param BackupglobalRepository $backupglobalRepository
      */
     public function __construct(
-        BackupglobalRepository $backupglobalRepository
+        protected  BackupglobalRepository $backupglobalRepository
     ) {
-        $this->backupglobalRepository = $backupglobalRepository;
+        $this->exceptionMessage=transalte::translate('something.wrong.here','ns_backup');
+
     }
 
     /**
@@ -200,27 +200,32 @@ class BackupBaseController extends ActionController
 
         // Get TYPO3 Path
         $this->rootPath = $this->globalSettingsData[0]->root ?? (Environment::getProjectPath() ?? '');
+        $this->phpbuPath = $this->rootPath.'/typo3conf/ext/ns_backup/phpbu.phar';
 
         // Let's change root path to /public in Composer-based installation
         if(Environment::isComposerMode()) {
             $this->rootPath = Environment::getPublicPath();
             $this->composerRootPath = Environment::getComposerRootPath();
+            $this->phpbuPath = $this->composerRootPath.'/vendor/nitsan/ns-backup/phpbu.phar';
         }
 
         // Get Local Storage Path
         $this->localStoragePath = $this->rootPath.'/uploads/tx_nsbackup/';
-        if (!file_exists($this->localStoragePath)) {
-            mkdir($this->localStoragePath, 0775, true);
+        try{
+            if (!file_exists($this->localStoragePath)) {
+
+                GeneralUtility::mkdir_deep($this->localStoragePath);
+            }
+        }catch (RuntimeException $e){
+            return  [
+                'log' => 'error',
+                'backup_file' => $this->exceptionMessage,
+            ];
         }
 
         // Get Base URL
         $this->siteUrl = $this->globalSettingsData[0]->siteurl ?? '';
         $this->baseURL = $this->siteUrl . '/uploads/tx_nsbackup/';
-
-        // Get PHPHBU Path
-        $this->phpbuPath = Environment::isComposerMode()
-            ? $this->composerRootPath.'/vendor/nitsan/ns-backup/phpbu.phar'
-            : $this->rootPath.'/typo3conf/ext/ns_backup/phpbu.phar';
 
         // Get Database Configuration
         $this->arrDatabase = $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default'];
@@ -291,22 +296,29 @@ class BackupBaseController extends ActionController
             }
         ';
 
-        // Let's create JSCON folder does not exists
-        if (!file_exists($jsonFolder)) {
-            mkdir($jsonFolder);
+        try{
+            // Let's create JSCON folder does not exists
+            if (!file_exists($jsonFolder)) {
+                GeneralUtility::mkdir_deep($jsonFolder);
+            }
+
+            // Let's create JSON file
+            file_put_contents($jsonPath, $json);
+
+            // Prepare SSH Command
+            $command = $this->phpPath. ' '. $this->phpbuPath.' --configuration='.$jsonPath.' --verbose';
+
+            // Execute Backup SSH Command
+            exec($command, $log);
+        }catch (RuntimeException $e){
+            return  [
+                'log' => 'error',
+                'backup_file' => $this->exceptionMessage,
+            ];
         }
 
-        // Let's create JSON file
-        file_put_contents($jsonPath, $json);
-
-        // Prepare SSH Command
-        $command = $this->phpPath. ' '. $this->phpbuPath.' --configuration='.$jsonPath.' --verbose';
-
-        // Execute Backup SSH Command
-        exec($command, $log);
-
         // Validate If SSH command success
-        if (count($log) > 0) {
+        if (count($log) > 0 && is_array($log))  {
             $log = file_get_contents($logFile);
 
             // Get ready to insert to Backup History
@@ -325,8 +337,15 @@ class BackupBaseController extends ActionController
             // Insert to Database > Backup History
             $arrPost['download_url'] = $this->backupDownloadPath;
             $arrPost['log'] = $log;
+            try{
+                $fileSize = $this->convertFilesize(filesize($this->backupFile));
+            }catch (Exception $e){
+                return  [
+                    'log' => 'error',
+                    'backup_file' => $this->exceptionMessage,
+                ];
+            }
 
-            $fileSize = $this->convertFilesize(filesize($this->backupFile));
             $arrPost['size'] = $fileSize;
             $arrPost['filenames'] = $this->backupFile;
 

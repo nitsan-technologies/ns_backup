@@ -4,7 +4,7 @@
 			<label for="emails"><f:translate key="globalsettings.form.emails" /></label>
 		</div>
 		<div class="col-md-6">
-			<f:form.textfield name="emails" type="email" property="emails" class="form-control" id="emails"/>
+			<f:form.textfield name="emails" type="text" property="emails" class="form-control" id="emails"/>
             <p class="form-control-field"><f:translate key="globalsettings.form.emails.desc" /></p>
             <p class="email-error error" style="display: none;"><f:translate key="globalsettings.form.email-error" /></p>
 		</div>
@@ -66,7 +66,7 @@
 			<label for="cleanupQuantity"><f:translate key="globalsettings.form.cleanup_quantity" /></label>
 		</div>
 		<div class="col-md-6">
-            <f:form.textfield name="cleanupQuantity" type="input" property="cleanupQuantity" class="form-control" id="cleanupQuantity"/>
+			<f:form.textfield name="cleanupQuantity" type="number" maxlength="100" property="cleanupQuantity" class="form-control" id="cleanupQuantity"/>
             <p class="form-control-field"><f:translate key="globalsettings.form.cleanup_quantity.desc" /></p>
             <p class="cleanupQuantity-error error" style="display: none;"><f:translate key="servercloud.nodata" /></p>
 		</div>

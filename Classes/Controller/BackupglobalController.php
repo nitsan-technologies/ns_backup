@@ -31,28 +31,22 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
  */
 class BackupglobalController extends ActionController
 {
-    /**
-     * backupglobalRepository
-     */
-    protected BackupglobalRepository $backupglobalRepository;
-
-    /**
-     * backupBaseController
-     */
-    protected $backupBaseController;
 
     /**
      * errorValidation
      */
     protected $errorValidation;
-    protected ModuleTemplateFactory $moduleTemplateFactory;
 
+    /**
+     * @param ModuleTemplateFactory $moduleTemplateFactory
+     * @param BackupglobalRepository $backupglobalRepository
+     * @param BackupBaseController $backupBaseController
+     */
     public function __construct(
-        ModuleTemplateFactory $moduleTemplateFactory,
-        BackupglobalRepository $backupglobalRepository
+        protected ModuleTemplateFactory $moduleTemplateFactory,
+        protected BackupglobalRepository $backupglobalRepository,
+        protected BackupBaseController $backupBaseController
     ) {
-        $this->moduleTemplateFactory = $moduleTemplateFactory;
-        $this->backupglobalRepository = $backupglobalRepository;
     }
 
     /**
@@ -63,7 +57,6 @@ class BackupglobalController extends ActionController
     public function initializeView(): void
     {
         // Global error check
-        $this->backupBaseController = GeneralUtility::makeInstance(BackupBaseController::class);
         $this->errorValidation = $this->backupBaseController->globalErrorValidation();
         if(!empty($this->errorValidation)) {
             $header = transalte::translate('global.errorvalidation', 'ns_backup');
@@ -100,6 +93,15 @@ class BackupglobalController extends ActionController
      */
     public function createAction(Backupglobal $backupglobal): ResponseInterface
     {
+        $emails = GeneralUtility::trimExplode(',',$backupglobal->getEmails());
+        foreach ($emails as $email){
+            if(!GeneralUtility::validEmail($email)){
+                $msg = transalte::translate('email.not.valid','ns_backup');
+                $this->addFlashMessage('', $msg);
+                return $this->redirect('globalsetting',ContextualFeedbackSeverity::ERROR);
+            }
+        }
+
         $msg = transalte::translate('globalsettings.create', 'ns_backup');
         $this->addFlashMessage('', $msg);
         $this->backupglobalRepository->add($backupglobal);
@@ -117,6 +119,14 @@ class BackupglobalController extends ActionController
      */
     public function updateAction(Backupglobal $backupglobal): ResponseInterface
     {
+        $emails = GeneralUtility::trimExplode(',',$backupglobal->getEmails());
+        foreach ($emails as $email){
+            if(!GeneralUtility::validEmail($email)){
+                $msg = transalte::translate('email.not.valid','ns_backup');
+                $this->addFlashMessage('', $msg);
+                return $this->redirect('globalsetting',ContextualFeedbackSeverity::ERROR);
+            }
+        }
         $msg = transalte::translate('globalsettings.update', 'ns_backup');
         $this->addFlashMessage('', $msg);
         $this->backupglobalRepository->update($backupglobal);

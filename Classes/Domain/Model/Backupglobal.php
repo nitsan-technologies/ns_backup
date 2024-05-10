@@ -16,7 +16,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  ***/
 
 /**
- * Test
+ * Backupglobal
  */
 class Backupglobal extends AbstractEntity
 {
@@ -129,9 +129,9 @@ class Backupglobal extends AbstractEntity
     /**
      * Returns the emailNotificationOnError
      *
-     * @return int $emailNotificationOnError
+     * @return int|null $emailNotificationOnError
      */
-    public function getEmailNotificationOnError(): int
+    public function getEmailNotificationOnError(): ?int
     {
         return $this->emailNotificationOnError;
     }

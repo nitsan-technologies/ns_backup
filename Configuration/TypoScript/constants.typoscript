@@ -1,4 +1,3 @@
-
 module.tx_nsbackup_backup {
     view {
         # cat=module.tx_nsbackup_backup/file; type=string; label=Path to template root (BE)
