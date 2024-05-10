@@ -13,7 +13,7 @@ namespace NITSAN\NsBackup\Domain\Model;
  ***/
 
 /**
- * Test
+ * Backupglobal
  */
 class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {

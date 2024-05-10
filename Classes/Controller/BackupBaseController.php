@@ -2,6 +2,8 @@
 namespace NITSAN\NsBackup\Controller;
 
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
+use RuntimeException;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\VersionNumberUtility;
@@ -205,8 +207,16 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
         // Get Local Storage Path
         $this->localStoragePath = $this->rootPath.'/uploads/tx_nsbackup/';
-        if (!file_exists($this->localStoragePath)) {
-            mkdir($this->localStoragePath, 0775, true);
+        try{
+            if (!file_exists($this->localStoragePath)) {
+
+                GeneralUtility::mkdir_deep($this->localStoragePath);
+            }
+        }catch (RuntimeException $e){
+            return  [
+                'log' => 'error',
+                'backup_file' => "Something is wrong here Chack global Configuration",
+            ];
         }
 
         // Get Base URL
@@ -291,22 +301,27 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
             }
         ';
 
-        // Let's create JSCON folder does not exists
-        if (!file_exists($jsonFolder)) {
-            mkdir($jsonFolder);
+        try{
+            // Let's create JSCON folder does not exists
+            if (!file_exists($jsonFolder)) {
+                GeneralUtility::mkdir_deep($jsonFolder);
+            }
+
+            // Let's create JSON file
+            file_put_contents($jsonPath, $json);
+
+            // Prepare SSH Command
+            $command = $this->phpPath. ' '. $this->phpbuPath.' --configuration='.$jsonPath.' --verbose';
+
+            // Execute Backup SSH Command
+            exec($command, $log);
+        }catch (Exception $e){
+            return false;
         }
 
-        // Let's create JSON file
-        file_put_contents($jsonPath, $json);
-
-        // Prepare SSH Command
-        $command = $this->phpPath. ' '. $this->phpbuPath.' --configuration='.$jsonPath.' --verbose';
-
-        // Execute Backup SSH Command
-        exec($command, $log, $return_var);
 
         // Validate If SSH command success
-        if (count($log) > 0) {
+        if (count($log) > 0 && is_array($log)) {
             $log = file_get_contents($logFile);
 
             // Get ready to insert to Backup History

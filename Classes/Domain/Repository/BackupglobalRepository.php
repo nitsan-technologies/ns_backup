@@ -29,11 +29,23 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         'uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
     ];
 
+
+    protected function getQueryBuilder($type='')
+    {
+        if($type=='queryBuilder'){
+            return GeneralUtility::makeInstance(ConnectionPool::class)
+                ->getQueryBuilderForTable('tx_nsbackup_domain_model_backupdata');
+        }else{
+            return GeneralUtility::makeInstance(ConnectionPool::class)
+                ->getConnectionForTable('tx_nsbackup_domain_model_backupdata');
+        }
+    }
+
     /**
      * findBackupDataAll
      */
     public function findBackupDataAll($limit = 0) {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_nsbackup_domain_model_backupdata');
+        $queryBuilder = $this->getQueryBuilder('queryBuilder');
         $queryBuilder = $queryBuilder
             ->select('*')
             ->from('tx_nsbackup_domain_model_backupdata')
@@ -53,7 +65,7 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * addBackupData
      */
     public function addBackupData($arrData) {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_nsbackup_domain_model_backupdata');
+        $queryBuilder = $this->getQueryBuilder();
         $queryBuilder
             ->insert(
                 'tx_nsbackup_domain_model_backupdata',
@@ -74,7 +86,7 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * findBackupByUid
      */
     public function findBackupByUid($uid) {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_nsbackup_domain_model_backupdata');
+        $queryBuilder = $this->getQueryBuilder('queryBuilder');
         $statement = $queryBuilder
             ->select('*')
             ->from('tx_nsbackup_domain_model_backupdata')
@@ -88,8 +100,8 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * removeBackupData
      */
     public function removeBackupData($uid) {
-        GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_nsbackup_domain_model_backupdata')
-        ->delete(
+        $queryBuilder = $this->getQueryBuilder();
+        $queryBuilder->delete(
             'tx_nsbackup_domain_model_backupdata', // from
             [ 'uid' => $uid ] // where
         );

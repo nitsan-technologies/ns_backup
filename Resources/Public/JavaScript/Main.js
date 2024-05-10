@@ -71,7 +71,12 @@ define([
             $(".cleanupQuantity-error").show();
             isError = 1;
         } else {
-            $(".cleanupQuantity-error").hide();
+            if ($('#cleanupQuantity').val()<1 || $('#cleanupQuantity').val()>100){
+                $(".cleanupQuantity-error").show();
+                isError = 1;
+            }else{
+                $(".cleanupQuantity-error").hide();
+            }
         }
 
         if (!$('#php').val()) {
@@ -140,7 +145,22 @@ define([
 
 
 // Validate Email field
-function validateEmail($email) {
+function validateEmail(emails) {
+    if (emails.endsWith(",") || emails.startsWith(",")){
+        return false;
+    }
+    const emailList = emails.split(',');
+    // Validate each email in the list
+    for (let email of emailList) {
+        if (!singleEmailvalidate(email.trim())) {
+            console.log(email)
+            return false;
+        }
+    }
+    return true;
+}
+function singleEmailvalidate($email){
+
     var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
     return emailReg.test($email);
 }

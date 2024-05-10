@@ -111,6 +111,9 @@
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.status">
 				<source>Status</source>
 			</trans-unit>
+			<trans-unit id="servercloud.nodata">
+				<source>Please add valid-data in this field</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

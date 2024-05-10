@@ -4,10 +4,8 @@ namespace NITSAN\NsBackup\Controller;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
 
-use NITSAN\NsBackup\Controller\BackupBaseController;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility as debug;
 /***
  *
  * This file is part of the "Backup" Extension for TYPO3 CMS.

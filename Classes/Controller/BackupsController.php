@@ -1,13 +1,12 @@
 <?php
 namespace NITSAN\NsBackup\Controller;
 
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
 
-use NITSAN\NsBackup\Controller\BackupBaseController;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility as debug;
 
 /***
  *
@@ -97,11 +96,7 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     public function backuprestoreAction()
     {
         $globalSettingsData = $this->backupglobalRepository->findAll();
-        if (version_compare(TYPO3_branch, '11', '>=')) {
-            $this->view->assign('modalAttr','data-bs-');
-        } else {
-            $this->view->assign('modalAttr','data-');
-        }
+
         $arrMultipleVars = [
             'cleanup' => constant('cleanup'),
             'backuptype' => constant('backuptype'),
@@ -119,9 +114,6 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if(!empty($arrPost['backupFolderSettings']) && empty($this->errorValidation)) {
 
             // Create json and take backup
-            //$arrResponse = BackupBaseController::generateBackup($arrPost);
-            $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-            $this->backupBaseController = $this->objectManager->get(BackupBaseController::class);
             $arrResponse = $this->backupBaseController->generateBackup($arrPost);
             if($arrResponse['log'] == 'error') {
                 // Error Flash-Message
@@ -149,6 +141,12 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 $objBackupData[$keyBackup]['logs'] = '<pre class="pre-scrollable"><code class="json">' . json_encode(json_decode($objBackupData[$keyBackup]['logs']), JSON_PRETTY_PRINT) . '</code></pre>';
             }
         }
+        if (version_compare(TYPO3_branch, '11', '>=')) {
+            $arrMultipleVars['modalAttr'] ='data-bs-';
+
+        } else {
+            $arrMultipleVars['modalAttr'] ='data-';
+        }
         $arrMultipleVars['arrBackupData'] = $objBackupData;
         $this->view->assignMultiple($arrMultipleVars);
     }
@@ -167,9 +165,24 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if(file_exists($arrBackup['filenames'])){
             unlink($arrBackup['filenames']);
         }
+
+        $rootPath = $this->globalSettingsData[0]->root ?? (Environment::getProjectPath() ?? '');
+        if(Environment::isComposerMode()) {
+            $rootPath = Environment::getPublicPath();
+        }
+        $jsonFolder = $rootPath.'/uploads/tx_nsbackup/json/';
+        if(file_exists($jsonFolder.$arrBackup['jsonfile'])) {
+            unlink($jsonFolder.$arrBackup['jsonfile']);
+        }
+
+        $jsonLogFile=str_replace("_configuration","_log",$arrBackup['jsonfile']);
+        if(file_exists($jsonFolder.$jsonLogFile)) {
+            unlink($jsonFolder.$jsonLogFile);
+        }
+
         $headerMsg = transalte::translate('delete.backup.data','ns_backup');
         $msg = transalte::translate('delete.backup.message','ns_backup').$arrBackup['filenames'];
-        $this->addFlashMessage($msg, $headerMsg, \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+        $this->addFlashMessage($msg, $headerMsg);
         return $msg;
     }
 }

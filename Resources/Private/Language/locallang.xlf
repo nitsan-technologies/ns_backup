@@ -196,7 +196,7 @@
 				<source>Clean-up Quantity</source>
 			</trans-unit>
 			<trans-unit id="globalsettings.form.cleanup_quantity.desc">
-				<source>Enter at how many backups clean or remove backups at your web-server and remote servers/cloud too</source>
+				<source>Enter at how many backups clean or remove backups at your web-server and remote servers/cloud too, Min:1 and Max:100 Allow</source>
 			</trans-unit>
 			<trans-unit id="globalsettings.form.servercleanup">
 				<source>Server Cleanups?</source>
@@ -347,6 +347,9 @@
 			</trans-unit>
 			<trans-unit id="manual_backup_wait_text">
 				<source>Based on the size of your site, It may take time to backup, Please do not close the window.</source>
+			</trans-unit>
+			<trans-unit id="servercloud.nodata">
+				<source>Please add valid-data in this field</source>
 			</trans-unit>
 		</body>
 	</file>
