@@ -3,6 +3,7 @@ namespace NITSAN\NsBackup\Controller;
 
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
 use RuntimeException;
+use TYPO3\CMS\Core\Exception;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
 use TYPO3\CMS\Core\Core\Environment;
@@ -114,7 +115,13 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      * @var 
      */
     protected $typo3Version = null;
+    public $exceptionMessage = '';
 
+    public function __construct()
+    {
+        $this->exceptionMessage=transalte::translate('something.wrong.here','ns_backup');
+
+    }
     /**
      * Inject the BackupglobalRepository repository
      *
@@ -215,7 +222,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         }catch (RuntimeException $e){
             return  [
                 'log' => 'error',
-                'backup_file' => "Something is wrong here Chack global Configuration",
+                'backup_file' => $this->exceptionMessage,
             ];
         }
 
@@ -315,8 +322,11 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
             // Execute Backup SSH Command
             exec($command, $log);
-        }catch (Exception $e){
-            return false;
+        }catch (RuntimeException $e){
+            return [
+                'log' => 'error',
+                'backup_file' => $this->backupFile,
+            ];
         }
 
 
@@ -341,7 +351,14 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
             // Insert to Database > Backup History
             $arrPost['download_url'] = $this->backupDownloadPath;
             $arrPost['log'] = $log;
-            $fileSize = $this->convertFilesize(filesize($this->backupFile));
+            try{
+                $fileSize = $this->convertFilesize(filesize($this->backupFile));
+            }catch (\Exception $e){
+                return  [
+                    'log' => 'error',
+                    'backup_file' => $this->exceptionMessage,
+                ];
+            }
             $arrPost['size'] = $fileSize;
             $arrPost['filenames'] = $this->backupFile;
             $this->backupglobalRepository->addBackupData($arrPost);

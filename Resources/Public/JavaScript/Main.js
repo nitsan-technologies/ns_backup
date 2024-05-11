@@ -6,6 +6,19 @@ define([
     'TYPO3/CMS/Backend/jquery.clearable'
 ], function ($, Model) {
 
+    if ($("#siteurl").val() && $("#siteurl").val()!=''){
+        var mysiteUrl=$("#siteurl").val();
+        var currentUrl = window.location.origin;
+        if(mysiteUrl.endsWith('/')){
+            currentUrl = currentUrl+'/';
+        }
+        if (mysiteUrl.localeCompare(currentUrl)){
+            document.getElementById('yoursiteUrlMsg').classList.remove('d-none')
+        }else{
+            document.getElementById('yoursiteUrlMsg').classList.add('d-none')
+        }
+    }
+
     // Dashboard Start Manual Backup
     $("#backupnow-form").submit(function (e) {
         if (!$('#backupName').val()) {
@@ -146,6 +159,7 @@ define([
 
 // Validate Email field
 function validateEmail(emails) {
+   
     if (emails.endsWith(",") || emails.startsWith(",")){
         return false;
     }
@@ -161,6 +175,6 @@ function validateEmail(emails) {
 }
 function singleEmailvalidate($email){
 
-    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,})?$/;
     return emailReg.test($email);
 }

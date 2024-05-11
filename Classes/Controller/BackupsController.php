@@ -140,6 +140,10 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             if ($objBackupData[$keyBackup]['logs']) {
                 $objBackupData[$keyBackup]['logs'] = '<pre class="pre-scrollable"><code class="json">' . json_encode(json_decode($objBackupData[$keyBackup]['logs']), JSON_PRETTY_PRINT) . '</code></pre>';
             }
+            if($valueBackup['download_url']){
+                $file_headers = @get_headers($valueBackup['download_url']);
+                $objBackupData[$keyBackup]['isDownload'] = (!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') ? false : true;
+            }
         }
         if (version_compare(TYPO3_branch, '11', '>=')) {
             $arrMultipleVars['modalAttr'] ='data-bs-';

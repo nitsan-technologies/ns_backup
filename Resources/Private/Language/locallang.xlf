@@ -351,6 +351,18 @@
 			<trans-unit id="servercloud.nodata">
 				<source>Please add valid-data in this field</source>
 			</trans-unit>
+            <trans-unit id="something.wrong.here">
+                <source>Something is wrong here. Please check you Global Settings</source>
+            </trans-unit>
+			<trans-unit id="yoursiteUrlMsg">
+				<source>Please configure the correct URL in the settings otherwise the download of the backup will not work.</source>
+			</trans-unit>
+			<trans-unit id="download.backup.title">
+				<source>Download Backup</source>
+			</trans-unit>
+			<trans-unit id="download.backup.text">
+				<source>This backup is no longer available.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
