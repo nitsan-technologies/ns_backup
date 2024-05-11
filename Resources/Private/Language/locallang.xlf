@@ -439,7 +439,6 @@
             <trans-unit id="something.wrong.here">
                 <source>Something is wrong here. Please check you Global Settings</source>
             </trans-unit>
-
 		</body>
 	</file>
 </xliff>

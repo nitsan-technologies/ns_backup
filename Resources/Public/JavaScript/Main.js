@@ -25,12 +25,16 @@ define([
         }
         $(".backupName-error").hide();
         $(".backup-Loading").show();
-
+        $("body").css('opacity', '0.5').css('pointer-events', 'none');
         //disable the submit button
         setTimeout(function() {
             $(".btn-start-backup").attr("disabled", true);
         },500);
 
+    });
+    $('.paginate_button ').on('click', function () {
+        $("#nsBackupDeletebackupModal .delete-backup-backup-del").removeAttr("disabled");
+        $("#nsBackupDeletescheduleModal .delete-schedule-backup-del").removeAttr("disabled");
     });
 
     $('.ns-backup-datatable').DataTable({
