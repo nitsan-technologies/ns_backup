@@ -5,6 +5,18 @@ define([
     'TYPO3/CMS/NsBackup/Datatables'
 ], function ($, Model) {
 
+    if ($("#siteurl").val() && $("#siteurl").val()!=''){
+        var mysiteUrl=$("#siteurl").val();
+        var currentUrl = window.location.origin;
+        if(mysiteUrl.endsWith('/')){
+            currentUrl = currentUrl+'/';
+        }
+        if (mysiteUrl.localeCompare(currentUrl)){
+            document.getElementById('yoursiteUrlMsg').classList.remove('d-none')
+        }else{
+            document.getElementById('yoursiteUrlMsg').classList.add('d-none')
+        }
+    }
     // Dashboard Start Manual Backup
     $("#backupnow-form").submit(function (e) {
         if (!$('#backupName').val()) {

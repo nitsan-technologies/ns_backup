@@ -144,6 +144,11 @@ class BackupsController extends ActionController
             if ($valueBackup['logs']) {
                 $objBackupData[$keyBackup]['logs'] = '<pre class="pre-scrollable"><code class="json">' . json_encode(json_decode($objBackupData[$keyBackup]['logs']), JSON_PRETTY_PRINT) . '</code></pre>';
             }
+            if($valueBackup['download_url']){
+                $file_headers = @get_headers($valueBackup['download_url']);
+                $objBackupData[$keyBackup]['isDownload'] = (!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') ? false : true;
+            }
+
         }
         $arrMultipleVars['arrBackupData'] = $objBackupData;
         $arrMultipleVars['modalAttr'] = 'data-bs-';

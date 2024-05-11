@@ -373,6 +373,9 @@
 			<trans-unit id="delete.backup.data">
 				<source>Backup data deleted successfully.</source>
 			</trans-unit>
+			<trans-unit id="yoursiteUrlMsg">
+				<source>Please configure the correct URL in the settings otherwise the download of the backup will not work.</source>
+			</trans-unit>
 			<trans-unit id="delete.backup.message">
 				<source>Removed backup file </source>
 			</trans-unit>
