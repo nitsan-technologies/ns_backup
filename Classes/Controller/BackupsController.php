@@ -4,7 +4,6 @@ namespace NITSAN\NsBackup\Controller;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
-
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
 
@@ -36,7 +35,7 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      *
      * @param \NITSAN\NsBackup\Domain\Repository\BackupglobalRepository $backupglobalRepository
      */
-    public function injectProductRepository(BackupglobalRepository $backupglobalRepository)
+    public function injectBackupglobalRepository(BackupglobalRepository $backupglobalRepository)
     {
         $this->backupglobalRepository = $backupglobalRepository;
     }

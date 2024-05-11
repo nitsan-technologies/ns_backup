@@ -2,9 +2,7 @@
 namespace NITSAN\NsBackup\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 
 /***
  *
@@ -30,9 +28,9 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     ];
 
 
-    protected function getQueryBuilder($type='')
+    protected function getQueryBuilder($type=false)
     {
-        if($type=='queryBuilder'){
+        if($type){
             return GeneralUtility::makeInstance(ConnectionPool::class)
                 ->getQueryBuilderForTable('tx_nsbackup_domain_model_backupdata');
         }else{
@@ -45,7 +43,7 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * findBackupDataAll
      */
     public function findBackupDataAll($limit = 0) {
-        $queryBuilder = $this->getQueryBuilder('queryBuilder');
+        $queryBuilder = $this->getQueryBuilder(true);
         $queryBuilder = $queryBuilder
             ->select('*')
             ->from('tx_nsbackup_domain_model_backupdata')
@@ -86,7 +84,7 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * findBackupByUid
      */
     public function findBackupByUid($uid) {
-        $queryBuilder = $this->getQueryBuilder('queryBuilder');
+        $queryBuilder = $this->getQueryBuilder(true);
         $statement = $queryBuilder
             ->select('*')
             ->from('tx_nsbackup_domain_model_backupdata')

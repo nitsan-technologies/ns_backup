@@ -3,7 +3,6 @@ namespace NITSAN\NsBackup\Controller;
 
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
 use RuntimeException;
-use TYPO3\CMS\Core\Exception;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
 use TYPO3\CMS\Core\Core\Environment;
@@ -127,7 +126,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      *
      * @param \NITSAN\NsBackup\Domain\Repository\BackupglobalRepository $backupglobalRepository
      */
-    public function injectProductRepository(BackupglobalRepository $backupglobalRepository)
+    public function injectBackupglobalRepository(BackupglobalRepository $backupglobalRepository)
     {
         $this->backupglobalRepository = $backupglobalRepository;
     }
@@ -292,17 +291,10 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
             // Let's check if admin wants "Backup Everyting"
             if ($backupType == 'all') {
-
                 // Create Database Backup
                 $json .= $this->getPhpbuBackup($backupName, 'mysqldump', $backupFileName). ',';
-
-                // Create Code Backup
-                $json .= $this->getPhpbuBackup($backupName, $backupType, $backupFileName);
-            } else {
-                // Create Specific Selected Type of Backup
-                $json .= $this->getPhpbuBackup($backupName, $backupType, $backupFileName);
             }
-
+            $json .= $this->getPhpbuBackup($backupName, $backupType, $backupFileName);
             $json .= '
                 ]
             }
@@ -383,8 +375,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      */
     protected function getPhpbuBackup($backupName, $backupType, $backupFileName)
     {
-        $json = $json ?? '';
-        $json .= '
+        $json = '
             {
                 "name": "'.$backupName.'",';
 
@@ -431,18 +422,25 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
         // PATCH If compress=bzip2
         $compressTechnique = $this->globalSettingsData[0]->compress;
-        if($compressTechnique == 'bzip2' || empty($compressTechnique)) {
-            $compressTechnique = '.bz2';
+
+        switch ($compressTechnique) {
+            case 'bzip2':
+            case '':
+                $compressTechnique = '.bz2';
+                break;
+            case 'zip':
+                $compressTechnique = '';
+                break;
+            case 'gzip':
+                $compressTechnique = '.gz';
+                break;
+            case 'xz':
+                $compressTechnique = '.xz';
+                break;
+            default:
+                break;
         }
-        else if($compressTechnique == 'zip') {
-            $compressTechnique = '';
-        }
-        else if($compressTechnique == 'gzip') {
-            $compressTechnique = '.gz';
-        }
-        else if($compressTechnique == 'xz') {
-            $compressTechnique = '.xz';
-        }
+
         $this->backupFilePath = $this->localStoragePath.$backupType;
         $this->backupFileName = $backupFileName.$backupExtFile;
 
@@ -499,13 +497,9 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         {
             $bytes = number_format($bytes / 1024, 2) . ' KB';
         }
-        elseif ($bytes > 1)
+        elseif ($bytes > 1 || $bytes == 1)
         {
             $bytes = $bytes . ' bytes';
-        }
-        elseif ($bytes == 1)
-        {
-            $bytes = $bytes . ' byte';
         }
         else
         {

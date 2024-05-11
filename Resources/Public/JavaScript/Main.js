@@ -27,6 +27,7 @@ define([
         }
         $(".backupName-error").hide();
         $(".backup-Loading").show();
+        $("body").css('opacity', '0.5').css('pointer-events', 'none');
 
         //disable the submit button
         setTimeout(function() {
@@ -123,6 +124,7 @@ define([
 
     // Remove Backup Data
     $('.delete-backup').on('click', function () {
+        console.log("here")
         var title = $(this).data('title');
         var id = $(this).data('id');
         var msg = $(this).data('msg');
@@ -132,6 +134,18 @@ define([
         $("#nsBackupDeletebackupModal .deletetype").val('single');
         $("#nsBackupDeletebackupModal .delete-backup-backup-del").removeAttr("disabled");
     });
+    $('.paginate_button ').on('click', function () {
+        var title = $('.delete-backup').data('title');
+        var id = $('.delete-backup').data('id');
+        var msg = $('.delete-backup').data('msg');
+        $("#nsBackupDeletebackupModal .backup-title").html(title);
+        $("#nsBackupDeletebackupModal .delete-msg").html(msg);
+        $("#nsBackupDeletebackupModal .delete-backup-id").val(id);
+        $("#nsBackupDeletebackupModal .deletetype").val('single');
+        $("#nsBackupDeletebackupModal .delete-backup-backup-del").removeAttr("disabled");
+        $("#nsBackupDeletescheduleModal .delete-schedule-backup-del").removeAttr("disabled");
+    });
+
     $(document).on('click', '.delete-backup-backup-del',function (e) {
         var deleteUrl = $("#deletebackupbackup").attr('action');
         var id = $('.delete-backup-id').val();

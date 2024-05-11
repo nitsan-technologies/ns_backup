@@ -4,7 +4,7 @@
 		<header/>
 		<body>
 			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal">
-				<source>Nsbackupglobal</source>
+				<source>backupglobal</source>
 			</trans-unit>
 			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.emails">
 				<source>Emails (Multiple emails using comma ,)</source>
