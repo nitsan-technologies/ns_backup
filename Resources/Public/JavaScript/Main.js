@@ -32,10 +32,6 @@ define([
         },500);
 
     });
-    $('.paginate_button ').on('click', function () {
-        $("#nsBackupDeletebackupModal .delete-backup-backup-del").removeAttr("disabled");
-        $("#nsBackupDeletescheduleModal .delete-schedule-backup-del").removeAttr("disabled");
-    });
 
     $('.ns-backup-datatable').DataTable({
         "language": {
@@ -45,7 +41,6 @@ define([
             "infoEmpty": "No records available",
             "infoFiltered": "(filtered from _MAX_ total records)"
         },
-        //"order": [[3, "desc"]],
         language: {
             paginate: {
                 previous: '<<',
@@ -130,6 +125,20 @@ define([
         $("#nsBackupDeletebackupModal .deletetype").val('single');
         $("#nsBackupDeletebackupModal .delete-backup-backup-del").removeAttr("disabled");
     });
+
+    $('.paginate_button').on('click', function () {
+        console.log("hello")
+        var title = $('.delete-backup').data('title');
+        var id = $('.delete-backup').data('id');
+        var msg = $('.delete-backup').data('msg');
+        $("#nsBackupDeletebackupModal .backup-title").html(title);
+        $("#nsBackupDeletebackupModal .delete-msg").html(msg);
+        $("#nsBackupDeletebackupModal .delete-backup-id").val(id);
+        $("#nsBackupDeletebackupModal .deletetype").val('single');
+        $("#nsBackupDeletebackupModal .delete-backup-backup-del").removeAttr("disabled");
+        $("#nsBackupDeletescheduleModal .delete-schedule-backup-del").removeAttr("disabled");
+    });
+
     $(document).on('click', '.delete-backup-backup-del',function (e) {
         var deleteUrl = $("#deletebackupbackup").attr('action');
         var id = $('.delete-backup-id').val();
