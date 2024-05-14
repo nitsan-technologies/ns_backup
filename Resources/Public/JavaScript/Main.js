@@ -85,7 +85,7 @@ define([
             $(".cleanupQuantity-error").show();
             isError = 1;
         } else {
-            if ($('#cleanupQuantity').val()<1 || $('#cleanupQuantity').val()>100){
+            if ($('#cleanupQuantity').val()<1 || $('#cleanupQuantity').val()>500){
                 $(".cleanupQuantity-error").show();
                 isError = 1;
             }else{
