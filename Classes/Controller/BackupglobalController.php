@@ -52,6 +52,7 @@ class BackupglobalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
      * or prepare the view in another way before the action is called.
      *
      * @param \TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view The view to be initialized
+     * @extensionScannerIgnoreLine
      */
     public function initializeView(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view)
     {

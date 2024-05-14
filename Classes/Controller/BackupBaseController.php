@@ -10,7 +10,7 @@ use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 
 /***
  *
- * This file is part of the "[NITSAN] Backup" Extension for TYPO3 CMS.
+ * This file is part of the "Backup" Extension for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
@@ -207,6 +207,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
                 }
             } else {
                 // For TYPO3 Version 7 or lower
+                //@extensionScannerIgnoreLine
                 $this->rootPath = PATH_site;
             }
         }

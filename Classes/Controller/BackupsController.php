@@ -9,7 +9,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
 
 /***
  *
- * This file is part of the "[NITSAN] Backup" Extension for TYPO3 CMS.
+ * This file is part of the "Backup" Extension for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
@@ -46,10 +46,12 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * or prepare the view in another way before the action is called.
      *
      * @param \TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view The view to be initialized
+     * @extensionScannerIgnoreLine
      */
     public function initializeView(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view)
     {
         // Global error check
+        //@extensionScannerIgnoreLine
         $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         $this->backupBaseController = $this->objectManager->get(BackupBaseController::class);
 
@@ -79,6 +81,7 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'arrBackupData' => $arrBackupData,
             'errorValidation' => $this->errorValidation
         ];
+       // @extensionScannerIgnoreLine
         if (version_compare(TYPO3_branch, '11', '>=')) {
             $arrMultipleVars['modalAttr'] ='data-bs-';
         } else {
@@ -144,6 +147,7 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
                 $objBackupData[$keyBackup]['isDownload'] = (!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') ? false : true;
             }
         }
+        //@extensionScannerIgnoreLine
         if (version_compare(TYPO3_branch, '11', '>=')) {
             $arrMultipleVars['modalAttr'] ='data-bs-';
 

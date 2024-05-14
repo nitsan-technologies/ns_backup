@@ -28,9 +28,11 @@ define(
 // Configure TYPO3 Backend Module
 call_user_func(
     function () {
+        //@extensionScannerIgnoreLine
         if (TYPO3_MODE === 'BE') {
             $backupController = 'Backups';
             $backupglobalController = 'Backupglobal';
+            //@extensionScannerIgnoreLine
             if (version_compare(TYPO3_branch, '10.0', '>=')) {
                 $backupController = \NITSAN\NsBackup\Controller\BackupsController::class;
                 $backupglobalController = \NITSAN\NsBackup\Controller\BackupglobalController::class;
