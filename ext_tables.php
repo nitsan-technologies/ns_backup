@@ -5,7 +5,6 @@ use TYPO3\CMS\Core\Core\Environment;
 defined('TYPO3') || die('Access denied.');
 
 // Globally configuration of PHPBU https://phpbu.de/manual/current/en/index.html
-
 $cleanup = [
     ['key' => 'Cleanup by quantity', 'value' => 'quantity'],
 ];

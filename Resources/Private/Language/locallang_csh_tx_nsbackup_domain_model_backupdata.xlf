@@ -21,21 +21,6 @@
 			<trans-unit id="download_url.description">
 				<source>downloadUrl</source>
 			</trans-unit>
-			<trans-unit id="schedule_uid.description">
-				<source>scheduleUid</source>
-			</trans-unit>
-			<trans-unit id="server_uid.description">
-				<source>serverUid</source>
-			</trans-unit>
-			<trans-unit id="logs_uid.description">
-				<source>logsUid</source>
-			</trans-unit>
-			<trans-unit id="local_backup_path.description">
-				<source>localBackupPath</source>
-			</trans-unit>
-			<trans-unit id="servers_backup_path.description">
-				<source>serversBackupPath</source>
-			</trans-unit>
 			<trans-unit id="filenames.description">
 				<source>filenames</source>
 			</trans-unit>

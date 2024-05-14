@@ -1,7 +1,5 @@
 <?php
 
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-
 defined('TYPO3') || die();
 
 $GLOBALS['TCA']['tx_nsbackup_domain_model_backupdata']['ctrl']['hideTable'] = 1;

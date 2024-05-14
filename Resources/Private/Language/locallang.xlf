@@ -73,36 +73,6 @@
 			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_notification_on_error">
 				<source>Email Notification On Error</source>
 			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_notification_on_success">
-				<source>Email Notification On Success</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.password_restore">
-				<source>Password Restore</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.backup_validation">
-				<source>Backup Validation</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.encryption">
-				<source>Encryption</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_local_name">
-				<source>Cleanup Local Name</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_local_value">
-				<source>Cleanup Local Value</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_server_name">
-				<source>Cleanup Server Name</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_server_value">
-				<source>Cleanup Server Value</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.quick_setup_wizard">
-				<source>Quick Setup Wizard</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_servers">
-				<source>Servers</source>
-			</trans-unit>
 			<trans-unit id="tx_nsbackup_domain_model_servers.title">
 				<source>Title</source>
 			</trans-unit>
@@ -114,42 +84,6 @@
 			</trans-unit>
 			<trans-unit id="tx_nsbackup_domain_model_servers.settings">
 				<source>Settings</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule">
-				<source>Schedule</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.database_type">
-				<source>Database Type</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.database_username">
-				<source>Database Username</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.database_password">
-				<source>Database Password</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.backup_folder_settings">
-				<source>Backup Folder Settings</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.custom_folder_path">
-				<source>Custom Folder Path</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.select_schedule_type">
-				<source>Select Schedule Type</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.select_schedulle_settings">
-				<source>Select Schedulle Settings</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.backup_destination">
-				<source>Backup Server/Cloud</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.servers">
-				<source>Servers</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_schedule.backup_data">
-				<source>Backup Data</source>
 			</trans-unit>
 			<trans-unit id="tx_nsbackup_domain_model_backupdata">
 				<source>Backup Data</source>
@@ -172,17 +106,8 @@
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.download_url">
 				<source>Download Url</source>
 			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_backupdata.schedule_uid">
-				<source>Schedule Uid</source>
-			</trans-unit>
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.server_uid">
 				<source>Server Uid</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_backupdata.logs_uid">
-				<source>Logs Uid</source>
-			</trans-unit>
-			<trans-unit id="tx_nsbackup_domain_model_backupdata.local_backup_path">
-				<source>Local Backup Path</source>
 			</trans-unit>
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.servers_backup_path">
 				<source>Servers Backup Path</source>
@@ -202,19 +127,14 @@
 			<trans-unit id="tx_nsbackup_domain_model_backupdata.status">
 				<source>Status</source>
 			</trans-unit>
-
 			<trans-unit id="nsbackup">
 				<source>NS Backup</source>
 			</trans-unit>
-
 			<trans-unit id="menu.dashboard">
 				<source>Dashboard</source>
 			</trans-unit>
 			<trans-unit id="menu.backupsrestore">
 				<source>Backup History</source>
-			</trans-unit>
-			<trans-unit id="menu.schedulebackups">
-				<source>Schedule Backup</source>
 			</trans-unit>
 			<trans-unit id="menu.serverclouds">
 				<source>Server/Clouds</source>
@@ -225,7 +145,6 @@
 			<trans-unit id="menu.premiumextension">
 				<source>Premium Extension</source>
 			</trans-unit>
-
 			<trans-unit id="globalsettings.title">
 				<source>Global Settings</source>
 			</trans-unit>
@@ -244,9 +163,6 @@
 			<trans-unit id="globalsettings.form.notification">
 				<source>Notification Settings</source>
 			</trans-unit>
-			<trans-unit id="globalsettings.form.emailNotificationOnSuccess">
-				<source>Send email only at success backup</source>
-			</trans-unit>
 			<trans-unit id="globalsettings.form.emailNotificationOnError">
 				<source>Send email only at failure of backup</source>
 			</trans-unit>
@@ -255,12 +171,6 @@
 			</trans-unit>
 			<trans-unit id="globalsettings.form.defaultServer.desc">
 				<source>Choose your default backup server, You can manage it from Servers/Cloud</source>
-			</trans-unit>
-			<trans-unit id="globalsettings.form.backupValidation">
-				<source>Backup Validation</source>
-			</trans-unit>
-			<trans-unit id="globalsettings.form.encryption">
-				<source>Encryption Secure</source>
 			</trans-unit>
 			<trans-unit id="globalsettings.form.cleanup">
 				<source>Clean-up Type</source>
@@ -272,7 +182,7 @@
 				<source>Clean-up Quantity</source>
 			</trans-unit>
 			<trans-unit id="globalsettings.form.cleanup_quantity.desc">
-				<source>Enter at how many backups clean or remove backups at your web-server and remote servers/cloud too</source>
+				<source>Enter at how many backups clean or remove backups at your web-server and remote servers/cloud too, Min:1 And Max:500 allow</source>
 			</trans-unit>
 			<trans-unit id="globalsettings.form.servercleanup">
 				<source>Server Cleanups?</source>
@@ -288,18 +198,6 @@
 			</trans-unit>
 			<trans-unit id="globalsettings.form.savesettings">
 				<source>Save Settings</source>
-			</trans-unit>
-			<trans-unit id="globalsettings.form.cleanupLocalName">
-				<source>Cleanup Local Name</source>
-			</trans-unit>
-			<trans-unit id="globalsettings.form.cleanupLocalValue">
-				<source>Cleanup Local Path</source>
-			</trans-unit>
-			<trans-unit id="globalsettings.form.cleanupServerName">
-				<source>Cleanup Server Name</source>
-			</trans-unit>
-			<trans-unit id="globalsettings.form.cleanupServerValue">
-				<source>Cleanup Server Path</source>
 			</trans-unit>
 			<trans-unit id="globalsettings.form.email-error">
 				<source>Please enter valid email address</source>
@@ -421,76 +319,6 @@
 			<trans-unit id="create-server-cloud">
 				<source>New Server/Cloud configuration created successfully.</source>
 			</trans-unit>
-
-			<trans-unit id="schedule.content.schedulebackup">
-				<source>Schedule Backup</source>
-			</trans-unit>
-			<trans-unit id="schedule.content.createschedulebackup">
-				<source>Schedule Backup</source>
-			</trans-unit>
-			<trans-unit id="schedule.form.backupname">
-				<source>Backup Name</source>
-			</trans-unit>
-			<trans-unit id="schedule.form.startrun">
-				<source>Start Date/Time</source>
-			</trans-unit>
-			<trans-unit id="schedule.form.endrun">
-				<source>End Date/Time</source>
-			</trans-unit>
-			<trans-unit id="schedule.form.backuptypelabel">
-				<source>What do you want to Backup?</source>
-			</trans-unit>
-			<trans-unit id="schedule.form.selectschedule">
-				<source>Select Schedule</source>
-			</trans-unit>
-			<trans-unit id="schedule.form.selectdestination">
-				<source>Choose Server/Cloud</source>
-			</trans-unit>
-			<trans-unit id="schedule.form.schedulebackup.submit">
-				<source>Submit Schedule Backup</source>
-			</trans-unit>
-			<trans-unit id="schedule.backuptype.error">
-				<source>Please select at least one checkbox.</source>
-			</trans-unit>
-			<trans-unit id="schedule.backup.create">
-				<source>New schedule backup created successfully.</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.time">
-				<source>Schedule/Cron</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.nexttime">
-				<source>Start At</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.lasttime">
-				<source>End At</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.nextexecution">
-				<source>Next Execution</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.lastexecution">
-				<source>Last Executed</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.type">
-				<source>Type</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.server">
-				<source>Server</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.next-run">
-				<source>End At</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.last-run">
-				<source>Last Run</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.actions">
-				<source>Actions</source>
-			</trans-unit>
-			<trans-unit id="schedule.table.deleteall">
-				<source>Delete Schedule Backup</source>
-			</trans-unit>
 			<trans-unit id="manualbackup.success">
 				<source>Manual backup taken successfully.</source>
 			</trans-unit>
@@ -545,6 +373,9 @@
 			<trans-unit id="delete.backup.data">
 				<source>Backup data deleted successfully.</source>
 			</trans-unit>
+			<trans-unit id="yoursiteUrlMsg">
+				<source>Please configure the correct URL in the settings otherwise the download of the backup will not work.</source>
+			</trans-unit>
 			<trans-unit id="delete.backup.message">
 				<source>Removed backup file </source>
 			</trans-unit>
@@ -557,12 +388,6 @@
 			<trans-unit id="quicksetup.skip">
 				<source>Skip Setup Wizard For Now</source>
 			</trans-unit>
-			<trans-unit id="schedule.create.success">
-				<source>Schedule backup created successfully.</source>
-			</trans-unit>
-			<trans-unit id="schedule.update.success">
-				<source>Schedule backup updated successfully.</source>
-			</trans-unit>
 			<trans-unit id="backup.now">
 				<source>Backup Now!</source>
 			</trans-unit>
@@ -572,24 +397,48 @@
 			<trans-unit id="backup.now.description2">
 				<source>You will need to choose backup type, backup name and server destination.</source>
 			</trans-unit>
-			<trans-unit id="next.scheduled.backups">
-				<source>Scheduled Backups</source>
-			</trans-unit>
 			<trans-unit id="more.logs">
 				<source>See More Logs</source>
-			</trans-unit>
-			<trans-unit id="more.schedule.backups">
-				<source>Checkout Schedule Backups</source>
-			</trans-unit>
-			<trans-unit id="schedule.add.scheduler.header">
-				<source>Please Configure TYPO3's Scheduler</source>
-			</trans-unit>
-			<trans-unit id="schedule.add.scheduler.message">
-				<source>Go to System > Scheduler > Add New "Execute console commands > ns_backup". Name should be "NS Backup".</source>
 			</trans-unit>
 			<trans-unit id="no.data.found">
 				<source>No data found.</source>
 			</trans-unit>
+			<trans-unit id="server_time_text1">
+				<source>All dates and times in the Backup are measured according to the server's time, as the Backup is run purely on the server-side.</source>
+			</trans-unit>
+			<trans-unit id="server_time_text2">
+				<source>Current server time is</source>
+			</trans-unit>
+			<trans-unit id="server_time">
+				<source>Server time</source>
+			</trans-unit>
+			<trans-unit id="manual_backup">
+				<source>Manual Backup</source>
+			</trans-unit>
+			<trans-unit id="manual_backup_name">
+				<source>Your Backup Name</source>
+			</trans-unit>
+			<trans-unit id="manual_backup_name_valid_message">
+				<source>Please enter valid name</source>
+			</trans-unit>
+			<trans-unit id="manual_backup_type">
+				<source>What you want to Backup?</source>
+			</trans-unit>
+			<trans-unit id="manual_backup_start">
+				<source>Start Backup Now!</source>
+			</trans-unit>
+			<trans-unit id="manual_backup_wait">
+				<source>Please wait...</source>
+			</trans-unit>
+			<trans-unit id="manual_backup_wait_text">
+				<source>Based on the size of your site, It may take time to backup, Please do not close the window.</source>
+			</trans-unit>
+			<trans-unit id="email.not.valid">
+				<source>Email format is not valid</source>
+			</trans-unit>
+            <trans-unit id="something.wrong.here">
+                <source>Something is wrong here. Please check you Global Settings</source>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

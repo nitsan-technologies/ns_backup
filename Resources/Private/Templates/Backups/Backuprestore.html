@@ -10,7 +10,6 @@
 		}"
 	/>
     <f:flashMessages />
-
     <f:if condition="{isManualBackup} == '1'">
         <a href="{download_url}" target="_blank" class="btn btn-success btn-backupnow"><em class="fa fa-download" aria-hidden="true"></em><f:translate key="download.backup.now" extensionName = "NsBackup" /></a>
         <p>&nbsp;</p>
@@ -34,12 +33,6 @@
 					<table class="table ns-backup-datatable" id="myexample">
 						<thead class="thead-light">
 							<tr>
-								<th scope="col">
-									<div class="form-check ns-backup-select-all">
-										<input class="form-check-input" type="checkbox" value="" id="typo3ext">
-										<label class="form-check-label" for="typo3ext"></label>
-									</div>
-								</th>
 								<th scope="col"><f:translate key="servercloud.content.name" extensionName = "NsBackup" /></th>
 								<th scope="col"><f:translate key="backup.date" extensionName = "NsBackup" /></th>
 								<th scope="col"><f:translate key="backup.type" extensionName = "NsBackup" /></th>
@@ -50,15 +43,6 @@
 						<tbody>
                             <f:for each="{arrBackupData}" as="backup" iteration="i">
 							<tr>
-								<td>
-									<div class="ns-backup-checkmark-wrap">
-										<div class="form-check ">
-											<input class="form-check-input checkSingle" type="checkbox" value="{backup.uid}">
-												<label class="form-check-label" for=""></label>
-											<label class="form-check-label" for=""></label>
-										</div>
-									</div>
-								</td>
                                 <td>{backup.title}</td>
                                 <td><f:format.date format="d-m-Y H:i">{backup.start_datetime}</f:format.date></td>
 								<td>
@@ -71,7 +55,15 @@
 								<td>{backup.size}</td>
 								<td>
 									<div class="button-group ns-backup-actions-wrap">
-										<a target="_blank" href="{backup.download_url}" class="btn btn-primary"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="download.backup" extensionName = "NsBackup" /></a>
+										<f:if condition="{backup.isDownload}">
+											<f:then>
+												<a target="_blank" href="{backup.download_url}" class="btn btn-primary"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="download.backup" extensionName = "NsBackup" /></a>
+											</f:then>
+											<f:else>
+												<a href="javascript:;" class="btn btn-primary" {modalAttr}toggle="modal"
+												   {modalAttr}target="#downloadBackup"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="download.backup" extensionName = "NsBackup" /></a>
+											</f:else>
+										</f:if>
 										<a href="javascript:;" class="btn btn-success btn-log-show" {modalAttr}toggle="modal"
                                             {modalAttr}target="#logBackup" data-id="{backup.uid}"><em class="fa fa-file-text-o" aria-hidden="true"></em>Logs</a>
                                         <a href="javascript:;" class="btn btn-danger delete-backup" {modalAttr}toggle="modal"
