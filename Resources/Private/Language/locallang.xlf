@@ -128,7 +128,7 @@
 				<source>Status</source>
 			</trans-unit>
 			<trans-unit id="nsbackup">
-				<source>NS Backup</source>
+				<source>Backup</source>
 			</trans-unit>
 			<trans-unit id="menu.dashboard">
 				<source>Dashboard</source>
