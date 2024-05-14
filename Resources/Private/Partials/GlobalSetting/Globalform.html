@@ -4,7 +4,7 @@
 			<label for="emails"><f:translate key="globalsettings.form.emails" /></label>
 		</div>
 		<div class="col-md-6">
-			<f:form.textfield name="emails" type="email" property="emails" class="form-control" id="emails"/>
+			<f:form.textfield name="emails" type="text" property="emails" class="form-control" id="emails"/>
             <p class="form-control-field"><f:translate key="globalsettings.form.emails.desc" /></p>
             <p class="email-error error" style="display: none;"><f:translate key="globalsettings.form.email-error" /></p>
 		</div>
@@ -28,14 +28,8 @@
 			<label><f:translate key="globalsettings.form.notification" /></label>
 		</div>
 		<div class="col-md-6">
-			<!-- <div class="form-check">
-				<f:form.checkbox  name="emailNotificationOnSuccess" property="emailNotificationOnSuccess" value="{backupglobal.emailNotificationOnSuccess}" checked="{f:if(condition: '{backupglobal.emailNotificationOnSuccess}==1', then: 'checked')}" class="form-check-input check" id="emailNotificationOnSuccess"/>
-				<label class="form-check-label" for="emailNotificationOnSuccess">
-					<f:translate key="globalsettings.form.emailNotificationOnSuccess" />
-				</label>
-			</div> -->
 			<div class="form-check">
-				<f:form.checkbox  name="emailNotificationOnError" property="emailNotificationOnError" value="{backupglobal.emailNotificationOnError}" class="form-check-input check" checked="{f:if(condition: '{backupglobal.emailNotificationOnError}==1', then: 'checked')}" id="emailNotificationOnError" />
+				<f:form.checkbox  name="emailNotificationOnError" property="emailNotificationOnError" value="1" class="form-check-input check" checked="{f:if(condition: '{backupglobal.emailNotificationOnError}==1', then: 'checked')}" id="emailNotificationOnError" />
 				<label class="form-check-label" for="emailNotificationOnError">
 					<f:translate key="globalsettings.form.emailNotificationOnError" />
 				</label>
@@ -43,86 +37,6 @@
 		</div>
 	</div>
 </div>
-<!-- <f:if condition="{serverData}">
-	<f:then>
-		<div class="form-group">
-			<div class="row">
-				<div class="col-md-3">
-					<label for="default-server"><f:translate key="globalsettings.form.defaultServer" /></label>
-				</div>
-				<div class="col-md-6">
-                    <f:form.select name="defaultServer" options="{serverData}" class="form-control" property="defaultServer" optionValueField="uid" optionLabelField="title" />
-                    <p class="form-control-field"><f:translate key="globalsettings.form.defaultServer.desc" /></p>
-				</div>
-			</div>
-		</div>
-	</f:then>
-	<f:else>
-		<div class="no-data-server-error" style="color: red;">
-			<div class="form-group">
-				<div class="row">
-                    <div class="col-md-3">
-                        <label for="default-server"><f:translate key="globalsettings.form.defaultServer" /></label>
-                    </div>
-                    <div class="col-md-6">
-                        <f:translate key="globalsettings.form.no_data_server_error" />
-                    </div>
-				</div>
-			</div>
-		</div>
-	</f:else>
-</f:if> -->
-<!--
-<div class="form-group">
-	<div class="row">
-		<div class="col-md-3">
-			<label for="cleanupLocalName"><f:translate key="globalsettings.form.cleanupLocalName" /></label>
-		</div>
-		<div class="col-md-6">
-			<f:form.textfield name="cleanupLocalName" property="cleanupLocalName" class="form-control" id="cleanupLocalName" placeholder=""/>
-		</div>
-	</div>
-</div>
-<div class="form-group">
-	<div class="row">
-		<div class="col-md-3">
-			<label for="cleanupLocalValue"><f:translate key="globalsettings.form.cleanupLocalValue" /></label>
-		</div>
-		<div class="col-md-6">
-			<f:form.textfield name="cleanupLocalValue" property="cleanupLocalValue" class="form-control" id="cleanupLocalValue" placeholder=""/>
-		</div>
-	</div>
-</div>
-<div class="form-group">
-	<div class="row">
-		<div class="col-md-3">
-			<label for="cleanupServerName"><f:translate key="globalsettings.form.cleanupServerName" /></label>
-		</div>
-		<div class="col-md-6">
-			<f:form.textfield name="cleanupServerName" property="cleanupServerName" class="form-control" id="cleanupServerName" placeholder=""/>
-		</div>
-	</div>
-</div>
-<div class="form-group">
-	<div class="row">
-		<div class="col-md-3">
-			<label for="cleanupServerValue"><f:translate key="globalsettings.form.cleanupServerValue" /></label>
-		</div>
-		<div class="col-md-6">
-			<f:form.textfield name="cleanupServerValue" property="cleanupServerValue" class="form-control" id="cleanupServerValue" placeholder=""/>
-		</div>
-	</div>
-</div>
-<div class="form-group">
-	<div class="row">
-		<div class="col-md-3">
-			<label for="encryption"><f:translate key="globalsettings.form.encryption" /></label>
-		</div>
-		<div class="col-md-6">
-			<f:form.select name="encryption" options="{encryption}" id="encryption" class="form-control" property="encryption" optionValueField="value" optionLabelField="key" />
-		</div>
-	</div>
-</div> -->
 <div class="form-group">
 	<div class="row">
 		<div class="col-md-3">
@@ -151,7 +65,7 @@
 			<label for="cleanupQuantity"><f:translate key="globalsettings.form.cleanup_quantity" /></label>
 		</div>
 		<div class="col-md-6">
-            <f:form.textfield name="cleanupQuantity" type="input" property="cleanupQuantity" class="form-control" id="cleanupQuantity"/>
+            <f:form.textfield name="cleanupQuantity" type="number" property="cleanupQuantity" class="form-control" id="cleanupQuantity"/>
             <p class="form-control-field"><f:translate key="globalsettings.form.cleanup_quantity.desc" /></p>
             <p class="cleanupQuantity-error error" style="display: none;"><f:translate key="servercloud.nodata" /></p>
 		</div>
@@ -201,22 +115,3 @@
 		</div>
 	</div>
 </div>
-
-<f:comment>
-	<div class="form-group">
-		<div class="row">
-			<div class="col-md-3">
-				<label for="server-cleanups"><f:translate key="globalsettings.form.servercleanup" /></label>
-			</div>
-			<div class="col-md-6">
-				<div class="form-check">
-					<input class="form-check-input" type="checkbox" value=""
-						id="server-cleanups" checked>
-					<label class="form-check-label" for="sendemailsuccess">
-						Yes
-					</label>
-				</div>
-			</div>
-		</div>
-	</div>
-</f:comment>

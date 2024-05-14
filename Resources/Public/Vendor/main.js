@@ -7,11 +7,4 @@ $(document).ready(function(){
         }
         $(this).parent().find('.btn-backupnow').removeClass('disabled');
     });
-    $('.server-cloud-option').on('change', function(){
-        var serverOption = $(this).val();
-        $(this).parents('.configure-new-server-form').find('.server-cloud-apikey-box-wrap').show();
-        $('.configure-new-server-form .server-cloud-apikey-box').removeClass('active').slideUp();
-        $('.server-cloud-apikey-box-wrapper').css('min-height', $('.configure-new-server-form .server-cloud-apikey-box[data-nsbackup-server="'+serverOption+'"]').outerHeight());
-        $('.configure-new-server-form .server-cloud-apikey-box[data-nsbackup-server="'+serverOption+'"]').addClass('active').slideDown();
-    });
 }); 

@@ -17,14 +17,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'emails,email_notification_on_error,email_notification_on_success,default_server,password_restore,backup_validation,encryption,cleanup_local_name,cleanup_local_value,cleanup_server_name,cleanup_server_value,quick_setup_wizard,cleanup,compress,php,root,siteurl',
+        'searchFields' => 'emails,email_notification_on_error,cleanup,compress,php,root,siteurl',
         'iconfile' => 'EXT:ns_backup/Resources/Public/Icons/tx_nsbackup_domain_model_backupglobal.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, emails, email_notification_on_error, email_notification_on_success, default_server, password_restore, backup_validation, encryption, cleanup_local_name, cleanup_local_value, cleanup_server_name, cleanup_server_value, quick_setup_wizard, cleanup, compress,php,root,siteurl',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, emails, email_notification_on_error, cleanup, compress,php,root,siteurl',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, emails, email_notification_on_error, email_notification_on_success, default_server, password_restore, backup_validation, encryption, cleanup_local_name, cleanup_local_value, cleanup_server_name, cleanup_server_value, quick_setup_wizard, cleanup, compress,php,root,siteurl, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, emails, email_notification_on_error, email_notification_on_success, default_server, cleanup, compress,php,root,siteurl, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -137,96 +137,6 @@ return [
         'email_notification_on_error' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.email_notification_on_error',
-            'config' => [
-                'type' => 'input',
-                'size' => 4,
-                'eval' => 'int'
-            ]
-        ],
-        'email_notification_on_success' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.email_notification_on_success',
-            'config' => [
-                'type' => 'input',
-                'size' => 4,
-                'eval' => 'int'
-            ]
-        ],
-        'default_server' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.default_server',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'password_restore' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.password_restore',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'backup_validation' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.backup_validation',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'encryption' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.encryption',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'cleanup_local_name' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.cleanup_local_name',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'cleanup_local_value' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.cleanup_local_value',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'cleanup_server_name' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.cleanup_server_name',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'cleanup_server_value' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.cleanup_server_value',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'quick_setup_wizard' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.quick_setup_wizard',
             'config' => [
                 'type' => 'input',
                 'size' => 4,

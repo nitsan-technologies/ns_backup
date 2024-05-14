@@ -2,9 +2,7 @@
 namespace NITSAN\NsBackup\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 
 /***
  *
@@ -29,34 +27,35 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         'uid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
     ];
 
+
+    protected function getQueryBuilder($type=false)
+    {
+        if($type){
+            return GeneralUtility::makeInstance(ConnectionPool::class)
+                ->getQueryBuilderForTable('tx_nsbackup_domain_model_backupdata');
+        }else{
+            return GeneralUtility::makeInstance(ConnectionPool::class)
+                ->getConnectionForTable('tx_nsbackup_domain_model_backupdata');
+        }
+    }
+
     /**
      * findBackupDataAll
      */
     public function findBackupDataAll($limit = 0) {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_nsbackup_domain_model_backupdata');
-
+        $queryBuilder = $this->getQueryBuilder(true);
+        $queryBuilder = $queryBuilder
+            ->select('*')
+            ->from('tx_nsbackup_domain_model_backupdata')
+            ->orderBy('uid', 'DESC');
         if($limit > 0) {
-            $statement = $queryBuilder
-                ->select('*')
-                ->from('tx_nsbackup_domain_model_backupdata')
-                ->orderBy('uid', 'DESC')
-                ->setMaxResults($limit)
-                ->execute();
+            $queryBuilder->setMaxResults($limit);
         }
-        else {
-            $statement = $queryBuilder
-                ->select('*')
-                ->from('tx_nsbackup_domain_model_backupdata')
-                ->orderBy('uid', 'DESC')
-                ->execute();
-        }
-
+        $statement = $queryBuilder->execute();
         $arrReturn = array();
-
         while ($row = $statement->fetch()) {
             $arrReturn[] = $row;
         }
-
         return $arrReturn;
     }
 
@@ -64,7 +63,7 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * addBackupData
      */
     public function addBackupData($arrData) {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_nsbackup_domain_model_backupdata');
+        $queryBuilder = $this->getQueryBuilder();
         $queryBuilder
             ->insert(
                 'tx_nsbackup_domain_model_backupdata',
@@ -74,7 +73,6 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                     'backup_type' => $arrData['backupFolderSettings'],
                     'download_url' => $arrData['download_url'],
                     'filenames' => $arrData['filenames'],
-                    //'server_uid' => $arrData['servers'],
                     'logs' => $arrData['log'],
                     'size' => $arrData['size'],
                     'jsonfile' => $arrData['jsonfile'],
@@ -85,27 +83,25 @@ class BackupglobalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * findBackupByUid
      */
-    public function findBackupByUid($arrUid) {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_nsbackup_domain_model_backupdata');
+    public function findBackupByUid($uid) {
+        $queryBuilder = $this->getQueryBuilder(true);
         $statement = $queryBuilder
             ->select('*')
             ->from('tx_nsbackup_domain_model_backupdata')
-            ->where('uid', $arrUid[0])
+            ->where('uid', $uid)
             ->execute();
-
         $row = $statement->fetch();
-
         return $row;
     }
 
     /**
      * removeBackupData
      */
-    public function removeBackupData($arrUid) {
-        GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('tx_nsbackup_domain_model_backupdata')
-        ->delete(
+    public function removeBackupData($uid) {
+        $queryBuilder = $this->getQueryBuilder();
+        $queryBuilder->delete(
             'tx_nsbackup_domain_model_backupdata', // from
-            [ 'uid' => $arrUid[0] ] // where
+            [ 'uid' => $uid ] // where
         );
     }
 }

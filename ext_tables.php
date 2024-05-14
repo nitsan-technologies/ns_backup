@@ -1,13 +1,9 @@
 <?php
 defined('TYPO3_MODE') || die('Access denied.');
 
-// Globally configuration of PHPBU https://phpbu.de/manual/current/en/index.html
-
 // Define Clean-up Options
 define(
     "cleanup", [
-        //['key' => 'Cleanup by capacity', 'value' => 'capacity'],
-        //['key' => 'Cleanup by date', 'value' => 'date'],
         ['key' => 'Cleanup by quantity', 'value' => 'quantity'],
     ]);
 
@@ -45,7 +41,7 @@ call_user_func(
                 'backup', // Submodule key
                 '', // Position
                 [
-                    $backupController => 'dashboard, backuprestore, deletebackupbackup, globalsetting, premiumextension, manualbackup',
+                    $backupController => 'dashboard, backuprestore, deletebackupbackup, globalsetting, manualbackup',
                     $backupglobalController => 'globalsetting, create, update',
                 ],
                 [
@@ -56,12 +52,6 @@ call_user_func(
             );
         }
 
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('ns_backup', 'Configuration/TypoScript', '[NITSAN] Backup');
-
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_nsbackup_domain_model_backupglobal', 'EXT:ns_backup/Resources/Private/Language/locallang_csh_tx_nsbackup_domain_model_nsbackupglobal.xlf');
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_nsbackup_domain_model_backupglobal');
-
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_nsbackup_domain_model_backupdata', 'EXT:ns_backup/Resources/Private/Language/locallang_csh_tx_nsbackup_domain_model_backupdata.xlf');
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_nsbackup_domain_model_backupdata');
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('ns_backup', 'Configuration/TypoScript', 'Backup');
     }
 );

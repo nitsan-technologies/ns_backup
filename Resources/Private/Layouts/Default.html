@@ -13,9 +13,6 @@
 			<div class="typo3-docheader-functions">
 				<f:be.buttons.csh />
 				<div class="ns-backup-button-bar">
-					<!-- <button type="button" class="btn btn-primary btn-backup-wizard-modal" data-toggle="modal" data-target="#backupWizardModal">
-						<em class="fa fa-cogs" aria-hidden="true"></em><f:translate key="top.quicksetup" />
-					</button> -->
 					<div class="button-group float-sm-right">
 						<a target="_blank" href="https://docs.t3terminal.com/en/latest/ExtNsBackup/Index.html" class="btn btn-success text-white btn-sm"><em class="fa fa-file-o"
 								aria-hidden="true"></em><f:translate key="top.documentaiton" /></a>
@@ -56,12 +53,6 @@
 										<em class="fa fa-cog" aria-hidden="true"></em><f:translate key="menu.globalsettings" />
 									</f:link.action>
 								</li>
-								<li class="nav-item {f:if(condition: '{action}==premiumextension', then: 'active')}">
-									<f:link.action action="premiumextension" controller="Backups"
-										class="nav-link">
-										<em class="fa fa-empire" aria-hidden="true"></em><f:translate key="menu.premiumextension" />
-									</f:link.action>
-								</li>
 							</ul>
 						</div>
 					</nav>
@@ -78,9 +69,8 @@
                 <f:render section="content" />
 
                 <div class="footer">
-                    <div class="callout callout-info"><div class="media"><div class="media-left"><span class="fa-stack fa-lg callout-icon"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-info fa-stack-1x"></i></span></div><div class="media-body"><h4 class="callout-title">Server time</h4><div class="callout-body">
-                        <p>All dates and times in the Backup are measured according to the server's time, as the Backup is run purely on the server-side.</p>
-                        <p>Current server time is <f:format.date date="now" format="d-m-y H:s e" />.</p>
+                    <div class="callout callout-info"><div class="media"><div class="media-left"><span class="fa-stack fa-lg callout-icon"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-info fa-stack-1x"></i></span></div><div class="media-body"><h4 class="callout-title"><f:translate key="server_time" /></h4><div class="callout-body">
+						<p><f:translate key="server_time_text1"/></p><p><f:translate key="server_time_text2"/> <f:format.date date="now" format="d-m-y H:s e" />.</p></p>
                     </div></div></div></div>
                 </div>
 			</div>
@@ -113,71 +103,13 @@
 				</div>
 			</div>
 		</div>
-
-        <!-- Global Backup Wizard -->
-		<!--<div class="modal backupwizard-modal fade" id="backupWizardModal" role="dialog"
-			aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">NS Backup Quick Setup Wizard</h5>
-						<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<div class="backupewizard-form-wrap">
-                            <f:form action="{f:if(condition: '{backupglobal}', then: 'update', else: 'create')}" controller="Backupglobal" name="backupglobal" enctype="multipart/form-data" object="{backupglobal}">
-
-                                <f:form.textfield style="display: none;" name="emailSubject" type="input" value="Backup Taken Successfully!" property="emailSubject"    class="form-control" id="emailSubject" />
-
-                                <f:form.textfield style="display: none;" name="cleanup" type="input" value="quantity" property="cleanup" class="form-control" id="cleanup" />
-
-                                <f:form.textfield style="display: none;" name="cleanupQuantity" type="input" value="5" property="cleanupQuantity" class="form-control" id="cleanupQuantity" />
-
-                                <f:form.textfield style="display: none;" name="compress" type="input" value="bzip2" property="compress" class="form-control" id="compress" />
-
-                                <div class="form-group">
-                                    <label for="email">1. <f:translate key="quicksetup.email" /></label>
-                                    <f:form.textfield name="emails" type="email" property="emails" class="form-control" id="emails" />
-                                    <p class="email-error error" style="display: none;"><f:translate key="servercloud.nodata" /></p>
-                                </div>
-								<div class="form-group">
-                                    <label for="php">2. <f:translate key="globalsettings.form.php" /></label>
-                                    <f:form.textfield name="php" type="input" property="php" class="form-control" id="php"/>
-                                    <p class="php-error error" style="display: none;"><f:translate key="servercloud.nodata" /></p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="root">3. <f:translate key="globalsettings.form.root" /></label>
-                                    <f:form.textfield name="root" type="input" property="root" class="form-control" id="root"/>
-                                    <p class="root-error error" style="display: none;"><f:translate key="servercloud.nodata" /></p>
-                                </div>
-                                <div class="form-group">
-                                    <label for="siteurl">4. <f:translate key="globalsettings.form.siteurl" /></label>
-                                    <f:form.textfield name="siteurl" type="input" property="siteurl" class="form-control" id="siteurl"/>
-                                    <p class="siteurl-error error" style="display: none;"><f:translate key="servercloud.nodata" /></p>
-                                </div>
-
-								<div class="form-group">
-									<button type="submit" class="btn btn-danger btn-global-submit"><em class="fa fa-save"
-											aria-hidden="true"></em><f:translate key="globalsettings.form.savesettings" /></button>
-									<button type="button" class="btn btn-secondary" {modalAttr}dismiss="modal"><em class="fa fa-close"
-											aria-hidden="true"></em><f:translate key="quicksetup.skip" /></button>
-								</div>
-							</f:form>
-						</div>
-					</div>
-				</div>
-			</div>
-        </div>-->
-
         <!-- Start One-Click Backup -->
 		<div class="modal backupnow-modal fade backupwizard-modal" id="backupNowModal" role="dialog"
 			role="dialog" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">Manual Backup</h5>
+						<h5 class="modal-title"><f:translate key="manual_backup"/></h5>
 						<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -190,18 +122,18 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-lg-4">
-													<label for="backupName">Your Backup Name</label>
+													<label for="backupName"><f:translate key="manual_backup_name"/></label>
 												</div>
 												<div class="col-lg-8">
                                                     <f:form.textfield name="backupName" property="backupName" id="backupName" class="form-control" />
-                                                    <p class="backupName-error error" style="display: none;">Please enter valid name</p>
+                                                    <p class="backupName-error error" style="display: none;"><f:translate key="manual_backup_name_valid_message"/></p>
 												</div>
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="row">
 												<div class="col-lg-4">
-													<label>What you want to Backup?</label>
+													<label><f:translate key="manual_backup_type"/></label>
 												</div>
 												<div class="col-lg-8">
                                                     <f:for each="{backuptype}" as="backup" iteration="i">
@@ -222,20 +154,10 @@
 													<div class="ns-backup-download-wrap">
 														<button type="submit"
                                                             class="btn btn-primary btn-start-backup"><em class="fa fa-refresh" aria-hidden="true"></em>
-                                                            Start Backup Now!
+                                                            <f:translate key="manual_backup_start"/>
                                                         </button>
-                                                        <p class="backup-Loading error" style="display: none;"><br><strong>Please wait...</strong><br> Based on the size of your site, It may take time to backup, Please do not close the window.</p>
-														<!-- <div class="ns-backup-progressbar-wrap">
-															<div class="progress">
-																<div class="progress-bar bg-success" role="progressbar"
-																	style="width: 23%;" aria-valuenow="25"
-																	aria-valuemin="0" aria-valuemax="100">30%</div>
-															</div>
-														</div>
-														<a href="javascript:;"
-															class="btn btn-outline-success btn-backupnow disabled"><em
-																class="fa fa-download" aria-hidden="true"></em>Download
-															Backup Now!</a> -->
+                                                        <p class="backup-Loading error" style="display: none;"><br><strong><f:translate key="manual_backup_wait"/></strong><br> <f:translate key="manual_backup_wait_text"/></p>
+														
 													</div>
 												</div>
 											</div>
@@ -248,65 +170,7 @@
 				</div>
 			</div>
         </div>
-
-		<div class="modal fade" id="nsBackupDeleteRecordModal" role="dialog"
-			aria-labelledby="nsBackupDeleteRecordModal" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Delete Backup</h5>
-						<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<p>Are you want to sure Delete <span>backup?</span></p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" {modalAttr}dismiss="modal"><em class="fa fa-close"
-								aria-hidden="true"></em>Cancel</button>
-						<button type="button" class="btn btn-danger"><em class="fa fa-trash-o"
-								aria-hidden="true"></em>Delete</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="modal fade nsbackup-run-modal" id="nsBackupRundModal" role="dialog"
-			aria-labelledby="nsBackupRundModal" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Run Backup</h5>
-						<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<p>Backup is Ready click on Following Button!!</p>
-						<div class="ns-backup-download-wrap">
-							<a href="javascript:;" class="btn btn-primary btn-start-backup"><em class="fa fa-refresh"
-									aria-hidden="true"></em>Start Backup
-								Now!</a>
-							<div class="ns-backup-progressbar-wrap">
-								<div class="progress">
-									<div class="progress-bar bg-success" role="progressbar" style="width: 0%;"
-										aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-								</div>
-							</div>
-							<a href="javascript:;" class="btn btn-outline-success btn-backupnow disabled"><em
-									class="fa fa-download" aria-hidden="true"></em>Download
-								Backup Now!</a>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" {modalAttr}dismiss="modal"><em class="fa fa-close"
-								aria-hidden="true" ></em>Cancel</button>
-					</div>
-				</div>
-			</div>
-        </div>
-
+		
         <!-- Display Log at Backup History -->
         <div class="modal backupnow-modal fade backupwizard-modal" id="logBackup" role="dialog"
 			role="dialog" aria-hidden="true">
@@ -330,6 +194,28 @@
 				</div>
 			</div>
         </div>
+		<div class="modal backupnow-modal fade" id="downloadBackup" role="dialog"
+			 role="dialog" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title"><f:translate key="download.backup.title"/></h5>
+						<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="backupewizard-form-wrap">
+							<div class="row">
+								<div class="col-lg-12  log-container">
+									<f:translate key="download.backup.text"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </f:be.container>
 

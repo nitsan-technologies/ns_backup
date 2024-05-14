@@ -2,6 +2,8 @@
 namespace NITSAN\NsBackup\Controller;
 
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
+use RuntimeException;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\VersionNumberUtility;
@@ -112,20 +114,21 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      * @var 
      */
     protected $typo3Version = null;
+    public $exceptionMessage = '';
 
+    public function __construct()
+    {
+        $this->exceptionMessage=transalte::translate('something.wrong.here','ns_backup');
+
+    }
     /**
      * Inject the BackupglobalRepository repository
      *
      * @param \NITSAN\NsBackup\Domain\Repository\BackupglobalRepository $backupglobalRepository
      */
-    public function injectProductRepository(BackupglobalRepository $backupglobalRepository)
+    public function injectBackupglobalRepository(BackupglobalRepository $backupglobalRepository)
     {
         $this->backupglobalRepository = $backupglobalRepository;
-    }
-
-    public function __construct()
-    {
-        // Initiate something
     }
 
     /**
@@ -137,47 +140,33 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         // Get global configuration
         $this->globalSettingsData = $this->backupglobalRepository->findAll();
 
-        $errorValidation = '';
-        $arrValidation = [
-            'emails' => transalte::translate('global.error.emails','ns_backup'),
-            'emailSubject' => transalte::translate('global.error.emailSubject','ns_backup'),
-            'compress' => transalte::translate('global.error.compress','ns_backup'),
-            'php' => transalte::translate('global.error.php','ns_backup'),
-            'root' => transalte::translate('global.error.root','ns_backup'),
-            'siteurl' => transalte::translate('global.error.siteurl','ns_backup'),
-            'cleanup' => transalte::translate('global.error.cleanup','ns_backup'),
-            'cleanupQuantity' => transalte::translate('global.error.cleanupQuantity','ns_backup')
-        ];
-        foreach ($arrValidation as $key=>$value) {
-            if(empty($this->globalSettingsData[0]->$key)) {
-                $errorValidation .= '<li>'.$value.'</li>';
-            }
+        $arrKeys = ['emails', 'emailSubject', 'compress', 'php', 'root', 'siteurl', 'cleanup', 'cleanupQuantity'];
+        $arrValidation = [];
+        foreach ($arrKeys as $key) {
+            $arrValidation[$key] = transalte::translate("global.error.$key", 'ns_backup');
         }
+
+        $errorValidation = implode('', array_map(function ($key, $value) {
+            return empty($this->globalSettingsData[0]->$key) ? '<li>' . $value . '</li>' : '';
+        }, array_keys($arrValidation), $arrValidation));
 
         // Let's check configuration for PHPBU
         if (version_compare(phpversion(), '7.0.0') <= 0) {
             $errorValidation .= '<li>'.transalte::translate('global.error.phpversion','ns_backup').'</li>';
         }
+
+        // Let's check configuration for PHPBU
         $arrGetLoadedExtensions = get_loaded_extensions();
-
-        if(!in_array ('curl', $arrGetLoadedExtensions)) {
-            $errorValidation .= '<li>'.transalte::translate('global.error.curl','ns_backup').'</li>';
+        $arrExtensionsToCheck = ['curl', 'dom', 'json'];
+        foreach ($arrExtensionsToCheck as $extension) {
+            if (!in_array($extension, $arrGetLoadedExtensions)) {
+                $errorValidation .= '<li>' . transalte::translate("global.error.$extension", 'ns_backup') . '</li>';
+            }
         }
-        if(!in_array ('dom', $arrGetLoadedExtensions)) {
-            $errorValidation .= '<li>'.transalte::translate('global.error.dom','ns_backup').'</li>';
+        // Check if exec() works
+        if (!exec('echo EXEC') == 'EXEC') {
+            $errorValidation .= '<li>' . transalte::translate('global.error.exec', 'ns_backup') . '</li>';
         }
-        if(!in_array ('json', $arrGetLoadedExtensions)) {
-            $errorValidation .= '<li>'.transalte::translate('global.error.json','ns_backup').'</li>';
-        }
-        /* if(in_array ('spl', $arrGetLoadedExtensions)) {
-            $errorValidation .= '<li>'.transalte::translate('global.error.spl','ns_backup').'</li>';
-        } */
-
-        // Let's check if exec() works
-        if(!exec('echo EXEC') == 'EXEC') {
-            $errorValidation .= '<li>'.transalte::translate('global.error.exec','ns_backup').'</li>';
-        }
-
         return $errorValidation;
     }
 
@@ -192,19 +181,14 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         $this->globalSettingsData = $this->backupglobalRepository->findAll();
 
         // Get PHP Path
-        if(!empty($this->globalSettingsData[0]->php)) {
-            $this->phpPath = $this->globalSettingsData[0]->php;
-        }
-        else {
-            $this->phpPath = exec('which php');
-            if(empty($this->phpPath)) {
-                $this->phpPath = 'php ';
-            }
-        }
+        $this->phpPath = !empty($this->globalSettingsData[0]->php)
+            ? $this->globalSettingsData[0]->php
+            : (exec('which php') ?: 'php ');
 
         // Get TYPO3 Path
+
         if(!empty($this->globalSettingsData[0]->root)) {
-            
+
             $this->rootPath = $this->globalSettingsData[0]->root;
             if(Environment::isComposerMode()) {
                 $this->rootPath = Environment::getPublicPath();
@@ -216,7 +200,6 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
             if (VersionNumberUtility::convertVersionNumberToInteger($this->typo3Version) >= 9000000) {
                 // If TYPO3 version is version 9 or higher
                 $this->rootPath = Environment::getProjectPath();
-
                 // Let's change root path to /public in Composer-based installation
                 if(Environment::isComposerMode()) {
                     $this->rootPath = Environment::getPublicPath();
@@ -230,16 +213,21 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
         // Get Local Storage Path
         $this->localStoragePath = $this->rootPath.'/uploads/tx_nsbackup/';
-        if (!file_exists($this->localStoragePath)) {
-            mkdir($this->localStoragePath, 0775, true);
+        try{
+            if (!file_exists($this->localStoragePath)) {
+
+                GeneralUtility::mkdir_deep($this->localStoragePath);
+            }
+        }catch (RuntimeException $e){
+            return  [
+                'log' => 'error',
+                'backup_file' => $this->exceptionMessage,
+            ];
         }
 
         // Get Base URL
-        $this->siteUrl = '';
-        if(!empty($this->globalSettingsData[0]->siteurl)) {
-            $this->siteUrl = $this->globalSettingsData[0]->siteurl;
-        }
-        $this->baseURL = $this->siteUrl.'/uploads/tx_nsbackup/';
+        $this->siteUrl = $this->globalSettingsData[0]->siteurl ?? '';
+        $this->baseURL = $this->siteUrl . '/uploads/tx_nsbackup/';
 
         // Get PHPHBU Path
         $this->phpbuPath = $this->rootPath.'/typo3conf/ext/ns_backup/phpbu.phar ';
@@ -249,26 +237,23 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
         // Get Database Configuration
         $this->arrDatabase = $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default'];
-        if(empty($this->arrDatabase['port'])) {
-            $this->arrDatabase['port'] = '3306';
-        }
+        $this->arrDatabase['port'] = $this->arrDatabase['port'] ?? '3306';
 
         // Get Current Date time
         $permitted_chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $randomString = substr(str_shuffle($permitted_chars), 0, 24);
         $this->prefixFileName = date('dmY_Hi').'_'.$randomString;
 
-        $backupName = $arrPost['backupName'];
         $backupNameOriginal = $arrPost['backupName'];
-        $backupName = $this->prefixFileName.'_'.$backupName;
+        $backupName = $this->prefixFileName.'_'.$arrPost['backupName'];
         $backupType = $arrPost['backupFolderSettings'];
 
         // Prepare backup filename
-        $backupFileName = strtolower($backupName);
-        $backupFileName = str_replace(' ', '_', $backupFileName);
-        $backupFileName = str_replace('-', '_', $backupFileName);
-        $backupFileName = preg_replace('/[^A-Za-z0-9]/', '_', $backupFileName);
-        $backupFileName = preg_replace('/_+/', '_', $backupFileName);
+        $backupFileName = preg_replace(
+            '/[^A-Za-z0-9]+/',
+            '_',
+            preg_replace('/[\s-]+/', '_', strtolower(trim($backupName)))
+        );
 
         $jsonFolder = $this->rootPath.'/uploads/tx_nsbackup/json/';
         $jsonFile = $backupFileName.'_'.$backupType.'_configuration.json';
@@ -306,38 +291,39 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
             // Let's check if admin wants "Backup Everyting"
             if ($backupType == 'all') {
-
                 // Create Database Backup
                 $json .= $this->getPhpbuBackup($backupName, 'mysqldump', $backupFileName). ',';
-
-                // Create Code Backup
-                $json .= $this->getPhpbuBackup($backupName, $backupType, $backupFileName);
-            } else {
-                // Create Specific Selected Type of Backup
-                $json .= $this->getPhpbuBackup($backupName, $backupType, $backupFileName);
             }
-
+            $json .= $this->getPhpbuBackup($backupName, $backupType, $backupFileName);
             $json .= '
                 ]
             }
         ';
 
-        // Let's create JSCON folder does not exists
-        if (!file_exists($jsonFolder)) {
-            mkdir($jsonFolder);
+        try{
+            // Let's create JSCON folder does not exists
+            if (!file_exists($jsonFolder)) {
+                GeneralUtility::mkdir_deep($jsonFolder);
+            }
+
+            // Let's create JSON file
+            file_put_contents($jsonPath, $json);
+
+            // Prepare SSH Command
+            $command = $this->phpPath. ' '. $this->phpbuPath.' --configuration='.$jsonPath.' --verbose';
+
+            // Execute Backup SSH Command
+            exec($command, $log);
+        }catch (RuntimeException $e){
+            return [
+                'log' => 'error',
+                'backup_file' => $this->backupFile,
+            ];
         }
 
-        // Let's create JSON file
-        file_put_contents($jsonPath, $json);
-
-        // Prepare SSH Command
-        $command = $this->phpPath. ' '. $this->phpbuPath.' --configuration='.$jsonPath.' --verbose';
-
-        // Execute Backup SSH Command
-        exec($command, $log, $return_var);
 
         // Validate If SSH command success
-        if (count($log) > 0) {
+        if (count($log) > 0 && is_array($log)) {
             $log = file_get_contents($logFile);
 
             // Get ready to insert to Backup History
@@ -350,22 +336,24 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
                 $fileSize = $this->convertFilesize(filesize($this->backupFileMySQL));
                 $arrPost['size'] = $fileSize;
-
                 $arrPost['filenames'] = $this->backupFileMySQL;
-
                 $this->backupglobalRepository->addBackupData($arrPost);
             }
 
             // Insert to Database > Backup History
             $arrPost['download_url'] = $this->backupDownloadPath;
             $arrPost['log'] = $log;
-
-            $fileSize = $this->convertFilesize(filesize($this->backupFile));
+            try{
+                $fileSize = $this->convertFilesize(filesize($this->backupFile));
+            }catch (\Exception $e){
+                return  [
+                    'log' => 'error',
+                    'backup_file' => $this->exceptionMessage,
+                ];
+            }
             $arrPost['size'] = $fileSize;
             $arrPost['filenames'] = $this->backupFile;
-
             $this->backupglobalRepository->addBackupData($arrPost);
-
             $arrReturn = [
                 'log' => $log,
                 'backup_file' => $this->backupFile,
@@ -378,7 +366,6 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
                 'backup_file' => $this->backupFile,
             ];
         }
-
         return $arrReturn;
     }
 
@@ -388,110 +375,109 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      */
     protected function getPhpbuBackup($backupName, $backupType, $backupFileName)
     {
-        $json = isset($json) ? $json : '';
-        $json .= '
+        $json = '
             {
                 "name": "'.$backupName.'",';
 
             $backupExtFile = '.tar';
-            switch($backupType) {
-            case 'mysqldump':
-                $json .= '
+        if ($backupType == 'mysqldump') {
+            $json .= '
                 "source": {
                     "type": "mysqldump",
                     "options": {
-                        "host": "'.$this->arrDatabase['host'].'",
-                        "port": "'.$this->arrDatabase['port'].'",
-                        "databases": "'.$this->arrDatabase['dbname'].'",
-                        "user": "'.$this->arrDatabase['user'].'",
-                        "password": "'.$this->arrDatabase['password'].'"
+                        "host": "' . $this->arrDatabase['host'] . '",
+                        "port": "' . $this->arrDatabase['port'] . '",
+                        "databases": "' . $this->arrDatabase['dbname'] . '",
+                        "user": "' . $this->arrDatabase['user'] . '",
+                        "password": "' . $this->arrDatabase['password'] . '"
                     }
                 },';
-                $backupExtFile = '.sql';
-                break;
+            $backupExtFile = '.sql';
+        } else {
+            $targetPath = ($backupType == 'all') ? '' : $backupType;
 
-            default:
-                $targetPath = ($backupType == 'all') ? '' : $backupType;
+            // Exclude uploads/tx_nsbackup
+            if ($backupType == 'uploads') {
+                $ignoreUploads = ',"exclude": "tx_nsbackup"';
+            }
+            if ($backupType == 'all') {
+                $ignoreUploads = ',"exclude": "uploads/tx_nsbackup,typo3temp"';
+            }
 
-                // Exclude uploads/tx_nsbackup
-                if($backupType == 'uploads') {
-                    $ignoreUploads = ',"exclude": "tx_nsbackup"';
-                }
-                if($backupType == 'all') {
-                    $ignoreUploads = ',"exclude": "uploads/tx_nsbackup,typo3temp"';
-                }
+            $sourcePath = $this->rootPath . '/' . $targetPath;
 
-                $sourcePath = $this->rootPath.'/'.$targetPath;
-
-                // In composer-mode, let's figure out vendor folder
-                if(($backupType == 'vendor') && $this->composerRootPath) {
-                    if((strlen($this->composerRootPath) > 0)){
-                        $sourcePath = $this->composerRootPath.'/'.$targetPath;
-                    }
-                }
-                $ignoreUploads = isset($ignoreUploads) ? $ignoreUploads : '';
-                $json .= '
+            // In composer-mode, let's figure out vendor folder
+            if (($backupType == 'vendor') && $this->composerRootPath && (strlen($this->composerRootPath) > 0)) {
+                $sourcePath = $this->composerRootPath . '/' . $targetPath;
+            }
+            $ignoreUploads = $ignoreUploads ?? '';
+            $json .= '
                 "source": {
                     "type": "tar",
                     "options": {
-                        "path": "'.$sourcePath.'"'.$ignoreUploads.'
+                        "path": "' . $sourcePath . '"' . $ignoreUploads . '
                     }
                 },';
-            }
+        }
 
-            // PATCH If compress=bzip2
-            $compressTechnique = $this->globalSettingsData[0]->compress;
-            if($compressTechnique == 'bzip2' || empty($compressTechnique)) {
+        // PATCH If compress=bzip2
+        $compressTechnique = $this->globalSettingsData[0]->compress;
+
+        switch ($compressTechnique) {
+            case 'bzip2':
+            case '':
                 $compressTechnique = '.bz2';
-            }
-            else if($compressTechnique == 'zip') {
+                break;
+            case 'zip':
                 $compressTechnique = '';
-            }
-            else if($compressTechnique == 'gzip') {
+                break;
+            case 'gzip':
                 $compressTechnique = '.gz';
-            }
-            else if($compressTechnique == 'xz') {
+                break;
+            case 'xz':
                 $compressTechnique = '.xz';
-            }
-            //echo $compressTechnique;exit;
+                break;
+            default:
+                break;
+        }
 
-            $this->backupFilePath = $this->localStoragePath.$backupType;
-            $this->backupFileName = $backupFileName.$backupExtFile;
+        $this->backupFilePath = $this->localStoragePath.$backupType;
+        $this->backupFileName = $backupFileName.$backupExtFile;
 
-            // Physical file
-            $this->backupFile = $this->backupFilePath.'/'.$backupFileName.$backupExtFile.$compressTechnique;
+        // Physical file
+        $this->backupFile = $this->backupFilePath.'/'.$backupFileName.$backupExtFile.$compressTechnique;
 
-            // Download file
-            $this->backupDownloadPath =
-                $this->baseURL.
-                $backupType.'/'.
-                $backupFileName.$backupExtFile.$compressTechnique;
+        // Download file
+        $this->backupDownloadPath =
+            $this->baseURL.
+            $backupType.'/'.
+            $backupFileName.$backupExtFile.$compressTechnique;
 
-            // If Backup Type = ALL then, Let's consider mysql as special-case
-            if ($backupType == 'mysqldump') {
-                $this->backupFileMySQL = $this->backupFilePath . '/' . $backupFileName . $backupExtFile.$compressTechnique;
-                $this->backupDownloadPathMySQL =
-                    $this->baseURL .
-                    $backupType . '/' .
-                    $backupFileName . $backupExtFile.$compressTechnique;
-            }
+        // If Backup Type = ALL then, Let's consider mysql as special-case
+        if ($backupType == 'mysqldump') {
+            $this->backupFileMySQL = $this->backupFilePath . '/' . $backupFileName . $backupExtFile.$compressTechnique;
+            $this->backupDownloadPathMySQL =
+                $this->baseURL .
+                $backupType . '/' .
+                $backupFileName . $backupExtFile.$compressTechnique;
+        }
 
-            $json .= '
-                "target": {
-                    "dirname": "'.$this->backupFilePath.'",
-                    "filename": "'.$this->backupFileName.'",
-                    "compress": "'.$this->globalSettingsData[0]->compress.'"
-                },';
+        $json .= '
+            "target": {
+                "dirname": "'.$this->backupFilePath.'",
+                "filename": "'.$this->backupFileName.'",
+                "compress": "'.$this->globalSettingsData[0]->compress.'"
+            },';
 
-            $json .= '
-                "cleanup": {
-                    "type": "'.$this->globalSettingsData[0]->cleanup.'",
-                    "options": {
-                        "amount": "'.$this->globalSettingsData[0]->cleanupQuantity.'"
-                    }
+        $json .= '
+            "cleanup": {
+                "type": "'.$this->globalSettingsData[0]->cleanup.'",
+                "options": {
+                    "amount": "'.$this->globalSettingsData[0]->cleanupQuantity.'"
                 }
             }
-        ';
+        }
+       ';
         return $json;
     }
 
@@ -511,13 +497,9 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         {
             $bytes = number_format($bytes / 1024, 2) . ' KB';
         }
-        elseif ($bytes > 1)
+        elseif ($bytes > 1 || $bytes == 1)
         {
             $bytes = $bytes . ' bytes';
-        }
-        elseif ($bytes == 1)
-        {
-            $bytes = $bytes . ' byte';
         }
         else
         {

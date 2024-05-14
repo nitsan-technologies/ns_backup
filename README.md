@@ -1,4 +1,7 @@
-# ns_backup
+# Backup Plus
 
-- FREE version: You can download FREE version with basic-features at https://extensions.typo3.org/extension/ns_backup/
-- PRO version: You can download PRO version with more-features & free-support at https://t3planet.com/ns-backup-typo3-extension
+- Live Frontend Demo: https://demo.t3planet.com/t3-extensions/backup
+- Free version: https://extensions.typo3.org/extension/ns_backup
+- Premium version: https://t3planet.com/typo3-backup-extension
+- Documentation: https://docs.t3planet.com/en/latest/ExtNsBackup/Index.html
+- Changelog: https://t3planet.com/typo3-backup-extension
