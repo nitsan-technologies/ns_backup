@@ -31,7 +31,6 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
  */
 class BackupglobalController extends ActionController
 {
-
     /**
      * errorValidation
      */
@@ -93,12 +92,12 @@ class BackupglobalController extends ActionController
      */
     public function createAction(Backupglobal $backupglobal): ResponseInterface
     {
-        $emails = GeneralUtility::trimExplode(',',$backupglobal->getEmails());
-        foreach ($emails as $email){
-            if(!GeneralUtility::validEmail($email)){
-                $msg = transalte::translate('email.not.valid','ns_backup');
+        $emails = GeneralUtility::trimExplode(',', $backupglobal->getEmails());
+        foreach ($emails as $email) {
+            if(!GeneralUtility::validEmail($email)) {
+                $msg = transalte::translate('email.not.valid', 'ns_backup');
                 $this->addFlashMessage('', $msg);
-                return $this->redirect('globalsetting',ContextualFeedbackSeverity::ERROR);
+                return $this->redirect('globalsetting', ContextualFeedbackSeverity::ERROR);
             }
         }
 
@@ -119,12 +118,12 @@ class BackupglobalController extends ActionController
      */
     public function updateAction(Backupglobal $backupglobal): ResponseInterface
     {
-        $emails = GeneralUtility::trimExplode(',',$backupglobal->getEmails());
-        foreach ($emails as $email){
-            if(!GeneralUtility::validEmail($email)){
-                $msg = transalte::translate('email.not.valid','ns_backup');
+        $emails = GeneralUtility::trimExplode(',', $backupglobal->getEmails());
+        foreach ($emails as $email) {
+            if(!GeneralUtility::validEmail($email)) {
+                $msg = transalte::translate('email.not.valid', 'ns_backup');
                 $this->addFlashMessage('', $msg);
-                return $this->redirect('globalsetting',ContextualFeedbackSeverity::ERROR);
+                return $this->redirect('globalsetting', ContextualFeedbackSeverity::ERROR);
             }
         }
         $msg = transalte::translate('globalsettings.update', 'ns_backup');

@@ -30,7 +30,6 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
  */
 class BackupsController extends ActionController
 {
-
     /**
      * errorValidation
      */
@@ -144,7 +143,7 @@ class BackupsController extends ActionController
             if ($valueBackup['logs']) {
                 $objBackupData[$keyBackup]['logs'] = '<pre class="pre-scrollable"><code class="json">' . json_encode(json_decode($objBackupData[$keyBackup]['logs']), JSON_PRETTY_PRINT) . '</code></pre>';
             }
-            if($valueBackup['download_url']){
+            if($valueBackup['download_url']) {
                 $file_headers = @get_headers($valueBackup['download_url']);
                 $objBackupData[$keyBackup]['isDownload'] = (!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') ? false : true;
             }
@@ -184,14 +183,14 @@ class BackupsController extends ActionController
             unlink($jsonFolder.$arrBackup['jsonfile']);
         }
 
-        $jsonLogFile=str_replace("_configuration","_log",$arrBackup['jsonfile']);
+        $jsonLogFile = str_replace("_configuration", "_log", $arrBackup['jsonfile']);
         if(file_exists($jsonFolder.$jsonLogFile)) {
             unlink($jsonFolder.$jsonLogFile);
         }
 
         $headerMsg = transalte::translate('delete.backup.data', 'ns_backup');
         $msg = transalte::translate('delete.backup.message', 'ns_backup').$arrBackup['filenames'];
-        $this->addFlashMessage($msg, $headerMsg,ContextualFeedbackSeverity::OK,true);
+        $this->addFlashMessage($msg, $headerMsg, ContextualFeedbackSeverity::OK, true);
         die;
     }
 

@@ -1,11 +1,6 @@
-define([
-    'jquery',
-    'TYPO3/CMS/Backend/Modal',
-    'TYPO3/CMS/NsBackup/Main',
-    'TYPO3/CMS/NsBackup/Datatables'
-], function ($, Model) {
-
-    if ($("#siteurl").val() && $("#siteurl").val()!=''){
+import $ from 'jquery';
+$(document).ready(function() {
+    if ($("#siteurl").val() && $("#siteurl").val()!==''){
         var mysiteUrl=$("#siteurl").val();
         var currentUrl = window.location.origin;
         if(mysiteUrl.endsWith('/')){
@@ -33,26 +28,10 @@ define([
 
     });
 
-    $('.ns-backup-datatable').DataTable({
-        "language": {
-            "lengthMenu": "Display _MENU_ records per page",
-            "zeroRecords": "Nothing found - sorry",
-            "info": "Showing page _PAGE_ of _PAGES_",
-            "infoEmpty": "No records available",
-            "infoFiltered": "(filtered from _MAX_ total records)"
-        },
-        language: {
-            paginate: {
-                previous: '<<',
-                next:     '>>'
-            }
-        }
-    });
-
     $('.ns-backup-table-wrap .dataTables_length select,\
     .ns-backup-table-wrap .dataTables_filter input').addClass('form-control');
     $('.btn-global-submit').on('click', function () {
-        isError = 0;
+       let isError = 0;
         if (!$('#emails').val()) {
             $(".email-error").show();
             isError = 1;
@@ -106,19 +85,14 @@ define([
             $(".siteurl-error").hide();
         }
 
-        if(isError == 1) {
-            return false;
-        }
-        else {
-            return true;
-        }
+        return isError !== 1;
     });
 
     // Remove Backup Data
     $('.delete-backup').on('click', function () {
-        var title = $(this).data('title');
-        var id = $(this).data('id');
-        var msg = $(this).data('msg');
+        const title = $(this).data('title');
+        const id = $(this).data('id');
+        const msg = $(this).data('msg');
         $("#nsBackupDeletebackupModal .backup-title").html(title);
         $("#nsBackupDeletebackupModal .delete-msg").html(msg);
         $("#nsBackupDeletebackupModal .delete-backup-id").val(id);
@@ -128,9 +102,9 @@ define([
 
     $('.paginate_button').on('click', function () {
         console.log("hello")
-        var title = $('.delete-backup').data('title');
-        var id = $('.delete-backup').data('id');
-        var msg = $('.delete-backup').data('msg');
+        const title = $('.delete-backup').data('title');
+        const id = $('.delete-backup').data('id');
+        const msg = $('.delete-backup').data('msg');
         $("#nsBackupDeletebackupModal .backup-title").html(title);
         $("#nsBackupDeletebackupModal .delete-msg").html(msg);
         $("#nsBackupDeletebackupModal .delete-backup-id").val(id);
@@ -162,6 +136,20 @@ define([
 
     // Code Highlight
     hljs.initHighlightingOnLoad();
+
+    $('.ns-backup-datatable').DataTable({
+        language: {
+            lengthMenu: "Display _MENU_ records per page",
+            zeroRecords: "Nothing found - sorry",
+            info: "Showing page _PAGE_ of _PAGES_",
+            infoEmpty: "No records available",
+            infoFiltered: "(filtered from _MAX_ total records)",
+            paginate: {
+                previous: '<<',
+                next:     '>>'
+            }
+        }
+    });
 });
 
 // Validate Email field

@@ -26,17 +26,16 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
  */
 class BackupglobalRepository extends Repository
 {
-
     /**
      * @param string $type
      * @return QueryBuilder|Connection
      */
-    protected function getQueryBuilder(string $type=''): QueryBuilder|Connection
+    protected function getQueryBuilder(string $type = ''): QueryBuilder|Connection
     {
-        if($type=='queryBuilder'){
+        if($type == 'queryBuilder') {
             return GeneralUtility::makeInstance(ConnectionPool::class)
                 ->getQueryBuilderForTable('tx_nsbackup_domain_model_backupdata');
-        }else{
+        } else {
             return GeneralUtility::makeInstance(ConnectionPool::class)
                 ->getConnectionForTable('tx_nsbackup_domain_model_backupdata');
         }
@@ -99,11 +98,11 @@ class BackupglobalRepository extends Repository
 
     /**
      * findBackupByUid
-     * @param int $uid
+     * @param $uid
      * @return false|mixed[]
      * @throws Exception
      */
-    public function findBackupByUid(int $uid): array|bool
+    public function findBackupByUid($uid): array|bool
     {
         $queryBuilder = $this->getQueryBuilder('queryBuilder');
         $statement = $queryBuilder
