@@ -1,4 +1,3 @@
-import $ from 'jquery';
 $(document).ready(function() {
     if ($("#siteurl").val() && $("#siteurl").val()!==''){
         var mysiteUrl=$("#siteurl").val();
@@ -28,8 +27,6 @@ $(document).ready(function() {
 
     });
 
-    $('.ns-backup-table-wrap .dataTables_length select,\
-    .ns-backup-table-wrap .dataTables_filter input').addClass('form-control');
     $('.btn-global-submit').on('click', function () {
        let isError = 0;
         if (!$('#emails').val()) {
@@ -135,11 +132,10 @@ $(document).ready(function() {
     });
 
     // Code Highlight
-    hljs.initHighlightingOnLoad();
+    // hljs.initHighlightingOnLoad();
 
     $('.ns-backup-datatable').DataTable({
         language: {
-            lengthMenu: "Display _MENU_ records per page",
             zeroRecords: "Nothing found - sorry",
             info: "Showing page _PAGE_ of _PAGES_",
             infoEmpty: "No records available",
@@ -150,6 +146,10 @@ $(document).ready(function() {
             }
         }
     });
+
+    $('.ns-backup-table-wrap .dataTables_length select,\
+    .ns-backup-table-wrap .dataTables_filter input').addClass('form-control');
+
 });
 
 // Validate Email field

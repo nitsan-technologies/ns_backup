@@ -2,13 +2,6 @@
 <f:layout name="Default" />
 
 <f:section name="content">
-	<f:be.pageRenderer
-		includeJavaScriptModules="{
-			0:'@nitsan/ns-backup/jquery.js',
-			1:'@nitsan/ns-backup/Highlight.js',
-			2:'@nitsan/ns-backup/Main.js'
-		}"
-	/>
     <f:flashMessages />
     <f:if condition="{isManualBackup} == '1'">
         <a href="{download_url}" target="_blank" class="btn btn-success btn-backupnow"><em class="fa fa-download" aria-hidden="true"></em><f:translate key="download.backup.now" extensionName = "NsBackup" /></a>

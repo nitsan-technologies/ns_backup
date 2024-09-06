@@ -5,6 +5,7 @@ namespace NITSAN\NsBackup\Controller;
 use Doctrine\DBAL\Exception;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
@@ -98,6 +99,11 @@ class BackupsController extends ActionController
      */
     public function backuprestoreAction(): ResponseInterface
     {
+        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+        $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/jquery.js');
+        $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/Datatables.js');
+        $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/Main.js');
+
         $view = $this->initializeModuleTemplate($this->request);
         $globalSettingsData = $this->backupglobalRepository->findAll();
         $arrMultipleVars = [
