@@ -80,7 +80,7 @@ class BackupglobalController extends ActionController
             'errorValidation' => $this->errorValidation,
             'modalAttr' => 'data-bs-'
         ]);
-        return $view->renderResponse();
+        return $view->renderResponse('Backupglobal/Globalsetting');
     }
 
     /**

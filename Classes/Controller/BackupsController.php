@@ -89,7 +89,7 @@ class BackupsController extends ActionController
         ];
 
         $view->assignMultiple($arrMultipleVars);
-        return $view->renderResponse();
+        return $view->renderResponse('Backups/Dashboard');
     }
 
     /**
@@ -158,7 +158,7 @@ class BackupsController extends ActionController
         $arrMultipleVars['arrBackupData'] = $objBackupData;
         $arrMultipleVars['modalAttr'] = 'data-bs-';
         $view->assignMultiple($arrMultipleVars);
-        return $view->renderResponse();
+        return $view->renderResponse('Backups/Backuprestore');
     }
 
     /**
