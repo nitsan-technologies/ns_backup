@@ -473,7 +473,7 @@ class BackupBaseController extends ActionController
                 "cleanup": {
                     "type": "'.$this->globalSettingsData[0]->cleanup.'",
                     "options": {
-                        "amount": "'.$this->globalSettingsData[0]->cleanupQuantity.'"
+                        "amount": '.$this->globalSettingsData[0]->cleanupQuantity.'
                     }
                 }
             }
