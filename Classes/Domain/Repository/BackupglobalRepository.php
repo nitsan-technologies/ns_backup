@@ -108,7 +108,9 @@ class BackupglobalRepository extends Repository
         $statement = $queryBuilder
             ->select('*')
             ->from('tx_nsbackup_domain_model_backupdata')
-            ->where('uid', $uid)
+            ->where(
+                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($uid, Connection::PARAM_INT))
+            )
             ->executeQuery();
 
         return $statement->fetchAssociative();

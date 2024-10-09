@@ -73,7 +73,11 @@ class BackupsController extends ActionController
      */
     public function dashboardAction(): ResponseInterface
     {
-        $view = $this->initializeModuleTemplate($this->request);
+        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+        $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/jquery.js');
+        $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/Datatables.js');
+        $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/Main.js');
+
         $globalSettingsData = $this->backupglobalRepository->findAll();
         $arrBackupData = $this->backupglobalRepository->findBackupDataAll(5);
 
@@ -87,7 +91,7 @@ class BackupsController extends ActionController
             'errorValidation' => $this->errorValidation,
             'modalAttr' => 'data-bs-'
         ];
-
+        $view = $this->initializeModuleTemplate($this->request);
         $view->assignMultiple($arrMultipleVars);
         return $view->renderResponse('Backups/Dashboard');
     }
@@ -104,7 +108,6 @@ class BackupsController extends ActionController
         $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/Datatables.js');
         $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/Main.js');
 
-        $view = $this->initializeModuleTemplate($this->request);
         $globalSettingsData = $this->backupglobalRepository->findAll();
         $arrMultipleVars = [
             'cleanup' => constant('cleanup'),
@@ -157,6 +160,7 @@ class BackupsController extends ActionController
         }
         $arrMultipleVars['arrBackupData'] = $objBackupData;
         $arrMultipleVars['modalAttr'] = 'data-bs-';
+        $view = $this->initializeModuleTemplate($this->request);
         $view->assignMultiple($arrMultipleVars);
         return $view->renderResponse('Backups/Backuprestore');
     }
