@@ -75,7 +75,6 @@ class BackupsController extends ActionController
     {
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/jquery.js');
-        $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/Datatables.js');
         $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/Main.js');
 
         $globalSettingsData = $this->backupglobalRepository->findAll();
@@ -105,7 +104,6 @@ class BackupsController extends ActionController
     {
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
         $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/jquery.js');
-        $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/Datatables.js');
         $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/Main.js');
 
         $globalSettingsData = $this->backupglobalRepository->findAll();

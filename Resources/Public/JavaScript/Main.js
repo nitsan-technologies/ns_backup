@@ -1,3 +1,4 @@
+import '@nitsan/ns-backup/Datatables.js';
 $(document).ready(function() {
     if ($("#siteurl").val() && $("#siteurl").val()!==''){
         var mysiteUrl=$("#siteurl").val();
