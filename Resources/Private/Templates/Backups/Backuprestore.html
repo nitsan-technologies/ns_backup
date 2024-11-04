@@ -23,7 +23,7 @@
 			</div>
 			<div class="card-body">
 				<div class="ns-backup-table-wrap">
-					<table class="table ns-backup-datatable" id="myexample">
+					<table class="table ns-backup-datatable table-striped table-hover" id="myexample">
 						<thead class="thead-light">
 							<tr>
 								<th scope="col"><f:translate key="servercloud.content.name" extensionName = "NsBackup" /></th>
@@ -53,13 +53,13 @@
 												<a target="_blank" href="{backup.download_url}" class="btn btn-primary"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="download.backup" extensionName = "NsBackup" /></a>
 											</f:then>
 											<f:else>
-												<a href="javascript:;" class="btn btn-primary" {modalAttr}toggle="modal"
+												<a href="javascript:;" class="btn btn-primary btn-sm" {modalAttr}toggle="modal"
 												   {modalAttr}target="#downloadBackup"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="download.backup" extensionName = "NsBackup" /></a>
 											</f:else>
 										</f:if>
-										<a href="javascript:;" class="btn btn-success btn-log-show" {modalAttr}toggle="modal"
+										<a href="javascript:;" class="btn btn-success btn-sm btn-log-show" {modalAttr}toggle="modal"
                                             {modalAttr}target="#logBackup" data-id="{backup.uid}"><em class="fa fa-file-text-o" aria-hidden="true"></em>Logs</a>
-                                        <a href="javascript:;" class="btn btn-danger delete-backup" {modalAttr}toggle="modal"
+                                        <a href="javascript:;" class="btn btn-danger btn-sm delete-backup" {modalAttr}toggle="modal"
                                             {modalAttr}target="#nsBackupDeletebackupModal" data-title="{backup.title}" data-msg="<f:translate key='servercloud.content.deleterecord' extensionName = 'NsBackup' />" data-id="{backup.uid}">
                                             <em class="fa fa-trash-o" aria-hidden="true"></em><f:translate key="servercloud.content.delete" extensionName = "NsBackup" />
                                         </a>
