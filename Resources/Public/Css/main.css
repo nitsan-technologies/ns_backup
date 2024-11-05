@@ -48,10 +48,6 @@ body {
   overflow: auto;
 }
 
-.table {
-  border: 1px solid #ccc !important;
-}
-
 .error {
   color: red;
 }
@@ -600,7 +596,7 @@ label {
 }
 
 .ns-ext-navigation .navbar-nav .nav-link {
-  border: 1px solid #ccc;
+  border: 1px solid;
   border-radius: 2px;
   font-size: 14px;
   padding: 7px 17px !important;
@@ -1033,7 +1029,8 @@ select.form-control[size="1"]:not(.form-select-no-siblings) {
   font-size: 14px;
 }
 
-.ns-ext-navigation-wrap a:hover {
+.ns-ext-navigation-wrap a:hover,
+.ns-ext-navigation-wrap a:focus {
   text-decoration: none;
 }
 
@@ -1070,11 +1067,18 @@ a.navbar-brand:hover {
 .ns-ext-navigation .navbar-nav .nav-link {
   background-color: light-dark(#fafafa, #262626);
   color: light-dark(#212424, #d9d9d9);
+  border-color: light-dark(#c2c2c2, #464646);
+}
+
+.card {
+  border-color: light-dark(#c2c2c2, #464646);
+  border-radius: 0;
 }
 
 .card .card-header {
   background-color: light-dark(#eaeaea, #333);
   color: light-dark(#212424, #d9d9d9);
+  border-radius: 0;
 }
 
 .card .card-body {
@@ -1089,6 +1093,24 @@ a.navbar-brand:hover {
 .modal .modal-body {
   background-color: light-dark(#fff, #333);
   color: light-dark(#333, #d9d9d9);
+}
+
+.modal .modal-header {
+  border-radius: 0;
+}
+
+.json-data {
+  background-color: light-dark(#fff, #333);
+  color: light-dark(#333, #d9d9d9);
+  border-color: light-dark(#c2c2c2, #464646);
+}
+
+table.dataTable>thead>tr>th, table.dataTable>thead>tr>td {
+  border-color: inherit;
+}
+
+.table {
+  border: 1px solid light-dark(#c2c2c2, #464646);
 }
 
 .table>:not(caption)>*>* {
@@ -1107,9 +1129,17 @@ div.dt-container.dt-empty-footer tbody>tr:last-child>* {
   border-color: inherit;
 }
 
-
 div.dt-container .dt-paging .dt-paging-button.disabled,
 div.dt-container .dt-paging .dt-paging-button.disabled:hover,
 div.dt-container .dt-paging .dt-paging-button.disabled:active {
   color: inherit !important;
+}
+
+.form-control,
+.form-control:focus {
+  background-color: light-dark(#fff, transparent);
+  color: light-dark(#000, #fff);
+  font-size: 14px;
+  border-color: light-dark(#c2c2c2, #464646);
+  box-shadow: none;
 }

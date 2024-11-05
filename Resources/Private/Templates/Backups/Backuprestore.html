@@ -6,7 +6,7 @@
     <f:if condition="{isManualBackup} == '1'">
         <a href="{download_url}" target="_blank" class="btn btn-success btn-backupnow"><em class="fa fa-download" aria-hidden="true"></em><f:translate key="download.backup.now" extensionName = "NsBackup" /></a>
         <p>&nbsp;</p>
-        <div class="alert alert-secondary">
+        <div class="alert alert-secondary json-data">
             <p><strong><f:translate key="logs" extensionName = "NsBackup" />:</strong></p>
             <f:format.raw><p>{log}</p></f:format.raw>
         </div>
