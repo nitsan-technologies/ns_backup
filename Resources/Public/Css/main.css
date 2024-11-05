@@ -38,6 +38,8 @@
 html,
 body {
   font-size: 12px;
+  background-color: light-dark(#fff, #262626);
+  color: light-dark(#000, #fff);
 }
 
 body {
@@ -207,14 +209,9 @@ label {
   font-weight: 400;
 }
 
-.ns-backup-last-logs .card-body {
-  background-color: #eee;
-}
-
 .ns-backup-last-logs ul li {
   font-size: 14px;
   margin-bottom: 10px;
-  color: #333333;
 }
 
 .ns-backup-configured-img-wrap {
@@ -256,33 +253,6 @@ label {
 
 .ns-backup-table-wrap {
   margin-top: 15px;
-}
-
-.ns-backup-datatable {
-  border-color: transparent;
-}
-
-.ns-backup-datatable .thead-light tr th,
-.ns-backup-datatable tr td {
-  color: #000;
-}
-
-.ns-backup-datatable thead tr th {
-  background-color: #e0e0e0;
-}
-
-.ns-backup-datatable tbody tr {
-  background-color: #ffffff;
-}
-
-.ns-backup-datatable tbody tr:nth-child(even) {
-  background-color: #fafafa;
-}
-
-.ns-backup-datatable.table>thead>tr>th {
-  font-weight: 400;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 .ns-backup-actions-wrap .btn {
@@ -601,7 +571,6 @@ label {
 }
 
 .ns-ext-name {
-  color: #000;
   font-family: "SourceSansPro";
   font-size: 27px;
   line-height: normal;
@@ -630,16 +599,9 @@ label {
   padding-bottom: 5px;
 }
 
-.ns-ext-navigation .nav-item.active>.nav-link,
-.ns-ext-navigation .nav-item:hover>.nav-link {
-  background-color: #d7d7d7;
-}
-
 .ns-ext-navigation .navbar-nav .nav-link {
-  background-color: #fafafa;
   border: 1px solid #ccc;
   border-radius: 2px;
-  color: #212424;
   font-size: 14px;
   padding: 7px 17px !important;
   text-transform: capitalize;
@@ -696,7 +658,7 @@ New Common Style
 }
 
 .btn.btn-primary {
-  background-color: #007bff;  
+  background-color: #007bff;
 }
 
 .btn.btn-primary:hover {
@@ -716,7 +678,6 @@ New Common Style
 }
 
 .custom-card .card-header {
-  background-color: #eaeaea;
   padding: 10px 20px;
   align-items: center;
   display: flex;
@@ -724,7 +685,6 @@ New Common Style
 }
 
 .custom-card .card-header h5 {
-  color: #212424;
   font-size: 14px;
   font-weight: 700;
   margin-bottom: 0;
@@ -1095,49 +1055,61 @@ select.form-control[size="1"]:not(.form-select-no-siblings) {
   padding-left: 10px;
 }
 
-/* DARK Mode V13 */
-html[data-color-scheme="dark"] body {
-  background: #262626;
-  color: #fff;
-
-  *:not(.btn, .error) {
-    color: inherit;
-    background: inherit;
-  }
+/* Dark Mode  */
+a.navbar-brand,
+a.navbar-brand:focus,
+a.navbar-brand:hover {
+  color: light-dark(#212424, #d9d9d9);
 }
 
-html[data-color-scheme="dark"] div.dt-container .dt-paging .dt-paging-button.disabled,
+.ns-ext-navigation .nav-item.active>.nav-link,
+.ns-ext-navigation .nav-item:hover>.nav-link {
+  background-color: light-dark(#d7d7d7, #000);
+}
+
+.ns-ext-navigation .navbar-nav .nav-link {
+  background-color: light-dark(#fafafa, #262626);
+  color: light-dark(#212424, #d9d9d9);
+}
+
+.card .card-header {
+  background-color: light-dark(#eaeaea, #333);
+  color: light-dark(#212424, #d9d9d9);
+}
+
+.card .card-body {
+  background-color: light-dark(#fff, #262626);
+  color: light-dark(#333, #d9d9d9);
+}
+
+.callout.callout-info {
+  background-color: light-dark(#eaeaea, #333);
+}
+
+.modal .modal-body {
+  background-color: light-dark(#fff, #333);
+  color: light-dark(#333, #d9d9d9);
+}
+
+.table>:not(caption)>*>* {
+  color: light-dark(#1a1a1a, #d9d9d9);
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+  background-color: light-dark(rgba(247, 247, 247, 0.3), rgba(26, 26, 26, 0.3));
+}
+
+.table>:not(caption)>*>* {
+  background-color: light-dark(rgba(240, 240, 240, 0.3), rgba(20, 20, 20, 0.3));
+}
+
+div.dt-container.dt-empty-footer tbody>tr:last-child>* {
+  border-color: inherit;
+}
+
+
+div.dt-container .dt-paging .dt-paging-button.disabled,
 div.dt-container .dt-paging .dt-paging-button.disabled:hover,
 div.dt-container .dt-paging .dt-paging-button.disabled:active {
-  color: #fff !important;
-}
-
-html[data-color-scheme="dark"] body .ns-ext-navigation .navbar-nav .nav-link {
-  background-color: #262626;
-  color: #fff;
-}
-
-html[data-color-scheme="dark"] body .card .card-header,
-html[data-color-scheme="dark"] body .footer {
-  background: #333433;
-}
-
-html[data-color-scheme="dark"] tfoot,
-html[data-color-scheme="dark"] td,
-html[data-color-scheme="dark"] th,
-html[data-color-scheme="dark"] tr,
-html[data-color-scheme="dark"] table,
-html[data-color-scheme="dark"] tbody {
-  border-color: #fff;
-  border-width: 2px;
-}
-
-html[data-color-scheme="dark"] .modal-header {
-  border-radius: 0;
-}
-
-html[data-color-scheme="dark"] .backupewizard-form-wrap .form-check .form-check-input:not(:checked[type=radio], :checked[type=checkbox]),
-.ns-backup-datatable .form-check .form-check-input:not(:checked[type=radio], :checked[type=checkbox]) {
-  background: #fff;
-  border-color: #404040;
+  color: inherit !important;
 }
