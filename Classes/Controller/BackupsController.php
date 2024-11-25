@@ -3,9 +3,11 @@
 namespace NITSAN\NsBackup\Controller;
 
 use Doctrine\DBAL\Exception;
-use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\Mime\Address;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Page\PageRenderer;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
@@ -73,7 +75,7 @@ class BackupsController extends ActionController
      */
     public function dashboardAction(): ResponseInterface
     {
-        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+        $pageRenderer = GeneralUtility::makeInstance(className: PageRenderer::class);
         $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/jquery.js');
         $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/Main.js');
 
@@ -135,6 +137,25 @@ class BackupsController extends ActionController
                 $mesHeader = transalte::translate('manualbackup.success', 'ns_backup');
                 $backup_file = transalte::translate('backup.downloaded', 'ns_backup').' '.$arrResponse['backup_file'];
                 $this->addFlashMessage($backup_file, $mesHeader);
+                
+                $response = (array) json_decode($arrResponse['log']);
+                if (isset($response['errorCount']) && $response['errorCount'] > 0) {
+                    $globalSettingsData = $this->backupglobalRepository->findAll();
+                    if ($globalSettingsData[0]->emailNotificationOnError){
+                        $mail = GeneralUtility::makeInstance(MailMessage::class);
+                        $emails = explode(',',$globalSettingsData[0]->emails);
+                        foreach ($emails as $email) {
+                            $mail->from(new Address($globalSettingsData[0]->emailFrom, 'Backup'));
+                            $mail->to(
+                                new Address($email)
+                            );
+                            $mail->subject($globalSettingsData[0]->emailSubject);
+                            $mail->html('<p><strong>Backup Error:</strong> \''.$response['errors'][0]->message.'\'</p>');
+                            $mail->send();
+                        }
+                        $this->addFlashMessage($response['errors'][0]->message, transalte::translate('manualbackup.warning', 'ns_backup'), ContextualFeedbackSeverity::WARNING);
+                    }
+                }
 
                 // Pass to Fluid
                 $arrMultipleVars['isManualBackup'] = '1';

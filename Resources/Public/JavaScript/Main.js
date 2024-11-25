@@ -41,6 +41,17 @@ $(document).ready(function() {
                 $(".email-error").hide();
             }
         }
+        if (!$('#emailFrom').val()) {
+            $(".emailFrom-error").show();
+            isError = 1;
+        } else {
+            if (!validateEmail($('#emailFrom').val())) {
+                $(".emailFrom-error").show();
+                isError = 1;
+            } else {
+                $(".emailFrom-error").hide();
+            }
+        }
 
         if (!$('#emailSubject').val()) {
             $(".emailSubject-error").show();

@@ -11,6 +11,7 @@ return [
         'languageField' => 'sys_language_uid',
         'transOrigDiffSourceField' => 'l10n_diffsource',
         'delete' => 'deleted',
+        'hideTable' => true,
         'enablecolumns' => [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
@@ -68,14 +69,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => [
-                'type' => 'check',
-                'items' => [
-                    'label' => '1',
-                    'value' => [
-                        'label' => 0,
-                        'value' => 'LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:labels.enabled'
-                    ]
-                ],
+                'type' => 'check'
             ],
         ],
         'starttime' => [

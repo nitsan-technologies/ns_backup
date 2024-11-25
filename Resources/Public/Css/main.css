@@ -1095,13 +1095,15 @@ a.navbar-brand:hover {
   background-color: light-dark(#eaeaea, #333);
 }
 
-.modal .modal-body {
+.modal .modal-body, .modal .modal-footer {
   background-color: light-dark(#fff, #333);
+  border-color: light-dark(#c2c2c2, #464646);
   color: light-dark(#333, #d9d9d9);
 }
 
 .modal .modal-header {
   border-radius: 0;
+  border-color: light-dark(#c2c2c2, #464646);
 }
 
 .json-data {

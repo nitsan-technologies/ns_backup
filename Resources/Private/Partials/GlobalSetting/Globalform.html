@@ -13,6 +13,19 @@
 <div class="form-group">
 	<div class="row">
 		<div class="col-md-3">
+			<label for="emailFrom"><f:translate key="globalsettings.form.email_from" /></label>
+		</div>
+		<div class="col-md-6">
+			<f:form.textfield name="emailFrom" type="email" property="emailFrom" class="form-control" id="emailFrom"/>
+			<p class="form-control-field"><f:translate key="globalsettings.form.email_from.desc" /></p>
+			<p class="emailFrom-error error" style="display: none;"><f:translate key="globalsettings.form.email-error" /></p>
+		</div>
+	</div>
+</div>
+
+<div class="form-group">
+	<div class="row">
+		<div class="col-md-3">
 			<label for="emailSubject"><f:translate key="globalsettings.form.email_subject" /></label>
 		</div>
 		<div class="col-md-6">

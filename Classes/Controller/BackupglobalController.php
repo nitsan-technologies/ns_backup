@@ -2,6 +2,7 @@
 
 namespace NITSAN\NsBackup\Controller;
 
+use TYPO3\CMS\Core\Page\PageRenderer;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Psr\Http\Message\ServerRequestInterface;
@@ -11,9 +12,9 @@ use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
-use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
-use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
+use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
+use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 
 /***
  *
@@ -70,6 +71,9 @@ class BackupglobalController extends ActionController
      */
     public function globalsettingAction(): ResponseInterface
     {
+        $pageRenderer = GeneralUtility::makeInstance(className: PageRenderer::class);
+        $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/jquery.js');
+        $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/Main.js');
         $view = $this->initializeModuleTemplate($this->request);
         $globalSettingsData = $this->backupglobalRepository->findAll();
         $view->assignMultiple([

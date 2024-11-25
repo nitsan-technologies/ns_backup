@@ -160,6 +160,15 @@
 			<trans-unit id="globalsettings.form.email_subject.desc">
 				<source>Enter the email's subject</source>
 			</trans-unit>
+			<trans-unit id="globalsettings.form.email_from">
+				<source>From Email</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.email_from.desc">
+				<source>Enter the From email address</source>
+			</trans-unit>
+			<trans-unit id="manualbackup.warning">
+				<source>Something went wrong.</source>
+			</trans-unit>
 			<trans-unit id="globalsettings.form.notification">
 				<source>Notification Settings</source>
 			</trans-unit>
