@@ -58,11 +58,6 @@ class BackupglobalController extends ActionController
     {
         // Global error check
         $this->errorValidation = $this->backupBaseController->globalErrorValidation();
-        if(!empty($this->errorValidation)) {
-            $header = transalte::translate('global.errorvalidation', 'ns_backup');
-            $message = transalte::translate('global.errorvalidation.message', 'ns_backup');
-            $this->addFlashMessage($message, $header, ContextualFeedbackSeverity::ERROR);
-        }
     }
 
     /**
@@ -71,6 +66,12 @@ class BackupglobalController extends ActionController
      */
     public function globalsettingAction(): ResponseInterface
     {
+        if(!empty($this->errorValidation)) {
+            $header = transalte::translate('global.errorvalidation', 'ns_backup');
+            $message = transalte::translate('global.errorvalidation.message', 'ns_backup');
+            $this->addFlashMessage($message, $header, ContextualFeedbackSeverity::ERROR);
+        }
+
         $pageRenderer = GeneralUtility::makeInstance(className: PageRenderer::class);
         $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/jquery.js');
         $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/Main.js');

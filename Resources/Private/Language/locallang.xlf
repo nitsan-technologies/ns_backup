@@ -4,7 +4,7 @@
 		<header/>
 		<body>
 			<trans-unit id="global.errorvalidation">
-				<source>Please configure below configuration of "Global Settings" or your "Server Configuration"</source>
+				<source>Please configure below configuration of "Global Settings"</source>
 			</trans-unit>
 			<trans-unit id="global.errorvalidation.message">
 				<source>Make sure all configuration has been setup before you start your backup</source>
