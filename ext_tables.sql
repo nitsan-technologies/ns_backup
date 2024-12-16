@@ -6,6 +6,7 @@ CREATE TABLE tx_nsbackup_domain_model_backupglobal (
 	pid int(11) DEFAULT '0' NOT NULL,
 	emails varchar(255) DEFAULT '',
 	email_subject varchar(255) DEFAULT '',
+	email_from varchar(255) DEFAULT '',
 	email_notification_on_error int(11) DEFAULT '0',
 	cleanup varchar(255) DEFAULT 'quantity',
 	cleanup_quantity int(11) DEFAULT '5',

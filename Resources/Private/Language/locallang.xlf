@@ -4,7 +4,7 @@
 		<header/>
 		<body>
 			<trans-unit id="global.errorvalidation">
-				<source>Please configure below configuration of "Global Settings" or your "Server Configuration"</source>
+				<source>Please configure below configuration of "Global Settings"</source>
 			</trans-unit>
 			<trans-unit id="global.errorvalidation.message">
 				<source>Make sure all configuration has been setup before you start your backup</source>
@@ -159,6 +159,15 @@
 			</trans-unit>
 			<trans-unit id="globalsettings.form.email_subject.desc">
 				<source>Enter the email's subject</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.email_from">
+				<source>From Email</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.email_from.desc">
+				<source>Enter the From email address</source>
+			</trans-unit>
+			<trans-unit id="manualbackup.warning">
+				<source>Something went wrong.</source>
 			</trans-unit>
 			<trans-unit id="globalsettings.form.notification">
 				<source>Notification Settings</source>

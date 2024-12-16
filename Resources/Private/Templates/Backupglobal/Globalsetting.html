@@ -1,14 +1,7 @@
-<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 	<f:layout name="Default" />
 
 	<f:section name="content">
-		<f:be.pageRenderer
-			includeRequireJsModules="{
-				0:'TYPO3/CMS/NsBackup/jquery',
-				1:'TYPO3/CMS/NsBackup/Highlight',
-				2:'TYPO3/CMS/NsBackup/Main'
-			}"
-		/>
         <f:flashMessages />
 		<div class="alert alert-warning d-none" id="yoursiteUrlMsg">
 			<b><f:translate key="yoursiteUrlMsg"/></b>

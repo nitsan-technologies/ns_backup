@@ -28,6 +28,14 @@ class Backupglobal extends AbstractEntity
     public string $emails = '';
 
     /**
+     * emailFrom
+     *
+     * @var string
+     */
+    public string $emailFrom = '';
+
+
+    /**
      * emailSubject
      *
      * @var string
@@ -124,6 +132,27 @@ class Backupglobal extends AbstractEntity
     public function setEmails(string $emails): void
     {
         $this->emails = $emails;
+    }
+
+    /**
+     * Returns the emailFrom
+     *
+     * @return string emailFrom
+     */
+    public function getEmailFrom(): string
+    {
+        return $this->emailFrom;
+    }
+
+    /**
+     * Sets the emailFrom
+     *
+     * @param string $emailFrom
+     * @return void
+     */
+    public function setEmailFrom(string $emailFrom): void
+    {
+        $this->emailFrom = $emailFrom;
     }
 
     /**

@@ -144,7 +144,7 @@ class BackupBaseController extends ActionController
     public function __construct(
         protected  BackupglobalRepository $backupglobalRepository
     ) {
-        $this->exceptionMessage=transalte::translate('something.wrong.here','ns_backup');
+        $this->exceptionMessage = transalte::translate('something.wrong.here', 'ns_backup');
 
     }
 
@@ -211,12 +211,12 @@ class BackupBaseController extends ActionController
 
         // Get Local Storage Path
         $this->localStoragePath = $this->rootPath.'/uploads/tx_nsbackup/';
-        try{
+        try {
             if (!file_exists($this->localStoragePath)) {
 
                 GeneralUtility::mkdir_deep($this->localStoragePath);
             }
-        }catch (RuntimeException $e){
+        } catch (RuntimeException $e) {
             return  [
                 'log' => 'error',
                 'backup_file' => $this->exceptionMessage,
@@ -296,7 +296,7 @@ class BackupBaseController extends ActionController
             }
         ';
 
-        try{
+        try {
             // Let's create JSCON folder does not exists
             if (!file_exists($jsonFolder)) {
                 GeneralUtility::mkdir_deep($jsonFolder);
@@ -310,7 +310,7 @@ class BackupBaseController extends ActionController
 
             // Execute Backup SSH Command
             exec($command, $log);
-        }catch (RuntimeException $e){
+        } catch (RuntimeException $e) {
             return  [
                 'log' => 'error',
                 'backup_file' => $this->exceptionMessage,
@@ -318,7 +318,7 @@ class BackupBaseController extends ActionController
         }
 
         // Validate If SSH command success
-        if (count($log) > 0 && is_array($log))  {
+        if (count($log) > 0 && is_array($log)) {
             $log = file_get_contents($logFile);
 
             // Get ready to insert to Backup History
@@ -337,9 +337,9 @@ class BackupBaseController extends ActionController
             // Insert to Database > Backup History
             $arrPost['download_url'] = $this->backupDownloadPath;
             $arrPost['log'] = $log;
-            try{
+            try {
                 $fileSize = $this->convertFilesize(filesize($this->backupFile));
-            }catch (Exception $e){
+            } catch (Exception $e) {
                 return  [
                     'log' => 'error',
                     'backup_file' => $this->exceptionMessage,
@@ -373,7 +373,7 @@ class BackupBaseController extends ActionController
      * @param string $backupFileName
      * @return string
      */
-    protected function getPhpbuBackup(string $backupName,string $backupType,string $backupFileName): string
+    protected function getPhpbuBackup(string $backupName, string $backupType, string $backupFileName): string
     {
         $json = '';
         $json .= '
@@ -473,7 +473,7 @@ class BackupBaseController extends ActionController
                 "cleanup": {
                     "type": "'.$this->globalSettingsData[0]->cleanup.'",
                     "options": {
-                        "amount": "'.$this->globalSettingsData[0]->cleanupQuantity.'"
+                        "amount": '.$this->globalSettingsData[0]->cleanupQuantity.'
                     }
                 }
             }

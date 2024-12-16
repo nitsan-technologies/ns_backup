@@ -6,18 +6,18 @@ return [
         'label' => 'emails',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'sortby' => 'sorting',
         'versioningWS' => true,
         'languageField' => 'sys_language_uid',
         'transOrigDiffSourceField' => 'l10n_diffsource',
         'delete' => 'deleted',
+        'hideTable' => true,
         'enablecolumns' => [
             'disabled' => 'hidden',
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'emails,email_notification_on_error,cleanup_server_name,cleanup_server_value,cleanup,compress,php,root,siteurl',
+        'searchFields' => 'emails,email_from,email_notification_on_error,cleanup_server_name,cleanup_server_value,cleanup,compress,php,root,siteurl',
         'iconfile' => 'EXT:ns_backup/Resources/Public/Icons/tx_nsbackup_domain_model_backupglobal.gif',
         'security' => [
             'ignorePageTypeRestriction' => true,
@@ -51,14 +51,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
             'config' => [
-                'type' => 'check',
-                'items' => [
-                    'label' => '1',
-                    'value' => [
-                        'label' => 0,
-                        'value' => 'LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:labels.enabled'
-                    ]
-                ],
+                'type' => 'check'
             ],
         ],
         'starttime' => [
@@ -103,6 +96,15 @@ return [
             ],
         ],
         'email_subject' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.email_subject',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'email_from' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.email_subject',
             'config' => [

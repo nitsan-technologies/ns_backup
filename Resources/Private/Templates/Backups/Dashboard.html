@@ -1,15 +1,8 @@
-<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
 <f:section name="content">
     <f:flashMessages />
-	<f:be.pageRenderer
-		includeRequireJsModules="{
-			0:'TYPO3/CMS/NsBackup/jquery',
-			1:'TYPO3/CMS/NsBackup/Highlight',
-			2:'TYPO3/CMS/NsBackup/Main'
-		}"
-	/>
 	<div class="ns-backup-dashboard-blocks">
 		<div class="row">
             <div class="col-md-6">
@@ -33,7 +26,7 @@
                                                 at <f:format.date format="d-m-Y H:i">{backup.start_datetime}</f:format.date>
                                             </li>
                                         </f:for>
-                                        <f:link.action action="backuprestore" controller="Backups" class="btn btn-gray"><em class="fa fa-file-text-o" aria-hidden="true"></em> <f:translate key="more.logs" /></f:link.action>
+                                        <f:link.action action="backuprestore" controller="Backups" class="btn btn-secondary"><em class="fa fa-file-text-o" aria-hidden="true"></em> <f:translate key="more.logs" /></f:link.action>
                                     </f:then>
                                     <f:else>
                                         <f:translate key="no.data.found" />
@@ -55,7 +48,7 @@
                                 <f:translate key="backup.now.description1" />
                                 <f:translate key="backup.now.description2" />
                             </p>
-							<a href="javascript:;" class="btn btn-gray" {modalAttr}toggle="modal"
+							<a href="javascript:;" class="btn btn-secondary" {modalAttr}toggle="modal"
 							   {modalAttr}target="#backupNowModal"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="start.one.click.backup" /></a>
                             <p>&nbsp;</p>
 						</div>

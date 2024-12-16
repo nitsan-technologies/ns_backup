@@ -1,7 +1,8 @@
-<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 
 <!-- Due to css-order rendering issue in TYPO3-v10 ignoring "includeCssFiles" -->
-<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Vendor/bootstrap4.3.1.min.css', extensionName: 'ns_backup')}" media="all">
+<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Vendor/bootstrap5.3.min.css', extensionName: 'ns_backup')}" media="all">
+<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Css/Datatables.css', extensionName: 'ns_backup')}" media="all">
 <link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Css/main.css', extensionName: 'ns_backup')}" media="all">
 <link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Css/highlight/default.css', extensionName: 'ns_backup')}" media="all">
 <link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Css/font-awesome.css', extensionName: 'ns_backup')}" media="all">
@@ -55,7 +56,7 @@
                 <f:render section="content" />
                 <div class="footer">
                     <div class="callout callout-info"><div class="media"><div class="media-left"><span class="fa-stack fa-lg callout-icon"><i class="fa fa-circle fa-stack-2x" style="color: #6daae0;"></i><i class="fa fa-info fa-stack-1x" style="color: #fff;"></i></span></div><div class="media-body"><h4 class="callout-title"><f:translate key="server_time" /></h4><div class="callout-body">
-                       <p><f:translate key="server_time_text1"/></p><p><f:translate key="server_time_text2"/> <f:format.date date="now" format="d-m-y H:s e" />.</p></p>
+                       <p><f:translate key="server_time_text1"/></p><p><f:translate key="server_time_text2"/> <f:format.date date="now" format="d-m-y H:i e" />.</p></p>
                     </div></div></div></div>
                 </div>
 			</div>

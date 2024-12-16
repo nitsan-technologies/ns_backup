@@ -17,7 +17,7 @@ $backuptype = [
 
 $compress = [
     ['key' => 'bzip2', 'value' => 'bzip2'],
-    ['key' => 'zip', 'value' => 'zip'],
+//    ['key' => 'zip', 'value' => 'zip'],
     ['key' => 'gzip', 'value' => 'gzip'],
     ['key' => 'xz', 'value' => 'xz'],
 ];
