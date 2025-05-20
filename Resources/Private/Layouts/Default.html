@@ -50,7 +50,7 @@
                 <f:flashMessages />
                 <f:if condition="{errorValidation}">
                     <div class="alert alert-warning">
-                        <f:format.raw>{errorValidation}</f:format.raw>
+                        <f:sanitize.html>{errorValidation}</f:sanitize.html>
                     </div>
                 </f:if>
                 <f:render section="content" />
@@ -203,5 +203,47 @@
 		</div>
 	</div>
 
+	<!-- Private Backup Download Error  -->
+	<div class="modal fade" id="backupDownloadError" role="dialog"
+		 aria-labelledby="nsBackupDeleteRecordModal" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title"><f:translate key="servercloud.content.downloadErrorTitle" /> <span class="backup-title"></span></h5>
+					<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p class="delete-msg"><f:translate key="servercloud.content.downloadBackupError" /></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-warning" {modalAttr}dismiss="modal"><em class="fa fa-close"
+																								 aria-hidden="true"></em><f:translate key="servercloud.content.cancel" /></button>
+				</div>
+			</div>
+		</div>
+	</div>
 
+	<!-- Private Backup Download Error  -->
+	<div class="modal fade" id="backupNotAvailable" tabindex="-1" role="dialog"
+		 aria-labelledby="nsBackupNotAvailableModal" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title"><f:translate key="servercloud.content.downloadErrorTitle" /> <span class="backup-title"></span></h5>
+					<button type="button" class="close" {modalAttr}dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p class="delete-msg"><f:translate key="servercloud.content.downloadBackupNotFound" /></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-warning" {modalAttr}dismiss="modal"><em class="fa fa-close"
+																								 aria-hidden="true"></em><f:translate key="servercloud.content.cancel" /></button>
+				</div>
+			</div>
+		</div>
+	</div>
 </html>

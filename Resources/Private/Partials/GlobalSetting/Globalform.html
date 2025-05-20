@@ -35,21 +35,6 @@
 		</div>
 	</div>
 </div>
-<div class="form-group">
-	<div class="row">
-		<div class="col-md-3">
-			<label><f:translate key="globalsettings.form.notification" /></label>
-		</div>
-		<div class="col-md-6">
-			<div class="form-check">
-				<f:form.checkbox  name="emailNotificationOnError" property="emailNotificationOnError" value="1" class="form-check-input check" checked="{f:if(condition: '{backupglobal.emailNotificationOnError}==1', then: 'checked')}" id="emailNotificationOnError" />
-				<label class="form-check-label" for="emailNotificationOnError">
-					<f:translate key="globalsettings.form.emailNotificationOnError" />
-				</label>
-			</div>
-		</div>
-	</div>
-</div>
 
 <div class="form-group">
 	<div class="row">
@@ -85,6 +70,31 @@
 		</div>
 	</div>
 </div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="d-flex justify-content-between">
+                <label for="backupStorePath"><f:translate key="globalsettings.form.backup_store_path" /></label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group">
+				<span class="input-group-text custom-reset" data-id="backupStorePath">
+					<i aria-hidden="true" class="fa fa-repeat"></i>
+				</span>
+				<f:variable name="backupStorePathValue">{f:if(condition: backupglobal.backupStorePath, then: '{backupglobal.backupStorePath}', else: '{varPath}')}</f:variable>
+                <f:form.textfield name="backupStorePath" 
+					type="input" property="backupStorePath" 
+					class="form-control" id="backupStorePath" value="{backupStorePathValue}"/>
+            </div>
+            <div class="field-info-text">
+                <p class="form-control-field"><f:translate key="globalsettings.form.backup_store_path.desc" /></p>
+            </div>
+            <p class="backupStorePath-error error" style="display: none;"><f:translate key="servercloud.nodata" /></p>
+        </div>
+    </div>
+</div>
+
 <div class="form-group">
 	<div class="row">
 		<div class="col-md-3">

@@ -193,6 +193,12 @@
 			<trans-unit id="globalsettings.form.cleanup_quantity.desc">
 				<source>Enter at how many backups clean or remove backups at your web-server and remote servers/cloud too, Min:1 And Max:500 allow</source>
 			</trans-unit>
+			<trans-unit id="globalsettings.form.backup_store_path">
+				<source>Backup Store Path</source>
+			</trans-unit>
+			<trans-unit id="globalsettings.form.backup_store_path.desc">
+				<source>Please enter a path to store the backup (e.g., /var/www/html/public/, /var/www/html/). We recommend using a protected path to restrict external access.</source>
+			</trans-unit>
 			<trans-unit id="globalsettings.form.servercleanup">
 				<source>Server Cleanups?</source>
 			</trans-unit>
@@ -445,9 +451,27 @@
 			<trans-unit id="email.not.valid">
 				<source>Email format is not valid</source>
 			</trans-unit>
+			<trans-unit id="phpPath.not.valid">
+				<source>PHP path is not executable</source>
+			</trans-unit>
+			<trans-unit id="storePath.not.valid">
+				<source>The backup storage does not exist.</source>
+			</trans-unit>
             <trans-unit id="something.wrong.here">
                 <source>Something is wrong here. Please check you Global Settings</source>
             </trans-unit>
+			<trans-unit id="servercloud.content.downloadBackupError">
+				<source>This backup contains the private path. Due to security purposes, it is not able to download.  You can download it manually from your server.</source>
+			</trans-unit>
+			<trans-unit id="servercloud.content.downloadErrorTitle">
+				<source>Download Backup</source>
+			</trans-unit>
+			<trans-unit id="manualbackup.error.description">
+				<source>Allowed characters: letters, numbers, spaces, dashes (-), and underscores (_).</source>
+			</trans-unit>
+			<trans-unit id="servercloud.content.downloadBackupNotFound">
+				<source>This backup is no longer available.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

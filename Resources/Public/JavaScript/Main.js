@@ -97,25 +97,26 @@ $(document).ready(function() {
         return isError !== 1;
     });
 
-    // Remove Backup Data
+    // Remove Backup Data (XSS-Safe)
     $('.delete-backup').on('click', function () {
         const title = $(this).data('title');
         const id = $(this).data('id');
         const msg = $(this).data('msg');
-        $("#nsBackupDeletebackupModal .backup-title").html(title);
-        $("#nsBackupDeletebackupModal .delete-msg").html(msg);
+
+        $("#nsBackupDeletebackupModal .backup-title").text(title);
+        $("#nsBackupDeletebackupModal .delete-msg").text(msg);
+
         $("#nsBackupDeletebackupModal .delete-backup-id").val(id);
         $("#nsBackupDeletebackupModal .deletetype").val('single');
         $("#nsBackupDeletebackupModal .delete-backup-backup-del").removeAttr("disabled");
     });
 
     $('.paginate_button').on('click', function () {
-        console.log("hello")
         const title = $('.delete-backup').data('title');
         const id = $('.delete-backup').data('id');
         const msg = $('.delete-backup').data('msg');
-        $("#nsBackupDeletebackupModal .backup-title").html(title);
-        $("#nsBackupDeletebackupModal .delete-msg").html(msg);
+        $("#nsBackupDeletebackupModal .backup-title").text(title);
+        $("#nsBackupDeletebackupModal .delete-msg").text(msg);
         $("#nsBackupDeletebackupModal .delete-backup-id").val(id);
         $("#nsBackupDeletebackupModal .deletetype").val('single');
         $("#nsBackupDeletebackupModal .delete-backup-backup-del").removeAttr("disabled");
@@ -145,6 +146,16 @@ $(document).ready(function() {
 
     // Code Highlight
     // hljs.initHighlightingOnLoad();
+
+    $('.custom-reset').on('click', function () {
+        var that = $(this);
+        var hideId = this.dataset.id;
+        that.find('i').addClass('fa-spin');
+        $('#' + hideId).val('');
+        setTimeout(function () {
+            that.find('i').removeClass('fa-spin');
+        }, 2000);
+    });
 
     $('.ns-backup-datatable').DataTable({
         language: {

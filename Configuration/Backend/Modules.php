@@ -7,8 +7,8 @@ return [
     'nitsan_nsbackup' => [
         'parent' => 'tools',
         'position' => ['before' => 'top'],
-        'access' => 'user',
-        'path' => '/module/nitsan/NsBackupBackup    ',
+        'access' => 'admin',
+        'path' => '/module/nitsan/NsBackupBackup',
         'icon' => 'EXT:ns_backup/Resources/Public/Icons/module-nsbackup.svg',
         'labels' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_backup.xlf',
         'extensionName' => 'NsBackup',

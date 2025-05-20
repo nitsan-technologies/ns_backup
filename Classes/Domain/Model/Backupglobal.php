@@ -28,6 +28,13 @@ class Backupglobal extends AbstractEntity
     public string $emails = '';
 
     /**
+     * backupStorePath
+     *
+     * @var string
+     */
+    public string $backupStorePath = '';
+
+    /**
      * emailFrom
      *
      * @var string
@@ -300,5 +307,26 @@ class Backupglobal extends AbstractEntity
     public function setCleanup(string $cleanup): void
     {
         $this->cleanup = $cleanup;
+    }
+
+    /**
+     * Returns the backupStorePath
+     *
+     * @return string backupStorePath
+     */
+    public function getBackupStorePath(): string
+    {
+        return $this->backupStorePath;
+    }
+
+    /**
+     * Sets the backupStorePath
+     *
+     * @param string $backupStorePath
+     * @return void
+     */
+    public function setBackupStorePath(string $backupStorePath): void
+    {
+        $this->backupStorePath = $backupStorePath;
     }
 }

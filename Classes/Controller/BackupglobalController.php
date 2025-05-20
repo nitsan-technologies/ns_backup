@@ -12,7 +12,8 @@ use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
+use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
 use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 
@@ -66,24 +67,20 @@ class BackupglobalController extends ActionController
      */
     public function globalsettingAction(): ResponseInterface
     {
-        if(!empty($this->errorValidation)) {
-            $header = transalte::translate('global.errorvalidation', 'ns_backup');
-            $message = transalte::translate('global.errorvalidation.message', 'ns_backup');
-            $this->addFlashMessage($message, $header, ContextualFeedbackSeverity::ERROR);
-        }
-
         $pageRenderer = GeneralUtility::makeInstance(className: PageRenderer::class);
         $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/jquery.js');
         $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/Main.js');
         $view = $this->initializeModuleTemplate($this->request);
         $globalSettingsData = $this->backupglobalRepository->findAll();
+        $varPath = Environment::getVarPath();
         $view->assignMultiple([
             'cleanup' => constant('cleanup'),
             'backupglobal' => $globalSettingsData[0],
             'compress' => constant('compress'),
             'action' => 'globalsetting',
             'errorValidation' => $this->errorValidation,
-            'modalAttr' => 'data-bs-'
+            'modalAttr' => 'data-bs-',
+            'varPath' => $varPath
         ]);
         return $view->renderResponse('Backupglobal/Globalsetting');
     }
@@ -100,13 +97,24 @@ class BackupglobalController extends ActionController
         $emails = GeneralUtility::trimExplode(',', $backupglobal->getEmails());
         foreach ($emails as $email) {
             if(!GeneralUtility::validEmail($email)) {
-                $msg = transalte::translate('email.not.valid', 'ns_backup');
+                $msg = LocalizationUtility::translate('email.not.valid', 'ns_backup');
                 $this->addFlashMessage('', $msg);
                 return $this->redirect('globalsetting', ContextualFeedbackSeverity::ERROR);
             }
         }
-
-        $msg = transalte::translate('globalsettings.create', 'ns_backup');
+        if (!is_dir($backupglobal->getBackupStorePath())) {
+            $msg = LocalizationUtility::translate('storePath.not.valid', 'ns_backup');
+            $this->addFlashMessage('', $msg, ContextualFeedbackSeverity::ERROR);
+            return $this->redirect('globalsetting');
+        }
+        $phpPath = trim($backupglobal->getPhp());
+        $backupglobal->setPhp($phpPath);
+        if (!is_executable($backupglobal->getPhp())) {
+            $msg = LocalizationUtility::translate('phpPath.not.valid', 'ns_backup');
+            $this->addFlashMessage('', $msg, ContextualFeedbackSeverity::ERROR);
+            return $this->redirect('globalsetting');
+        }
+        $msg = LocalizationUtility::translate('globalsettings.create', 'ns_backup');
         $this->addFlashMessage('', $msg);
         $this->backupglobalRepository->add($backupglobal);
 
@@ -126,12 +134,24 @@ class BackupglobalController extends ActionController
         $emails = GeneralUtility::trimExplode(',', $backupglobal->getEmails());
         foreach ($emails as $email) {
             if(!GeneralUtility::validEmail($email)) {
-                $msg = transalte::translate('email.not.valid', 'ns_backup');
+                $msg = LocalizationUtility::translate('email.not.valid', 'ns_backup');
                 $this->addFlashMessage('', $msg);
                 return $this->redirect('globalsetting', ContextualFeedbackSeverity::ERROR);
             }
         }
-        $msg = transalte::translate('globalsettings.update', 'ns_backup');
+        if (!is_dir($backupglobal->getBackupStorePath())) {
+            $msg = LocalizationUtility::translate('storePath.not.valid', 'ns_backup');
+            $this->addFlashMessage('', $msg, ContextualFeedbackSeverity::ERROR);
+            return $this->redirect('globalsetting');
+        }
+        $phpPath = trim($backupglobal->getPhp());
+        $backupglobal->setPhp($phpPath);
+        if (!is_executable($backupglobal->getPhp())) {
+            $msg = LocalizationUtility::translate('phpPath.not.valid', 'ns_backup');
+            $this->addFlashMessage('', $msg, ContextualFeedbackSeverity::ERROR);
+            return $this->redirect('globalsetting');
+        }
+        $msg = LocalizationUtility::translate('globalsettings.update', 'ns_backup');
         $this->addFlashMessage('', $msg);
         $this->backupglobalRepository->update($backupglobal);
 

@@ -176,5 +176,14 @@ return [
                 'eval' => 'trim'
             ],
         ],
+        'backup_store_path' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.backup_store_path',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
     ],
 ];

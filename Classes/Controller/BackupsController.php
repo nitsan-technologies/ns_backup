@@ -109,6 +109,11 @@ class BackupsController extends ActionController
         $pageRenderer->loadJavaScriptModule('@nitsan/ns-backup/Main.js');
 
         $globalSettingsData = $this->backupglobalRepository->findAll();
+        // Get Local Storage Path
+        if ($globalSettingsData[0]) {
+            $globalBackupStorePath = $globalSettingsData[0]->getBackupStorePath();
+            $isPublicPath = $this->isPathPublic($globalBackupStorePath);
+        }
         $arrMultipleVars = [
             'cleanup' => constant('cleanup'),
             'backuptype' => constant('backuptype'),
@@ -119,6 +124,19 @@ class BackupsController extends ActionController
         ];
 
         $arrPost = $this->request->getArguments();
+        $backupName = trim($arrPost['backuprestore']['backupName'] ?? '');
+        if (preg_match('/[^0-9A-Za-z _-]/', $backupName)) {
+            $sanitizedName = htmlspecialchars($backupName, ENT_QUOTES, 'UTF-8');
+
+            $this->addFlashMessage(
+                "Invalid backup name: '{$sanitizedName}'. " . transalte::translate('manualbackup.error.description', 'ns_backup'),
+                transalte::translate('manualbackup.error', 'ns_backup'),
+                ContextualFeedbackSeverity::ERROR
+            );
+
+            return $this->redirect('backuprestore');
+        }
+
         // "RUN" Backup from "Manual Backup Module"
         $arrPost = $arrPost['backuprestore'] ?? '';
 
@@ -137,7 +155,7 @@ class BackupsController extends ActionController
                 $mesHeader = transalte::translate('manualbackup.success', 'ns_backup');
                 $backup_file = transalte::translate('backup.downloaded', 'ns_backup').' '.$arrResponse['backup_file'];
                 $this->addFlashMessage($backup_file, $mesHeader);
-                
+
                 $response = (array) json_decode($arrResponse['log']);
                 if (isset($response['errorCount']) && $response['errorCount'] > 0) {
                     $globalSettingsData = $this->backupglobalRepository->findAll();
@@ -160,7 +178,10 @@ class BackupsController extends ActionController
                 // Pass to Fluid
                 $arrMultipleVars['isManualBackup'] = '1';
                 $arrMultipleVars['log'] = '<pre class="pre-scrollable"><code class="json">'. json_encode(json_decode($arrResponse['log']), JSON_PRETTY_PRINT) .'</code></pre>';
-                $arrMultipleVars['download_url'] = $arrResponse['download_url'];
+                $arrMultipleVars['download_url'] = '';
+                if ($isPublicPath) {
+                    $arrMultipleVars['download_url'] = $arrResponse['download_url'];
+                }
             }
         }
 
@@ -194,6 +215,15 @@ class BackupsController extends ActionController
         $request = $this->request->getQueryParams();
         $uid = $request['uid'];
 
+        $globalSettingsData = $this->backupglobalRepository->findAll();
+        $globalSettingsData = !empty($globalSettingsData[0]) ? $globalSettingsData[0] : null;
+
+        if (!$globalSettingsData) {
+            $headerMsg = transalte::translate('something.wrong.here', 'ns_backup');
+            $this->addFlashMessage($headerMsg, '', ContextualFeedbackSeverity::ERROR, true);
+            die;
+        }
+
         $arrBackup = $this->backupglobalRepository->findBackupByUid($uid);
         // Let's delete it
         $this->backupglobalRepository->removeBackupData($uid);
@@ -203,11 +233,13 @@ class BackupsController extends ActionController
             unlink($arrBackup['filenames']);
         }
 
-        $rootPath = $this->globalSettingsData[0]->root ?? (Environment::getProjectPath() ?? '');
+        $rootPath = $globalSettingsData->root ?? (Environment::getProjectPath() ?? '');
         if(Environment::isComposerMode()) {
             $rootPath = Environment::getPublicPath();
         }
-        $jsonFolder = $rootPath.'/uploads/tx_nsbackup/json/';
+
+        $rootPath = $globalSettingsData->backupStorePath ?? ($rootPath . '/uploads');
+        $jsonFolder = $rootPath.'/tx_nsbackup/json/';
         if(file_exists($jsonFolder.$arrBackup['jsonfile'])) {
             unlink($jsonFolder.$arrBackup['jsonfile']);
         }
@@ -230,5 +262,19 @@ class BackupsController extends ActionController
         ServerRequestInterface $request
     ): ModuleTemplate {
         return $this->moduleTemplateFactory->create($request);
+    }
+
+    /**
+     * @param string $path
+     * @return boolean
+     */
+    public function isPathPublic(string $path): bool
+    {
+        if (!Environment::isComposerMode()) {
+            $valuesToCheck = ['typo3', 'typo3conf', 'vendor', 'typo3temp', 'bin'];
+            $parts = array_filter(explode('/', rtrim($path, '/')));
+            return empty(array_intersect($parts, $valuesToCheck));
+        }
+        return str_contains(rtrim($path, '/'), Environment::getPublicPath());
     }
 }

@@ -1150,3 +1150,7 @@ div.dt-container .dt-paging .dt-paging-button.disabled:active {
   border-color: light-dark(#c2c2c2, #464646);
   box-shadow: none;
 }
+
+.close {
+  font-size: 22px;
+}
