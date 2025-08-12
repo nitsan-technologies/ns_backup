@@ -256,7 +256,14 @@ class BackupBaseController extends ActionController
         $backupNameOriginal = $arrPost['backupName'];
         $backupFileName = strtolower(trim($backupName));
         $backupFileName = preg_replace(['/[\s-]+/', '/[^A-Za-z0-9_]/', '/_+/'], '_', $backupFileName);
-        $backupType = $arrPost['backupFolderSettings'];
+
+        // Whitelist allowed backup types
+        $allowedBackupTypes = ['mysqldump', 'typo3', 'vendor', 'typo3conf'];
+        $backupType = $arrPost['backupFolderSettings'] ?? '';
+
+        if (!in_array($backupType, $allowedBackupTypes, true)) {
+            throw new RuntimeException('Invalid backup type specified.');
+        }
 
         // Generates an 8-character random string
         $randomString = substr(md5(uniqid(mt_rand(), true)), 0, 8);
@@ -279,6 +286,11 @@ class BackupBaseController extends ActionController
                 @fclose($fh);
             }
         }
+        
+        // Email configuration
+        $emailRecipients = filter_var($this->globalSettingsData[0]->emails, FILTER_VALIDATE_EMAIL) ? $this->globalSettingsData[0]->emails : '';
+        $emailSubject = preg_replace('/[^A-Za-z0-9_\-\[\]\s]/', '', $this->globalSettingsData[0]->emailSubject ?? '');
+        $emailNotificationOnError = $this->globalSettingsData[0]->emailNotificationOnError === '1' ? '1' : '0';
 
         $json = '
             {
@@ -293,9 +305,9 @@ class BackupBaseController extends ActionController
                         "type": "mail",
                         "options": {
                         "transport": "mail",
-                        "recipients": "'.$this->globalSettingsData[0]->emails.'",
-                        "subject": "[' . $backupType . '] ' . $backupNameOriginal . ' - ' . $this->globalSettingsData[0]->emailSubject . '",
-                        "sendOnlyOnError": "'.$this->globalSettingsData[0]->emailNotificationOnError.'"
+                        "recipients": "'.$emailRecipients.'",
+                        "subject": "[' . $backupType . '] ' . $backupNameOriginal . ' - ' . $emailSubject . '",
+                        "sendOnlyOnError": "'.$emailNotificationOnError.'"
                         }
                     }
                 ],
@@ -337,8 +349,12 @@ class BackupBaseController extends ActionController
                 throw new RuntimeException("Invalid PHP executable path.");
             }
 
-            // Prepare SSH Command
-            $command = $this->phpPath . ' ' . $this->phpbuPath . ' --configuration=' . $jsonPath . ' --verbose';
+            // Prepare secure shell command
+            $phpBin = escapeshellcmd($this->phpPath);
+            $phpbuBin = escapeshellcmd($this->phpbuPath);
+            $configArg = escapeshellarg('--configuration=' . $jsonPath);
+
+            $command = "$phpBin $phpbuBin $configArg --verbose";
 
             // Execute Backup SSH Command
             exec($command, $log, $return_var);
