@@ -288,52 +288,53 @@ class BackupBaseController extends ActionController
         }
         
         // Email configuration
-        $emailRecipients = filter_var($this->globalSettingsData[0]->emails, FILTER_VALIDATE_EMAIL) ? $this->globalSettingsData[0]->emails : '';
+        $emailString = $this->globalSettingsData[0]->emails ?? '';
+        $emailArray = array_map('trim', explode(',', $emailString));
+        $validEmails = array_filter($emailArray, function($email) {
+            return filter_var($email, FILTER_VALIDATE_EMAIL);
+        });
+        $emailRecipients = implode(',', $validEmails);
         $emailSubject = preg_replace('/[^A-Za-z0-9_\-\[\]\s]/', '', $this->globalSettingsData[0]->emailSubject ?? '');
         $emailNotificationOnError = $this->globalSettingsData[0]->emailNotificationOnError === '1' ? '1' : '0';
 
-        $json = '
-            {
-                "verbose": true,
-                "debug": false,
-                "logging": [
-                    {
-                        "type": "json",
-                        "target": "'.$logFile.'"
-                    },
-                    {
-                        "type": "mail",
-                        "options": {
-                        "transport": "mail",
-                        "recipients": "'.$emailRecipients.'",
-                        "subject": "[' . $backupType . '] ' . $backupNameOriginal . ' - ' . $emailSubject . '",
-                        "sendOnlyOnError": "'.$emailNotificationOnError.'"
-                        }
-                    }
+        // Prepare JSON configuration using json_encode for security
+        $jsonConfig = [
+            'verbose' => true,
+            'debug' => false,
+            'logging' => [
+                [
+                    'type' => 'json',
+                    'target' => $logFile
                 ],
-                "backups": [';
+                [
+                    'type' => 'mail',
+                    'options' => [
+                        'transport' => 'mail',
+                        'recipients' => $emailRecipients,
+                        'subject' => "[{$backupType}] {$backupNameOriginal} - {$emailSubject}",
+                        'sendOnlyOnError' => $emailNotificationOnError
+                    ]
+                ]
+            ],
+            'backups' => []
+        ];
 
-        // Let's check if admin wants "Backup Everyting"
+        // Let's check if admin wants "Backup Everything"
         if ($backupType == 'all') {
-
             // store date and time before backup
             $currentDateTime = date('Ymd-Hi');
             // Create Database Backup
-            $json .= $this->getPhpbuBackup($backupName, 'mysqldump', $backupFileName) . ',';
-
+            $jsonConfig['backups'][] = $this->getPhpbuBackupArray($backupName, 'mysqldump', $backupFileName);
             // Create Code Backup
-            $json .= $this->getPhpbuBackup($backupName, $backupType, $backupFileName);
+            $jsonConfig['backups'][] = $this->getPhpbuBackupArray($backupName, $backupType, $backupFileName);
         } elseif ($backupType == 'other') {
-            $json .= $this->getPhpbuBackup($backupName, $backupType, $backupFileName, $arrPost['custompath']);
+            $jsonConfig['backups'][] = $this->getPhpbuBackupArray($backupName, $backupType, $backupFileName, $arrPost['custompath']);
         } else {
             // Create Specific Selected Type of Backup
-            $json .= $this->getPhpbuBackup($backupName, $backupType, $backupFileName);
+            $jsonConfig['backups'][] = $this->getPhpbuBackupArray($backupName, $backupType, $backupFileName);
         }
 
-        $json .= '
-                ]
-            }
-        ';
+        $json = json_encode($jsonConfig, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 
         try {
             // Ensure the directory exists
@@ -351,7 +352,7 @@ class BackupBaseController extends ActionController
 
             // Prepare secure shell command
             $phpBin = escapeshellcmd($this->phpPath);
-            $phpbuBin = escapeshellcmd($this->phpbuPath);
+            $phpbuBin = escapeshellarg($this->phpbuPath);
             $configArg = escapeshellarg('--configuration=' . $jsonPath);
 
             $command = "$phpBin $phpbuBin $configArg --verbose";
@@ -438,34 +439,33 @@ class BackupBaseController extends ActionController
     }
 
     /**
-     * Generate PHP BU action getPhpbuBackupJSON
+     * Generate PHP BU backup configuration as array
      * @param string $backupName
      * @param string $backupType
      * @param string $backupFileName
      * @param string|null $rawName
-     * @return string
+     * @return array
      */
-    protected function getPhpbuBackup(string $backupName, string $backupType, string $backupFileName, ?string $rawName = null): string
+    protected function getPhpbuBackupArray(string $backupName, string $backupType, string $backupFileName, ?string $rawName = null): array
     {
-        $json = $ignoreUploads = '';
-        $json .= '
-            {
-                "name": "' . $backupName . '",';
+        $ignoreUploads = '';
+        $backupConfig = [
+            'name' => $backupName
+        ];
 
         $backupExtFile = '.tar';
         switch ($backupType) {
             case 'mysqldump':
-                $json .= '
-                "source": {
-                    "type": "mysqldump",
-                    "options": {
-                        "host": "' . $this->arrDatabase['host'] . '",
-                        "port": "' . $this->arrDatabase['port'] . '",
-                        "databases": "' . $this->arrDatabase['dbname'] . '",
-                        "user": "' . $this->arrDatabase['user'] . '",
-                        "password": "' . $this->arrDatabase['password'] . '"
-                    }
-                },';
+                $backupConfig['source'] = [
+                    'type' => 'mysqldump',
+                    'options' => [
+                        'host' => $this->arrDatabase['host'],
+                        'port' => (string)$this->arrDatabase['port'],
+                        'databases' => $this->arrDatabase['dbname'],
+                        'user' => $this->arrDatabase['user'],
+                        'password' => $this->arrDatabase['password']
+                    ]
+                ];
                 $backupExtFile = '.sql';
                 break;
 
@@ -474,10 +474,10 @@ class BackupBaseController extends ActionController
 
                 // Exclude uploads/tx_nsbackup
                 if ($backupType == 'uploads') {
-                    $ignoreUploads = ',"exclude": "tx_nsbackup"';
+                    $ignoreUploads = 'tx_nsbackup';
                 }
                 if ($backupType == 'all') {
-                    $ignoreUploads = ',"exclude": "uploads/tx_nsbackup,typo3temp"';
+                    $ignoreUploads = 'uploads/tx_nsbackup,typo3temp';
                 }
 
                 $sourcePath = $this->rootPath . '/' . $targetPath;
@@ -487,23 +487,18 @@ class BackupBaseController extends ActionController
                     $sourcePath = $this->composerRootPath . '/' . $targetPath;
                 }
 
-                if ($backupType == 'other') {
-                    $json .= '
-                    "source": {
-                        "type": "tar",
-                        "options": {
-                            "path": "' . $rawName . '"' . $ignoreUploads . '
-                        }
-                    },';
-                } else {
-                    $json .= '
-                    "source": {
-                        "type": "tar",
-                        "options": {
-                            "path": "' . $sourcePath . '"' . $ignoreUploads . '
-                        }
-                    },';
+                $sourceOptions = [
+                    'path' => ($backupType == 'other') ? $rawName : $sourcePath
+                ];
+                
+                if (!empty($ignoreUploads)) {
+                    $sourceOptions['exclude'] = $ignoreUploads;
                 }
+
+                $backupConfig['source'] = [
+                    'type' => 'tar',
+                    'options' => $sourceOptions
+                ];
         }
 
         // PATCH If compress=bzip2
@@ -516,7 +511,6 @@ class BackupBaseController extends ActionController
         ];
 
         $compressTechnique = $compressTechniques[$compressTechnique] ?? '.bz2';
-        //echo $compressTechnique;exit;
 
         $this->backupFilePath = $this->localStoragePath . $backupType;
 
@@ -540,25 +534,22 @@ class BackupBaseController extends ActionController
                     $backupType . '/' . md5($backupType) . '-' . date('Ymd-Hi') . $backupExtFile . $compressTechnique;
         }
         $this->backupFileName = md5($backupType) . '-%Y%m%d-%H%i' . $backupExtFile;
-        $json .= '
-                "target": {
-                    "dirname": "' . $this->backupFilePath . '",
-                    "filename": "' . $this->backupFileName . '",
-                    "compress": "' . $this->globalSettingsData[0]->compress . '"
-                },';
 
-        $json .= '
-                "cleanup": {
-                    "type": "' . $this->globalSettingsData[0]->cleanup . '",
-                    "options": {
-                        "amount": "' . $this->globalSettingsData[0]->cleanupQuantity . '"
-                    }
-                }
-            }
-        ';
-        return $json;
+        $backupConfig['target'] = [
+            'dirname' => $this->backupFilePath,
+            'filename' => $this->backupFileName,
+            'compress' => $this->globalSettingsData[0]->compress
+        ];
+
+        $backupConfig['cleanup'] = [
+            'type' => $this->globalSettingsData[0]->cleanup,
+            'options' => [
+                'amount' => $this->globalSettingsData[0]->cleanupQuantity
+            ]
+        ];
+
+        return $backupConfig;
     }
-
 
     /**
      * Convert File Size
