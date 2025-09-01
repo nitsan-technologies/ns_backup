@@ -2,6 +2,7 @@
 
 namespace NITSAN\NsBackup\Controller;
 
+use RuntimeException;
 use Doctrine\DBAL\Exception;
 use Symfony\Component\Mime\Address;
 use TYPO3\CMS\Core\Core\Environment;
@@ -143,7 +144,12 @@ class BackupsController extends ActionController
         if(!empty($arrPost['backupFolderSettings']) && empty($this->errorValidation)) {
 
             // Create json and take backup
-            $arrResponse = $this->backupBaseController->generateBackup($arrPost);
+            try {
+                $arrResponse = $this->backupBaseController->generateBackup($arrPost);
+            } catch (RuntimeException $e) {
+                $this->addFlashMessage($e->getMessage(), transalte::translate('manualbackup.error', 'ns_backup'), ContextualFeedbackSeverity::ERROR);
+                return $this->redirect('backuprestore');
+            }
 
             if($arrResponse['log'] == 'error') {
                 // Error Flash-Message
