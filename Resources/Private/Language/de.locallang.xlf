@@ -5,83 +5,83 @@
     <body>
       <trans-unit id="global.errorvalidation">
         <source>Please configure below configuration of "Global Settings"</source>
-        <target state="needs-translation">Please configure below configuration of "Global Settings"</target>
+        <target state="translated">Bitte konfigurieren Sie die folgende Konfiguration der "Globalen Einstellungen"</target>
       </trans-unit>
       <trans-unit id="global.errorvalidation.message">
         <source>Make sure all configuration has been setup before you start your backup</source>
-        <target state="needs-translation">Make sure all configuration has been setup before you start your backup</target>
+        <target state="translated">Stellen Sie sicher, dass alle Konfigurationen eingerichtet wurden, bevor Sie mit Ihrem Backup beginnen</target>
       </trans-unit>
       <trans-unit id="global.error.phpversion">
         <source>Your PHP version should be "7.0 or later"</source>
-        <target state="needs-translation">Your PHP version should be "7.0 or later"</target>
+        <target state="translated">Ihre PHP-Version sollte "7.0 oder höher" sein</target>
       </trans-unit>
       <trans-unit id="global.error.curl">
         <source>"curl" extension of PHP is disabled at your server</source>
-        <target state="needs-translation">"curl" extension of PHP is disabled at your server</target>
+        <target state="translated">Die "curl"-Erweiterung von PHP ist auf Ihrem Server deaktiviert</target>
       </trans-unit>
       <trans-unit id="global.error.dom">
         <source>"dom" extension of PHP is disabled at your server</source>
-        <target state="needs-translation">"dom" extension of PHP is disabled at your server</target>
+        <target state="translated">Die "dom"-Erweiterung von PHP ist auf Ihrem Server deaktiviert</target>
       </trans-unit>
       <trans-unit id="global.error.json">
         <source>"json" extension of PHP is disabled at your server</source>
-        <target state="needs-translation">"json" extension of PHP is disabled at your server</target>
+        <target state="translated">Die "json"-Erweiterung von PHP ist auf Ihrem Server deaktiviert</target>
       </trans-unit>
       <trans-unit id="global.error.spl">
         <source>"spl" extension of PHP is disabled at your server</source>
-        <target state="needs-translation">"spl" extension of PHP is disabled at your server</target>
+        <target state="translated">Die "spl"-Erweiterung von PHP ist auf Ihrem Server deaktiviert</target>
       </trans-unit>
       <trans-unit id="global.error.exec">
         <source>PHP exec() function is disabled</source>
-        <target state="needs-translation">PHP exec() function is disabled</target>
+        <target state="translated">Die PHP exec() Funktion ist deaktiviert</target>
       </trans-unit>
       <trans-unit id="global.error.emails">
         <source>Missing Email Notification</source>
-        <target state="needs-translation">Missing Email Notification</target>
+        <target state="translated">Fehlende E-Mail-Benachrichtigung</target>
       </trans-unit>
       <trans-unit id="global.error.emailSubject">
         <source>Missing Email Subject</source>
-        <target state="needs-translation">Missing Email Subject</target>
+        <target state="translated">Fehlender E-Mail-Betreff</target>
       </trans-unit>
       <trans-unit id="global.error.compress">
         <source>Configure Backup File Compression</source>
-        <target state="needs-translation">Configure Backup File Compression</target>
+        <target state="translated">Konfigurieren Sie die Backup-Dateikomprimierung</target>
       </trans-unit>
       <trans-unit id="global.error.php">
         <source>Missing Installed PHP Path</source>
-        <target state="needs-translation">Missing Installed PHP Path</target>
+        <target state="translated">Fehlender installierter PHP-Pfad</target>
       </trans-unit>
       <trans-unit id="global.error.root">
         <source>Configure Your TYPO3 Installed Path</source>
-        <target state="needs-translation">Configure Your TYPO3 Installed Path</target>
+        <target state="translated">Konfigurieren Sie Ihren TYPO3 Installationspfad</target>
       </trans-unit>
       <trans-unit id="global.error.siteurl">
         <source>Configure Your TYPO3 Site URL</source>
-        <target state="needs-translation">Configure Your TYPO3 Site URL</target>
+        <target state="translated">Konfigurieren Sie Ihre TYPO3-Seiten-URL</target>
       </trans-unit>
       <trans-unit id="global.error.cleanup">
         <source>Missing Backup Cleanup Settings</source>
-        <target state="needs-translation">Missing Backup Cleanup Settings</target>
+        <target state="translated">Fehlende Backup-Cleanup-Einstellungen</target>
       </trans-unit>
       <trans-unit id="global.error.cleanupQuantity">
         <source>Missing Backup Cleanup Quantity Settings</source>
-        <target state="needs-translation">Missing Backup Cleanup Quantity Settings</target>
+        <target state="translated">Fehlende Backup-Cleanup-Mengeneinstellungen</target>
       </trans-unit>
       <trans-unit id="top.quicksetup">
         <source>Quick Setup</source>
-        <target state="needs-translation">Quick Setup</target>
+        <target state="translated">Schnelleinrichtung</target>
       </trans-unit>
       <trans-unit id="top.documentaiton">
         <source>Documentaiton</source>
-        <target state="needs-translation">Documentaiton</target>
+        <target state="translated">Dokumentation</target>
       </trans-unit>
       <trans-unit id="top.help">
         <source>Help &amp; Support</source>
-        <target state="needs-translation">Help &amp; Support</target>
+        <target state="translated">Hilfe &amp; Support</target>
       </trans-unit>
       <trans-unit id="top.donate">
         <source>Donate</source>
-        <target state="needs-translation">Donate</target>
+        <target state="translated">Spenden</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal">
         <source>Nsbackupglobal</source>
@@ -89,79 +89,79 @@
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.emails">
         <source>Emails (Multiple emails using comma ,)</source>
-        <target state="needs-translation">Emails (Multiple emails using comma ,)</target>
+        <target state="translated">E-Mails (Mehrere E-Mails mit Komma ,)</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_notification_on_error">
         <source>Email Notification On Error</source>
-        <target state="needs-translation">Email Notification On Error</target>
+        <target state="translated">E-Mail-Benachrichtigung bei Fehlern</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_servers.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Titel</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_servers.path">
         <source>Path</source>
-        <target state="needs-translation">Path</target>
+        <target state="translated">Pfad</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_servers.server_type">
         <source>Server Type</source>
-        <target state="needs-translation">Server Type</target>
+        <target state="translated">Server-Typ</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_servers.settings">
         <source>Settings</source>
-        <target state="needs-translation">Settings</target>
+        <target state="translated">Einstellungen</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata">
         <source>Backup Data</source>
-        <target state="needs-translation">Backup Data</target>
+        <target state="translated">Backup-Daten</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Titel</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.category">
         <source>Category</source>
-        <target state="needs-translation">Category</target>
+        <target state="translated">Kategorie</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.start_datetime">
         <source>Start Datetime</source>
-        <target state="needs-translation">Start Datetime</target>
+        <target state="translated">Startzeitpunkt</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.end_datetime">
         <source>End Datetime</source>
-        <target state="needs-translation">End Datetime</target>
+        <target state="translated">Endzeitpunkt</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.backup_type">
         <source>Backup Type</source>
-        <target state="needs-translation">Backup Type</target>
+        <target state="translated">Backup-Typ</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.download_url">
         <source>Download Url</source>
-        <target state="needs-translation">Download Url</target>
+        <target state="translated">Download-URL</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.server_uid">
         <source>Server Uid</source>
-        <target state="needs-translation">Server Uid</target>
+        <target state="translated">Server-UID</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.servers_backup_path">
         <source>Servers Backup Path</source>
-        <target state="needs-translation">Servers Backup Path</target>
+        <target state="translated">Server-Backup-Pfad</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.filenames">
         <source>Filenames</source>
-        <target state="needs-translation">Filenames</target>
+        <target state="translated">Dateinamen</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.size">
         <source>Size</source>
-        <target state="needs-translation">Size</target>
+        <target state="translated">Größe</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.logs">
         <source>Logs</source>
-        <target state="needs-translation">Logs</target>
+        <target state="translated">Protokolle</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.date">
         <source>Date</source>
-        <target state="needs-translation">Date</target>
+        <target state="translated">Datum</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.status">
         <source>Status</source>
@@ -177,7 +177,7 @@
       </trans-unit>
       <trans-unit id="menu.backupsrestore">
         <source>Backup History</source>
-        <target state="needs-translation">Backup History</target>
+        <target state="translated">Backup-Verlauf</target>
       </trans-unit>
       <trans-unit id="menu.serverclouds">
         <source>Server/Clouds</source>
@@ -185,163 +185,163 @@
       </trans-unit>
       <trans-unit id="menu.globalsettings">
         <source>Global Settings</source>
-        <target state="needs-translation">Global Settings</target>
+        <target state="translated">Globale Einstellungen</target>
       </trans-unit>
       <trans-unit id="menu.premiumextension">
         <source>Premium Extension</source>
-        <target state="needs-translation">Premium Extension</target>
+        <target state="translated">Premium-Erweiterung</target>
       </trans-unit>
       <trans-unit id="globalsettings.title">
         <source>Global Settings</source>
-        <target state="needs-translation">Global Settings</target>
+        <target state="translated">Globale Einstellungen</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.emails">
         <source>Emails</source>
-        <target state="needs-translation">Emails</target>
+        <target state="translated">E-Mails</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.emails.desc">
         <source>Multiple emails using comma separated</source>
-        <target state="needs-translation">Multiple emails using comma separated</target>
+        <target state="translated">Mehrere E-Mails durch Komma getrennt verwenden</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.email_subject">
         <source>Email Subject</source>
-        <target state="needs-translation">Email Subject</target>
+        <target state="translated">E-Mail-Betreff</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.email_subject.desc">
         <source>Enter the email's subject</source>
-        <target state="needs-translation">Enter the email's subject</target>
+        <target state="translated">Geben Sie den Betreff der E-Mail ein</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.email_from">
         <source>From Email</source>
-        <target state="needs-translation">From Email</target>
+        <target state="translated">Von E-Mail</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.email_from.desc">
         <source>Enter the From email address</source>
-        <target state="needs-translation">Enter the From email address</target>
+        <target state="translated">Geben Sie die E-Mail-Adresse des Absenders ein</target>
       </trans-unit>
       <trans-unit id="manualbackup.warning">
         <source>Something went wrong.</source>
-        <target state="needs-translation">Something went wrong.</target>
+        <target state="translated">Etwas ist schiefgegangen.</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.notification">
         <source>Notification Settings</source>
-        <target state="needs-translation">Notification Settings</target>
+        <target state="translated">Benachrichtigungseinstellungen</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.emailNotificationOnError">
         <source>Send email only at failure of backup</source>
-        <target state="needs-translation">Send email only at failure of backup</target>
+        <target state="translated">E-Mail nur bei fehlgeschlagenem Backup senden</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.defaultServer">
         <source>Default Server/Cloud</source>
-        <target state="needs-translation">Default Server/Cloud</target>
+        <target state="translated">Standardserver/Cloud</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.defaultServer.desc">
         <source>Choose your default backup server, You can manage it from Servers/Cloud</source>
-        <target state="needs-translation">Choose your default backup server, You can manage it from Servers/Cloud</target>
+        <target state="translated">Wählen Sie Ihren Standard-Backup-Server aus, den Sie von Servern/Cloud aus verwalten können.</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.cleanup">
         <source>Clean-up Type</source>
-        <target state="needs-translation">Clean-up Type</target>
+        <target state="translated">Bereinigungstyp</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.cleanup.desc">
         <source>Choose clean-up or delete backup type</source>
-        <target state="needs-translation">Choose clean-up or delete backup type</target>
+        <target state="translated">Wählen Sie aufräumen oder Backup-Typ löschen</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.cleanup_quantity">
         <source>Clean-up Quantity</source>
-        <target state="needs-translation">Clean-up Quantity</target>
+        <target state="translated">Bereinigungsmenge</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.cleanup_quantity.desc">
         <source>Enter at how many backups clean or remove backups at your web-server and remote servers/cloud too, Min:1 And Max:500 allow</source>
-        <target state="needs-translation">Enter at how many backups clean or remove backups at your web-server and remote servers/cloud too, Min:1 And Max:500 allow</target>
+        <target state="translated">Geben Sie an, wie viele Backups bereinigt oder von Ihrem Webserver und Remote-Servern/Clouds entfernt werden sollen, Min:1 Und Max:500 erlauben</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.backup_store_path">
         <source>Backup Store Path</source>
-        <target state="needs-translation">Backup Store Path</target>
+        <target state="translated">Backup-Speicherpfad</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.backup_store_path.desc">
         <source>Please enter a path to store the backup (e.g., /var/www/html/public/, /var/www/html/). We recommend using a protected path to restrict external access.</source>
-        <target state="needs-translation">Please enter a path to store the backup (e.g., /var/www/html/public/, /var/www/html/). We recommend using a protected path to restrict external access.</target>
+        <target state="translated">Bitte geben Sie einen Pfad zum Speichern des Backups ein (z. B. /var/www/html/public/, /var/www/html/). Wir empfehlen die Verwendung eines geschützten Pfads, um den externen Zugriff einzuschränken.</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.servercleanup">
         <source>Server Cleanups?</source>
-        <target state="needs-translation">Server Cleanups?</target>
+        <target state="translated">Serverbereinigungen?</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.yes">
         <source>Yes</source>
-        <target state="needs-translation">Yes</target>
+        <target state="translated">Ja</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.compress">
         <source>Backup Compression File</source>
-        <target state="needs-translation">Backup Compression File</target>
+        <target state="translated">Backup-Komprimierungsdatei</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.compress.desc">
         <source>Select compression technique, Only select the one which is installed on your server</source>
-        <target state="needs-translation">Select compression technique, Only select the one which is installed on your server</target>
+        <target state="translated">Wählen Sie eine Komprimierungstechnik aus, Wählen Sie nur die aus, die auf Ihrem Server installiert ist</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.savesettings">
         <source>Save Settings</source>
-        <target state="needs-translation">Save Settings</target>
+        <target state="translated">Einstellungen speichern</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.email-error">
         <source>Please enter valid email address</source>
-        <target state="needs-translation">Please enter valid email address</target>
+        <target state="translated">Bitte geben Sie eine gültige E-Mail-Adresse ein</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.no_data_server_error">
         <source>Please configure settings from Server/Cloud.</source>
-        <target state="needs-translation">Please configure settings from Server/Cloud.</target>
+        <target state="translated">Konfigurieren Sie bitte die Einstellungen vom Server/Cloud.</target>
       </trans-unit>
       <trans-unit id="globalsettings.create">
         <source>Global settings created successfully.</source>
-        <target state="needs-translation">Global settings created successfully.</target>
+        <target state="translated">Globale Einstellungen erfolgreich erstellt.</target>
       </trans-unit>
       <trans-unit id="globalsettings.update">
         <source>Global settings updated successfully.</source>
-        <target state="needs-translation">Global settings updated successfully.</target>
+        <target state="translated">Globale Einstellungen erfolgreich aktualisiert.</target>
       </trans-unit>
       <trans-unit id="servercloud.title">
         <source>Servers/Clouds</source>
-        <target state="needs-translation">Servers/Clouds</target>
+        <target state="translated">Server/Clouds</target>
       </trans-unit>
       <trans-unit id="servercloud.new">
         <source>Configure New Server/Clouds</source>
-        <target state="needs-translation">Configure New Server/Clouds</target>
+        <target state="translated">Konfigurieren Sie neue Server/Clouds</target>
       </trans-unit>
       <trans-unit id="servercloud.newform.title">
         <source>Configure New Server/Cloud</source>
-        <target state="needs-translation">Configure New Server/Cloud</target>
+        <target state="translated">Konfigurieren Sie neuen Server/Cloud</target>
       </trans-unit>
       <trans-unit id="servercloud.editform.title">
         <source>Edit Server/Cloud</source>
-        <target state="needs-translation">Edit Server/Cloud</target>
+        <target state="translated">Bearbeiten Sie Server/Cloud</target>
       </trans-unit>
       <trans-unit id="servercloud.form.servername">
         <source>Server Name</source>
-        <target state="needs-translation">Server Name</target>
+        <target state="translated">Servername</target>
       </trans-unit>
       <trans-unit id="servercloud.form.selectservercloud">
         <source>Select Server/Cloud</source>
-        <target state="needs-translation">Select Server/Cloud</target>
+        <target state="translated">Wählen Sie Server/Cloud aus</target>
       </trans-unit>
       <trans-unit id="servercloud.form.submit">
         <source>Save Sever Settings</source>
-        <target state="needs-translation">Save Sever Settings</target>
+        <target state="translated">Speichern Sie die Servereinstellungen</target>
       </trans-unit>
       <trans-unit id="servercloud.nodata">
         <source>Please add valid-data in this field</source>
-        <target state="needs-translation">Please add valid-data in this field</target>
+        <target state="translated">Bitte geben Sie gültige Daten in dieses Feld ein</target>
       </trans-unit>
       <trans-unit id="servercloud.form.key">
         <source>Key</source>
-        <target state="needs-translation">Key</target>
+        <target state="translated">Schlüssel</target>
       </trans-unit>
       <trans-unit id="servercloud.form.secret">
         <source>Secret</source>
-        <target state="needs-translation">Secret</target>
+        <target state="translated">Geheimnis</target>
       </trans-unit>
       <trans-unit id="servercloud.form.bucket">
         <source>Bucket</source>
-        <target state="needs-translation">Bucket</target>
+        <target state="translated">Eimer</target>
       </trans-unit>
       <trans-unit id="servercloud.form.region">
         <source>Region</source>
@@ -349,15 +349,15 @@
       </trans-unit>
       <trans-unit id="servercloud.form.path">
         <source>Path</source>
-        <target state="needs-translation">Path</target>
+        <target state="translated">Pfad</target>
       </trans-unit>
       <trans-unit id="servercloud.form.access">
         <source>Access</source>
-        <target state="needs-translation">Access</target>
+        <target state="translated">Zugang</target>
       </trans-unit>
       <trans-unit id="servercloud.form.parentId">
         <source>Parent ID</source>
-        <target state="needs-translation">Parent ID</target>
+        <target state="translated">Eltern-ID</target>
       </trans-unit>
       <trans-unit id="servercloud.form.host">
         <source>Host</source>
@@ -369,15 +369,15 @@
       </trans-unit>
       <trans-unit id="servercloud.form.user">
         <source>User</source>
-        <target state="needs-translation">User</target>
+        <target state="translated">Benutzer</target>
       </trans-unit>
       <trans-unit id="servercloud.form.password">
         <source>Password</source>
-        <target state="needs-translation">Password</target>
+        <target state="translated">Passwort</target>
       </trans-unit>
       <trans-unit id="servercloud.form.passive">
         <source>Passive</source>
-        <target state="needs-translation">Passive</target>
+        <target state="translated">Passiv</target>
       </trans-unit>
       <trans-unit id="servercloud.form.token">
         <source>Token</source>
@@ -389,243 +389,243 @@
       </trans-unit>
       <trans-unit id="servercloud.content.type">
         <source>Path</source>
-        <target state="needs-translation">Path</target>
+        <target state="translated">Pfad</target>
       </trans-unit>
       <trans-unit id="servercloud.content.settings">
         <source>Settings</source>
-        <target state="needs-translation">Settings</target>
+        <target state="translated">Einstellungen</target>
       </trans-unit>
       <trans-unit id="servercloud.content.actions">
         <source>Actions</source>
-        <target state="needs-translation">Actions</target>
+        <target state="translated">Aktionen</target>
       </trans-unit>
       <trans-unit id="servercloud.content.run">
         <source>Start Backup</source>
-        <target state="needs-translation">Start Backup</target>
+        <target state="translated">Backup starten</target>
       </trans-unit>
       <trans-unit id="servercloud.content.edit">
         <source>Edit</source>
-        <target state="needs-translation">Edit</target>
+        <target state="translated">Bearbeiten</target>
       </trans-unit>
       <trans-unit id="servercloud.content.delete">
         <source>Delete</source>
-        <target state="needs-translation">Delete</target>
+        <target state="translated">Löschen</target>
       </trans-unit>
       <trans-unit id="servercloud.content.cancel">
         <source>Cancel</source>
-        <target state="needs-translation">Cancel</target>
+        <target state="translated">Abbrechen</target>
       </trans-unit>
       <trans-unit id="servercloud.content.deleterecord">
         <source>Are you sure you want to delete this record?</source>
-        <target state="needs-translation">Are you sure you want to delete this record?</target>
+        <target state="translated">Sind Sie sicher, dass Sie diesen Eintrag löschen möchten?</target>
       </trans-unit>
       <trans-unit id="servercloud.content.deleteselected">
         <source>Are you sure you want to delete selected records?</source>
-        <target state="needs-translation">Are you sure you want to delete selected records?</target>
+        <target state="translated">Sind Sie sicher, dass Sie die ausgewählten Einträge löschen möchten?</target>
       </trans-unit>
       <trans-unit id="servercloud.content.deleteservercloud">
         <source>Delete Servers/Clouds</source>
-        <target state="needs-translation">Delete Servers/Clouds</target>
+        <target state="translated">Server/Clouds löschen</target>
       </trans-unit>
       <trans-unit id="servercloud.content.selected">
         <source>Selected</source>
-        <target state="needs-translation">Selected</target>
+        <target state="translated">Ausgewählt</target>
       </trans-unit>
       <trans-unit id="update-server-cloud">
         <source>Server/Cloud configuration updated successfully.</source>
-        <target state="needs-translation">Server/Cloud configuration updated successfully.</target>
+        <target state="translated">Server/Cloud-Konfiguration erfolgreich aktualisiert.</target>
       </trans-unit>
       <trans-unit id="delete-server-cloud">
         <source>Server/Cloud deleted successfully.</source>
-        <target state="needs-translation">Server/Cloud deleted successfully.</target>
+        <target state="translated">Server/Cloud erfolgreich gelöscht.</target>
       </trans-unit>
       <trans-unit id="create-server-cloud">
         <source>New Server/Cloud configuration created successfully.</source>
-        <target state="needs-translation">New Server/Cloud configuration created successfully.</target>
+        <target state="translated">Neue Server/Cloud-Konfiguration erfolgreich erstellt.</target>
       </trans-unit>
       <trans-unit id="manualbackup.success">
         <source>Manual backup taken successfully.</source>
-        <target state="needs-translation">Manual backup taken successfully.</target>
+        <target state="translated">Manuelle Sicherung erfolgreich erstellt.</target>
       </trans-unit>
       <trans-unit id="manualbackup.error">
         <source>Manual backup failed.</source>
-        <target state="needs-translation">Manual backup failed.</target>
+        <target state="translated">Manuelle Sicherung fehlgeschlagen.</target>
       </trans-unit>
       <trans-unit id="backup.downloaded">
         <source>Backup downloaded at </source>
-        <target state="needs-translation">Backup downloaded at </target>
+        <target state="translated">Sicherung heruntergeladen bei</target>
       </trans-unit>
       <trans-unit id="logs">
         <source>Backup Logs</source>
-        <target state="needs-translation">Backup Logs</target>
+        <target state="translated">Sicherungsprotokolle</target>
       </trans-unit>
       <trans-unit id="download.backup.now">
         <source>Download Backup Now!</source>
-        <target state="needs-translation">Download Backup Now!</target>
+        <target state="translated">Laden Sie die Sicherung jetzt herunter!</target>
       </trans-unit>
       <trans-unit id="download.backup">
         <source>Download Backup</source>
-        <target state="needs-translation">Download Backup</target>
+        <target state="translated">Sicherung herunterladen</target>
       </trans-unit>
       <trans-unit id="start.one.click.backup">
         <source>Start One-click Backup</source>
-        <target state="needs-translation">Start One-click Backup</target>
+        <target state="translated">Ein-Klick-Sicherung starten</target>
       </trans-unit>
       <trans-unit id="backup.date">
         <source>Backup Date</source>
-        <target state="needs-translation">Backup Date</target>
+        <target state="translated">Sicherungsdatum</target>
       </trans-unit>
       <trans-unit id="backup.type">
         <source>Backup Type</source>
-        <target state="needs-translation">Backup Type</target>
+        <target state="translated">Sicherungstyp</target>
       </trans-unit>
       <trans-unit id="server.cloud">
         <source>Backup Server/Cloud</source>
-        <target state="needs-translation">Backup Server/Cloud</target>
+        <target state="translated">Sicherungsserver/Cloud</target>
       </trans-unit>
       <trans-unit id="size_mb">
         <source>Size</source>
-        <target state="needs-translation">Size</target>
+        <target state="translated">Größe</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.php">
         <source>PHP Installed Path</source>
-        <target state="needs-translation">PHP Installed Path</target>
+        <target state="translated">Installierter PHP Pfad</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.php.desc">
         <source>Please enter your PHP installed path eg., /usr/bin/php</source>
-        <target state="needs-translation">Please enter your PHP installed path eg., /usr/bin/php</target>
+        <target state="translated">Bitte geben Sie Ihren installierten PHP Pfad ein, z.B., /usr/bin/php</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.root">
         <source>TYPO3 Installed Path</source>
-        <target state="needs-translation">TYPO3 Installed Path</target>
+        <target state="translated">Installierter TYPO3 Pfad</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.root.desc">
         <source>Please enter full physical path of your TYPO3 installation eg., /var/www/html</source>
-        <target state="needs-translation">Please enter full physical path of your TYPO3 installation eg., /var/www/html</target>
+        <target state="translated">Bitte geben Sie den vollen physischen Pfad Ihrer TYPO3 Installation ein, z.B., /var/www/html</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.siteurl">
         <source>Your Site URL</source>
-        <target state="needs-translation">Your Site URL</target>
+        <target state="translated">Ihre Website URL</target>
       </trans-unit>
       <trans-unit id="globalsettings.form.siteurl.desc">
         <source>Please enter your site's URL like https://yoursitename.com</source>
-        <target state="needs-translation">Please enter your site's URL like https://yoursitename.com</target>
+        <target state="translated">Bitte geben Sie die URL Ihrer Website ein, wie https://Ihrwebsitename.com</target>
       </trans-unit>
       <trans-unit id="delete.backup.data">
         <source>Backup data deleted successfully.</source>
-        <target state="needs-translation">Backup data deleted successfully.</target>
+        <target state="translated">Backup Daten erfolgreich gelöscht.</target>
       </trans-unit>
       <trans-unit id="yoursiteUrlMsg">
         <source>Please configure the correct URL in the settings otherwise the download of the backup will not work.</source>
-        <target state="needs-translation">Please configure the correct URL in the settings otherwise the download of the backup will not work.</target>
+        <target state="translated">Bitte konfigurieren Sie die korrekte URL in den Einstellungen, sonst wird der Download des Backups nicht funktionieren.</target>
       </trans-unit>
       <trans-unit id="delete.backup.message">
         <source>Removed backup file </source>
-        <target state="needs-translation">Removed backup file </target>
+        <target state="translated">Backup-Datei entfernt</target>
       </trans-unit>
       <trans-unit id="quicksetup.email">
         <source>Enter your e-mail address to get backup success and failuer notification</source>
-        <target state="needs-translation">Enter your e-mail address to get backup success and failuer notification</target>
+        <target state="translated">Geben Sie Ihre E-Mail-Adresse ein, um eine Benachrichtigung über den Erfolg und Misserfolg des Backups zu erhalten</target>
       </trans-unit>
       <trans-unit id="quicksetup.server">
         <source>Choose your backup server/cloud</source>
-        <target state="needs-translation">Choose your backup server/cloud</target>
+        <target state="translated">Wählen Sie Ihren Backup-Server/Cloud</target>
       </trans-unit>
       <trans-unit id="quicksetup.skip">
         <source>Skip Setup Wizard For Now</source>
-        <target state="needs-translation">Skip Setup Wizard For Now</target>
+        <target state="translated">Überspringen Sie den Einrichtungsassistenten für jetzt</target>
       </trans-unit>
       <trans-unit id="backup.now">
         <source>Backup Now!</source>
-        <target state="needs-translation">Backup Now!</target>
+        <target state="translated">Jetzt Backup erstellen!</target>
       </trans-unit>
       <trans-unit id="backup.now.description1">
         <source>Click on below button to start backup now all configurable options.</source>
-        <target state="needs-translation">Click on below button to start backup now all configurable options.</target>
+        <target state="translated">Klicken Sie auf die untenstehende Schaltfläche, um jetzt ein Backup aller konfigurierbaren Optionen zu starten.</target>
       </trans-unit>
       <trans-unit id="backup.now.description2">
         <source>You will need to choose backup type, backup name and server destination.</source>
-        <target state="needs-translation">You will need to choose backup type, backup name and server destination.</target>
+        <target state="translated">Sie müssen den Backup-Typ, den Backup-Namen und das Server-Ziel auswählen.</target>
       </trans-unit>
       <trans-unit id="more.logs">
         <source>See More Logs</source>
-        <target state="needs-translation">See More Logs</target>
+        <target state="translated">Mehr Logs anzeigen</target>
       </trans-unit>
       <trans-unit id="no.data.found">
         <source>No data found.</source>
-        <target state="needs-translation">No data found.</target>
+        <target state="translated">Keine Daten gefunden.</target>
       </trans-unit>
       <trans-unit id="server_time_text1">
         <source>All dates and times in the Backup are measured according to the server's time, as the Backup is run purely on the server-side.</source>
-        <target state="needs-translation">All dates and times in the Backup are measured according to the server's time, as the Backup is run purely on the server-side.</target>
+        <target state="translated">Alle Daten und Zeiten im Backup werden entsprechend der Serverzeit gemessen, da das Backup rein serverseitig ausgeführt wird.</target>
       </trans-unit>
       <trans-unit id="server_time_text2">
         <source>Current server time is</source>
-        <target state="needs-translation">Current server time is</target>
+        <target state="translated">Die aktuelle Serverzeit ist</target>
       </trans-unit>
       <trans-unit id="server_time">
         <source>Server time</source>
-        <target state="needs-translation">Server time</target>
+        <target state="translated">Serverzeit</target>
       </trans-unit>
       <trans-unit id="manual_backup">
         <source>Manual Backup</source>
-        <target state="needs-translation">Manual Backup</target>
+        <target state="translated">Manuelle Sicherung</target>
       </trans-unit>
       <trans-unit id="manual_backup_name">
         <source>Your Backup Name</source>
-        <target state="needs-translation">Your Backup Name</target>
+        <target state="translated">Ihr Sicherungsname</target>
       </trans-unit>
       <trans-unit id="manual_backup_name_valid_message">
         <source>Please enter valid name</source>
-        <target state="needs-translation">Please enter valid name</target>
+        <target state="translated">Bitte geben Sie einen gültigen Namen ein</target>
       </trans-unit>
       <trans-unit id="manual_backup_type">
         <source>What you want to Backup?</source>
-        <target state="needs-translation">What you want to Backup?</target>
+        <target state="translated">Was möchten Sie sichern?</target>
       </trans-unit>
       <trans-unit id="manual_backup_start">
         <source>Start Backup Now!</source>
-        <target state="needs-translation">Start Backup Now!</target>
+        <target state="translated">Backup jetzt starten!</target>
       </trans-unit>
       <trans-unit id="manual_backup_wait">
         <source>Please wait...</source>
-        <target state="needs-translation">Please wait...</target>
+        <target state="translated">Bitte warten...</target>
       </trans-unit>
       <trans-unit id="manual_backup_wait_text">
         <source>Based on the size of your site, It may take time to backup, Please do not close the window.</source>
-        <target state="needs-translation">Based on the size of your site, It may take time to backup, Please do not close the window.</target>
+        <target state="translated">Abhängig von der Größe Ihrer Seite, kann es eine Weile dauern, bis das Backup erstellt ist. Bitte schließen Sie das Fenster nicht.</target>
       </trans-unit>
       <trans-unit id="email.not.valid">
         <source>Email format is not valid</source>
-        <target state="needs-translation">Email format is not valid</target>
+        <target state="translated">E-Mail-Format ist nicht gültig</target>
       </trans-unit>
       <trans-unit id="phpPath.not.valid">
         <source>PHP path is not executable</source>
-        <target state="needs-translation">PHP path is not executable</target>
+        <target state="translated">PHP-Pfad ist nicht ausführbar</target>
       </trans-unit>
       <trans-unit id="storePath.not.valid">
         <source>The backup storage does not exist.</source>
-        <target state="needs-translation">The backup storage does not exist.</target>
+        <target state="translated">Der Sicherungsspeicher existiert nicht.</target>
       </trans-unit>
       <trans-unit id="something.wrong.here">
         <source>Something is wrong here. Please check you Global Settings</source>
-        <target state="needs-translation">Something is wrong here. Please check you Global Settings</target>
+        <target state="translated">Hier stimmt etwas nicht. Bitte überprüfen Sie Ihre globalen Einstellungen</target>
       </trans-unit>
       <trans-unit id="servercloud.content.downloadBackupError">
         <source>This backup contains the private path. Due to security purposes, it is not able to download.  You can download it manually from your server.</source>
-        <target state="needs-translation">This backup contains the private path. Due to security purposes, it is not able to download.  You can download it manually from your server.</target>
+        <target state="translated">Dieses Backup enthält den privaten Pfad. Aus Sicherheitsgründen kann es nicht heruntergeladen werden. Sie können es manuell von Ihrem Server herunterladen.</target>
       </trans-unit>
       <trans-unit id="servercloud.content.downloadErrorTitle">
         <source>Download Backup</source>
-        <target state="needs-translation">Download Backup</target>
+        <target state="translated">Backup herunterladen</target>
       </trans-unit>
       <trans-unit id="manualbackup.error.description">
         <source>Allowed characters: letters, numbers, spaces, dashes (-), and underscores (_).</source>
-        <target state="needs-translation">Allowed characters: letters, numbers, spaces, dashes (-), and underscores (_).</target>
+        <target state="translated">Zulässige Zeichen: Buchstaben, Zahlen, Leerzeichen, Bindestriche (-) und Unterstriche (_).</target>
       </trans-unit>
       <trans-unit id="servercloud.content.downloadBackupNotFound">
         <source>This backup is no longer available.</source>
-        <target state="needs-translation">This backup is no longer available.</target>
+        <target state="translated">Dieses Backup ist nicht mehr verfügbar.</target>
       </trans-unit>
     </body>
   </file>
