@@ -5,47 +5,47 @@
     <body>
       <trans-unit id="title.description">
         <source>title</source>
-        <target state="needs-translation">title</target>
+        <target state="translated">Titel</target>
       </trans-unit>
       <trans-unit id="category.description">
         <source>category</source>
-        <target state="needs-translation">category</target>
+        <target state="translated">Kategorie</target>
       </trans-unit>
       <trans-unit id="start_datetime.description">
         <source>startDatetime</source>
-        <target state="needs-translation">startDatetime</target>
+        <target state="translated">Startdatum- und -zeit</target>
       </trans-unit>
       <trans-unit id="end_datetime.description">
         <source>endDatetime</source>
-        <target state="needs-translation">endDatetime</target>
+        <target state="translated">Enddatum- und -zeit</target>
       </trans-unit>
       <trans-unit id="backup_type.description">
         <source>backupType</source>
-        <target state="needs-translation">backupType</target>
+        <target state="translated">Backup-Typ</target>
       </trans-unit>
       <trans-unit id="download_url.description">
         <source>downloadUrl</source>
-        <target state="needs-translation">downloadUrl</target>
+        <target state="translated">Download-URL</target>
       </trans-unit>
       <trans-unit id="filenames.description">
         <source>filenames</source>
-        <target state="needs-translation">filenames</target>
+        <target state="translated">Dateinamen</target>
       </trans-unit>
       <trans-unit id="size.description">
         <source>size</source>
-        <target state="needs-translation">size</target>
+        <target state="translated">Größe</target>
       </trans-unit>
       <trans-unit id="logs.description">
         <source>logs</source>
-        <target state="needs-translation">logs</target>
+        <target state="translated">Protokolle</target>
       </trans-unit>
       <trans-unit id="date.description">
         <source>date</source>
-        <target state="needs-translation">date</target>
+        <target state="translated">Datum</target>
       </trans-unit>
       <trans-unit id="status.description">
         <source>status</source>
-        <target state="needs-translation">status</target>
+        <target state="translated">Status</target>
       </trans-unit>
     </body>
   </file>
