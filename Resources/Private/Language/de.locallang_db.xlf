@@ -9,99 +9,99 @@
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.emails">
         <source>Emails (Multiple emails using comma ,)</source>
-        <target state="needs-translation">Emails (Multiple emails using comma ,)</target>
+        <target state="translated">E-Mails (Mehrere E-Mails durch Komma getrennt)</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_subject">
         <source>Email Subject</source>
-        <target state="needs-translation">Email Subject</target>
+        <target state="translated">E-Mail-Betreff</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_notification_on_error">
         <source>Email Notification On Error</source>
-        <target state="needs-translation">Email Notification On Error</target>
+        <target state="translated">E-Mail-Benachrichtigung bei Fehlern</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup">
         <source>Cleanup Type</source>
-        <target state="needs-translation">Cleanup Type</target>
+        <target state="translated">Bereinigungstyp</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_quantity">
         <source>Cleanup Quantity</source>
-        <target state="needs-translation">Cleanup Quantity</target>
+        <target state="translated">Bereinigungsmenge</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.compress">
         <source>File Compress Type</source>
-        <target state="needs-translation">File Compress Type</target>
+        <target state="translated">Dateikomprimierungstyp</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.php">
         <source>PHP Installed Path</source>
-        <target state="needs-translation">PHP Installed Path</target>
+        <target state="translated">PHP-Installationspfad</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.root">
         <source>TYPO3 Installed Path</source>
-        <target state="needs-translation">TYPO3 Installed Path</target>
+        <target state="translated">TYPO3-Installationspfad</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.siteurl">
         <source>Your Site URL</source>
-        <target state="needs-translation">Your Site URL</target>
+        <target state="translated">Ihre Website-URL</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_servers.path">
         <source>Path</source>
-        <target state="needs-translation">Path</target>
+        <target state="translated">Pfad</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_servers.server_type">
         <source>Server Type</source>
-        <target state="needs-translation">Server Type</target>
+        <target state="translated">Servertyp</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_servers.settings">
         <source>Settings</source>
-        <target state="needs-translation">Settings</target>
+        <target state="translated">Einstellungen</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata">
         <source>Backup Data</source>
-        <target state="needs-translation">Backup Data</target>
+        <target state="translated">Backup-Daten</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Titel</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.start_datetime">
         <source>Start Datetime</source>
-        <target state="needs-translation">Start Datetime</target>
+        <target state="translated">Start-Datum und -Uhrzeit</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.end_datetime">
         <source>End Datetime</source>
-        <target state="needs-translation">End Datetime</target>
+        <target state="translated">End-Datum und -Uhrzeit</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.backup_type">
         <source>Backup Type</source>
-        <target state="needs-translation">Backup Type</target>
+        <target state="translated">Backup-Typ</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.download_url">
         <source>Download Url</source>
-        <target state="needs-translation">Download Url</target>
+        <target state="translated">Download-URL</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.server_uid">
         <source>Server Uid</source>
-        <target state="needs-translation">Server Uid</target>
+        <target state="translated">Server-UID</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.servers_backup_path">
         <source>Servers Backup Path</source>
-        <target state="needs-translation">Servers Backup Path</target>
+        <target state="translated">Server-Backup-Pfad</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.filenames">
         <source>Filenames</source>
-        <target state="needs-translation">Filenames</target>
+        <target state="translated">Dateinamen</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.size">
         <source>Size</source>
-        <target state="needs-translation">Size</target>
+        <target state="translated">Größe</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.logs">
         <source>Logs</source>
-        <target state="needs-translation">Logs</target>
+        <target state="translated">Protokolle</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.date">
         <source>Date</source>
-        <target state="needs-translation">Date</target>
+        <target state="translated">Datum</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.status">
         <source>Status</source>
@@ -109,7 +109,7 @@
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupglobal.backup_store_path">
         <source>Backup Store Path</source>
-        <target state="needs-translation">Backup Store Path</target>
+        <target state="translated">Backup-Speicherpfad</target>
       </trans-unit>
     </body>
   </file>
