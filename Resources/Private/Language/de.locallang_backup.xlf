@@ -7,9 +7,9 @@
         <source>Backup</source>
         <target state="needs-translation">Backup</target>
       </trans-unit>
-      <trans-unit id="mlang_labels_tabdescr">
+      <trans-unit id="mlang_labels_tabdescr" approved="yes">
         <source>Configure Backup Settings</source>
-        <target state="translated">Konfiguriere Backup-Einstellungen</target>
+        <target state="final">Konfiguriere Backup-Einstellungen</target>
       </trans-unit>
     </body>
   </file>
