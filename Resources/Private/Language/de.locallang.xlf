@@ -13,7 +13,7 @@
       </trans-unit>
       <trans-unit id="global.error.phpversion">
         <source>Your PHP version should be "7.0 or later"</source>
-        <target state="translated">Ihre PHP-Version sollte "7.0 oder höher" sein</target>
+        <target state="translated">Ihre PHP-Version sollte "7.0" oder höher" sein</target>
       </trans-unit>
       <trans-unit id="global.error.curl">
         <source>"curl" extension of PHP is disabled at your server</source>
@@ -59,13 +59,13 @@
         <source>Configure Your TYPO3 Site URL</source>
         <target state="final">Konfigurieren Sie Ihre TYPO3-Seiten-URL</target>
       </trans-unit>
-      <trans-unit id="global.error.cleanup">
+      <trans-unit id="global.error.cleanup" approved="yes">
         <source>Missing Backup Cleanup Settings</source>
-        <target state="translated">Fehlende Backup-Cleanup-Einstellungen</target>
+        <target state="final">Fehlende Backup-Cleanup-Einstellungen</target>
       </trans-unit>
-      <trans-unit id="global.error.cleanupQuantity">
+      <trans-unit id="global.error.cleanupQuantity" approved="yes">
         <source>Missing Backup Cleanup Quantity Settings</source>
-        <target state="translated">Fehlende Backup-Cleanup-Mengeneinstellungen</target>
+        <target state="final">Fehlende Backup Cleanup Mengeneinstellungen</target>
       </trans-unit>
       <trans-unit id="top.quicksetup" approved="yes">
         <source>Quick Setup</source>
@@ -137,11 +137,11 @@
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.download_url">
         <source>Download Url</source>
-        <target state="translated">Download-URL</target>
+        <target state="translated">Download URL</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.server_uid">
         <source>Server Uid</source>
-        <target state="translated">Server-UID</target>
+        <target state="translated">Server UID</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.servers_backup_path" approved="yes">
         <source>Servers Backup Path</source>
