@@ -458,3 +458,6 @@ label {
 .module-docheader+.module-body {
     padding: 0px !important;
 }
+.close {
+  font-size: 22px;
+}

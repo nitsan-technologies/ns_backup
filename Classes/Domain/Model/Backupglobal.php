@@ -1,5 +1,8 @@
 <?php
+
 namespace NITSAN\NsBackup\Domain\Model;
+
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /***
  *
@@ -15,28 +18,43 @@ namespace NITSAN\NsBackup\Domain\Model;
 /**
  * Backupglobal
  */
-class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Backupglobal extends AbstractEntity
 {
     /**
      * emails
      *
      * @var string
      */
-    public $emails = '';
+    public string $emails = '';
+
+    /**
+     * backupStorePath
+     *
+     * @var string
+     */
+    public string $backupStorePath = '';
+
+     /**
+     * emailFrom
+     *
+     * @var string
+     */
+    protected $emailFrom = '';
+
 
     /**
      * emailSubject
      *
      * @var string
      */
-    public $emailSubject = '';
+    public string $emailSubject = '';
 
     /**
      * emailNotificationOnError
      *
-     * @var int
+     * @var int|null
      */
-    public $emailNotificationOnError = 0;
+    public ?int $emailNotificationOnError = 0;
 
 
     /**
@@ -44,49 +62,49 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var string
      */
-    public $compress = '';
+    public string $compress = '';
 
     /**
      * php
      *
      * @var string
      */
-    public $php = '';
+    public string $php = '';
 
     /**
      * root
      *
      * @var string
      */
-    public $root = '';
+    public string $root = '';
 
     /**
      * siteurl
      *
      * @var string
      */
-    public $siteurl = '';
+    public string $siteurl = '';
 
     /**
      * cleanup
      *
      * @var string
      */
-    public $cleanup = '';
+    public string $cleanup = '';
 
     /**
      * cleanupQuantity
      *
      * @var int
      */
-    public $cleanupQuantity = 0;
+    public int $cleanupQuantity = 0;
 
     /**
      * Returns the emailSubject
      *
      * @return string emailSubject
      */
-    public function getEmailSubject()
+    public function getEmailSubject(): string
     {
         return $this->emailSubject;
     }
@@ -97,7 +115,7 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $emailSubject
      * @return void
      */
-    public function setEmailSubject($emailSubject)
+    public function setEmailSubject(string $emailSubject): void
     {
         $this->emailSubject = $emailSubject;
     }
@@ -107,7 +125,7 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string emails
      */
-    public function getEmails()
+    public function getEmails(): string
     {
         return $this->emails;
     }
@@ -118,17 +136,39 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $emails
      * @return void
      */
-    public function setEmails($emails)
+    public function setEmails(string $emails): void
     {
         $this->emails = $emails;
+    }
+
+    
+    /**
+     * Sets the emailFrom
+     *
+     * @param string $emailFrom
+     * @return void
+     */
+    public function setEmailFrom(string $emailFrom): void
+    {
+        $this->emailFrom = $emailFrom;
+    }
+
+    /**
+     * Returns the emailFrom
+     *
+     * @return string
+     */
+    public function getEmailFrom(): string
+    {
+        return $this->emailFrom;
     }
 
     /**
      * Returns the emailNotificationOnError
      *
-     * @return int $emailNotificationOnError
+     * @return int|null $emailNotificationOnError
      */
-    public function getEmailNotificationOnError()
+    public function getEmailNotificationOnError(): ?int
     {
         return $this->emailNotificationOnError;
     }
@@ -136,10 +176,10 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the emailNotificationOnError
      *
-     * @param int $emailNotificationOnError
+     * @param int|null $emailNotificationOnError
      * @return void
      */
-    public function setEmailNotificationOnError($emailNotificationOnError)
+    public function setEmailNotificationOnError(?int $emailNotificationOnError)
     {
         $this->emailNotificationOnError = $emailNotificationOnError;
     }
@@ -149,7 +189,7 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $compress
      */
-    public function getCompress()
+    public function getCompress(): string
     {
         return $this->compress;
     }
@@ -160,7 +200,7 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $compress
      * @return void
      */
-    public function setCompress($compress)
+    public function setCompress(string $compress): void
     {
         $this->compress = $compress;
     }
@@ -170,7 +210,7 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $php
      */
-    public function getPhp()
+    public function getPhp(): string
     {
         return $this->php;
     }
@@ -181,7 +221,7 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $php
      * @return void
      */
-    public function setPhp($php)
+    public function setPhp(string $php): void
     {
         $this->php = $php;
     }
@@ -191,7 +231,7 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $root
      */
-    public function getRoot()
+    public function getRoot(): string
     {
         return $this->root;
     }
@@ -202,7 +242,7 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $root
      * @return void
      */
-    public function setRoot($root)
+    public function setRoot(string $root): void
     {
         $this->root = $root;
     }
@@ -212,7 +252,7 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $siteurl
      */
-    public function getSiteurl()
+    public function getSiteurl(): string
     {
         return $this->siteurl;
     }
@@ -223,7 +263,7 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $siteurl
      * @return void
      */
-    public function setSiteurl($siteurl)
+    public function setSiteurl(string $siteurl): void
     {
         $this->siteurl = $siteurl;
     }
@@ -233,7 +273,7 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return int $cleanupQuantity
      */
-    public function getCleanupQuantity()
+    public function getCleanupQuantity(): int
     {
         return $this->cleanupQuantity;
     }
@@ -244,7 +284,7 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param int $cleanupQuantity
      * @return void
      */
-    public function setcleanupQuantity($cleanupQuantity)
+    public function setcleanupQuantity(int $cleanupQuantity): void
     {
         $this->cleanupQuantity = $cleanupQuantity;
     }
@@ -254,7 +294,7 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string $cleanup
      */
-    public function getCleanup()
+    public function getCleanup(): string
     {
         return $this->cleanup;
     }
@@ -265,8 +305,29 @@ class Backupglobal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $cleanup
      * @return void
      */
-    public function setCleanup($cleanup)
+    public function setCleanup(string $cleanup): void
     {
         $this->cleanup = $cleanup;
+    }
+
+    /**
+     * Returns the backupStorePath
+     *
+     * @return string backupStorePath
+     */
+    public function getBackupStorePath(): string
+    {
+        return $this->backupStorePath;
+    }
+
+    /**
+     * Sets the backupStorePath
+     *
+     * @param string $backupStorePath
+     * @return void
+     */
+    public function setBackupStorePath(string $backupStorePath): void
+    {
+        $this->backupStorePath = $backupStorePath;
     }
 }

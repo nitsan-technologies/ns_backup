@@ -73,6 +73,17 @@ define([
                 $(".email-error").hide();
             }
         }
+        if (!$('#emailFrom').val()) {
+            $(".emailFrom-error").show();
+            isError = 1;
+        } else {
+            if (!validateEmail($('#emailFrom').val())) {
+                $(".emailFrom-error").show();
+                isError = 1;
+            } else {
+                $(".emailFrom-error").hide();
+            }
+        }
 
         if (!$('#emailSubject').val()) {
             $(".emailSubject-error").show();
@@ -128,8 +139,8 @@ define([
         var title = $(this).data('title');
         var id = $(this).data('id');
         var msg = $(this).data('msg');
-        $("#nsBackupDeletebackupModal .backup-title").html(title);
-        $("#nsBackupDeletebackupModal .delete-msg").html(msg);
+        $("#nsBackupDeletebackupModal .backup-title").text(title);
+        $("#nsBackupDeletebackupModal .delete-msg").text(msg);
         $("#nsBackupDeletebackupModal .delete-backup-id").val(id);
         $("#nsBackupDeletebackupModal .deletetype").val('single');
         $("#nsBackupDeletebackupModal .delete-backup-backup-del").removeAttr("disabled");
@@ -168,12 +179,21 @@ define([
 
     // Code Highlight
     hljs.initHighlightingOnLoad();
+
+     $('.custom-reset').on('click', function () {
+        var that = $(this);
+        var hideId = this.dataset.id;
+        that.find('i').addClass('fa-spin');
+        $('#' + hideId).val('');
+        setTimeout(function () {
+            that.find('i').removeClass('fa-spin');
+        }, 2000);
+    });
 });
 
 
 // Validate Email field
 function validateEmail(emails) {
-   
     if (emails.endsWith(",") || emails.startsWith(",")){
         return false;
     }

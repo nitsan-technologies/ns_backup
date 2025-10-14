@@ -21,10 +21,10 @@ return [
         'iconfile' => 'EXT:ns_backup/Resources/Public/Icons/tx_nsbackup_domain_model_backupglobal.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, emails, email_notification_on_error, cleanup, compress,php,root,siteurl',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden,email_from, emails, email_from,email_notification_on_error, cleanup, compress,php,root,siteurl',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, emails, email_notification_on_error, email_notification_on_success, default_server, cleanup, compress,php,root,siteurl, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden,email_from, emails,email_from, email_notification_on_error, email_notification_on_success, default_server, cleanup, compress,php,root,siteurl, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -125,6 +125,15 @@ return [
                 'eval' => 'trim'
             ],
         ],
+         'email_from' => [
+            'exclude' => true,
+            'label' => 'Email From',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
         'email_subject' => [
             'exclude' => true,
             'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.email_subject',
@@ -197,5 +206,25 @@ return [
                 'eval' => 'trim'
             ],
         ],
+
+        'backup_store_path' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupglobal.backup_store_path',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
     ],
+
+    //    'email_from' => [
+    // 'label' => 'Email From',
+    // 'config' => [
+    //     'type' => 'input',
+    //     'size' => 30,
+    //     'eval' => 'trim,email',
+    //     'placeholder' => 'sender@example.com'
+    // ],
+//],
 ];

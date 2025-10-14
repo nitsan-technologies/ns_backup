@@ -1,35 +1,69 @@
 <div class="form-group">
 	<div class="row">
 		<div class="col-md-3">
-			<label for="emails"><f:translate key="globalsettings.form.emails" /></label>
+			<label for="emails">
+				<f:translate key="globalsettings.form.emails" />
+			</label>
 		</div>
 		<div class="col-md-6">
-			<f:form.textfield name="emails" type="text" property="emails" class="form-control" id="emails"/>
-            <p class="form-control-field"><f:translate key="globalsettings.form.emails.desc" /></p>
-            <p class="email-error error" style="display: none;"><f:translate key="globalsettings.form.email-error" /></p>
+			<f:form.textfield name="emails" type="text" property="emails" class="form-control" id="emails" />
+			<p class="form-control-field">
+				<f:translate key="globalsettings.form.emails.desc" />
+			</p>
+			<p class="email-error error" style="display: none;">
+				<f:translate key="globalsettings.form.email-error" />
+			</p>
 		</div>
 	</div>
 </div>
 <div class="form-group">
 	<div class="row">
 		<div class="col-md-3">
-			<label for="emailSubject"><f:translate key="globalsettings.form.email_subject" /></label>
+			<label for="emailFrom"><f:translate key="globalsettings.form.email_from" /></label>
 		</div>
 		<div class="col-md-6">
-			<f:form.textfield name="emailSubject" type="text" property="emailSubject" class="form-control" id="emailSubject"/>
-            <p class="form-control-field"><f:translate key="globalsettings.form.email_subject.desc" /></p>
-            <p class="emailSubject-error error" style="display: none;"><f:translate key="servercloud.nodata" /></p>
+			<f:form.textfield name="emailFrom" type="email" property="emailFrom" class="form-control" id="emailFrom"/>
+			<p class="form-control-field"><f:translate key="globalsettings.form.email_from.desc" /></p>
+			<p class="emailFrom-error error" style="display: none;"><f:translate key="globalsettings.form.email-error" /></p>
 		</div>
 	</div>
 </div>
+
+
+
 <div class="form-group">
 	<div class="row">
 		<div class="col-md-3">
-			<label><f:translate key="globalsettings.form.notification" /></label>
+			<label for="emailSubject">
+				<f:translate key="globalsettings.form.email_subject" />
+			</label>
+		</div>
+		<div class="col-md-6">
+			<f:form.textfield name="emailSubject" type="text" property="emailSubject" class="form-control"
+				id="emailSubject" />
+			<p class="form-control-field">
+				<f:translate key="globalsettings.form.email_subject.desc" />
+			</p>
+			<p class="emailSubject-error error" style="display: none;">
+				<f:translate key="servercloud.nodata" />
+			</p>
+		</div>
+	</div>
+</div>
+<f:comment>
+<div class="form-group">
+	<div class="row">
+		<div class="col-md-3">
+			<label>
+				<f:translate key="globalsettings.form.notification" />
+			</label>
 		</div>
 		<div class="col-md-6">
 			<div class="form-check">
-				<f:form.checkbox  name="emailNotificationOnError" property="emailNotificationOnError" value="1" class="form-check-input check" checked="{f:if(condition: '{backupglobal.emailNotificationOnError}==1', then: 'checked')}" id="emailNotificationOnError" />
+				<f:form.checkbox name="emailNotificationOnError" property="emailNotificationOnError" value="1"
+					class="form-check-input check"
+					checked="{f:if(condition: '{backupglobal.emailNotificationOnError}==1', then: 'checked')}"
+					id="emailNotificationOnError" />
 				<label class="form-check-label" for="emailNotificationOnError">
 					<f:translate key="globalsettings.form.emailNotificationOnError" />
 				</label>
@@ -37,73 +71,142 @@
 		</div>
 	</div>
 </div>
+</f:comment>
+
 <div class="form-group">
 	<div class="row">
 		<div class="col-md-3">
-			<label for="compress"><f:translate key="globalsettings.form.compress" /></label>
+			<div class="d-flex justify-content-between">
+				<label for="backupStorePath">
+					<f:translate key="globalsettings.form.backup_store_path" />
+				</label>
+			</div>
 		</div>
 		<div class="col-md-6">
-            <f:form.select name="compress" options="{compress}" id="compress" class="form-control" property="compress" optionValueField="value" optionLabelField="key" />
-            <p class="form-control-field"><f:translate key="globalsettings.form.compress.desc" /></p>
+			<div class="input-group">
+				<span class="input-group-text custom-reset" data-id="backupStorePath">
+					<i aria-hidden="true" class="fa fa-repeat"></i>
+				</span>
+				<f:variable name="backupStorePathValue">{f:if(condition: backupglobal.backupStorePath, then:
+					'{backupglobal.backupStorePath}', else: '{varPath}')}</f:variable>
+				<f:form.textfield name="backupStorePath" type="input" property="backupStorePath" class="form-control"
+					id="backupStorePath" value="{backupStorePathValue}" />
+			</div>
+			<div class="field-info-text">
+				<p class="form-control-field">
+					<f:translate key="globalsettings.form.backup_store_path.desc" />
+				</p>
+			</div>
+			<p class="backupStorePath-error error" style="display: none;">
+				<f:translate key="servercloud.nodata" />
+			</p>
+		</div>
+	</div>
+</div>
+
+
+<div class="form-group">
+	<div class="row">
+		<div class="col-md-3">
+			<label for="compress">
+				<f:translate key="globalsettings.form.compress" />
+			</label>
+		</div>
+		<div class="col-md-6">
+			<f:form.select name="compress" options="{compress}" id="compress" class="form-control" property="compress"
+				optionValueField="value" optionLabelField="key" />
+			<p class="form-control-field">
+				<f:translate key="globalsettings.form.compress.desc" />
+			</p>
 		</div>
 	</div>
 </div>
 <div class="form-group">
 	<div class="row">
 		<div class="col-md-3">
-			<label for="cleanup"><f:translate key="globalsettings.form.cleanup" /></label>
+			<label for="cleanup">
+				<f:translate key="globalsettings.form.cleanup" />
+			</label>
 		</div>
 		<div class="col-md-6">
-            <f:form.select name="cleanup" options="{cleanup}" id="cleanup" class="form-control" property="cleanup" optionValueField="value" optionLabelField="key" />
-            <p class="form-control-field"><f:translate key="globalsettings.form.cleanup.desc" /></p>
+			<f:form.select name="cleanup" options="{cleanup}" id="cleanup" class="form-control" property="cleanup"
+				optionValueField="value" optionLabelField="key" />
+			<p class="form-control-field">
+				<f:translate key="globalsettings.form.cleanup.desc" />
+			</p>
 		</div>
 	</div>
 </div>
 <div class="form-group">
 	<div class="row">
 		<div class="col-md-3">
-			<label for="cleanupQuantity"><f:translate key="globalsettings.form.cleanup_quantity" /></label>
+			<label for="cleanupQuantity">
+				<f:translate key="globalsettings.form.cleanup_quantity" />
+			</label>
 		</div>
 		<div class="col-md-6">
-            <f:form.textfield name="cleanupQuantity" type="number" property="cleanupQuantity" class="form-control" id="cleanupQuantity"/>
-            <p class="form-control-field"><f:translate key="globalsettings.form.cleanup_quantity.desc" /></p>
-            <p class="cleanupQuantity-error error" style="display: none;"><f:translate key="servercloud.nodata" /></p>
+			<f:form.textfield name="cleanupQuantity" type="number" property="cleanupQuantity" class="form-control"
+				id="cleanupQuantity" />
+			<p class="form-control-field">
+				<f:translate key="globalsettings.form.cleanup_quantity.desc" />
+			</p>
+			<p class="cleanupQuantity-error error" style="display: none;">
+				<f:translate key="servercloud.nodata" />
+			</p>
 		</div>
 	</div>
 </div>
 <div class="form-group">
 	<div class="row">
 		<div class="col-md-3">
-			<label for="php"><f:translate key="globalsettings.form.php" /></label>
+			<label for="php">
+				<f:translate key="globalsettings.form.php" />
+			</label>
 		</div>
 		<div class="col-md-6">
-            <f:form.textfield name="php" type="input" property="php" class="form-control" id="php"/>
-            <p class="form-control-field"><f:translate key="globalsettings.form.php.desc" /></p>
-            <p class="php-error error" style="display: none;"><f:translate key="servercloud.nodata" /></p>
+			<f:form.textfield name="php" type="input" property="php" class="form-control" id="php" />
+			<p class="form-control-field">
+				<f:translate key="globalsettings.form.php.desc" />
+			</p>
+			<p class="php-error error" style="display: none;">
+				<f:translate key="servercloud.nodata" />
+			</p>
 		</div>
 	</div>
 </div>
 <div class="form-group">
 	<div class="row">
 		<div class="col-md-3">
-			<label for="root"><f:translate key="globalsettings.form.root" /></label>
+			<label for="root">
+				<f:translate key="globalsettings.form.root" />
+			</label>
 		</div>
 		<div class="col-md-6">
-            <f:form.textfield name="root" type="input" property="root" class="form-control" id="root"/>
-            <p class="form-control-field"><f:translate key="globalsettings.form.root.desc" /></p>
-            <p class="root-error error" style="display: none;"><f:translate key="servercloud.nodata" /></p>
+			<f:form.textfield name="root" type="input" property="root" class="form-control" id="root" />
+			<p class="form-control-field">
+				<f:translate key="globalsettings.form.root.desc" />
+			</p>
+			<p class="root-error error" style="display: none;">
+				<f:translate key="servercloud.nodata" />
+			</p>
 		</div>
 	</div>
 </div>
 <div class="form-group">
 	<div class="row">
 		<div class="col-md-3">
-			<label for="siteurl"><f:translate key="globalsettings.form.siteurl" /></label>
+			<label for="siteurl">
+				<f:translate key="globalsettings.form.siteurl" />
+			</label>
 		</div>
 		<div class="col-md-6">
-            <f:form.textfield name="siteurl" type="input" property="siteurl" class="form-control" id="siteurl"/>
-            <p class="form-control-field"><f:translate key="globalsettings.form.siteurl.desc" /></p>
-            <p class="siteurl-error error" style="display: none;"><f:translate key="servercloud.nodata" /></p>
+			<f:form.textfield name="siteurl" type="input" property="siteurl" class="form-control" id="siteurl" />
+			<p class="form-control-field">
+				<f:translate key="globalsettings.form.siteurl.desc" />
+			</p>
+			<p class="siteurl-error error" style="display: none;">
+				<f:translate key="servercloud.nodata" />
+			</p>
 		</div>
 	</div>
 </div>
@@ -111,7 +214,9 @@
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
 			<button type="submit" class="btn btn-primary btn-global-submit"><em class="fa fa-save"
-				aria-hidden="true"></em><f:translate key="globalsettings.form.savesettings" /></button>
+					aria-hidden="true"></em>
+				<f:translate key="globalsettings.form.savesettings" />
+			</button>
 		</div>
 	</div>
 </div>

@@ -47,7 +47,8 @@ call_user_func(
                     $backupglobalController => 'globalsetting, create, update',
                 ],
                 [
-                    'access' => 'user,group',
+                    //'access' => 'user,group',
+                    'access' => 'admin',
                     'icon' => 'EXT:ns_backup/Resources/Public/Icons/module-nsbackup.svg',
                     'labels' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_backup.xlf',
                 ]

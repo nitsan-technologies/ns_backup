@@ -1,10 +1,13 @@
 <?php
 namespace NITSAN\NsBackup\Controller;
 
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
+use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+
 /***
  *
  * This file is part of the "Backup" Extension for TYPO3 CMS.
@@ -57,12 +60,12 @@ class BackupglobalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     public function initializeView(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view)
     {
         // Global error check
-        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $this->objectManager        = GeneralUtility::makeInstance(ObjectManager::class);
         $this->backupBaseController = $this->objectManager->get(BackupBaseController::class);
-        $this->errorValidation = $this->backupBaseController->globalErrorValidation();
-        if(!empty($this->errorValidation)) {
-            $header = transalte::translate('global.errorvalidation','ns_backup');
-            $message = transalte::translate('global.errorvalidation.message','ns_backup');
+        $this->errorValidation      = $this->backupBaseController->globalErrorValidation();
+        if (! empty($this->errorValidation)) {
+            $header  = LocalizationUtility::translate('global.errorvalidation', 'ns_backup');
+            $message = LocalizationUtility::translate('global.errorvalidation.message', 'ns_backup');
             $this->addFlashMessage($message, $header, \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
         }
     }
@@ -75,12 +78,15 @@ class BackupglobalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     public function globalsettingAction()
     {
         $globalSettingsData = $this->backupglobalRepository->findAll();
+        $varPath            = Environment::getVarPath();
         $this->view->assignMultiple([
-            'cleanup' => constant('cleanup'),
-            'backupglobal' => $globalSettingsData[0],
-            'compress' => constant('compress'),
-            'action' => 'globalsetting',
-            'errorValidation' => $this->errorValidation
+            'cleanup'         => constant('cleanup'),
+            'backupglobal'    => $globalSettingsData[0],
+            'compress'        => constant('compress'),
+            'action'          => 'globalsetting',
+            'errorValidation' => $this->errorValidation,
+            'modalAttr'       => 'data-bs-',
+            'varPath'         => $varPath,
         ]);
     }
 
@@ -92,8 +98,27 @@ class BackupglobalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
      */
     public function createAction(\NITSAN\NsBackup\Domain\Model\Backupglobal $backupglobal)
     {
-        $msg = transalte::translate('globalsettings.create','ns_backup');
-        $this->addFlashMessage('', $msg, \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+
+        if (! is_dir($backupglobal->getBackupStorePath())) {
+
+            $msg = LocalizationUtility::translate('storePath.not.valid', 'ns_backup');
+            $this->addFlashMessage('', $msg, \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+            return $this->redirect('globalsetting');
+        }
+        $phpPath = trim($backupglobal->getPhp());
+        $backupglobal->setPhp($phpPath);
+        if (! is_executable($backupglobal->getPhp())) {
+            $msg = LocalizationUtility::translate('phpPath.not.valid', 'ns_backup');
+            $this->addFlashMessage('', $msg, \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+            return $this->redirect('globalsetting');
+        }
+        $msg = LocalizationUtility::translate('globalsettings.create', 'ns_backup');
+
+        $this->addFlashMessage(
+            $msg,
+            '',
+            \TYPO3\CMS\Core\Messaging\AbstractMessage::OK
+        );
         $this->backupglobalRepository->add($backupglobal);
         $this->redirect('globalsetting');
     }
@@ -106,8 +131,35 @@ class BackupglobalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
      */
     public function updateAction(\NITSAN\NsBackup\Domain\Model\Backupglobal $backupglobal)
     {
-        $msg = transalte::translate('globalsettings.update','ns_backup');
-        $this->addFlashMessage('', $msg, \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+        if (! is_dir($backupglobal->getBackupStorePath())) {
+            $msg = LocalizationUtility::translate('storePath.not.valid', 'ns_backup');
+            $this->addFlashMessage(
+                $msg,
+                '',
+                FlashMessage::ERROR
+            );
+            return $this->redirect('globalsetting');
+        }
+
+        $phpPath = trim($backupglobal->getPhp());
+        $backupglobal->setPhp($phpPath);
+
+        if (! is_executable($backupglobal->getPhp())) {
+            $msg = LocalizationUtility::translate('phpPath.not.valid', 'ns_backup');
+            $this->addFlashMessage(
+                $msg,
+                '',
+                FlashMessage::ERROR
+            );
+            return $this->redirect('globalsetting');
+        }
+
+        $msg = LocalizationUtility::translate('globalsettings.update', 'ns_backup');
+        $this->addFlashMessage(
+            $msg,
+            '',
+            FlashMessage::OK
+        );
         $this->backupglobalRepository->update($backupglobal);
         $this->redirect('globalsetting');
     }

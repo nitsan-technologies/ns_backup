@@ -114,6 +114,9 @@
 			<trans-unit id="servercloud.nodata">
 				<source>Please add valid-data in this field</source>
 			</trans-unit>
+			<trans-unit id="tx_nsbackup_domain_model_backupglobal.backup_store_path">
+				<source>Backup Store Path</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

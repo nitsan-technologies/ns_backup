@@ -33,6 +33,8 @@ CREATE TABLE tx_nsbackup_domain_model_backupglobal (
 	sys_language_uid int(11) DEFAULT '0' NOT NULL,
 	l10n_parent int(11) DEFAULT '0' NOT NULL,
 	l10n_diffsource mediumblob,
+	backup_store_path varchar(255) DEFAULT '' NOT NULL,
+	email_from varchar(255) DEFAULT '' NOT NULL,
 	l10n_state text,
 	PRIMARY KEY (uid),
 	KEY parent (pid),
