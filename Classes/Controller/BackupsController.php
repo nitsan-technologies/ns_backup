@@ -72,7 +72,7 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function dashboardAction()
     {
-        // Load JavaScript modules (equivalent to v11-13 functionality)
+        // Load JavaScript modules
         $pageRenderer = $this->objectManager->get(\TYPO3\CMS\Core\Page\PageRenderer::class);
         $pageRenderer->loadRequireJsModule('TYPO3/CMS/NsBackup/jquery');
         $pageRenderer->loadRequireJsModule('TYPO3/CMS/NsBackup/Main');

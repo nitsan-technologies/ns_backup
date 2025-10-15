@@ -26,94 +26,115 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 {
     /**
      * phpPath
+     *  @var string|null
      */
     public $phpPath = null;
 
     /**
      * rootPath
+     * @var string|null
      */
     public $rootPath = null;
 
     /**
      * composerRootPath
+     * @var string|null
      */
     public $composerRootPath = null;
 
     /**
      * siteUrl
+     * @var string|null
      */
     public $siteUrl = null;
 
     /**
      * localStoragePath
+     * @var string|null
      */
     public $localStoragePath = null;
 
     /**
      * baseURL
+     * @var string|null
      */
     public $baseURL = null;
 
     /**
      * phpbuPath
+     * @var string|null
      */
     public $phpbuPath = null;
 
     /**
      * arrDatabase
+     * @var array
      */
     public $arrDatabase = [];
 
     /**
      * backupFileName
+     * @var string|null
      */
     public $backupFileName = null;
 
     /**
      * backupFilePath
+     * @var string|null
      */
     public $backupFilePath = null;
 
     /**
      * backupDownloadPath
+     * @var string|null
      */
     public $backupDownloadPath = null;
 
     /**
      * backupFile
+     * @var string|null
      */
     public $backupFile = null;
 
-    /**
+     /**
      * backupglobalRepository
+     * @var \NITSAN\NsBackup\Domain\Repository\BackupglobalRepository|null
      */
     protected $backupglobalRepository = null;
 
-    /**
+   /**
      * globalSettingsData
+     * @var mixed
      */
     protected $globalSettingsData = null;
 
     /**
      * prefixFileName
+     * @var string|null
      */
     protected $prefixFileName = null;
 
     /**
      * backupFileMySQL
+     * @var string|null
      */
     protected $backupFileMySQL = null;
 
-    /**
+     /**
      * backupDownloadPathMySQL
+     * @var string|null
      */
     protected $backupDownloadPathMySQL = null;
 
     /**
      * typo3Version
-     * @var
+     * @var string|null
      */
     protected $typo3Version  = null;
+    /**
+     * exceptionMessage
+     * @var string
+     */
     public $exceptionMessage = '';
 
     public function __construct()
@@ -232,7 +253,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
             ];
         }
 
-        // Get Base URL - FIXED: Use working logic from original version
+        // Get Base URL
         $this->siteUrl = $this->globalSettingsData[0]->siteurl ?? '';
 
         // Use the working baseURL logic
@@ -258,7 +279,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         $this->arrDatabase         = $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default'];
         $this->arrDatabase['port'] = $this->arrDatabase['port'] ?? '3306';
 
-        // Get Current Date time - Use working filename generation
+        // Get Current Date time
         $permitted_chars      = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $randomString         = substr(str_shuffle($permitted_chars), 0, 24);
         $this->prefixFileName = date('dmY_Hi') . '_' . $randomString;
@@ -274,7 +295,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
             preg_replace('/[\s-]+/', '_', strtolower(trim($backupName)))
         );
 
-        // Whitelist allowed backup types - Added 'other' type from v12/v13
+        // Whitelist allowed backup types
         $allowedBackupTypes = ['mysqldump', 'typo3', 'vendor', 'typo3conf', 'other'];
         $backupType         = $arrPost['backupFolderSettings'] ?? '';
 
@@ -282,7 +303,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
             throw new RuntimeException('Invalid backup type specified.');
         }
 
-        // Generate random string for file names - From v12/v13
+        // Generate random string for file names
         $fileRandomString = substr(md5(uniqid(mt_rand(), true)), 0, 8);
         $backupBaseName   = GeneralUtility::trimExplode('_', $backupFileName, true, 3)[1];
 
@@ -298,7 +319,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
             }
         }
 
-        // Email configuration - From v12/v13 with security improvements
+        // Email configuration
         $emailString = $this->globalSettingsData[0]->emails ?? '';
         $emailArray  = array_map('trim', explode(',', $emailString));
         $validEmails = array_filter($emailArray, function ($email) {
@@ -308,7 +329,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         $emailSubject             = preg_replace('/[^A-Za-z0-9_\-\[\]\s]/', '', $this->globalSettingsData[0]->emailSubject ?? '');
         $emailNotificationOnError = $this->globalSettingsData[0]->emailNotificationOnError === '1' ? '1' : '0';
 
-        // Prepare JSON configuration using json_encode for security - From v12/v13
+        // Prepare JSON configuration using json_encode for security
         $jsonConfig = [
             'verbose'         => true,
             'debug'           => false,
@@ -332,14 +353,13 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
         // Let's check if admin wants "Backup Everything"
         if ($backupType == 'all') {
-            // store date and time before backup - From v12/v13
+            // store date and time before backup
             $currentDateTime = date('Ymd-Hi');
             // Create Database Backup
             $jsonConfig['backups'][] = $this->getPhpbuBackupArray($backupName, 'mysqldump', $backupFileName);
             // Create Code Backup
             $jsonConfig['backups'][] = $this->getPhpbuBackupArray($backupName, $backupType, $backupFileName);
         } elseif ($backupType == 'other') {
-            // New functionality from v12/v13 - custom path backup
             $jsonConfig['backups'][] = $this->getPhpbuBackupArray($backupName, $backupType, $backupFileName, $arrPost['custompath']);
         } else {
             // Create Specific Selected Type of Backup
@@ -351,13 +371,11 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         try {
             // Write JSON content to file
             file_put_contents($jsonPath, $json);
-
-            // Validate and sanitize PHP path - Security improvement from v12/v13
+            // Validate and sanitize PHP path
             if (! is_string($this->phpPath) || ! file_exists($this->phpPath) || ! is_executable($this->phpPath)) {
                 throw new RuntimeException("Invalid PHP executable path.");
             }
-
-            // Prepare secure shell command - Security improvement from v12/v13
+            // Prepare secure shell command 
             $phpBin    = escapeshellcmd($this->phpPath);
             $phpbuBin  = escapeshellarg($this->phpbuPath);
             $configArg = escapeshellarg('--configuration=' . $jsonPath);
@@ -376,10 +394,8 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         // Validate If SSH command success
         if (count($log) > 0 && is_array($log)) {
             $log = file_get_contents($logFile);
-
             // Get ready to insert to Backup History
             $arrPost['jsonfile'] = $jsonFile;
-
             // If Backup Everything, Then let's first-insert MySQL as special case
             if ($backupType == 'all') {
                 $arrPost['backup_type']  = 'mysqldump';
@@ -398,8 +414,6 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
                 $arrPost['filenames'] = $this->backupFileMySQL;
                 $this->backupglobalRepository->addBackupData($arrPost);
             }
-
-            // Insert to Database > Backup History
             $arrPost['download_url'] = '';
             if ($isPublicPath) {
                 $arrPost['download_url'] = $this->backupDownloadPath;
@@ -487,11 +501,9 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
                 if (($backupType == 'vendor') && ($this->composerRootPath !== null && strlen($this->composerRootPath) > 0)) {
                     $sourcePath = $this->composerRootPath . '/' . $targetPath;
                 }
-
                 $sourceOptions = [
                     'path' => ($backupType == 'other') ? $rawName : $sourcePath,
                 ];
-
                 if (! empty($ignoreUploads)) {
                     $sourceOptions['exclude'] = $ignoreUploads;
                 }
@@ -556,7 +568,7 @@ class BackupBaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     }
 
     /**
-     * Convert File Size - Updated with v12/v13 improvements
+     * Convert File Size 
      */
     protected function convertFilesize($bytes)
     {
