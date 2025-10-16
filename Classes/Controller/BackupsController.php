@@ -56,7 +56,6 @@ class BackupsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         //@extensionScannerIgnoreLine
         $this->objectManager        = GeneralUtility::makeInstance(ObjectManager::class);
         $this->backupBaseController = $this->objectManager->get(\NITSAN\NsBackup\Controller\BackupBaseController::class);
-
         $this->errorValidation = $this->backupBaseController->globalErrorValidation();
         if (! empty($this->errorValidation)) {
             $header  = transalte::translate('global.errorvalidation', 'ns_backup');

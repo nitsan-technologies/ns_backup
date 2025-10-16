@@ -63,11 +63,6 @@ class BackupglobalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
         $this->objectManager        = GeneralUtility::makeInstance(ObjectManager::class);
         $this->backupBaseController = $this->objectManager->get(BackupBaseController::class);
         $this->errorValidation      = $this->backupBaseController->globalErrorValidation();
-        if (! empty($this->errorValidation)) {
-            $header  = LocalizationUtility::translate('global.errorvalidation', 'ns_backup');
-            $message = LocalizationUtility::translate('global.errorvalidation.message', 'ns_backup');
-            $this->addFlashMessage($message, $header, \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-        }
     }
 
     /**
