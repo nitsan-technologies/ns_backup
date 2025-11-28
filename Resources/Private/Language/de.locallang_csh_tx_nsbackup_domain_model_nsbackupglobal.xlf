@@ -9,7 +9,7 @@
       </trans-unit>
       <trans-unit id="email_notification_on_error.description">
         <source>emailNotificationOnError</source>
-        <target state="needs-translation">emailNotificationOnError</target>
+        <target state="translated">E-Mail-Benachrichtigung bei Fehler</target>
       </trans-unit>
     </body>
   </file>
