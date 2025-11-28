@@ -85,7 +85,7 @@
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal">
         <source>Nsbackupglobal</source>
-        <target state="needs-translation">Nsbackupglobal</target>
+        <target state="translated">Nsbackupglobal</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.emails">
         <source>Emails (Multiple emails using comma ,)</source>
@@ -165,15 +165,15 @@
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.status">
         <source>Status</source>
-        <target state="needs-translation">Status</target>
+        <target state="translated">Status</target>
       </trans-unit>
       <trans-unit id="nsbackup">
         <source>Backup</source>
-        <target state="needs-translation">Backup</target>
+        <target state="translated">Sicherung</target>
       </trans-unit>
       <trans-unit id="menu.dashboard">
         <source>Dashboard</source>
-        <target state="needs-translation">Dashboard</target>
+        <target state="translated">Armaturenbrett</target>
       </trans-unit>
       <trans-unit id="menu.backupsrestore" approved="yes">
         <source>Backup History</source>
@@ -181,7 +181,7 @@
       </trans-unit>
       <trans-unit id="menu.serverclouds">
         <source>Server/Clouds</source>
-        <target state="needs-translation">Server/Clouds</target>
+        <target state="translated">Server/Clouds</target>
       </trans-unit>
       <trans-unit id="menu.globalsettings" approved="yes">
         <source>Global Settings</source>
@@ -345,7 +345,7 @@
       </trans-unit>
       <trans-unit id="servercloud.form.region">
         <source>Region</source>
-        <target state="needs-translation">Region</target>
+        <target state="translated">Region</target>
       </trans-unit>
       <trans-unit id="servercloud.form.path" approved="yes">
         <source>Path</source>
@@ -361,11 +361,11 @@
       </trans-unit>
       <trans-unit id="servercloud.form.host">
         <source>Host</source>
-        <target state="needs-translation">Host</target>
+        <target state="translated">Host</target>
       </trans-unit>
       <trans-unit id="servercloud.form.port">
         <source>Port</source>
-        <target state="needs-translation">Port</target>
+        <target state="translated">Port</target>
       </trans-unit>
       <trans-unit id="servercloud.form.user" approved="yes">
         <source>User</source>
@@ -381,11 +381,11 @@
       </trans-unit>
       <trans-unit id="servercloud.form.token">
         <source>Token</source>
-        <target state="needs-translation">Token</target>
+        <target state="translated">Token</target>
       </trans-unit>
       <trans-unit id="servercloud.content.name">
         <source>Name</source>
-        <target state="needs-translation">Name</target>
+        <target state="translated">Name</target>
       </trans-unit>
       <trans-unit id="servercloud.content.type" approved="yes">
         <source>Path</source>
