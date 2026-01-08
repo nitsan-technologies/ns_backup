@@ -1,5 +1,9 @@
 <?php
 
+$typo3Version = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Information\Typo3Version::class)->getMajorVersion();
+
+
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_db.xlf:tx_nsbackup_domain_model_backupdata',
@@ -17,7 +21,7 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,start_datetime,end_datetime,backup_type,download_url,filenames,size,logs,date,status',
+        'searchFields' => $typo3Version <= 13 ? 'title,start_datetime,end_datetime,backup_type,download_url,filenames,size,logs,date,status' : '',
         'iconfile' => 'EXT:ns_backup/Resources/Public/Icons/tx_nsbackup_domain_model_backupdata.gif',
         'security' => [
             'ignorePageTypeRestriction' => true,
@@ -63,6 +67,7 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
+                'searchable' => false,
             ],
         ],
         'hidden' => [
@@ -84,6 +89,7 @@ return [
                 'size' => 13,
                 'eval' => 'datetime',
                 'default' => 0,
+                'searchable' => false,
             ],
         ],
         'endtime' => [
@@ -101,6 +107,7 @@ return [
                 'range' => [
                     'upper' => mktime(0, 0, 0, 1, 1, 2038)
                 ],
+                'searchable' => false,
             ],
         ],
         'title' => [
@@ -118,7 +125,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
+                'searchable' => false,
             ],
         ],
         'end_datetime' => [
@@ -182,7 +190,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim',
+                 'searchable' => false
             ],
         ],
         'status' => [

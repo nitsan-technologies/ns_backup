@@ -2,11 +2,12 @@
 
 namespace NITSAN\NsBackup\Controller;
 
+use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
 use RuntimeException;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /***
@@ -79,7 +80,7 @@ class BackupBaseController extends ActionController
      *
      * @var array
      */
-    public array $arrDatabase = array();
+    public array $arrDatabase = [];
 
     /**
      * backupFileName
@@ -141,7 +142,7 @@ class BackupBaseController extends ActionController
      * @param BackupglobalRepository $backupglobalRepository
      */
     public function __construct(
-        protected  BackupglobalRepository $backupglobalRepository
+        protected BackupglobalRepository $backupglobalRepository
     ) {
         $this->exceptionMessage = LocalizationUtility::translate('something.wrong.here', 'ns_backup');
 
@@ -201,9 +202,19 @@ class BackupBaseController extends ActionController
         $this->rootPath = $this->globalSettingsData[0]->root ?? (Environment::getProjectPath() ?? '');
 
         // Let's change root path to /public in Composer-based installation
-        if(Environment::isComposerMode()) {
+        if (Environment::isComposerMode()) {
             $this->rootPath = Environment::getPublicPath();
-            $this->composerRootPath = Environment::getComposerRootPath();
+            $typo3VersionArray = VersionNumberUtility::convertVersionStringToArray(
+                VersionNumberUtility::getCurrentTypo3Version()
+            );
+            $typo3Version = $typo3VersionArray['version_main'];
+
+            if ($typo3Version <= 13) {
+                $this->composerRootPath = Environment::getComposerRootPath();
+            } else {
+                $this->composerRootPath = Environment::getProjectPath();
+                die;
+            }
             $this->phpbuPath = $this->composerRootPath.'/vendor/nitsan/ns-backup/phpbu.phar';
         }
 
@@ -282,15 +293,15 @@ class BackupBaseController extends ActionController
         // Let's create LOG file if not existis
         if (!file_exists($logFile)) {
             $fh = @fopen($logFile, 'a');
-            if($fh != false) {
+            if ($fh != false) {
                 @fclose($fh);
             }
         }
-        
+
         // Email configuration
         $emailString = $this->globalSettingsData[0]->emails ?? '';
         $emailArray = array_map('trim', explode(',', $emailString));
-        $validEmails = array_filter($emailArray, function($email) {
+        $validEmails = array_filter($emailArray, function ($email) {
             return filter_var($email, FILTER_VALIDATE_EMAIL);
         });
         $emailRecipients = implode(',', $validEmails);
@@ -347,7 +358,7 @@ class BackupBaseController extends ActionController
 
             // Validate and sanitize PHP path
             if (!is_string($this->phpPath) || !file_exists($this->phpPath) || !is_executable($this->phpPath)) {
-                throw new RuntimeException("Invalid PHP executable path.");
+                throw new RuntimeException('Invalid PHP executable path.');
             }
 
             // Prepare secure shell command
@@ -390,7 +401,7 @@ class BackupBaseController extends ActionController
 
                 $compressTechnique = $compressTechniques[$compressTechnique] ?? '.bz2';
 
-                $path = str_replace("/all", "", $this->backupFilePath);
+                $path = str_replace('/all', "", $this->backupFilePath);
                 $backupFileMySQL = $path . '/mysqldump' . '/mysqldump' . '-' . $currentDateTime . '.sql' . $compressTechnique;
                 $fileSize = $this->convertFilesize(filesize($backupFileMySQL));
                 $arrPost['size'] = $fileSize;
@@ -490,7 +501,7 @@ class BackupBaseController extends ActionController
                 $sourceOptions = [
                     'path' => ($backupType == 'other') ? $rawName : $sourcePath
                 ];
-                
+
                 if (!empty($ignoreUploads)) {
                     $sourceOptions['exclude'] = $ignoreUploads;
                 }
