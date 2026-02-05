@@ -213,7 +213,6 @@ class BackupBaseController extends ActionController
                 $this->composerRootPath = Environment::getComposerRootPath();
             } else {
                 $this->composerRootPath = Environment::getProjectPath();
-                die;
             }
             $this->phpbuPath = $this->composerRootPath.'/vendor/nitsan/ns-backup/phpbu.phar';
         }

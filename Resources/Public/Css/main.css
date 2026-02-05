@@ -1154,3 +1154,7 @@ div.dt-container .dt-paging .dt-paging-button.disabled:active {
 .close {
   font-size: 22px;
 }
+
+.backupnow-modal.fade.backupwizard-modal.show {
+  border: 0;
+}
