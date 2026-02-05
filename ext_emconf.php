@@ -14,7 +14,7 @@ $EM_CONF['ns_backup'] = [
     'version' => '13.0.3',
     'constraints' => [
         'depends' => [
-            'typo3' => '12.0.0-14.0.1',
+            'typo3' => '12.0.0-14.9.99',
         ],
         'conflicts' => [],
         'suggests' => [],
