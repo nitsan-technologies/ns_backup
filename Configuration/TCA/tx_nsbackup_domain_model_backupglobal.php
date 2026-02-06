@@ -45,6 +45,7 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
+                'searchable' => false,
             ],
         ],
         'hidden' => [
@@ -66,6 +67,7 @@ return [
                 'size' => 13,
                 'eval' => 'datetime',
                 'default' => 0,
+                'searchable' => false,
             ],
         ],
         'endtime' => [
@@ -83,6 +85,7 @@ return [
                 'range' => [
                     'upper' => mktime(0, 0, 0, 1, 1, 2038)
                 ],
+                'searchable' => false,
             ],
         ],
 

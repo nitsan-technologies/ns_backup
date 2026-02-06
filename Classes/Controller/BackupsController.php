@@ -2,20 +2,20 @@
 
 namespace NITSAN\NsBackup\Controller;
 
-use RuntimeException;
 use Doctrine\DBAL\Exception;
+use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use RuntimeException;
 use Symfony\Component\Mime\Address;
+use TYPO3\CMS\Backend\Template\ModuleTemplate;
+use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Page\PageRenderer;
-use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Psr\Http\Message\ServerRequestInterface;
-use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
-use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
 
 /***
@@ -62,7 +62,7 @@ class BackupsController extends ActionController
     {
         // Global error check
         $this->errorValidation = $this->backupBaseController->globalErrorValidation();
-        if(!empty($this->errorValidation)) {
+        if (!empty($this->errorValidation)) {
             $header = transalte::translate('global.errorvalidation', 'ns_backup');
             $message = transalte::translate('global.errorvalidation.message', 'ns_backup');
             $this->addFlashMessage($message, $header, ContextualFeedbackSeverity::ERROR);
@@ -141,7 +141,7 @@ class BackupsController extends ActionController
         // "RUN" Backup from "Manual Backup Module"
         $arrPost = $arrPost['backuprestore'] ?? '';
 
-        if(!empty($arrPost['backupFolderSettings']) && empty($this->errorValidation)) {
+        if (!empty($arrPost['backupFolderSettings']) && empty($this->errorValidation)) {
 
             // Create json and take backup
             try {
@@ -151,7 +151,7 @@ class BackupsController extends ActionController
                 return $this->redirect('backuprestore');
             }
 
-            if($arrResponse['log'] == 'error') {
+            if ($arrResponse['log'] == 'error') {
                 // Error Flash-Message
                 $mesHeader = transalte::translate('manualbackup.error', 'ns_backup');
                 $backup_file = $arrResponse['backup_file'];
@@ -165,9 +165,9 @@ class BackupsController extends ActionController
                 $response = (array) json_decode($arrResponse['log']);
                 if (isset($response['errorCount']) && $response['errorCount'] > 0) {
                     $globalSettingsData = $this->backupglobalRepository->findAll();
-                    if ($globalSettingsData[0]->emailNotificationOnError){
+                    if ($globalSettingsData[0]->emailNotificationOnError) {
                         $mail = GeneralUtility::makeInstance(MailMessage::class);
-                        $emails = explode(',',$globalSettingsData[0]->emails);
+                        $emails = explode(',', $globalSettingsData[0]->emails);
                         foreach ($emails as $email) {
                             $mail->from(new Address($globalSettingsData[0]->emailFrom, 'Backup'));
                             $mail->to(
@@ -198,7 +198,7 @@ class BackupsController extends ActionController
             if ($valueBackup['logs']) {
                 $objBackupData[$keyBackup]['logs'] = '<pre class="pre-scrollable"><code class="json">' . json_encode(json_decode($objBackupData[$keyBackup]['logs']), JSON_PRETTY_PRINT) . '</code></pre>';
             }
-            if($valueBackup['download_url']) {
+            if ($valueBackup['download_url']) {
                 $file_headers = @get_headers($valueBackup['download_url']);
                 $objBackupData[$keyBackup]['isDownload'] = (!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') ? false : true;
             }
@@ -235,23 +235,24 @@ class BackupsController extends ActionController
         $this->backupglobalRepository->removeBackupData($uid);
 
         // Remove file from Physical location
-        if(file_exists($arrBackup['filenames'])) {
+        if (file_exists($arrBackup['filenames'])) {
             unlink($arrBackup['filenames']);
         }
 
         $rootPath = $globalSettingsData->root ?? (Environment::getProjectPath() ?? '');
-        if(Environment::isComposerMode()) {
+        if (Environment::isComposerMode()) {
             $rootPath = Environment::getPublicPath();
+           
         }
 
         $rootPath = $globalSettingsData->backupStorePath ?? ($rootPath . '/uploads');
         $jsonFolder = $rootPath.'/tx_nsbackup/json/';
-        if(file_exists($jsonFolder.$arrBackup['jsonfile'])) {
+        if (file_exists($jsonFolder.$arrBackup['jsonfile'])) {
             unlink($jsonFolder.$arrBackup['jsonfile']);
         }
 
-        $jsonLogFile = str_replace("_configuration", "_log", $arrBackup['jsonfile']);
-        if(file_exists($jsonFolder.$jsonLogFile)) {
+        $jsonLogFile = str_replace('_configuration', '_log', $arrBackup['jsonfile']);
+        if (file_exists($jsonFolder.$jsonLogFile)) {
             unlink($jsonFolder.$jsonLogFile);
         }
 
