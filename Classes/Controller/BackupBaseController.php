@@ -479,23 +479,26 @@ class BackupBaseController extends ActionController
                 $backupExtFile = '.sql';
                 break;
 
-            default:
-                $targetPath = ($backupType == 'all') ? '' : $backupType;
+        default:
+            $targetPath = ($backupType == 'all') ? '' : $backupType;
 
-                // Exclude uploads/tx_nsbackup
-                if ($backupType == 'uploads') {
-                    $ignoreUploads = 'tx_nsbackup';
-                }
-                if ($backupType == 'all') {
-                    $ignoreUploads = 'uploads/tx_nsbackup,typo3temp';
-                }
+            // Exclude uploads/tx_nsbackup
+            if ($backupType == 'uploads') {
+                $ignoreUploads = 'tx_nsbackup';
+            }
+            if ($backupType == 'all') {
+                $ignoreUploads = 'uploads/tx_nsbackup,typo3temp';
+            }
 
-                $sourcePath = $this->rootPath . '/' . $targetPath;
+            $sourcePath = $this->rootPath . '/' . $targetPath;
 
-                // In composer-mode, let's figure out vendor folder
-                if (($backupType == 'vendor') && ($this->composerRootPath !== null && strlen($this->composerRootPath) > 0)) {
+            if (Environment::isComposerMode() && $this->composerRootPath !== null && strlen($this->composerRootPath) > 0) {
+                if ($backupType == 'vendor') {
                     $sourcePath = $this->composerRootPath . '/' . $targetPath;
+                } elseif ($backupType == 'typo3') {
+                    $sourcePath = $this->composerRootPath . '/vendor/typo3';
                 }
+            }
 
                 $sourceOptions = [
                     'path' => ($backupType == 'other') ? $rawName : $sourcePath

@@ -242,6 +242,7 @@ class BackupsController extends ActionController
         $rootPath = $globalSettingsData->root ?? (Environment::getProjectPath() ?? '');
         if (Environment::isComposerMode()) {
             $rootPath = Environment::getPublicPath();
+           
         }
 
         $rootPath = $globalSettingsData->backupStorePath ?? ($rootPath . '/uploads');

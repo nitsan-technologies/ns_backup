@@ -1157,4 +1157,5 @@ div.dt-container .dt-paging .dt-paging-button.disabled:active {
 
 .backupnow-modal.fade.backupwizard-modal.show {
   border: 0;
+  --typo3-modal-shadow: none !important;  
 }
