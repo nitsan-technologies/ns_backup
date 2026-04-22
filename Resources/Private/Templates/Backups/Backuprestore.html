@@ -27,8 +27,8 @@
 			<div class="card-header">
 				<div class="d-flex flex-column flex-md-row justify-content-md-between align-items-md-center">
                     <h5><f:translate key="menu.backupsrestore" extensionName = "NsBackup" /></h5>
-                    <button type="button" class="btn btn-secondary js-open-backup-now-modal"
-						data-bs-target="#backupNowModal"><em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="start.one.click.backup" />
+                    <button type="button" class="btn btn-secondary js-open-backup-now-modal text-white" {modalAttr}toggle="modal" {modalAttr}target="#backupNowModal">
+						<em class="fa fa-cloud-download" aria-hidden="true"></em><f:translate key="start.one.click.backup" />
 					</button>
 				</div>
 			</div>
@@ -81,10 +81,10 @@
 
 											</f:else>
 										</f:if>
-										<button type="button" class="btn btn-success btn-sm btn-log-show js-open-log-modal" data-bs-toggle="modal" data-bs-target="#logBackup" data-id="{backup.uid}">
+										<button type="button" class="btn btn-success btn-sm btn-log-show js-open-log-modal" {modalAttr}toggle="modal" {modalAttr}target="#logBackup" data-id="{backup.uid}">
 											<em class="fa fa-file-text-o" aria-hidden="true"></em>Logs
 										</button>
-										<button type="button" class="btn btn-danger btn-sm delete-backup js-open-delete-backup-modal" data-bs-toggle="modal" data-bs-target="#nsBackupDeletebackupModal" data-title="{backup.title}" data-msg="<f:translate key='servercloud.content.deleterecord' />" data-id="{backup.uid}">
+										<button type="button" class="btn btn-danger btn-sm delete-backup js-open-delete-backup-modal" {modalAttr}toggle="modal" {modalAttr}target="#nsBackupDeletebackupModal" data-title="{backup.title}" data-msg="<f:translate key='servercloud.content.deleterecord' />" data-id="{backup.uid}">
 											<em class="fa fa-trash-o" aria-hidden="true"></em><f:translate key="servercloud.content.delete" />
 										</button>
 									</div>
