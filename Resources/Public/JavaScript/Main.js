@@ -85,6 +85,68 @@ $(document).ready(function() {
         }
     });
 
+    // Open private backup download error modal
+    $(document).on('click', '.js-open-backup-download-error-modal', function (e) {
+        e.preventDefault();
+        const modalTarget = $(this).data('bs-target') || $(this).data('target') || '#backupDownloadError';
+        const modalElement = document.querySelector(modalTarget);
+        if (!modalElement) {
+            return;
+        }
+
+        const title = $(this).data('title') || '';
+        const msg = $(this).data('msg') || '';
+
+        $(modalElement).find('.backup-title').text(title);
+        if (msg) {
+            $(modalElement).find('.delete-msg').text(msg);
+        }
+
+        if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+            bootstrap.Modal.getOrCreateInstance(modalElement).show();
+        } else if (typeof window.bootstrap !== 'undefined' && window.bootstrap.Modal) {
+            window.bootstrap.Modal.getOrCreateInstance(modalElement).show();
+        } else {
+            $(modalElement).addClass('show').css('display', 'block');
+            $('body').addClass('modal-open');
+        }
+    });
+
+    // Open backup download status modals (error/not-available)
+    $(document).on('click', '.backup-download-btn', function (e) {
+        if ($(this).hasClass('js-open-backup-download-error-modal')) {
+            return;
+        }
+        const modalTarget = $(this).data('bs-target') || $(this).data('target');
+        if (!modalTarget) {
+            return;
+        }
+
+        e.preventDefault();
+
+        const modalElement = document.querySelector(modalTarget);
+        if (!modalElement) {
+            return;
+        }
+
+        const title = $(this).data('title') || '';
+        const msg = $(this).data('msg') || '';
+
+        $(modalElement).find('.backup-title').text(title);
+        if (msg) {
+            $(modalElement).find('.delete-msg').text(msg);
+        }
+
+        if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+            bootstrap.Modal.getOrCreateInstance(modalElement).show();
+        } else if (typeof window.bootstrap !== 'undefined' && window.bootstrap.Modal) {
+            window.bootstrap.Modal.getOrCreateInstance(modalElement).show();
+        } else {
+            $(modalElement).addClass('show').css('display', 'block');
+            $('body').addClass('modal-open');
+        }
+    });
+
     if ($("#siteurl").val() && $("#siteurl").val()!==''){
         var mysiteUrl=$("#siteurl").val();
         var currentUrl = window.location.origin;
@@ -97,6 +159,7 @@ $(document).ready(function() {
             document.getElementById('yoursiteUrlMsg').classList.add('d-none')
         }
     }
+
     // Dashboard Start Manual Backup
     $("#backupnow-form").submit(function (e) {
         if (!$('#backupName').val()) {
