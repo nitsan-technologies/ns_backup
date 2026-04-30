@@ -1,7 +1,7 @@
 <?php
 
 $EM_CONF['ns_backup'] = [
-    'title' => 'TYPO3 Backup Plus',
+    'title' => 'Backup Plus',
     'description' => 'Easily back up your entire TYPO3 site—including code, files, and database—with one click. Supports cloud storage like Google Drive, Dropbox, Amazon S3, SFTP, Rsync, and more.',
 
     'category' => 'module',
@@ -11,7 +11,7 @@ $EM_CONF['ns_backup'] = [
     'state' => 'stable',
     'uploadfolder' => 1,
     'createDirs' => '',
-    'version' => '14.0.0',
+    'version' => '14.0.1',
     'constraints' => [
         'depends' => [
             'typo3' => '12.0.0-14.9.99',

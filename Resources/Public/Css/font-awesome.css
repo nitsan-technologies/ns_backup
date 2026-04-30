@@ -11,7 +11,7 @@
     font-weight: normal;
     font-style: normal;
   }
-  .fa {
+  .fa-dashboard, .fa-download, .fa-cog, .fa-file-text-o, .fa-cloud-download, .fa-trash-o , .fa-repeat, .fa-close, .fa-refresh, .fa-save {
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
     font-size: inherit;
