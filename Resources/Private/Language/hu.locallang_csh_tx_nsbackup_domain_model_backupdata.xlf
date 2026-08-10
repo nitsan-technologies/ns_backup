@@ -5,31 +5,31 @@
     <body>
       <trans-unit id="title.description">
         <source>title</source>
-        <target state="needs-translation">title</target>
+        <target state="translated">title</target>
       </trans-unit>
       <trans-unit id="category.description">
         <source>category</source>
-        <target state="needs-translation">category</target>
+        <target state="translated">category</target>
       </trans-unit>
       <trans-unit id="start_datetime.description">
         <source>startDatetime</source>
-        <target state="needs-translation">startDatetime</target>
+        <target state="translated">startDatetime</target>
       </trans-unit>
       <trans-unit id="end_datetime.description">
         <source>endDatetime</source>
-        <target state="needs-translation">endDatetime</target>
+        <target state="translated">endDatetime</target>
       </trans-unit>
       <trans-unit id="backup_type.description">
         <source>backupType</source>
-        <target state="needs-translation">backupType</target>
+        <target state="translated">backupType</target>
       </trans-unit>
       <trans-unit id="download_url.description">
         <source>downloadUrl</source>
-        <target state="needs-translation">downloadUrl</target>
+        <target state="translated">downloadUrl</target>
       </trans-unit>
       <trans-unit id="filenames.description">
         <source>filenames</source>
-        <target state="needs-translation">filenames</target>
+        <target state="translated">filenames</target>
       </trans-unit>
       <trans-unit id="size.description">
         <source>size</source>
