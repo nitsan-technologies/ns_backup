@@ -5,11 +5,11 @@
     <body>
       <trans-unit id="emails.description">
         <source>emails</source>
-        <target state="needs-translation">emails</target>
+        <target state="translated">emails</target>
       </trans-unit>
       <trans-unit id="email_notification_on_error.description">
         <source>emailNotificationOnError</source>
-        <target state="needs-translation">emailNotificationOnError</target>
+        <target state="translated">emailNotificationOnError</target>
       </trans-unit>
     </body>
   </file>
