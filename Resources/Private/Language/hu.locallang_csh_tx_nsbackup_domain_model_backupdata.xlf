@@ -33,19 +33,19 @@
       </trans-unit>
       <trans-unit id="size.description">
         <source>size</source>
-        <target state="needs-translation">size</target>
+        <target state="translated">size</target>
       </trans-unit>
       <trans-unit id="logs.description">
         <source>logs</source>
-        <target state="needs-translation">logs</target>
+        <target state="translated">logs</target>
       </trans-unit>
       <trans-unit id="date.description">
         <source>date</source>
-        <target state="needs-translation">date</target>
+        <target state="translated">date</target>
       </trans-unit>
       <trans-unit id="status.description">
         <source>status</source>
-        <target state="needs-translation">status</target>
+        <target state="translated">status</target>
       </trans-unit>
     </body>
   </file>
