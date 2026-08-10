@@ -5,19 +5,19 @@
     <body>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal">
         <source>Nsbackupglobal</source>
-        <target state="needs-translation">Nsbackupglobal</target>
+        <target state="translated">Nsbackupglobal</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.emails">
         <source>Emails (Multiple emails using comma ,)</source>
-        <target state="needs-translation">Emails (Multiple emails using comma ,)</target>
+        <target state="translated">E-mailek (több e-mail vesszővel elválasztva ,)</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_subject">
         <source>Email Subject</source>
-        <target state="needs-translation">Email Subject</target>
+        <target state="translated">E-mail tárgya</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_notification_on_error">
         <source>Email Notification On Error</source>
-        <target state="needs-translation">Email Notification On Error</target>
+        <target state="translated">E-mail értesítés hibánál</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup">
         <source>Cleanup Type</source>
@@ -33,63 +33,63 @@
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.php">
         <source>PHP Installed Path</source>
-        <target state="needs-translation">PHP Installed Path</target>
+        <target state="translated">Telepített PHP elérési út</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.root">
         <source>TYPO3 Installed Path</source>
-        <target state="needs-translation">TYPO3 Installed Path</target>
+        <target state="translated">Telepített TYPO3 elérési út</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.siteurl">
         <source>Your Site URL</source>
-        <target state="needs-translation">Your Site URL</target>
+        <target state="translated">Webhelye URL-je</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_servers.path">
         <source>Path</source>
-        <target state="needs-translation">Path</target>
+        <target state="translated">Elérési út</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_servers.server_type">
         <source>Server Type</source>
-        <target state="needs-translation">Server Type</target>
+        <target state="translated">Szerver típusa</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_servers.settings">
         <source>Settings</source>
-        <target state="needs-translation">Settings</target>
+        <target state="translated">Beállítások</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata">
         <source>Backup Data</source>
-        <target state="needs-translation">Backup Data</target>
+        <target state="translated">Biztonsági mentési adatok</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.title">
         <source>Title</source>
-        <target state="needs-translation">Title</target>
+        <target state="translated">Cím</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.start_datetime">
         <source>Start Datetime</source>
-        <target state="needs-translation">Start Datetime</target>
+        <target state="translated">Kezdés időpontja</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.end_datetime">
         <source>End Datetime</source>
-        <target state="needs-translation">End Datetime</target>
+        <target state="translated">Befejezés időpontja</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.backup_type">
         <source>Backup Type</source>
-        <target state="needs-translation">Backup Type</target>
+        <target state="translated">Biztonsági mentés típusa</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.download_url">
         <source>Download Url</source>
-        <target state="needs-translation">Download Url</target>
+        <target state="translated">Letöltési URL</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.server_uid">
         <source>Server Uid</source>
-        <target state="needs-translation">Server Uid</target>
+        <target state="translated">Szerver UID</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.servers_backup_path">
         <source>Servers Backup Path</source>
-        <target state="needs-translation">Servers Backup Path</target>
+        <target state="translated">Szerverek biztonsági mentési elérési útja</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.filenames">
         <source>Filenames</source>
-        <target state="needs-translation">Filenames</target>
+        <target state="translated">Fájlnevek</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.size">
         <source>Size</source>
@@ -97,19 +97,19 @@
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.logs">
         <source>Logs</source>
-        <target state="needs-translation">Logs</target>
+        <target state="translated">Naplók</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.date">
         <source>Date</source>
-        <target state="needs-translation">Date</target>
+        <target state="translated">Dátum</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.status">
         <source>Status</source>
-        <target state="needs-translation">Status</target>
+        <target state="translated">Állapot</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupglobal.backup_store_path">
         <source>Backup Store Path</source>
-        <target state="needs-translation">Backup Store Path</target>
+        <target state="translated">Biztonsági mentési tárhely elérési útja</target>
       </trans-unit>
     </body>
   </file>
