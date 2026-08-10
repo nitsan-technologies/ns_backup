@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_backup/Resources/Private/Language/locallang_db.xlf" date="2019-12-28T17:40:31Z" product-name="ns_backup" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal">
+        <source>Nsbackupglobal</source>
+        <target state="translated">Nsbackupglobal</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.emails" approved="yes">
+        <source>Emails (Multiple emails using comma ,)</source>
+        <target state="final">E-Mails (Mehrere E-Mails durch Komma getrennt)</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_subject" approved="yes">
+        <source>Email Subject</source>
+        <target state="final">E-Mail-Betreff</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_notification_on_error" approved="yes">
+        <source>Email Notification On Error</source>
+        <target state="final">E-Mail-Benachrichtigung bei Fehlern</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup" approved="yes">
+        <source>Cleanup Type</source>
+        <target state="final">Bereinigungstyp</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_quantity" approved="yes">
+        <source>Cleanup Quantity</source>
+        <target state="final">Bereinigungsmenge</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.compress" approved="yes">
+        <source>File Compress Type</source>
+        <target state="final">Dateikomprimierungstyp</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.php" approved="yes">
+        <source>PHP Installed Path</source>
+        <target state="final">PHP-Installationspfad</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.root" approved="yes">
+        <source>TYPO3 Installed Path</source>
+        <target state="final">TYPO3-Installationspfad</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.siteurl" approved="yes">
+        <source>Your Site URL</source>
+        <target state="final">Ihre Website-URL</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_servers.path" approved="yes">
+        <source>Path</source>
+        <target state="final">Pfad</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_servers.server_type" approved="yes">
+        <source>Server Type</source>
+        <target state="final">Servertyp</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_servers.settings" approved="yes">
+        <source>Settings</source>
+        <target state="final">Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata" approved="yes">
+        <source>Backup Data</source>
+        <target state="final">Backup-Daten</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.title" approved="yes">
+        <source>Title</source>
+        <target state="final">Titel</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.start_datetime" approved="yes">
+        <source>Start Datetime</source>
+        <target state="final">Start-Datum und -Uhrzeit</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.end_datetime" approved="yes">
+        <source>End Datetime</source>
+        <target state="final">End-Datum und -Uhrzeit</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.backup_type" approved="yes">
+        <source>Backup Type</source>
+        <target state="final">Backup-Typ</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.download_url" approved="yes">
+        <source>Download Url</source>
+        <target state="final">Download-URL</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.server_uid" approved="yes">
+        <source>Server Uid</source>
+        <target state="final">Server-UID</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.servers_backup_path" approved="yes">
+        <source>Servers Backup Path</source>
+        <target state="final">Server-Backup-Pfad</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.filenames" approved="yes">
+        <source>Filenames</source>
+        <target state="final">Dateinamen</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.size" approved="yes">
+        <source>Size</source>
+        <target state="final">Größe</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.logs" approved="yes">
+        <source>Logs</source>
+        <target state="final">Protokolle</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.date" approved="yes">
+        <source>Date</source>
+        <target state="final">Datum</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.status">
+        <source>Status</source>
+        <target state="translated">Status</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupglobal.backup_store_path" approved="yes">
+        <source>Backup Store Path</source>
+        <target state="final">Backup-Speicherpfad</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

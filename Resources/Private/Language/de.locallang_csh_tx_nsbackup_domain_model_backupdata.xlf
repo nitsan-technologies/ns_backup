@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_backup/Resources/Private/Language/locallang_csh_tx_nsbackup_domain_model_backupdata.xlf" date="2019-12-28T17:40:31Z" product-name="ns_backup" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="title.description" approved="yes">
+        <source>title</source>
+        <target state="final">Titel</target>
+      </trans-unit>
+      <trans-unit id="category.description" approved="yes">
+        <source>category</source>
+        <target state="final">Kategorie</target>
+      </trans-unit>
+      <trans-unit id="start_datetime.description" approved="yes">
+        <source>startDatetime</source>
+        <target state="final">Startdatum- und -zeit</target>
+      </trans-unit>
+      <trans-unit id="end_datetime.description" approved="yes">
+        <source>endDatetime</source>
+        <target state="final">Enddatum- und -zeit</target>
+      </trans-unit>
+      <trans-unit id="backup_type.description" approved="yes">
+        <source>backupType</source>
+        <target state="final">Backup-Typ</target>
+      </trans-unit>
+      <trans-unit id="download_url.description" approved="yes">
+        <source>downloadUrl</source>
+        <target state="final">Download-URL</target>
+      </trans-unit>
+      <trans-unit id="filenames.description" approved="yes">
+        <source>filenames</source>
+        <target state="final">Dateinamen</target>
+      </trans-unit>
+      <trans-unit id="size.description" approved="yes">
+        <source>size</source>
+        <target state="final">Größe</target>
+      </trans-unit>
+      <trans-unit id="logs.description" approved="yes">
+        <source>logs</source>
+        <target state="final">Protokolle</target>
+      </trans-unit>
+      <trans-unit id="date.description" approved="yes">
+        <source>date</source>
+        <target state="final">Datum</target>
+      </trans-unit>
+      <trans-unit id="status.description" approved="yes">
+        <source>status</source>
+        <target state="final">Status</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

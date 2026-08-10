@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_backup/Resources/Private/Language/locallang.xlf" date="2019-12-28T17:40:31Z" product-name="ns_backup" target-language="hu">
+    <header/>
+    <body>
+      <trans-unit id="global.errorvalidation">
+        <source>Please configure below configuration of "Global Settings"</source>
+        <target state="translated">Kérjük, adja meg az alábbi "Globális beállítások" konfigurációt</target>
+      </trans-unit>
+      <trans-unit id="global.errorvalidation.message">
+        <source>Make sure all configuration has been setup before you start your backup</source>
+        <target state="translated">Győződjön meg arról, hogy minden beállítás konfigurálva lett, mielőtt elindítja a biztonsági mentést</target>
+      </trans-unit>
+      <trans-unit id="global.error.phpversion">
+        <source>Your PHP version should be "7.0 or later"</source>
+        <target state="translated">A PHP verziójának "7.0 vagy újabb" verzióval kell rendelkeznie</target>
+      </trans-unit>
+      <trans-unit id="global.error.curl">
+        <source>"curl" extension of PHP is disabled at your server</source>
+        <target state="translated">A PHP "curl" bővítménye le van tiltva a szerverén</target>
+      </trans-unit>
+      <trans-unit id="global.error.dom">
+        <source>"dom" extension of PHP is disabled at your server</source>
+        <target state="translated">A PHP "dom" bővítménye le van tiltva a szerverén</target>
+      </trans-unit>
+      <trans-unit id="global.error.json">
+        <source>"json" extension of PHP is disabled at your server</source>
+        <target state="translated">A PHP "json" bővítménye le van tiltva a szerverén</target>
+      </trans-unit>
+      <trans-unit id="global.error.spl">
+        <source>"spl" extension of PHP is disabled at your server</source>
+        <target state="translated">A PHP "spl" bővítménye le van tiltva a szerverén</target>
+      </trans-unit>
+      <trans-unit id="global.error.exec">
+        <source>PHP exec() function is disabled</source>
+        <target state="translated">A PHP exec() függvény le van tiltva</target>
+      </trans-unit>
+      <trans-unit id="global.error.emails">
+        <source>Missing Email Notification</source>
+        <target state="translated">Hiányzó e-mail értesítés</target>
+      </trans-unit>
+      <trans-unit id="global.error.emailSubject">
+        <source>Missing Email Subject</source>
+        <target state="translated">Hiányzó e-mail tárgy</target>
+      </trans-unit>
+      <trans-unit id="global.error.compress">
+        <source>Configure Backup File Compression</source>
+        <target state="translated">Biztonsági mentési fájl tömörítésének beállítása</target>
+      </trans-unit>
+      <trans-unit id="global.error.php">
+        <source>Missing Installed PHP Path</source>
+        <target state="translated">Hiányzó telepített PHP elérési út</target>
+      </trans-unit>
+      <trans-unit id="global.error.root">
+        <source>Configure Your TYPO3 Installed Path</source>
+        <target state="translated">A TYPO3 telepítési elérési útjának beállítása</target>
+      </trans-unit>
+      <trans-unit id="global.error.siteurl">
+        <source>Configure Your TYPO3 Site URL</source>
+        <target state="translated">A TYPO3 webhely URL-jének beállítása</target>
+      </trans-unit>
+      <trans-unit id="global.error.cleanup">
+        <source>Missing Backup Cleanup Settings</source>
+        <target state="translated">Hiányzó biztonsági mentés karbantartási beállítások</target>
+      </trans-unit>
+      <trans-unit id="global.error.cleanupQuantity">
+        <source>Missing Backup Cleanup Quantity Settings</source>
+        <target state="translated">Hiányzó biztonsági mentés karbantartási mennyiség beállítások</target>
+      </trans-unit>
+      <trans-unit id="top.quicksetup">
+        <source>Quick Setup</source>
+        <target state="translated">Gyors beállítás</target>
+      </trans-unit>
+      <trans-unit id="top.documentaiton">
+        <source>Documentaiton</source>
+        <target state="translated">Dokumentáció</target>
+      </trans-unit>
+      <trans-unit id="top.help">
+        <source>Help &amp; Support</source>
+        <target state="translated">Súgó &amp; támogatás</target>
+      </trans-unit>
+      <trans-unit id="top.donate">
+        <source>Donate</source>
+        <target state="translated">Adományozás</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal">
+        <source>Nsbackupglobal</source>
+        <target state="translated">Nsbackupglobal</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.emails">
+        <source>Emails (Multiple emails using comma ,)</source>
+        <target state="translated">E-mailek (több e-mail vesszővel elválasztva ,)</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_notification_on_error">
+        <source>Email Notification On Error</source>
+        <target state="translated">E-mail értesítés hibánál</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_servers.title">
+        <source>Title</source>
+        <target state="translated">Cím</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_servers.path">
+        <source>Path</source>
+        <target state="translated">Elérési út</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_servers.server_type">
+        <source>Server Type</source>
+        <target state="translated">Szerver típusa</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_servers.settings">
+        <source>Settings</source>
+        <target state="translated">Beállítások</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata">
+        <source>Backup Data</source>
+        <target state="translated">Biztonsági mentési adatok</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.title">
+        <source>Title</source>
+        <target state="translated">Cím</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.category">
+        <source>Category</source>
+        <target state="translated">Kategória</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.start_datetime">
+        <source>Start Datetime</source>
+        <target state="translated">Kezdés időpontja</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.end_datetime">
+        <source>End Datetime</source>
+        <target state="translated">Befejezés időpontja</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.backup_type">
+        <source>Backup Type</source>
+        <target state="translated">Biztonsági mentés típusa</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.download_url">
+        <source>Download Url</source>
+        <target state="translated">Letöltési URL</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.server_uid">
+        <source>Server Uid</source>
+        <target state="translated">Szerver UID</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.servers_backup_path">
+        <source>Servers Backup Path</source>
+        <target state="translated">Szerverek biztonsági mentési elérési útja</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.filenames">
+        <source>Filenames</source>
+        <target state="translated">Fájlnevek</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.size">
+        <source>Size</source>
+        <target state="translated">Méret</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.logs">
+        <source>Logs</source>
+        <target state="translated">Naplók</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.date">
+        <source>Date</source>
+        <target state="translated">Dátum</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.status">
+        <source>Status</source>
+        <target state="translated">Állapot</target>
+      </trans-unit>
+      <trans-unit id="nsbackup">
+        <source>Backup</source>
+        <target state="translated">Biztonsági mentés</target>
+      </trans-unit>
+      <trans-unit id="menu.dashboard">
+        <source>Dashboard</source>
+        <target state="translated">Irányítópult</target>
+      </trans-unit>
+      <trans-unit id="menu.backupsrestore">
+        <source>Backup History</source>
+        <target state="translated">Biztonsági mentések előzményei</target>
+      </trans-unit>
+      <trans-unit id="menu.serverclouds">
+        <source>Server/Clouds</source>
+        <target state="translated">Szerverek/Felhők</target>
+      </trans-unit>
+      <trans-unit id="menu.globalsettings">
+        <source>Global Settings</source>
+        <target state="translated">Globális beállítások</target>
+      </trans-unit>
+      <trans-unit id="menu.premiumextension">
+        <source>Premium Extension</source>
+        <target state="translated">Prémium bővítmény</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.title">
+        <source>Global Settings</source>
+        <target state="translated">Globális beállítások</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.emails">
+        <source>Emails</source>
+        <target state="translated">E-mailek</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.emails.desc">
+        <source>Multiple emails using comma separated</source>
+        <target state="translated">Több e-mail vesszővel elválasztva</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.email_subject">
+        <source>Email Subject</source>
+        <target state="translated">E-mail tárgya</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.email_subject.desc">
+        <source>Enter the email's subject</source>
+        <target state="translated">Adja meg az e-mail tárgyát</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.email_from">
+        <source>From Email</source>
+        <target state="translated">Feladó e-mail</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.email_from.desc">
+        <source>Enter the From email address</source>
+        <target state="translated">Adja meg a feladó e-mail címét</target>
+      </trans-unit>
+      <trans-unit id="manualbackup.warning">
+        <source>Something went wrong.</source>
+        <target state="translated">Valami hiba történt.</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.notification">
+        <source>Notification Settings</source>
+        <target state="translated">Értesítési beállítások</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.emailNotificationOnError">
+        <source>Send email only at failure of backup</source>
+        <target state="translated">E-mail küldése csak a biztonsági mentés hibája esetén</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.defaultServer">
+        <source>Default Server/Cloud</source>
+        <target state="translated">Alapértelmezett szerver/Felhő</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.defaultServer.desc">
+        <source>Choose your default backup server, You can manage it from Servers/Cloud</source>
+        <target state="translated">Válassza ki az alapértelmezett biztonsági mentési szervert, ezt a Szerverek/Felhő menüből kezelheti</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.cleanup">
+        <source>Clean-up Type</source>
+        <target state="translated">Karbantartási típus</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.cleanup.desc">
+        <source>Choose clean-up or delete backup type</source>
+        <target state="translated">Válassza ki a karbantartási vagy törlési típust</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.cleanup_quantity">
+        <source>Clean-up Quantity</source>
+        <target state="translated">Karbantartási mennyiség</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.cleanup_quantity.desc">
+        <source>Enter at how many backups clean or remove backups at your web-server and remote servers/cloud too, Min:1 And Max:500 allow</source>
+        <target state="translated">Adja meg, hány biztonsági mentés után tisztítsa vagy távolítsa el a biztonsági mentéseket a webszerveren és a távoli szervereken/felhőkben is. Minimális: 1, maximális: 500 engedélyezett</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.backup_store_path">
+        <source>Backup Store Path</source>
+        <target state="translated">Biztonsági mentési tárhely elérési útja</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.backup_store_path.desc">
+        <source>Please enter a path to store the backup (e.g., /var/www/html/public/, /var/www/html/). We recommend using a protected path to restrict external access.</source>
+        <target state="translated">Kérjük, adjon meg egy elérési utat a biztonsági mentés tárolásához (pl. /var/www/html/public/, /var/www/html/). Javasoljuk védett elérési út használatát a külső hozzáférés korlátozásához.</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.servercleanup">
+        <source>Server Cleanups?</source>
+        <target state="translated">Szerver-karbantartás?</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.yes">
+        <source>Yes</source>
+        <target state="translated">Igen</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.compress">
+        <source>Backup Compression File</source>
+        <target state="translated">Biztonsági mentési tömörítőfájl</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.compress.desc">
+        <source>Select compression technique, Only select the one which is installed on your server</source>
+        <target state="translated">Válassza ki a tömörítési technikát, csak azt válassza, amelyik telepítve van a szerverén</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.savesettings">
+        <source>Save Settings</source>
+        <target state="translated">Beállítások mentése</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.email-error">
+        <source>Please enter valid email address</source>
+        <target state="translated">Kérjük, adjon meg érvényes e-mail címet</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.no_data_server_error">
+        <source>Please configure settings from Server/Cloud.</source>
+        <target state="translated">Kérjük, konfigurálja a beállításokat a Szerver/Felhő menüben.</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.create">
+        <source>Global settings created successfully.</source>
+        <target state="translated">Globális beállítások sikeresen létrehozva.</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.update">
+        <source>Global settings updated successfully.</source>
+        <target state="translated">Globális beállítások sikeresen frissítve.</target>
+      </trans-unit>
+      <trans-unit id="servercloud.title">
+        <source>Servers/Clouds</source>
+        <target state="translated">Szerverek/Felhők</target>
+      </trans-unit>
+      <trans-unit id="servercloud.new">
+        <source>Configure New Server/Clouds</source>
+        <target state="translated">Új szerver/Felhő konfigurálása</target>
+      </trans-unit>
+      <trans-unit id="servercloud.newform.title">
+        <source>Configure New Server/Cloud</source>
+        <target state="translated">Új szerver/Felhő konfigurálása</target>
+      </trans-unit>
+      <trans-unit id="servercloud.editform.title">
+        <source>Edit Server/Cloud</source>
+        <target state="translated">Szerver/Felhő szerkesztése</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.servername">
+        <source>Server Name</source>
+        <target state="translated">Szerver neve</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.selectservercloud">
+        <source>Select Server/Cloud</source>
+        <target state="translated">Szerver/Felhő kiválasztása</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.submit">
+        <source>Save Sever Settings</source>
+        <target state="translated">Szerverbeállítások mentése</target>
+      </trans-unit>
+      <trans-unit id="servercloud.nodata">
+        <source>Please add valid-data in this field</source>
+        <target state="translated">Kérjük, adjon meg érvényes adatot ebben a mezőben</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.key">
+        <source>Key</source>
+        <target state="translated">Kulcs</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.secret">
+        <source>Secret</source>
+        <target state="translated">Titkos kulcs</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.bucket">
+        <source>Bucket</source>
+        <target state="translated">Bucket</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.region">
+        <source>Region</source>
+        <target state="translated">Régió</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.path">
+        <source>Path</source>
+        <target state="translated">Elérési út</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.access">
+        <source>Access</source>
+        <target state="translated">Hozzáférés</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.parentId">
+        <source>Parent ID</source>
+        <target state="translated">Szülőazonosító</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.host">
+        <source>Host</source>
+        <target state="translated">Kiszolgáló</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.port">
+        <source>Port</source>
+        <target state="translated">Port</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.user">
+        <source>User</source>
+        <target state="translated">Felhasználó</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.password">
+        <source>Password</source>
+        <target state="translated">Jelszó</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.passive">
+        <source>Passive</source>
+        <target state="translated">Passzív</target>
+      </trans-unit>
+      <trans-unit id="servercloud.form.token">
+        <source>Token</source>
+        <target state="translated">Token</target>
+      </trans-unit>
+      <trans-unit id="servercloud.content.name">
+        <source>Name</source>
+        <target state="translated">Név</target>
+      </trans-unit>
+      <trans-unit id="servercloud.content.type">
+        <source>Path</source>
+        <target state="translated">Elérési út</target>
+      </trans-unit>
+      <trans-unit id="servercloud.content.settings">
+        <source>Settings</source>
+        <target state="translated">Beállítások</target>
+      </trans-unit>
+      <trans-unit id="servercloud.content.actions">
+        <source>Actions</source>
+        <target state="translated">Műveletek</target>
+      </trans-unit>
+      <trans-unit id="servercloud.content.run">
+        <source>Start Backup</source>
+        <target state="translated">Biztonsági mentés indítása</target>
+      </trans-unit>
+      <trans-unit id="servercloud.content.edit">
+        <source>Edit</source>
+        <target state="translated">Szerkesztés</target>
+      </trans-unit>
+      <trans-unit id="servercloud.content.delete">
+        <source>Delete</source>
+        <target state="translated">Törlés</target>
+      </trans-unit>
+      <trans-unit id="servercloud.content.cancel">
+        <source>Cancel</source>
+        <target state="translated">Mégse</target>
+      </trans-unit>
+      <trans-unit id="servercloud.content.deleterecord">
+        <source>Are you sure you want to delete this record?</source>
+        <target state="translated">Biztosan törölni szeretné ezt a rekordot?</target>
+      </trans-unit>
+      <trans-unit id="servercloud.content.deleteselected">
+        <source>Are you sure you want to delete selected records?</source>
+        <target state="translated">Biztosan törölni szeretné a kijelölt rekordokat?</target>
+      </trans-unit>
+      <trans-unit id="servercloud.content.deleteservercloud">
+        <source>Delete Servers/Clouds</source>
+        <target state="translated">Szerverek/Felhők törlése</target>
+      </trans-unit>
+      <trans-unit id="servercloud.content.selected">
+        <source>Selected</source>
+        <target state="translated">Kijelölt</target>
+      </trans-unit>
+      <trans-unit id="update-server-cloud">
+        <source>Server/Cloud configuration updated successfully.</source>
+        <target state="translated">Szerver/Felhő konfiguráció sikeresen frissítve.</target>
+      </trans-unit>
+      <trans-unit id="delete-server-cloud">
+        <source>Server/Cloud deleted successfully.</source>
+        <target state="translated">Szerver/Felhő sikeresen törölve.</target>
+      </trans-unit>
+      <trans-unit id="create-server-cloud">
+        <source>New Server/Cloud configuration created successfully.</source>
+        <target state="translated">Új szerver/Felhő konfiguráció sikeresen létrehozva.</target>
+      </trans-unit>
+      <trans-unit id="manualbackup.success">
+        <source>Manual backup taken successfully.</source>
+        <target state="translated">A manuális biztonsági mentés sikeresen elkészült.</target>
+      </trans-unit>
+      <trans-unit id="manualbackup.error">
+        <source>Manual backup failed.</source>
+        <target state="translated">A manuális biztonsági mentés meghiúsult.</target>
+      </trans-unit>
+      <trans-unit id="backup.downloaded">
+        <source>Backup downloaded at </source>
+        <target state="translated">Biztonsági mentés letöltve itt: </target>
+      </trans-unit>
+      <trans-unit id="logs">
+        <source>Backup Logs</source>
+        <target state="translated">Biztonsági mentési naplók</target>
+      </trans-unit>
+      <trans-unit id="download.backup.now">
+        <source>Download Backup Now!</source>
+        <target state="translated">Biztonsági mentés letöltése most!</target>
+      </trans-unit>
+      <trans-unit id="download.backup">
+        <source>Download Backup</source>
+        <target state="translated">Biztonsági mentés letöltése</target>
+      </trans-unit>
+      <trans-unit id="start.one.click.backup">
+        <source>Start One-click Backup</source>
+        <target state="translated">Egyszeri gombnyomásos biztonsági mentés indítása</target>
+      </trans-unit>
+      <trans-unit id="backup.date">
+        <source>Backup Date</source>
+        <target state="translated">Biztonsági mentés dátuma</target>
+      </trans-unit>
+      <trans-unit id="backup.type">
+        <source>Backup Type</source>
+        <target state="translated">Biztonsági mentés típusa</target>
+      </trans-unit>
+      <trans-unit id="server.cloud">
+        <source>Backup Server/Cloud</source>
+        <target state="translated">Biztonsági mentési szerver/Felhő</target>
+      </trans-unit>
+      <trans-unit id="size_mb">
+        <source>Size</source>
+        <target state="translated">Méret</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.php">
+        <source>PHP Installed Path</source>
+        <target state="translated">Telepített PHP elérési út</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.php.desc">
+        <source>Please enter your PHP installed path eg., /usr/bin/php</source>
+        <target state="translated">Kérjük, adja meg a telepített PHP elérési útját, pl. /usr/bin/php</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.root">
+        <source>TYPO3 Installed Path</source>
+        <target state="translated">Telepített TYPO3 elérési út</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.root.desc">
+        <source>Please enter full physical path of your TYPO3 installation eg., /var/www/html</source>
+        <target state="translated">Kérjük, adja meg TYPO3 telepítésének teljes fizikai elérési útját, pl. /var/www/html</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.siteurl">
+        <source>Your Site URL</source>
+        <target state="translated">Webhelye URL-je</target>
+      </trans-unit>
+      <trans-unit id="globalsettings.form.siteurl.desc">
+        <source>Please enter your site's URL like https://yoursitename.com</source>
+        <target state="translated">Kérjük, adja meg webhelye URL-jét, pl. https://yoursitename.com</target>
+      </trans-unit>
+      <trans-unit id="delete.backup.data">
+        <source>Backup data deleted successfully.</source>
+        <target state="translated">A biztonsági mentési adatok sikeresen törölve.</target>
+      </trans-unit>
+      <trans-unit id="yoursiteUrlMsg">
+        <source>Please configure the correct URL in the settings otherwise the download of the backup will not work.</source>
+        <target state="translated">Kérjük, adja meg a helyes URL-t a beállításokban, különben a biztonsági mentés letöltése nem fog működni.</target>
+      </trans-unit>
+      <trans-unit id="delete.backup.message">
+        <source>Removed backup file </source>
+        <target state="translated">Biztonsági mentési fájl eltávolítva: </target>
+      </trans-unit>
+      <trans-unit id="quicksetup.email">
+        <source>Enter your e-mail address to get backup success and failuer notification</source>
+        <target state="translated">Adja meg e-mail címét, hogy értesítést kapjon a biztonsági mentés sikeréről és hibájáról</target>
+      </trans-unit>
+      <trans-unit id="quicksetup.server">
+        <source>Choose your backup server/cloud</source>
+        <target state="translated">Válassza ki a biztonsági mentési szerverét/felhőjét</target>
+      </trans-unit>
+      <trans-unit id="quicksetup.skip">
+        <source>Skip Setup Wizard For Now</source>
+        <target state="translated">Beállítóvarázsló kihagyása most</target>
+      </trans-unit>
+      <trans-unit id="backup.now">
+        <source>Backup Now!</source>
+        <target state="translated">Biztonsági mentés most!</target>
+      </trans-unit>
+      <trans-unit id="backup.now.description1">
+        <source>Click on below button to start backup now all configurable options.</source>
+        <target state="translated">Kattintson az alábbi gombra a biztonsági mentés azonnali indításához az összes konfigurálható beállítással.</target>
+      </trans-unit>
+      <trans-unit id="backup.now.description2">
+        <source>You will need to choose backup type, backup name and server destination.</source>
+        <target state="translated">Ki kell választania a biztonsági mentés típusát, nevét és a cél szervert.</target>
+      </trans-unit>
+      <trans-unit id="more.logs">
+        <source>See More Logs</source>
+        <target state="translated">További naplók megtekintése</target>
+      </trans-unit>
+      <trans-unit id="no.data.found">
+        <source>No data found.</source>
+        <target state="translated">Nem található adat.</target>
+      </trans-unit>
+      <trans-unit id="server_time_text1">
+        <source>All dates and times in the Backup are measured according to the server's time, as the Backup is run purely on the server-side.</source>
+        <target state="translated">A biztonsági mentés minden dátuma és időpontja a szerver ideje szerint kerül rögzítésre, mivel a biztonsági mentés kizárólag a szerver oldalon fut.</target>
+      </trans-unit>
+      <trans-unit id="server_time_text2">
+        <source>Current server time is</source>
+        <target state="translated">A szerver jelenlegi ideje</target>
+      </trans-unit>
+      <trans-unit id="server_time">
+        <source>Server time</source>
+        <target state="translated">Szerver ideje</target>
+      </trans-unit>
+      <trans-unit id="manual_backup">
+        <source>Manual Backup</source>
+        <target state="translated">Manuális biztonsági mentés</target>
+      </trans-unit>
+      <trans-unit id="manual_backup_name">
+        <source>Your Backup Name</source>
+        <target state="translated">A biztonsági mentés neve</target>
+      </trans-unit>
+      <trans-unit id="manual_backup_name_valid_message">
+        <source>Please enter valid name</source>
+        <target state="translated">Kérjük, adjon meg érvényes nevet</target>
+      </trans-unit>
+      <trans-unit id="manual_backup_type">
+        <source>What you want to Backup?</source>
+        <target state="translated">Mit szeretne biztonsági mentésbe venni?</target>
+      </trans-unit>
+      <trans-unit id="manual_backup_start">
+        <source>Start Backup Now!</source>
+        <target state="translated">Biztonsági mentés indítása most!</target>
+      </trans-unit>
+      <trans-unit id="manual_backup_wait">
+        <source>Please wait...</source>
+        <target state="translated">Kérjük, várjon...</target>
+      </trans-unit>
+      <trans-unit id="manual_backup_wait_text">
+        <source>Based on the size of your site, It may take time to backup, Please do not close the window.</source>
+        <target state="translated">A webhely méretétől függően a biztonsági mentés időbe telhet, kérjük, ne zárja be az ablakot.</target>
+      </trans-unit>
+      <trans-unit id="email.not.valid">
+        <source>Email format is not valid</source>
+        <target state="translated">Az e-mail formátum érvénytelen</target>
+      </trans-unit>
+      <trans-unit id="phpPath.not.valid">
+        <source>PHP path is not executable</source>
+        <target state="translated">A PHP elérési út nem végrehajtható</target>
+      </trans-unit>
+      <trans-unit id="storePath.not.valid">
+        <source>The backup storage does not exist.</source>
+        <target state="translated">A biztonsági mentési tárhely nem létezik.</target>
+      </trans-unit>
+      <trans-unit id="something.wrong.here">
+        <source>Something is wrong here. Please check you Global Settings</source>
+        <target state="translated">Valami nincs rendben. Kérjük, ellenőrizze a Globális beállításokat</target>
+      </trans-unit>
+      <trans-unit id="servercloud.content.downloadBackupError">
+        <source>This backup contains the private path. Due to security purposes, it is not able to download.  You can download it manually from your server.</source>
+        <target state="translated">Ez a biztonsági mentés a privát elérési utat tartalmazza. Biztonsági okokból nem tölthető le. Manuálisan letöltheti a szerveréről.</target>
+      </trans-unit>
+      <trans-unit id="servercloud.content.downloadErrorTitle">
+        <source>Download Backup</source>
+        <target state="translated">Biztonsági mentés letöltése</target>
+      </trans-unit>
+      <trans-unit id="manualbackup.error.description">
+        <source>Allowed characters: letters, numbers, spaces, dashes (-), and underscores (_).</source>
+        <target state="translated">Engedélyezett karakterek: betűk, számok, szóközök, kötőjelek (-) és alulvonások (_).</target>
+      </trans-unit>
+      <trans-unit id="servercloud.content.downloadBackupNotFound">
+        <source>This backup is no longer available.</source>
+        <target state="translated">Ez a biztonsági mentés már nem érhető el.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
