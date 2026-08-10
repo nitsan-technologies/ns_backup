@@ -21,15 +21,15 @@
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup">
         <source>Cleanup Type</source>
-        <target state="needs-translation">Cleanup Type</target>
+        <target state="translated">Karbantartási típus</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_quantity">
         <source>Cleanup Quantity</source>
-        <target state="needs-translation">Cleanup Quantity</target>
+        <target state="translated">Karbantartási mennyiség</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.compress">
         <source>File Compress Type</source>
-        <target state="needs-translation">File Compress Type</target>
+        <target state="translated">Fájltömörítés típusa</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.php">
         <source>PHP Installed Path</source>
@@ -93,7 +93,7 @@
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.size">
         <source>Size</source>
-        <target state="needs-translation">Size</target>
+        <target state="translated">Méret</target>
       </trans-unit>
       <trans-unit id="tx_nsbackup_domain_model_backupdata.logs">
         <source>Logs</source>
