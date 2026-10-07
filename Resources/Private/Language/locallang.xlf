@@ -472,6 +472,15 @@
 			<trans-unit id="servercloud.content.downloadBackupNotFound">
 				<source>This backup is no longer available.</source>
 			</trans-unit>
+			<trans-unit id="premium.strip.headline">
+				<source>Backup Plus Premium</source>
+			</trans-unit>
+			<trans-unit id="premium.strip.description">
+				<source>Get more out of your backups with the premium version. Try it free.</source>
+			</trans-unit>
+			<trans-unit id="premium.strip.trial">
+				<source>Start Free Trial</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
