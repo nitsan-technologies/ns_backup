@@ -16,9 +16,9 @@ Freemium per the NITSAN Free/Freemium sheet. Premium product: https://t3planet.d
 - Defined as section `premiumStrip` in `Templates/Backups/Dashboard.html` only; rendered by
   `Layouts/Default.html` with `<f:render section="premiumStrip" optional="true" />` directly below the navbar,
   above flash messages and the config warning. Other views don't define the section, so nothing renders there.
-- Content: `actions-star` core icon, headline + one-line description, one `btn btn-primary` "Start Free Trial" link (same tab).
-- Labels: `premium.strip.headline`, `premium.strip.description`, `premium.strip.trial` in `locallang.xlf`.
-- Styling: Bootstrap utilities + `.ns-backup-premium-strip` in `Resources/Public/Css/main.css`.
+- Content: `actions-rocket` core icon, headline on the first line, description below it, and one `btn btn-primary` "Start Free Trial" link with an `actions-arrow-right` icon (same tab).
+- Labels in `locallang.xlf`: `premium.strip.headline` "You're using the free version of Backup Plus", `premium.strip.description` "Unlock premium features and get more out of Backup Plus.", `premium.strip.trial` "Start Free Trial". "Backup Plus" is the extension name from the Free/Freemium sheet.
+- Styling: Bootstrap utilities + `.ns-backup-premium-strip` (with `__icon`, `__headline`, `__description`) in `Resources/Public/Css/main.css`. Blue highlight with rounded corners (light `#e7f2fc` / dark `#16324a`, 4px blue left border). Not a gray bar.
 
 ## Trial link
 

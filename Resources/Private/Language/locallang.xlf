@@ -473,10 +473,10 @@
 				<source>This backup is no longer available.</source>
 			</trans-unit>
 			<trans-unit id="premium.strip.headline">
-				<source>Backup Plus Premium</source>
+				<source>You're using the free version of Backup Plus</source>
 			</trans-unit>
 			<trans-unit id="premium.strip.description">
-				<source>Get more out of your backups with the premium version. Try it free.</source>
+				<source>Unlock premium features and get more out of Backup Plus.</source>
 			</trans-unit>
 			<trans-unit id="premium.strip.trial">
 				<source>Start Free Trial</source>
