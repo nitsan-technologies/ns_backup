@@ -8,7 +8,7 @@
 | Composer name | `nitsan/ns-backup` |
 | Title | Backup Plus |
 | Namespace | `NITSAN\NsBackup\` → `Classes/` |
-| Version (ext_emconf) | 14.0.1 |
+| Version (ext_emconf) | 14.0.2 |
 | Repository | https://github.com/nitsan-technologies/ns_backup |
 | Licensing status (NITSAN Free/Freemium sheet) | **Freemium** — this repo is the free version |
 | Premium version (sheet) | https://t3planet.de/typo3-sicherung-erweiterung (€199/year) |
