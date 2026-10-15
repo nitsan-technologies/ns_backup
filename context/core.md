@@ -38,7 +38,8 @@ Server requirements checked at runtime: PHP extensions `curl`, `dom`, `json`, an
 ## Tooling
 
 - No PHPUnit, PHPStan, CS fixer or package.json in the repo.
-- CI: `.github/workflows/ter-release.yml` only (publishes tags to TER via tailor).
+- CI: `.github/workflows/ter-release.yml` only (publishes tags to TER via tailor, uploading the GitHub tag archive).
+- `.gitattributes` export-ignores `AGENTS.md`, `CLAUDE.md`, `context/`, `tasks/`, `.github/`, `.crowdin.yml` and itself, so they are not in the GitHub/Composer archive or the TER package. `phpbu.phar` must stay exported (runtime).
 - Translations: Crowdin (`.crowdin.yml`), source files `Resources/Private/Language/*.xlf`.
 
 ## Conventions
