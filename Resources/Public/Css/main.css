@@ -1159,3 +1159,26 @@ div.dt-container .dt-paging .dt-paging-button.disabled:active {
   border: 0;
   --typo3-modal-shadow: none !important;  
 }
+
+.ns-backup-premium-strip {
+  margin-bottom: 1rem;
+  padding: 12px 16px;
+  border: 1px solid light-dark(#b9d4f1, #3d6ea5);
+  border-left: 4px solid light-dark(#2b6cb0, #7eb6ea);
+  border-radius: 6px;
+  background-color: light-dark(#e7f2fc, #16324a);
+  color: light-dark(#0d2c4a, #e7f1fb);
+}
+
+.ns-backup-premium-strip__icon {
+  color: light-dark(#2b6cb0, #7eb6ea);
+}
+
+.ns-backup-premium-strip__headline {
+  font-weight: 600;
+  font-size: 1.05em;
+}
+
+.ns-backup-premium-strip__description {
+  color: light-dark(#3c5a78, #c4d8ec);
+}

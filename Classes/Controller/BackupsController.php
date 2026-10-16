@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use RuntimeException;
 use Symfony\Component\Mime\Address;
+use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Core\Environment;
@@ -34,6 +35,9 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility as transalte;
  */
 class BackupsController extends ActionController
 {
+    protected const NS_LICENSE_MODULE = 'nitsan_nslicensemodule';
+    protected const NS_LICENSE_FREE_SECTION_ANCHOR = '#free-section';
+
     /**
      * errorValidation
      */
@@ -82,6 +86,9 @@ class BackupsController extends ActionController
 
         $globalSettingsData = $this->backupglobalRepository->findAll();
         $arrBackupData = $this->backupglobalRepository->findBackupDataAll(5);
+        $trialUrl = (string)GeneralUtility::makeInstance(UriBuilder::class)
+            ->buildUriFromRoute(self::NS_LICENSE_MODULE, ['trial' => 'ns_backup'])
+            . self::NS_LICENSE_FREE_SECTION_ANCHOR;
 
         $arrMultipleVars = [
             'cleanup' => constant('cleanup'),
@@ -91,7 +98,8 @@ class BackupsController extends ActionController
             'action' => 'dashboard',
             'arrBackupData' => $arrBackupData,
             'errorValidation' => $this->errorValidation,
-            'modalAttr' => 'data-bs-'
+            'modalAttr' => 'data-bs-',
+            'trialUrl' => $trialUrl,
         ];
         $view = $this->initializeModuleTemplate($this->request);
         $view->assignMultiple($arrMultipleVars);
