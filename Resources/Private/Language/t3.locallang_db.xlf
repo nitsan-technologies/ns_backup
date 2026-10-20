@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_backup/Resources/Private/Language/locallang_db.xlf" date="2019-12-28T17:40:31Z" product-name="ns_backup" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal">
+        <source>Nsbackupglobal</source>
+        <target>crwdns376138:0crwdne376138:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.emails">
+        <source>Emails (Multiple emails using comma ,)</source>
+        <target>crwdns376140:0crwdne376140:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_subject">
+        <source>Email Subject</source>
+        <target>crwdns376142:0crwdne376142:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.email_notification_on_error">
+        <source>Email Notification On Error</source>
+        <target>crwdns376144:0crwdne376144:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup">
+        <source>Cleanup Type</source>
+        <target>crwdns376146:0crwdne376146:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.cleanup_quantity">
+        <source>Cleanup Quantity</source>
+        <target>crwdns376148:0crwdne376148:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.compress">
+        <source>File Compress Type</source>
+        <target>crwdns376150:0crwdne376150:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.php">
+        <source>PHP Installed Path</source>
+        <target>crwdns376152:0crwdne376152:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.root">
+        <source>TYPO3 Installed Path</source>
+        <target>crwdns376154:0crwdne376154:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_nsbackupglobal.siteurl">
+        <source>Your Site URL</source>
+        <target>crwdns376156:0crwdne376156:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_servers.path">
+        <source>Path</source>
+        <target>crwdns376158:0crwdne376158:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_servers.server_type">
+        <source>Server Type</source>
+        <target>crwdns376160:0crwdne376160:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_servers.settings">
+        <source>Settings</source>
+        <target>crwdns376162:0crwdne376162:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata">
+        <source>Backup Data</source>
+        <target>crwdns376164:0crwdne376164:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.title">
+        <source>Title</source>
+        <target>crwdns376166:0crwdne376166:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.start_datetime">
+        <source>Start Datetime</source>
+        <target>crwdns376168:0crwdne376168:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.end_datetime">
+        <source>End Datetime</source>
+        <target>crwdns376170:0crwdne376170:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.backup_type">
+        <source>Backup Type</source>
+        <target>crwdns376172:0crwdne376172:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.download_url">
+        <source>Download Url</source>
+        <target>crwdns376174:0crwdne376174:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.server_uid">
+        <source>Server Uid</source>
+        <target>crwdns376176:0crwdne376176:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.servers_backup_path">
+        <source>Servers Backup Path</source>
+        <target>crwdns376178:0crwdne376178:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.filenames">
+        <source>Filenames</source>
+        <target>crwdns376180:0crwdne376180:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.size">
+        <source>Size</source>
+        <target>crwdns376182:0crwdne376182:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.logs">
+        <source>Logs</source>
+        <target>crwdns376184:0crwdne376184:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.date">
+        <source>Date</source>
+        <target>crwdns376186:0crwdne376186:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupdata.status">
+        <source>Status</source>
+        <target>crwdns376188:0crwdne376188:0</target>
+      </trans-unit>
+      <trans-unit id="tx_nsbackup_domain_model_backupglobal.backup_store_path">
+        <source>Backup Store Path</source>
+        <target>crwdns376190:0crwdne376190:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_backup/Resources/Private/Language/locallang_csh_tx_nsbackup_domain_model_backupdata.xlf" date="2019-12-28T17:40:31Z" product-name="ns_backup" target-language="it">
+    <header/>
+    <body>
+      <trans-unit id="title.description">
+        <source>title</source>
+        <target state="needs-translation">title</target>
+      </trans-unit>
+      <trans-unit id="category.description">
+        <source>category</source>
+        <target state="needs-translation">category</target>
+      </trans-unit>
+      <trans-unit id="start_datetime.description">
+        <source>startDatetime</source>
+        <target state="needs-translation">startDatetime</target>
+      </trans-unit>
+      <trans-unit id="end_datetime.description">
+        <source>endDatetime</source>
+        <target state="needs-translation">endDatetime</target>
+      </trans-unit>
+      <trans-unit id="backup_type.description">
+        <source>backupType</source>
+        <target state="needs-translation">backupType</target>
+      </trans-unit>
+      <trans-unit id="download_url.description">
+        <source>downloadUrl</source>
+        <target state="needs-translation">downloadUrl</target>
+      </trans-unit>
+      <trans-unit id="filenames.description">
+        <source>filenames</source>
+        <target state="needs-translation">filenames</target>
+      </trans-unit>
+      <trans-unit id="size.description">
+        <source>size</source>
+        <target state="needs-translation">size</target>
+      </trans-unit>
+      <trans-unit id="logs.description">
+        <source>logs</source>
+        <target state="needs-translation">logs</target>
+      </trans-unit>
+      <trans-unit id="date.description">
+        <source>date</source>
+        <target state="needs-translation">date</target>
+      </trans-unit>
+      <trans-unit id="status.description">
+        <source>status</source>
+        <target state="needs-translation">status</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

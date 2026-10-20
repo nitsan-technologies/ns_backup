@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_backup/Resources/Private/Language/locallang_csh_tx_nsbackup_domain_model_nsbackupglobal.xlf" date="2019-12-28T17:40:31Z" product-name="ns_backup" target-language="it">
+    <header/>
+    <body>
+      <trans-unit id="emails.description">
+        <source>emails</source>
+        <target state="needs-translation">emails</target>
+      </trans-unit>
+      <trans-unit id="email_notification_on_error.description">
+        <source>emailNotificationOnError</source>
+        <target state="needs-translation">emailNotificationOnError</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
