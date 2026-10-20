@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="EXT:ns_backup/Resources/Private/Language/locallang_csh_tx_nsbackup_domain_model_backupdata.xlf" date="2019-12-28T17:40:31Z" product-name="ns_backup" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="title.description">
+        <source>title</source>
+        <target>crwdns376112:0crwdne376112:0</target>
+      </trans-unit>
+      <trans-unit id="category.description">
+        <source>category</source>
+        <target>crwdns376114:0crwdne376114:0</target>
+      </trans-unit>
+      <trans-unit id="start_datetime.description">
+        <source>startDatetime</source>
+        <target>crwdns376116:0crwdne376116:0</target>
+      </trans-unit>
+      <trans-unit id="end_datetime.description">
+        <source>endDatetime</source>
+        <target>crwdns376118:0crwdne376118:0</target>
+      </trans-unit>
+      <trans-unit id="backup_type.description">
+        <source>backupType</source>
+        <target>crwdns376120:0crwdne376120:0</target>
+      </trans-unit>
+      <trans-unit id="download_url.description">
+        <source>downloadUrl</source>
+        <target>crwdns376122:0crwdne376122:0</target>
+      </trans-unit>
+      <trans-unit id="filenames.description">
+        <source>filenames</source>
+        <target>crwdns376124:0crwdne376124:0</target>
+      </trans-unit>
+      <trans-unit id="size.description">
+        <source>size</source>
+        <target>crwdns376126:0crwdne376126:0</target>
+      </trans-unit>
+      <trans-unit id="logs.description">
+        <source>logs</source>
+        <target>crwdns376128:0crwdne376128:0</target>
+      </trans-unit>
+      <trans-unit id="date.description">
+        <source>date</source>
+        <target>crwdns376130:0crwdne376130:0</target>
+      </trans-unit>
+      <trans-unit id="status.description">
+        <source>status</source>
+        <target>crwdns376132:0crwdne376132:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
