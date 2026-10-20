@@ -629,15 +629,15 @@
       </trans-unit>
       <trans-unit id="premium.strip.headline">
         <source>You're using the free version of Backup Plus</source>
-        <target state="needs-translation">You're using the free version of Backup Plus</target>
+        <target state="translated">Sie verwenden die kostenlose Version von Backup Plus</target>
       </trans-unit>
       <trans-unit id="premium.strip.description">
         <source>Unlock premium features and get more out of Backup Plus.</source>
-        <target state="needs-translation">Unlock premium features and get more out of Backup Plus.</target>
+        <target state="translated">Schalte Premium-Funktionen frei und bekomme mehr aus Backup Plus.</target>
       </trans-unit>
       <trans-unit id="premium.strip.trial">
         <source>Start Free Trial</source>
-        <target state="needs-translation">Start Free Trial</target>
+        <target state="translated">Kostenlose Testphase starten</target>
       </trans-unit>
     </body>
   </file>
