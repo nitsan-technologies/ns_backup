@@ -6,6 +6,7 @@ use NITSAN\NsBackup\Domain\Repository\BackupglobalRepository;
 use RuntimeException;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\PathUtility;
 use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -135,6 +136,11 @@ class BackupBaseController extends ActionController
      */
     protected $backupDownloadPathMySQL;
 
+    /**
+     * Unpredictable token used in physical backup filenames.
+     */
+    protected string $backupFileToken = '';
+
     public string $exceptionMessage = '';
 
     /**
@@ -146,6 +152,97 @@ class BackupBaseController extends ActionController
     ) {
         $this->exceptionMessage = LocalizationUtility::translate('something.wrong.here', 'ns_backup');
 
+    }
+
+    /**
+     * Default non-public backup store root (TYPO3 var path).
+     */
+    public function getDefaultBackupStorePath(): string
+    {
+        return rtrim(Environment::getVarPath(), '/');
+    }
+
+    /**
+     * Resolve storage + json folders from settings. Empty store path falls back to var path.
+     *
+     * @return array{storePath: string, localStoragePath: string, jsonFolder: string}
+     */
+    public function resolveBackupStoragePaths(?object $globalSettings = null): array
+    {
+        if ($globalSettings === null) {
+            $all = $this->backupglobalRepository->findAll();
+            $globalSettings = $all[0] ?? null;
+        }
+
+        $configured = '';
+        if ($globalSettings !== null && method_exists($globalSettings, 'getBackupStorePath')) {
+            $configured = trim((string)$globalSettings->getBackupStorePath());
+        } elseif ($globalSettings !== null && isset($globalSettings->backupStorePath)) {
+            $configured = trim((string)$globalSettings->backupStorePath);
+        }
+
+        $storePath = $configured !== '' ? rtrim($configured, '/') : $this->getDefaultBackupStorePath();
+
+        return [
+            'storePath' => $storePath,
+            'localStoragePath' => $storePath . '/tx_nsbackup/',
+            'jsonFolder' => $storePath . '/tx_nsbackup/json/',
+        ];
+    }
+
+    /**
+     * True when $filePath resolves inside $allowedRoot (no path traversal).
+     */
+    public function isPathInsideDirectory(string $filePath, string $allowedRoot): bool
+    {
+        if ($filePath === '' || $allowedRoot === '') {
+            return false;
+        }
+
+        $realFile = realpath($filePath);
+        $realRoot = realpath($allowedRoot);
+        if ($realFile === false || $realRoot === false) {
+            // File may not exist yet; compare normalized absolute paths.
+            $normalizedFile = PathUtility::getCanonicalPath($filePath);
+            $normalizedRoot = rtrim(PathUtility::getCanonicalPath($allowedRoot), '/');
+            return str_starts_with($normalizedFile, $normalizedRoot . '/')
+                || $normalizedFile === $normalizedRoot;
+        }
+
+        $realRoot = rtrim($realRoot, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+        return str_starts_with($realFile, $realRoot) || $realFile === rtrim($realRoot, DIRECTORY_SEPARATOR);
+    }
+
+    /**
+     * Deny HTTP access to backup folders on Apache when store is (accidentally) web-reachable.
+     */
+    public function ensureBackupDirectoryProtection(string $directory): void
+    {
+        if ($directory === '' || !is_dir($directory)) {
+            return;
+        }
+
+        $htaccess = rtrim($directory, '/') . '/.htaccess';
+        if (!file_exists($htaccess)) {
+            @file_put_contents(
+                $htaccess,
+                "# ns_backup: deny direct HTTP access\n"
+                . "<IfModule mod_authz_core.c>\nRequire all denied\n</IfModule>\n"
+                . "<IfModule !mod_authz_core.c>\nDeny from all\n</IfModule>\n"
+            );
+        }
+
+        $webConfig = rtrim($directory, '/') . '/web.config';
+        if (!file_exists($webConfig)) {
+            @file_put_contents(
+                $webConfig,
+                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+                . "<configuration><system.webServer><security><authorization>"
+                . "<remove users=\"*\" roles=\"*\" verbs=\"*\" />"
+                . "<add accessType=\"Deny\" users=\"*\" />"
+                . "</authorization></security></system.webServer></configuration>\n"
+            );
+        }
     }
 
     /**
@@ -217,20 +314,20 @@ class BackupBaseController extends ActionController
             $this->phpbuPath = $this->composerRootPath.'/vendor/nitsan/ns-backup/phpbu.phar';
         }
 
-        // Get Local Storage Path
-        $globalBackupStorePath = $this->globalSettingsData[0]->getBackupStorePath();
-        $isPublicPath = $this->isPathPublic($globalBackupStorePath);
-        if ($globalBackupStorePath == '') {
-            $this->localStoragePath = $this->rootPath . '/tx_nsbackup/';
-            $jsonFolder = $this->rootPath . '/tx_nsbackup/json/';
-        } else {
-            $this->localStoragePath = $globalBackupStorePath . '/tx_nsbackup/';
-            $jsonFolder = $globalBackupStorePath . '/tx_nsbackup/json/';
-        }
+        // Storage: never default into the public web root
+        $storage = $this->resolveBackupStoragePaths($this->globalSettingsData[0] ?? null);
+        $this->localStoragePath = $storage['localStoragePath'];
+        $jsonFolder = $storage['jsonFolder'];
+
         try {
             if (!file_exists($this->localStoragePath)) {
                 GeneralUtility::mkdir_deep($this->localStoragePath);
             }
+            if (!file_exists($jsonFolder)) {
+                GeneralUtility::mkdir_deep($jsonFolder);
+            }
+            $this->ensureBackupDirectoryProtection(rtrim($this->localStoragePath, '/'));
+            $this->ensureBackupDirectoryProtection(rtrim($jsonFolder, '/'));
         } catch (RuntimeException $e) {
             return  [
                 'log' => 'error',
@@ -238,12 +335,12 @@ class BackupBaseController extends ActionController
             ];
         }
 
-        // Get Base URL
+        // Get Base URL (kept for internal path building; public download URLs are no longer stored)
         $this->siteUrl = '';
         if (!empty($this->globalSettingsData[0]->siteurl)) {
             $this->siteUrl = $this->globalSettingsData[0]->siteurl;
         }
-        $path = str_replace($this->rootPath, '', $globalBackupStorePath);
+        $path = str_replace($this->rootPath, '', $storage['storePath']);
         $this->baseURL = $this->siteUrl . $path . '/tx_nsbackup/';
 
         // Get PHPHBU Path
@@ -275,9 +372,10 @@ class BackupBaseController extends ActionController
             throw new RuntimeException('Invalid backup type specified.');
         }
 
-        // Generates an 8-character random string
-        $randomString = substr(md5(uniqid(mt_rand(), true)), 0, 8);
-        $backupBaseName = GeneralUtility::trimExplode('_', $backupFileName, true, 3)[1];
+        $randomString = bin2hex(random_bytes(8));
+        $backupNameParts = GeneralUtility::trimExplode('_', (string)$backupFileName, true, 3);
+        $backupBaseName = $backupNameParts[1] ?? 'backup';
+        $backupBaseName = preg_replace('/[^A-Za-z0-9]/', '', $backupBaseName) ?: 'backup';
 
         $jsonFile = $backupBaseName . '_' . $randomString . '_' . $backupType . '_configuration.json';
         $logFile = $jsonFolder . $backupBaseName . '_' . $randomString . '_' . $backupType . '_log.json';
@@ -346,14 +444,17 @@ class BackupBaseController extends ActionController
 
         $json = json_encode($jsonConfig, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 
+        $log = [];
+        $return_var = 1;
         try {
             // Ensure the directory exists
             if (!file_exists($jsonFolder)) {
                 GeneralUtility::mkdir($jsonFolder);
             }
 
-            // Write JSON content to file
+            // Write JSON content to file with restrictive permissions
             file_put_contents($jsonPath, $json);
+            @chmod($jsonPath, 0600);
 
             // Validate and sanitize PHP path
             if (!is_string($this->phpPath) || !file_exists($this->phpPath) || !is_executable($this->phpPath)) {
@@ -370,26 +471,32 @@ class BackupBaseController extends ActionController
             // Execute Backup SSH Command
             exec($command, $log, $return_var);
         } catch (RuntimeException $e) {
+            if (is_file($jsonPath)) {
+                @unlink($jsonPath);
+            }
             return  [
                 'log' => 'error',
                 'backup_file' => 'Something is wrong here.' . $e->getMessage(),
             ];
+        } finally {
+            // Never leave DB credentials on disk after the run
+            if (isset($jsonPath) && is_file($jsonPath)) {
+                @unlink($jsonPath);
+            }
         }
 
         // Validate If SSH command success
         if (count($log) > 0 && is_array($log)) {
             $log = file_get_contents($logFile);
 
-            // Get ready to insert to Backup History
-            $arrPost['jsonfile'] = $jsonFile;
+            // Keep log basename for cleanup; configuration JSON is already removed
+            $arrPost['jsonfile'] = basename($logFile);
 
             // If Backup Everything, Then let's first-insert MySQL as special case
             if ($backupType == 'all') {
                 $arrPost['backup_type'] = 'mysqldump';
+                // Never store a public download URL (use backend download action)
                 $arrPost['download_url'] = '';
-                if ($isPublicPath) {
-                    $arrPost['download_url'] = $this->backupDownloadPathMySQL;
-                }
                 $compressTechnique = $this->globalSettingsData[0]->compress;
                 $compressTechniques = [
                     'bzip2' => '.bz2',
@@ -412,9 +519,6 @@ class BackupBaseController extends ActionController
 
             // Insert to Database > Backup History
             $arrPost['download_url'] = '';
-            if ($isPublicPath) {
-                $arrPost['download_url'] = $this->backupDownloadPath;
-            }
             $arrPost['log'] = $log;
 
             try {
@@ -429,15 +533,12 @@ class BackupBaseController extends ActionController
             $arrPost['size'] = $fileSize;
             $arrPost['filenames'] = $this->backupFile;
 
-            $downloadURL = '';
-            if ($isPublicPath) {
-                $downloadURL = $this->backupDownloadPath;
-            }
-            $this->backupglobalRepository->addBackupData($arrPost);
+            $insertId = $this->backupglobalRepository->addBackupData($arrPost);
             $arrReturn = [
                 'log' => $log,
                 'backup_file' => $this->backupFile,
-                'download_url' => $downloadURL,
+                'download_url' => '',
+                'uid' => $insertId,
             ];
         } else {
             $arrReturn = [
@@ -527,26 +628,29 @@ class BackupBaseController extends ActionController
 
         $this->backupFilePath = $this->localStoragePath . $backupType;
 
-        // Physical file
-        $this->backupFile = $this->backupFilePath . '/' . md5($backupType).'-'.date('Ymd-Hi') . $backupExtFile . $compressTechnique;
+        // Unpredictable filename token (replaces static md5(backupType))
+        $this->backupFileToken = bin2hex(random_bytes(8));
 
-        // Download file
+        // Physical file
+        $this->backupFile = $this->backupFilePath . '/' . $this->backupFileToken . '-' . date('Ymd-Hi') . $backupExtFile . $compressTechnique;
+
+        // Legacy internal URL build (not persisted / not exposed)
         $this->backupDownloadPath =
             $this->baseURL .
             $backupType . '/' .
-            md5($backupType) . '-' . date('Ymd-Hi') . $backupExtFile . $compressTechnique;
+            $this->backupFileToken . '-' . date('Ymd-Hi') . $backupExtFile . $compressTechnique;
 
         // If Backup Type = ALL then, Let's consider mysql as special-case
         if ($backupType == 'mysqldump') {
             if ($this->globalSettingsData[0]->compress == 'zip') {
                 $compressTechnique = '';
             }
-            $this->backupFileMySQL = $this->backupFilePath . '/' . md5($backupType) . '-' . date('Ymd-Hi') . $backupExtFile . $compressTechnique;
+            $this->backupFileMySQL = $this->backupFilePath . '/' . $this->backupFileToken . '-' . date('Ymd-Hi') . $backupExtFile . $compressTechnique;
             $this->backupDownloadPathMySQL =
-                $this->baseURL . $this->backupFileMySQL =
-                    $backupType . '/' . md5($backupType) . '-' . date('Ymd-Hi') . $backupExtFile . $compressTechnique;
+                $this->baseURL .
+                $backupType . '/' . $this->backupFileToken . '-' . date('Ymd-Hi') . $backupExtFile . $compressTechnique;
         }
-        $this->backupFileName = md5($backupType) . '-%Y%m%d-%H%i' . $backupExtFile;
+        $this->backupFileName = $this->backupFileToken . '-%Y%m%d-%H%i' . $backupExtFile;
 
         $backupConfig['target'] = [
             'dirname' => $this->backupFilePath,
@@ -593,11 +697,23 @@ class BackupBaseController extends ActionController
      */
     public function isPathPublic(string $path): bool
     {
-        if (!Environment::isComposerMode()) {
-            $valuesToCheck = ['typo3', 'typo3conf', 'vendor', 'typo3temp', 'bin'];
-            $parts = array_filter(explode('/', rtrim($path, '/')));
-            return empty(array_intersect($parts, $valuesToCheck));
+        $path = rtrim($path, '/');
+        if ($path === '') {
+            return false;
         }
-        return str_contains(rtrim($path, '/'), Environment::getPublicPath());
+
+        $publicPath = rtrim(Environment::getPublicPath(), '/');
+        if ($publicPath !== '' && (str_starts_with($path, $publicPath . '/') || $path === $publicPath)) {
+            return true;
+        }
+
+        // Classic installations: treat common public docroot folders as public
+        if (!Environment::isComposerMode()) {
+            $publicMarkers = ['fileadmin', 'uploads', 'typo3temp'];
+            $parts = array_filter(explode('/', $path));
+            return count(array_intersect($parts, $publicMarkers)) > 0;
+        }
+
+        return false;
     }
 }

@@ -76,33 +76,36 @@ class BackupglobalRepository extends Repository
     /**
      * addBackupData
      * @param array $arrData
+     * @return int Inserted uid
      */
-    public function addBackupData(array $arrData): void
+    public function addBackupData(array $arrData): int
     {
-        $queryBuilder = $this->getQueryBuilder();
-        $queryBuilder
+        $connection = $this->getQueryBuilder();
+        $connection
             ->insert(
                 'tx_nsbackup_domain_model_backupdata',
                 [
                     'title' => $arrData['backupName'],
                     'start_datetime' => strtotime("now"),
-                    'backup_type' => $arrData['backupFolderSettings'],
-                    'download_url' => $arrData['download_url'],
+                    'backup_type' => $arrData['backupFolderSettings'] ?? ($arrData['backup_type'] ?? ''),
+                    'download_url' => $arrData['download_url'] ?? '',
                     'filenames' => $arrData['filenames'],
-                    'logs' => $arrData['log'],
+                    'logs' => $arrData['log'] ?? '',
                     'size' => $arrData['size'],
-                    'jsonfile' => $arrData['jsonfile'],
+                    'jsonfile' => $arrData['jsonfile'] ?? '',
                 ]
             );
+
+        return (int)$connection->lastInsertId();
     }
 
     /**
      * findBackupByUid
-     * @param $uid
+     * @param int $uid
      * @return false|mixed[]
      * @throws Exception
      */
-    public function findBackupByUid($uid): array|bool
+    public function findBackupByUid(int $uid): array|bool
     {
         $queryBuilder = $this->getQueryBuilder('queryBuilder');
         $statement = $queryBuilder

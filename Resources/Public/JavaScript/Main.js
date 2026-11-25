@@ -272,17 +272,36 @@ $(document).ready(function() {
     });
 
     $(document).on('click', '.delete-backup-backup-del',function (e) {
-        var deleteUrl = $("#deletebackupbackup").attr('action');
+        e.preventDefault();
+        var $form = $("#deletebackupbackup");
+        var deleteUrl = $form.attr('action');
         var id = $('.delete-backup-id').val();
+        $('.delete-backup-id').val(id);
+
+        // POST with Extbase/CSRF form fields — do not use GET
+        var formData = $form.serializeArray();
+        var hasUid = false;
+        for (var i = 0; i < formData.length; i++) {
+            if (formData[i].name === 'uid' || formData[i].name.indexOf('[uid]') !== -1) {
+                formData[i].value = id;
+                hasUid = true;
+            }
+        }
+        if (!hasUid) {
+            formData.push({name: 'uid', value: id});
+        }
 
         $.ajax({
             url: deleteUrl,
-            data:{uid:id},
-            success:function () {
-                window.location = window.location.href;
+            method: 'POST',
+            data: $.param(formData),
+            success: function () {
+                window.location = window.location.href.split('#')[0];
+            },
+            error: function () {
+                window.location = window.location.href.split('#')[0];
             }
         });
-        e.preventDefault();
     });
 
     // Display Log

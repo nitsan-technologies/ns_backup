@@ -77,8 +77,8 @@
 					<div class="modal-body">
 						<p class="delete-msg"><f:translate key="servercloud.content.deleterecord" /></p>
 					</div>
-					<f:form action="deletebackupbackup" id="deletebackupbackup">
-						<f:form.hidden name="id" value="" class="delete-backup-id"/>
+					<f:form action="deletebackupbackup" id="deletebackupbackup" method="post">
+						<f:form.hidden name="uid" value="" class="delete-backup-id" id="delete-backup-uid"/>
 						<f:form.hidden name="deletetype" class="deletetype" value="single" />
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" {modalAttr}dismiss="modal"><em class="fa fa-close"

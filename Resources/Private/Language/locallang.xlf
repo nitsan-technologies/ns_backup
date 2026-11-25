@@ -457,6 +457,9 @@
 			<trans-unit id="storePath.not.valid">
 				<source>The backup storage does not exist.</source>
 			</trans-unit>
+			<trans-unit id="storePath.public.warning">
+				<source>Backup store path is web-accessible. Downloads require backend login; prefer a non-public path such as the TYPO3 var directory.</source>
+			</trans-unit>
             <trans-unit id="something.wrong.here">
                 <source>Something is wrong here. Please check you Global Settings</source>
             </trans-unit>

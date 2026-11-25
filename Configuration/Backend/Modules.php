@@ -13,7 +13,7 @@ return [
         'labels' => 'LLL:EXT:ns_backup/Resources/Private/Language/locallang_backup.xlf',
         'extensionName' => 'NsBackup',
         'controllerActions' => [
-            $backupController => 'dashboard, backuprestore, deletebackupbackup, globalsetting, manualbackup',
+            $backupController => 'dashboard, backuprestore, deletebackupbackup, downloadbackup, globalsetting, manualbackup',
             $backupglobalController => 'globalsetting, create, update',
         ],
     ],

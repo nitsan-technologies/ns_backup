@@ -102,6 +102,7 @@ class BackupglobalController extends ActionController
                 return $this->redirect('globalsetting', ContextualFeedbackSeverity::ERROR);
             }
         }
+        $this->normalizeBackupStorePath($backupglobal);
         if (!is_dir($backupglobal->getBackupStorePath())) {
             $msg = LocalizationUtility::translate('storePath.not.valid', 'ns_backup');
             $this->addFlashMessage('', $msg, ContextualFeedbackSeverity::ERROR);
@@ -113,6 +114,14 @@ class BackupglobalController extends ActionController
             $msg = LocalizationUtility::translate('phpPath.not.valid', 'ns_backup');
             $this->addFlashMessage('', $msg, ContextualFeedbackSeverity::ERROR);
             return $this->redirect('globalsetting');
+        }
+        if ($this->backupBaseController->isPathPublic($backupglobal->getBackupStorePath())) {
+            $this->addFlashMessage(
+                LocalizationUtility::translate('storePath.public.warning', 'ns_backup')
+                    ?: 'Backup store path is web-accessible. Downloads stay behind backend login; prefer a non-public path such as the TYPO3 var directory.',
+                '',
+                ContextualFeedbackSeverity::WARNING
+            );
         }
         $msg = LocalizationUtility::translate('globalsettings.create', 'ns_backup');
         $this->addFlashMessage('', $msg);
@@ -139,6 +148,7 @@ class BackupglobalController extends ActionController
                 return $this->redirect('globalsetting', ContextualFeedbackSeverity::ERROR);
             }
         }
+        $this->normalizeBackupStorePath($backupglobal);
         if (!is_dir($backupglobal->getBackupStorePath())) {
             $msg = LocalizationUtility::translate('storePath.not.valid', 'ns_backup');
             $this->addFlashMessage('', $msg, ContextualFeedbackSeverity::ERROR);
@@ -151,11 +161,31 @@ class BackupglobalController extends ActionController
             $this->addFlashMessage('', $msg, ContextualFeedbackSeverity::ERROR);
             return $this->redirect('globalsetting');
         }
+        if ($this->backupBaseController->isPathPublic($backupglobal->getBackupStorePath())) {
+            $this->addFlashMessage(
+                LocalizationUtility::translate('storePath.public.warning', 'ns_backup')
+                    ?: 'Backup store path is web-accessible. Downloads stay behind backend login; prefer a non-public path such as the TYPO3 var directory.',
+                '',
+                ContextualFeedbackSeverity::WARNING
+            );
+        }
         $msg = LocalizationUtility::translate('globalsettings.update', 'ns_backup');
         $this->addFlashMessage('', $msg);
         $this->backupglobalRepository->update($backupglobal);
 
         return $this->redirect('globalsetting');
+    }
+
+    /**
+     * Empty store path falls back to TYPO3 var path (non-public).
+     */
+    protected function normalizeBackupStorePath(Backupglobal $backupglobal): void
+    {
+        $storePath = trim($backupglobal->getBackupStorePath());
+        if ($storePath === '') {
+            $storePath = $this->backupBaseController->getDefaultBackupStorePath();
+            $backupglobal->setBackupStorePath($storePath);
+        }
     }
 
     /**
